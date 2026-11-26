@@ -1,0 +1,31 @@
+[
+  {
+    "slug": "photo-editing",
+    "name": "Professional Photo Editing & Retouching",
+    "navLabel": "Photo Editing Service",
+    "priceDisplay": "$39.88",
+    "priceNote": "per order",
+    "orderButtonLabel": "Order Now - $39.88",
+    "delivery": "4-day delivery",
+    "revisions": "3 revisions",
+    "summary": "One editing package for portraits, products, real estate, restoration, and composites. Professional Photoshop editing and retouching, delivered in 4 days, with 3 revisions.",
+    "packageIncludes": [
+      "Professional Photoshop editing and retouching",
+      "4-day delivery",
+      "3 revisions"
+    ],
+    "covered": [
+      "Portrait retouching",
+      "Object or person removal or addition",
+      "Background removal",
+      "Product photo editing",
+      "Photo restoration",
+      "Colorizing",
+      "Upscaling",
+      "Real estate photo edits",
+      "Landscape enhancement",
+      "Composites"
+    ],
+    "paymentLinkKey": "STRIPE_PAYMENT_LINK"
+  }
+]
