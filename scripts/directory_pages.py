@@ -290,6 +290,7 @@ class DirectoryMixin:
   </div>
   <figure class="featured"><img src="{esc(image["src"])}" alt="{esc(image["alt"])}" width="1200" height="630" fetchpriority="high" decoding="async"></figure>
 </div>
+<div class="wrap">{self.city_blog_callout(city)}</div>
 {self.specialty_links(city)and '<div class="wrap">' + self.specialty_links(city) + '</div>'}
 <section class="section" id="studios"><div class="wrap">
   <h2 class="visually-hidden">All {esc(city.name)} photo studios</h2>
@@ -563,7 +564,8 @@ class DirectoryMixin:
             near_cards = (f'<h3>Studios near {esc(studio["name"])}</h3><div class="card-grid card-grid-small">'
                           + "".join(self.studio_card(s, show_city=False, index=idx[s["place_id"]]) for s in near) + "</div>")
         links = (f'<p class="related-links"><a href="{city.path}">All photo studios in {esc(city.name)}</a> · '
-                 f'<a href="/services/">Photo editing &amp; enhancement services</a> · <a href="/tx/">All Texas cities</a></p>')
+                 f'<a href="/services/">Photo editing &amp; enhancement services</a> · <a href="/tx/">All Texas cities</a>'
+                 f'{self.studio_blog_link(studio)}</p>')
         return f'<section class="section-block" id="related"><h2>Related studios</h2><div class="related-grid">{"".join(blocks)}</div>{near_cards}{links}</section>'
 
     def local_business(self, studio: dict) -> dict:

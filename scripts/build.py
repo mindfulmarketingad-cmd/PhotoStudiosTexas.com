@@ -17,6 +17,7 @@ from collections import Counter, defaultdict
 from pathlib import Path
 
 from directory_pages import DirectoryMixin
+from extra_pages import TOOLS, ExtrasMixin
 
 ROOT = Path(__file__).resolve().parents[1]
 DIST = ROOT / "dist"
@@ -230,7 +231,7 @@ class City:
         return len(self.studios)
 
 
-class Site(DirectoryMixin):
+class Site(DirectoryMixin, ExtrasMixin):
     def __init__(self):
         payload = load_json(DATA_PATH)
         self.config = load_json(CONFIG_PATH)
@@ -366,8 +367,10 @@ class Site(DirectoryMixin):
         items = [
             ("home", "/", "Home"),
             ("cities", "/cities/", "Cities"),
+            ("blog", "/blog/", "Blog"),
+            ("tools", "/tools/", "Free Tools"),
             ("service", "/services/", "Services"),
-            ("about", "/about/", "About / Contact"),
+            ("about", "/about/", "About"),
         ]
         links = []
         for key, href, label in items:
@@ -387,6 +390,8 @@ class Site(DirectoryMixin):
             ("/", "Home"),
             ("/tx/", "Texas"),
             ("/cities/", "All cities"),
+            ("/blog/", "Blog"),
+            ("/tools/", "Free photo tools"),
             ("/services/", "Services"),
             ("/about/", "About / Contact"),
             ("/sitemap/", "HTML sitemap"),
@@ -396,6 +401,9 @@ class Site(DirectoryMixin):
         service_html = "".join(
             f'<li><a href="/services/{esc(service["slug"])}/">{esc(service["name"])}</a></li>'
             for service in self.services
+        ) + "".join(
+            f'<li><a href="/tools/{tool["slug"]}/">{esc(tool["name"])}</a> <span class="muted">(free)</span></li>'
+            for tool in TOOLS[:2]
         )
         city_html = "".join(
             f'<li><a href="{city.path}">{esc(city.name)}</a> <span class="muted">({city.count})</span></li>'
@@ -412,7 +420,7 @@ class Site(DirectoryMixin):
       <ul>{explore_html}</ul>
     </div>
     <div>
-      <h2>Services</h2>
+      <h2>Services &amp; tools</h2>
       <ul>{service_html}</ul>
     </div>
     <div>
@@ -604,12 +612,22 @@ class Site(DirectoryMixin):
             f'<a class="hero-chip" href="{city.path}">{esc(city.name)}</a>'
             for city in chip_cities
         )
-        datalist = "".join(
-            f'<option value="{esc(city.name)}"></option>'
-            for city in self.by_name
+        major = [city for city in self.by_count[:10]]
+        major_opts = "".join(
+            f'<option value="{city.path}">{esc(city.name)} ({city.count})</option>' for city in major
         )
+        all_opts = "".join(
+            f'<option value="{city.path}">{esc(city.name)} ({city.count})</option>' for city in self.by_name
+        )
+        datalist = (f'<option value="">Choose a Texas city…</option>'
+                    f'<optgroup label="Largest cities">{major_opts}</optgroup>'
+                    f'<optgroup label="All cities A–Z">{all_opts}</optgroup>')
         city_paths = {city.name.lower(): city.path for city in self.cities}
         featured = "".join(self.studio_card(studio) for studio in self.featured)
+        blog_chips = "".join(
+            f'<a class="chip" href="{self.blog_path(city)}">Best in {esc(city.name)}</a>'
+            for city in self.blog_cities[:12]
+        )
         cities = "".join(self.city_card(city) for city in self.by_count)
         extra_head = (
             f'<link rel="preload" as="image" href="{HERO_URL}/studio-desktop.webp" '
@@ -631,11 +649,10 @@ class Site(DirectoryMixin):
     <p class="eyebrow"><a href="/tx/">Texas directory</a></p>
     <h1>Find the Best Photo Studios in Texas</h1>
     <hr class="rule">
-    <p class="lede">{comma(studio_count)} photography studios across {comma(city_count)} cities. Search a city to open its hub, or browse every listing below.</p>
-    <form class="hero-city-search" id="hero-city-search" role="search" action="/cities/" method="get">
-      <label class="visually-hidden" for="city-search">Search a Texas city</label>
-      <input id="city-search" name="q" type="search" list="city-list" placeholder="Search a Texas city" autocomplete="off">
-      <datalist id="city-list">{datalist}</datalist>
+    <p class="lede">{comma(studio_count)} photography studios across {comma(city_count)} cities. Pick your city to open its studios, or see the top-rated studios near you below.</p>
+    <form class="hero-city-search" id="hero-city-select" action="/cities/" method="get" onsubmit="var v=this.elements['city'].value;if(v){{location.href=v;}}return false;">
+      <label class="visually-hidden" for="city-select">Choose a Texas city</label>
+      <select id="city-select" name="city" onchange="if(this.value)location.href=this.value">{datalist}</select>
       <button class="btn btn-orange" type="submit">Go</button>
     </form>
     <script type="application/json" id="city-paths">{json.dumps(city_paths, ensure_ascii=False, separators=(",", ":"))}</script>
@@ -658,9 +675,17 @@ class Site(DirectoryMixin):
   <div id="search-results" class="search-results" aria-live="polite"></div>
   <noscript><p>Every city is listed below. The search box runs in the browser.</p></noscript>
 </div></section>
-<section class="section section-sand"><div class="wrap">
-  <div class="section-head"><h2>Featured studios</h2><a href="/cities/">All cities</a></div>
-  <div class="card-grid">{featured}</div>
+<section class="section section-sand" id="near-you"><div class="wrap">
+  <div class="section-head"><h2 id="near-title">Featured studios across Texas</h2><a id="near-link" href="/cities/">All cities</a></div>
+  <div class="near-bar" id="near-bar" hidden>
+    <p class="muted" id="near-note"></p>
+    <button type="button" class="btn" id="near-precise">Use my precise location</button>
+  </div>
+  <div class="card-grid" id="near-grid">{featured}</div>
+</div></section>
+<section class="section"><div class="wrap">
+  <div class="section-head"><h2>Best photo studios by city</h2><a href="/blog/">All city guides</a></div>
+  <div class="chips">{blog_chips}</div>
 </div></section>
 <section class="section" id="cities"><div class="wrap">
   <div class="section-head"><h2>Cities</h2><a href="/cities/">Alphabetical index</a></div>
@@ -692,7 +717,8 @@ class Site(DirectoryMixin):
             f"Browse {comma(studio_count)} photo studios across {comma(city_count)} Texas cities. "
             f"Compare ratings, hours, and contact details{offer}."
         )
-        self.write_page("/", self.layout(title, description, "/", body, "home", [schema], extra_head=extra_head))
+        extra_head += '<script src="/assets/home-geo.js" defer></script>\n'
+        self.write_page("/", self.layout(title, description, "/", body, "home", [schema], extra_head=extra_head, directory=True))
 
     def build_texas(self) -> None:
         path = "/tx/"
@@ -863,6 +889,10 @@ class Site(DirectoryMixin):
                 for other in others
             )
             other_html = f'<h2>Other services</h2><ul class="plain-list">{links}</ul>'
+        other_html += (
+            '<p><a href="/services/">See all photo services</a> · '
+            '<a href="/tools/">Try our free photo tools</a></p>'
+        )
         return f"""<div class="split">
   <div>
     <p class="lede">{esc(service["summary"])}</p>
@@ -906,10 +936,11 @@ class Site(DirectoryMixin):
   <hr class="rule">
   <p class="lede">Professional photo editing and photo enhancement for studios and clients across Texas. Pick a service to see what’s included, how it works, and how to order.</p>
   <div class="card-grid">{"".join(cards)}</div>
+  <p>Just need a quick fix? Our <a href="/tools/">free photo tools</a> include an <a href="/tools/image-background-remover/">image background remover</a>, resizer, compressor, cropper, and format converter.</p>
 </div>"""
         self.write_page(index_path, self.layout(
             "Services | PhotoStudiosTexas.com",
-            "Photo editing and retouching from PhotoStudiosTexas.com. One package is $39.88 per order.",
+            "Photo editing, retouching, enhancement, and upscaling from PhotoStudiosTexas.com, with prices, turnaround, and what's included.",
             index_path,
             body,
             "service",
@@ -955,25 +986,63 @@ class Site(DirectoryMixin):
 
     def build_about(self) -> None:
         path = "/about/"
-        crumbs = [("Home", "/"), ("About / Contact", None)]
+        crumbs = [("Home", "/"), ("About", None)]
+        blog_count = len(self.blog_cities)
+        largest = ", ".join(
+            f'<a href="{city.path}">{esc(city.name)}</a> ({city.count})' for city in self.by_count[:6]
+        )
         body = f"""<div class="wrap page-head">
   {self.crumbs(crumbs)}
+  <p class="eyebrow">About</p>
   <h1>About PhotoStudiosTexas.com</h1>
   <hr class="rule">
-  <p class="lede">PhotoStudiosTexas.com lists photography studios in Texas and offers professional photo editing and photo enhancement.</p>
-  <p>Studios come from a public Google Maps export for the search “Photography studio in TX.” The build keeps Texas listings, drops permanently closed businesses, and removes duplicate records that share a name and address. Temporarily closed businesses stay, with a label on the page. Ratings, hours, phone numbers, websites, and photos are shown only when that export included them.</p>
-  <p>City pages are the hubs. Every studio links up to its city, and each city links back to the Texas directory. Nothing here is an endorsement of a studio, and the site is not affiliated with Google or with the businesses listed.</p>
-  <p><a href="/services/">Two services</a> are on the site now: {self._about_services()}</p>
-  <h2>Contact</h2>
-  {self.order_form(None, "PhotoStudiosTexas contact", "Send message")}
+  <p class="lede">PhotoStudiosTexas.com helps you find a photo studio anywhere in Texas, compare them on real ratings and hours, and get your photos finished once the shoot is done.</p>
+  <div class="stat-row">
+    <div class="stat"><b>{comma(len(self.studios))}</b> studios</div>
+    <div class="stat"><b>{comma(len(self.cities))}</b> cities</div>
+    <div class="stat"><b>{blog_count}</b> city guides</div>
+    <div class="stat"><b>{len(TOOLS)}</b> free tools</div>
+  </div>
+  <div class="split about-split">
+    <div>
+      <h2>What you'll find here</h2>
+      <ul class="plain-list about-list">
+        <li><strong><a href="/cities/">City directories</a>.</strong> Every studio sits on its city page, with filters for specialty, rating, open now, and online booking. The largest are {largest}.</li>
+        <li><strong>Studio pages.</strong> Hours, specialties, amenities, the Google rating and star breakdown, a map, and links to nearby studios.</li>
+        <li><strong><a href="/blog/">City guides</a>.</strong> Ranked lists of the best photo studios in {blog_count} Texas cities, using one open formula that weighs rating by review count.</li>
+        <li><strong><a href="/tools/">Free photo tools</a>.</strong> A <a href="/tools/image-background-remover/">background remover</a>, resizer, compressor, cropper, and converter that run in your browser.</li>
+        <li><strong><a href="/services/">Photo services</a>.</strong> {self._about_services()}</li>
+      </ul>
+      <h2>Where the listings come from</h2>
+      <p>Studios come from a public Google Maps export for the search “Photography studio in TX.” The build keeps Texas listings, drops permanently closed businesses, and removes duplicate records that share a name and address. Temporarily closed businesses stay, with a label on the page. Ratings, hours, phone numbers, websites, and photos are shown only when the listing includes them. Specialties are matched from each listing's Google categories, name, and the studio's own website.</p>
+      <h2>How we rank studios</h2>
+      <p>Lists and guides never take payment for placement. Where we rank, we blend each studio's Google rating with the statewide average, weighted by its number of reviews, so a 5.0 from three reviews does not beat a 4.9 from three hundred. The formula is printed in every <a href="/blog/">city guide</a>.</p>
+      <h2>Own a studio?</h2>
+      <p>If your details are wrong or your studio is missing, send a correction with the form below. Updating your Google Business Profile also fixes the next refresh.</p>
+      <p class="muted">PhotoStudiosTexas.com is independent. It is not affiliated with Google or with the businesses listed, and a listing is not an endorsement.</p>
+    </div>
+    <aside class="panel" id="contact">
+      <h2>Contact</h2>
+      <p>Questions, corrections, or orders: use the form{f' or email <a href="mailto:{esc(self.email)}">{esc(self.email)}</a>' if self.email else ''}.</p>
+      {self.order_form(None, "PhotoStudiosTexas contact", "Send message")}
+    </aside>
+  </div>
 </div>"""
+        about_schema = {
+            "@context": "https://schema.org", "@type": "AboutPage", "url": self.abs_url(path),
+            "name": "About PhotoStudiosTexas.com",
+            "mainEntity": {"@type": "Organization", "name": "PhotoStudiosTexas.com", "url": self.abs_url("/"),
+                           "logo": self.abs_url("/icon-512.png"), "areaServed": "Texas"},
+        }
+        if self.email:
+            about_schema["mainEntity"]["email"] = self.email
         self.write_page(path, self.layout(
-            "About & Contact | PhotoStudiosTexas.com",
-            "About the Texas photo studio directory: where listings come from, how they are cleaned, and how to get in touch.",
+            "About PhotoStudiosTexas.com | Texas Photo Studio Directory",
+            "About the Texas photo studio directory: where listings come from, how studios are ranked, our free tools and photo services, and how to get in touch.",
             path,
             body,
             "about",
-            [self.breadcrumb_schema(crumbs, path)],
+            [self.breadcrumb_schema(crumbs, path), about_schema],
         ))
 
     def build_html_sitemap(self) -> None:
@@ -988,6 +1057,10 @@ class Site(DirectoryMixin):
             (f"/services/{service['slug']}/", service["name"])
             for service in self.services
         )
+        static.append(("/blog/", "Blog"))
+        static.extend((self.blog_path(city), self.blog_title(city)) for city in self.blog_cities)
+        static.append(("/tools/", "Free photo tools"))
+        static.extend((f"/tools/{tool['slug']}/", tool["name"]) for tool in TOOLS)
         static.append(("/about/", "About / Contact"))
         static_html = "".join(f'<li><a href="{href}">{esc(label)}</a></li>' for href, label in static)
         groups = []
@@ -1050,7 +1123,7 @@ class Site(DirectoryMixin):
         robots = (
             "User-agent: *\n"
             "Allow: /\n"
-            "Disallow: /assets/\n"
+            "Disallow: /api/\n"
             f"Sitemap: {self.abs_url('/sitemap.xml')}\n"
         )
         (DIST / "robots.txt").write_text(robots, encoding="utf-8")
@@ -1113,10 +1186,14 @@ class Site(DirectoryMixin):
         self.build_services()
         self.build_about()
         self.build_studios()
+        self.build_blog()
+        self.build_tools()
         self.build_html_sitemap()
         self.build_404()
         self.build_feeds()
         self.write_runtime_assets()
+        self.write_geo_index()
+        self.write_llms()
         print(
             f"Built {len(self.pages)} indexable pages "
             f"({len(self.cities)} cities, {len(self.studios)} studios) in {DIST}"

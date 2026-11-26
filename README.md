@@ -31,7 +31,13 @@ Houston 284, Dallas 152, Austin 123, San Antonio 93, Fort Worth 64, El Paso 45, 
 | `/services/` | Service hub listing photo editing and photo enhancement |
 | `/services/photo-editing/` | Professional Photo Editing & Retouching, $39.88, with a before-and-after gallery |
 | `/services/photo-enhancement/` | Photo Enhancement & Upscaling, $40 per photo |
+| `/blog/` | Blog hub: ranked city guides |
+| `/blog/best-photo-studios-in-<city>-tx/` | "The 10 Best Photo Studios in <City> Texas" for every city with 10+ studios (34 today). Ranking: `(reviews × rating + 10 × Texas mean) ÷ (reviews + 10)`, open and reviewed studios only. Article, ItemList, FAQPage schema |
+| `/tools/` | Free tools hub |
+| `/tools/<tool>/` | Image Background Remover, Image Resizer, Image Compressor, Image Cropper, Image Format Converter. All run in the browser (`assets/tools/`); nothing is uploaded |
 | `/about/` | About and contact |
+| `/llms.txt` | Site summary for AI crawlers |
+| `/api/geo` | Vercel function (`api/geo.js`) that returns the visitor's approximate city and coordinates from Vercel IP-geolocation headers. `assets/home-geo.js` uses it to show "Top studios near <City>" on the homepage. `/?near=<city-slug>` forces a city for testing |
 | `/sitemap/` | HTML sitemap |
 | `/sitemap.xml` | XML sitemap |
 | `/robots.txt` | Robots file |

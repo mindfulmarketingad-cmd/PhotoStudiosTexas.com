@@ -720,3 +720,34 @@ label { display: block; font-size: 0.9rem; font-weight: 700; margin: 0.7rem 0 0.
 .service-card .price { font-size: 2.6rem; }
 .price span { white-space: nowrap; }
 .service-card .btn { margin-top: 0.4rem; }
+
+/* Blog guides, homepage near-you, about */
+.blog-callout { margin: 1rem 0 0; padding: 0.8rem 1rem; border-left: 4px solid var(--orange); background: var(--sand); }
+.blog-callout .eyebrow { display: inline; margin-right: 0.4rem; }
+.blog-callout a { font-weight: 700; }
+.blog-post { max-width: 60rem; }
+.blog-intro p { font-size: 1.08rem; }
+.table-wrap { overflow-x: auto; }
+.rank-table { width: 100%; border-collapse: collapse; font-size: 0.95rem; }
+.rank-table th, .rank-table td { text-align: left; padding: 0.5rem 0.6rem; border-bottom: 1px solid var(--line); }
+.rank-table th { background: var(--black); color: #fff; }
+.blog-item { display: grid; grid-template-columns: minmax(0, 18rem) 1fr; gap: 1.2rem; padding: 1.6rem 0; border-top: 2px solid var(--black); }
+.blog-item-photo { display: block; background: var(--black); align-self: start; }
+.blog-item-photo img { display: block; width: 100%; height: auto; aspect-ratio: 8 / 5; object-fit: cover; }
+.blog-item h2 { margin: 0 0 0.3rem; }
+.blog-item .rank { display: inline-flex; align-items: center; justify-content: center; min-width: 2.2rem; height: 2.2rem; background: var(--orange); color: var(--black); font-weight: 800; margin-right: 0.3rem; }
+.blog-facts { display: grid; grid-template-columns: max-content 1fr; gap: 0.25rem 0.8rem; margin: 0.6rem 0; }
+.blog-facts dt { font-weight: 700; }
+.blog-facts dd { margin: 0; }
+.blog-item-actions { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.formula { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; background: var(--sand); padding: 0.7rem 0.9rem; border-left: 4px solid var(--orange); overflow-x: auto; }
+.blog-card .photo img { aspect-ratio: 1200 / 630; object-fit: cover; }
+.near-bar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.6rem; margin: -0.4rem 0 1rem; }
+.near-bar p { margin: 0; }
+.hero-city-search select { background: #fff; color: var(--ink); border: 2px solid #fff; padding: 0.7rem 0.75rem; font: inherit; width: 100%; min-width: 0; }
+.about-split { margin-top: 1.2rem; }
+.about-list li { margin: 0.6rem 0; }
+@media (max-width: 700px) {
+  .blog-item { grid-template-columns: 1fr; }
+}
+.near-bar[hidden] { display: none; }

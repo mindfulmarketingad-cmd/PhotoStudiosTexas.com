@@ -1,0 +1,44 @@
+/* Free tools */
+.tool-app { border: 2px solid var(--black); background: #fff; padding: 1.1rem; margin: 1.4rem 0 0.6rem; }
+.tool-drop { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.3rem; text-align: center;
+  border: 2px dashed var(--orange); background: #fff4ec; padding: 1.8rem 1rem; cursor: pointer; }
+.tool-drop.is-over { background: #ffe2cc; }
+.tool-drop strong { font-size: 1.1rem; }
+.tool-drop span { color: var(--muted); font-size: 0.9rem; }
+.tool-drop input { max-width: 100%; }
+.has-image .tool-drop { padding: 0.9rem 1rem; }
+.tool-controls { display: flex; flex-wrap: wrap; gap: 0.8rem 1rem; align-items: end; margin: 1rem 0 0.4rem; }
+.tool-controls .f-field { display: flex; flex-direction: column; gap: 0.25rem; font-size: 0.85rem; font-weight: 700; }
+.tool-controls input[type="number"], .tool-controls select { min-width: 9rem; padding: 0.5rem; border: 1px solid var(--line); font: inherit; }
+.tool-controls input[type="color"] { width: 4rem; height: 2.4rem; padding: 0.1rem; border: 1px solid var(--line); }
+.f-range input { width: 14rem; accent-color: var(--orange); }
+.tool-presets { display: flex; flex-wrap: wrap; gap: 0.4rem; width: 100%; }
+.tool-presets .chip { cursor: pointer; font: inherit; font-size: 0.85rem; }
+.tool-presets .chip[aria-pressed="true"] { background: var(--orange); border-color: var(--orange); color: var(--black); }
+.tool-status { min-height: 1.4em; margin: 0.6rem 0; font-weight: 600; }
+.tool-stage { margin: 0.6rem 0; }
+.crop-canvas { display: block; max-width: 100%; height: auto; touch-action: none; cursor: crosshair; border: 1px solid var(--line); }
+.tool-output { display: grid; gap: 1rem; }
+.tool-result { margin: 0; border: 1px solid var(--line); padding: 0.8rem; }
+.tool-result figcaption { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 0.6rem; margin-top: 0.6rem; }
+.tool-preview { display: flex; align-items: center; justify-content: center; background: var(--sand); max-height: 520px; overflow: hidden; }
+.tool-preview img { display: block; max-width: 100%; max-height: 520px; width: auto; height: auto; }
+.checker { background-color: #fff; background-image: linear-gradient(45deg, #e6e1db 25%, transparent 25%), linear-gradient(-45deg, #e6e1db 25%, transparent 25%),
+  linear-gradient(45deg, transparent 75%, #e6e1db 75%), linear-gradient(-45deg, transparent 75%, #e6e1db 75%);
+  background-size: 20px 20px; background-position: 0 0, 0 10px, 10px -10px, -10px 0; }
+.bg-compare { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.bg-compare figure { margin: 0; }
+.bg-compare figcaption { font-weight: 700; margin-bottom: 0.4rem; }
+.tool-result-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 0.8rem; }
+.tool-privacy { background: var(--black); color: #fff; padding: 0.6rem 0.9rem; display: inline-block; }
+.tool-info { margin-top: 1.6rem; }
+.tool-list li { margin: 0.4rem 0; }
+.tool-upsell h2 { margin-top: 0; }
+.tool-card .card-body { display: flex; flex-direction: column; gap: 0.4rem; height: 100%; }
+.tool-card .btn { margin-top: auto; align-self: flex-start; }
+@media (max-width: 700px) {
+  .bg-compare { grid-template-columns: 1fr; }
+  .tool-controls .f-field, .tool-controls select, .tool-controls input[type="number"] { width: 100%; }
+  .f-range input { width: 100%; }
+}
+.tool-controls [hidden], .near-bar[hidden] { display: none !important; }

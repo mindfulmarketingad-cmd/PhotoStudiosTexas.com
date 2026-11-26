@@ -48,7 +48,22 @@ ROOT_FILES = [
     "assets/directory.js",
     "assets/site-config.js",
     "assets/search-index.json",
+    "assets/geo-index.json",
+    "assets/home-geo.js",
+    "assets/tools/tools.js",
+    "assets/tools/bg-remover.js",
+    "assets/tools/tools.css",
+    "llms.txt",
 ]
+
+TOOL_SLUGS = [
+    "image-background-remover",
+    "image-resizer",
+    "image-compressor",
+    "image-cropper",
+    "image-format-converter",
+]
+BLOG_MIN_STUDIOS = 10
 
 
 class Collector(HTMLParser):
@@ -288,10 +303,65 @@ def main() -> int:
         if f"/images/city/{slug}.png" not in text or not (DIST / "images" / "city" / f"{slug}.png").is_file():
             errors.append(f"/tx/{slug}/ city image missing")
 
+    # Header nav, blog, tools, services cross-links, robots/llms.
+    for need in ("/blog/", "/tools/", "/about/", "/services/"):
+        if f'href="{need}"' not in home.split("</header>")[0]:
+            errors.append(f"header nav is missing {need}")
+    if "Disallow: /assets/" in robots:
+        errors.append("robots.txt blocks /assets/ (CSS/JS needed for rendering)")
+    llms = (DIST / "llms.txt").read_text(encoding="utf-8") if (DIST / "llms.txt").is_file() else ""
+    for need in ("/blog/", "/tools/", "/services/"):
+        if need not in llms:
+            errors.append(f"llms.txt is missing {need}")
+    city_counts = {}
+    for studio in data["studios"]:
+        city_counts[studio["city_slug"]] = city_counts.get(studio["city_slug"], 0) + 1
+    blog_hub = pages.get("/blog/", {}).get("text", "")
+    if not blog_hub:
+        errors.append("missing blog hub /blog/")
+    blog_posts = 0
+    for slug, count in city_counts.items():
+        if count < BLOG_MIN_STUDIOS:
+            continue
+        post = f"/blog/best-photo-studios-in-{slug}-tx/"
+        if post not in pages:
+            errors.append(f"missing blog post {post}")
+            continue
+        blog_posts += 1
+        text = pages[post]["text"]
+        if post not in blog_hub:
+            errors.append(f"blog hub does not link to {post}")
+        if post not in pages[f"/tx/{slug}/"]["text"]:
+            errors.append(f"/tx/{slug}/ does not link to its blog post")
+        if f'href="/tx/{slug}/"' not in text or '"@type":"Article"' not in text or '"@type":"ItemList"' not in text:
+            errors.append(f"{post} is missing the city link or Article/ItemList schema")
+        if f"/images/city/{slug}.png" not in text:
+            errors.append(f"{post} is missing its featured image")
+    tools_hub = pages.get("/tools/", {}).get("text", "")
+    for slug in TOOL_SLUGS:
+        tool = f"/tools/{slug}/"
+        if tool not in pages:
+            errors.append(f"missing tool page {tool}")
+            continue
+        if tool not in tools_hub:
+            errors.append(f"tools hub does not link to {tool}")
+        text = pages[tool]["text"]
+        if "/services/" not in text or 'id="tool-app"' not in text:
+            errors.append(f"{tool} is missing the tool UI or a services link")
+    for service in services:
+        path = f"/services/{service['slug']}/"
+        text = pages.get(path, {}).get("text", "")
+        body = text.split("</header>", 1)[-1].split("<footer", 1)[0]
+        if 'href="/services/"' not in body:
+            errors.append(f"{path} does not link to /services/ in the page body")
+        for other in services:
+            if other["slug"] != service["slug"] and f'href="/services/{other["slug"]}/"' not in body:
+                errors.append(f"{path} does not link to /services/{other['slug']}/ in the page body")
+
     indexable = [path for path in pages if path != "/404.html"]
     print(
         f"Checked {len(html_files)} HTML files, {len(indexable)} indexable, "
-        f"{city_pages} cities, {len(data['studios'])} studios, max depth {max(seen.values())}"
+        f"{city_pages} cities, {len(data['studios'])} studios, {blog_posts} blog posts, max depth {max(seen.values())}"
     )
     if errors:
         print(f"{len(errors)} problems:", file=sys.stderr)
