@@ -723,6 +723,10 @@
   "graduation": {
    "action": "exclude",
    "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
+  },
+  "natural-light": {
+   "action": "exclude",
+   "reason": "The natural-light evidence is for its Downtown Phoenix studios, not the Celina, Texas listing."
   }
  },
  "ChIJHyZwv8aZToYRxBGIJjQJ6fc": {
@@ -1587,6 +1591,20 @@
   "weddings": {
    "action": "exclude",
    "reason": "The mention is praise for another wedding photographer, not an offering by this studio"
+  }
+ },
+ "ChIJOSg9zMJdXIYRm9dm5_0kKJE": {
+  "_name": "Snappr Photography (San Antonio)",
+  "natural-light": {
+   "action": "exclude",
+   "reason": "A Snappr marketplace bio of one photographer, not the business describing a natural light studio or service."
+  }
+ },
+ "ChIJzyaroDu_QIYRArR-3ZHLJC8": {
+  "_name": "Gittings Global Headshots - Downtown Houston",
+  "natural-light": {
+   "action": "exclude",
+   "reason": "A case study about on-location natural-light portraits across 26 offices worldwide, not a natural light studio offering."
   }
  }
 }

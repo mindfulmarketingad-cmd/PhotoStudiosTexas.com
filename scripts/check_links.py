@@ -352,7 +352,7 @@ def main() -> int:
                 errors.append(f"{label} does not link to {path}")
         if path not in llms_text:
             errors.append(f"llms.txt is missing {path}")
-        # City-level pages for the eight named categories, whenever a city has at least one qualifying studio.
+        # City-level pages for the named categories, whenever a city has at least one qualifying studio.
         if cid in cat_rules.NAMED_CITY_IDS:
             spec_slug = __import__("studio_info").SPEC_BY_ID[cid][2]
             by_city = {}

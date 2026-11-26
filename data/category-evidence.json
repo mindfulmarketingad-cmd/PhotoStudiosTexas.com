@@ -9,6 +9,8 @@
   "maternity": 232,
   "christmas": 73,
   "graduation": 108,
+  "natural-light": 65,
+  "prop-rental": 9,
   "newborn": 197,
   "seniors": 156,
   "quinceanera": 54,
@@ -18,7 +20,7 @@
   "events": 122,
   "pets": 32,
   "passport": 10,
-  "rental": 117,
+  "rental": 127,
   "video": 269,
   "drone": 71,
   "photo-booth": 48,
@@ -160,6 +162,22 @@
      {
       "source": "listing categories",
       "text": "Google category: Wedding Photographer"
+     }
+    ]
+   }
+  },
+  "ChIJZebrFNCPVoYRL7ED2ha7AUM": {
+   "name": "Light Loft Studio",
+   "city": "Abilene",
+   "categories": {
+    "natural-light": [
+     {
+      "source": "website title",
+      "text": "Light Loft Studio - Abilene Texas Natural Light Photography Studio"
+     },
+     {
+      "source": "website description",
+      "text": "Abilene Texas Natural Light Studio For Content Creators and Lifestyle Photographers"
      }
     ]
    }
@@ -1200,6 +1218,20 @@
       "text": "Barilla Studios, specialized in Product Photography, Food Photography, portrait and Architectural Photography. We also offer photography equipment rental."
      }
     ],
+    "prop-rental": [
+     {
+      "source": "website description",
+      "text": "Barilla Studios, specialized in Product Photography, Food Photography, portrait and Architectural Photography. We also offer photography equipment rental."
+     },
+     {
+      "source": "website menu",
+      "text": "Equipment Rental"
+     },
+     {
+      "source": "website text",
+      "text": "Mini Sessions Product Photography Headshot Food Photography Portrait Photography Corporate Photography Architecture Photography Equipment Rental Why choose Barilla Studios?"
+     }
+    ],
     "real-estate": [
      {
       "source": "website description",
@@ -1470,6 +1502,24 @@
      {
       "source": "listing categories",
       "text": "Google category: Video Production Service"
+     }
+    ]
+   }
+  },
+  "ChIJfXEGFHN9ToYRyCAXg254DZY": {
+   "name": "Studio Space Arlington",
+   "city": "Arlington",
+   "categories": {
+    "prop-rental": [
+     {
+      "source": "website title",
+      "text": "Premium Photography Backdrop Rentals | Studio Equipment Rental in DFW | Book Now",
+      "page": "/photo-studio-backdrops"
+     },
+     {
+      "source": "website description",
+      "text": "Explore our premium studio equipment rental options for captivating photoshoots! Book now and enjoy our top-notch services in Dallas Fort Worth.",
+      "page": "/photo-studio-backdrops"
      }
     ]
    }
@@ -2821,6 +2871,13 @@
       "source": "listing categories",
       "text": "Google category: Model Portfolio Studio"
      }
+    ],
+    "natural-light": [
+     {
+      "source": "website description",
+      "text": "…vents center located in the vibrant Downtown Austin, Texas. The studios feature ample natural light, 15-foot ceilings, and a full cyc wall. Book industry-trusted artists and browse through our massive…",
+      "page": "/studios"
+     }
     ]
    }
   },
@@ -3132,6 +3189,16 @@
       "text": "Mara Oatman, BFA, MST is a Fine Art Portrait Photographer located in Austin, Texas providing natural light, on-location photography services and studio photography services."
      }
     ],
+    "natural-light": [
+     {
+      "source": "website heading",
+      "text": "Mara Oatman, BFA, MST is a Fine Art Portrait Photographer located in Austin, Texas providing natural light, on-location"
+     },
+     {
+      "source": "website text",
+      "text": "Mara Oatman, BFA, MST is a Fine Art Portrait Photographer located in Austin, Texas providing natural light, on-location photography services and studio photography services."
+     }
+    ],
     "family": [
      {
       "source": "website heading",
@@ -3432,6 +3499,12 @@
    "name": "Photogroup Austin Studios",
    "city": "Austin",
    "categories": {
+    "prop-rental": [
+     {
+      "source": "website description",
+      "text": "…hotography studios in Austin with Photogroup Studios. Featuring a large 27'x27' pre-lit cyclorama, professional equipment rentals, memberships, and flexible booking options for photo and video shoots."
+     }
+    ],
     "headshots": [
      {
       "source": "website title",
@@ -3538,6 +3611,12 @@
      {
       "source": "listing categories",
       "text": "Google category: Video Production Service"
+     }
+    ],
+    "rental": [
+     {
+      "source": "website title",
+      "text": "Video Production Company, Podcast Studio Rental, Social Media Content Studio & Event Space Austin TX - Rabbit Hole Media Lab"
      }
     ]
    }
@@ -4088,6 +4167,22 @@
       "text": "A boutique 1,200 sqft production studio in Austin's 78704 — built by a cinematographer. Cinema-line gear, 10+ looks, and onsite crew available à la carte.",
       "page": "/studio-rentals"
      }
+    ],
+    "rental": [
+     {
+      "source": "website title",
+      "text": "Studio Rentals + Production Support — Storyhouse Studio | Austin, TX",
+      "page": "/studio-rentals"
+     },
+     {
+      "source": "website description",
+      "text": "Studio Rentals + Production Support — Storyhouse Studio",
+      "page": "/studio-rentals"
+     },
+     {
+      "source": "website menu",
+      "text": "Studio Rentals + Production Support Book"
+     }
     ]
    }
   },
@@ -4330,6 +4425,18 @@
     ]
    }
   },
+  "ChIJqe9YJHS1RIYRxQoU1D6Vh-4": {
+   "name": "The Lumen Room Austin",
+   "city": "Austin",
+   "categories": {
+    "natural-light": [
+     {
+      "source": "website description",
+      "text": "Bright natural light photography studios and unique small event venues. Rentable by the hour."
+     }
+    ]
+   }
+  },
   "ChIJMeYrUSjFRIYRm5ePVr5-qZ8": {
    "name": "The Spot Studio",
    "city": "Austin",
@@ -4338,6 +4445,12 @@
      {
       "source": "website description",
       "text": "Modern studio rental for photographers and creators offering elevated spaces, professional amenities, and custom visual storytelling for portraits, products, and editorial projects."
+     }
+    ],
+    "natural-light": [
+     {
+      "source": "website text",
+      "text": "Natural light enters primarily from one side of the space, creating directional light that is ideal for editorial portraits, lifestyle imagery, and brand content with depth and contrast."
      }
     ]
    }
@@ -4485,6 +4598,18 @@
       "source": "website description",
       "text": "Affordable photography studio rental in Austin, Texas. If you need a great portrait studio with pro-level equipment, we’ve got you covered!",
       "page": "/photography-studio-rental"
+     }
+    ]
+   }
+  },
+  "ChIJyY_hcc-1RIYR_zAdLn7sgA4": {
+   "name": "West 8th Studio",
+   "city": "Austin",
+   "categories": {
+    "natural-light": [
+     {
+      "source": "website description",
+      "text": "West 8th Studio is a 4,000 square foot white box and natural light studio in the heart of downtown Austin, Texas. Designed for both still and motion productions, the space features a full kitchen, fle…"
      }
     ]
    }
@@ -5200,6 +5325,12 @@
    "name": "B. Unique Creators Studio",
    "city": "Beaumont",
    "categories": {
+    "prop-rental": [
+     {
+      "source": "website description",
+      "text": "… Creators Studio in downtown Beaumont, TX, is a creative photography studio offering hourly rentals, versatile backdrops, furniture, and props for photographers, content creators, and other creatives."
+     }
+    ],
     "rental": [
      {
       "source": "website description",
@@ -5453,6 +5584,12 @@
    "name": "New Light Studio",
    "city": "Bedford",
    "categories": {
+    "natural-light": [
+     {
+      "source": "website description",
+      "text": "Welcome to our second natural light studio, open by appointment only. ​No walkin's. For availability, pricing, and to self-book your reservation use the link below: ..."
+     }
+    ],
     "weddings": [
      {
       "source": "website heading",
@@ -5628,6 +5765,18 @@
      {
       "source": "listing categories",
       "text": "Google category: Wedding Photographer"
+     }
+    ]
+   }
+  },
+  "ChIJXQW-lWOnSYYRrKTVqoXP5cM": {
+   "name": "The Upper Room Studio",
+   "city": "Ben Wheeler",
+   "categories": {
+    "natural-light": [
+     {
+      "source": "website description",
+      "text": "A natural light studio in Ben Wheeler, Texas. Designed to inspire creativity and community."
      }
     ]
    }
@@ -6417,6 +6566,13 @@
    "name": "Trailr Park Studios: By Appointments ONLY",
    "city": "Buda",
    "categories": {
+    "prop-rental": [
+     {
+      "source": "website description",
+      "text": "Discover transparent pricing for Trailr Park Studios' set rentals and amenities. Contact us for details and reservations.",
+      "page": "/pricing"
+     }
+    ],
     "video": [
      {
       "source": "website description",
@@ -6641,6 +6797,21 @@
    "name": "Black and Light Studio - Natural Light Studio Rental",
    "city": "Carrollton",
    "categories": {
+    "natural-light": [
+     {
+      "source": "business name",
+      "text": "Black and Light Studio - Natural Light Studio Rental"
+     },
+     {
+      "source": "website title",
+      "text": "Natural Light Photography Studio North Dallas | Black & Light Studio",
+      "page": "/the-studio"
+     },
+     {
+      "source": "website description",
+      "text": "Welcome to North Dallas' Premier Natural Light Photography Studio. Serving Carrollton, Plano, Frisco, and surrounding . . ."
+     }
+    ],
     "rental": [
      {
       "source": "business name",
@@ -7727,6 +7898,22 @@
     ]
    }
   },
+  "ChIJdXVma6rVTYYRj55iwx_Oa9w": {
+   "name": "The Solace House",
+   "city": "Colleyville",
+   "categories": {
+    "natural-light": [
+     {
+      "source": "website title",
+      "text": "The Solace House, DFW Natural Light Studio"
+     },
+     {
+      "source": "website description",
+      "text": "The Solace House, DFW Natural Light Studio"
+     }
+    ]
+   }
+  },
   "ChIJH51_iW3qeIERuFF4o9tB0sQ": {
    "name": "Black Rose Photography",
    "city": "Conroe",
@@ -8222,6 +8409,12 @@
       "text": "Google category: Portrait Studio"
      }
     ],
+    "natural-light": [
+     {
+      "source": "website title",
+      "text": "The Oak Atelier – Natural Light Photography Studio"
+     }
+    ],
     "events": [
      {
       "source": "website menu",
@@ -8443,6 +8636,26 @@
      {
       "source": "listing categories",
       "text": "Google category: Video Production Service"
+     }
+    ]
+   }
+  },
+  "ChIJ6Z1D0g5faIYREtv_0uimWno": {
+   "name": "Dappled Natural Light Studio",
+   "city": "Corpus Christi",
+   "categories": {
+    "natural-light": [
+     {
+      "source": "business name",
+      "text": "Dappled Natural Light Studio"
+     },
+     {
+      "source": "website title",
+      "text": "Schedule Appointment with Dappled | Natural Light Studio"
+     },
+     {
+      "source": "website description",
+      "text": "Schedule your appointment online Dappled | Natural Light Studio"
      }
     ]
    }
@@ -8937,6 +9150,10 @@
    "categories": {
     "rental": [
      {
+      "source": "website title",
+      "text": "Airwaves Studio | Podcast Studio Rental in Crowley, TX"
+     },
+     {
       "source": "website description",
       "text": "Start your podcast journey at Airwaves Studio. We offer professional podcast studio rentals in Crowley, TX and nearby areas. Book a session today!"
      }
@@ -9300,6 +9517,18 @@
      {
       "source": "listing categories",
       "text": "Google category: Video Production Service"
+     }
+    ]
+   }
+  },
+  "ChIJ95GwUMAnTIYRep83nikV_qY": {
+   "name": "Alpha Midway Studio Rental",
+   "city": "Dallas",
+   "categories": {
+    "rental": [
+     {
+      "source": "business name",
+      "text": "Alpha Midway Studio Rental"
      }
     ]
    }
@@ -9717,6 +9946,26 @@
      {
       "source": "website description",
       "text": "CJS Boudoir"
+     }
+    ]
+   }
+  },
+  "ChIJIQH1fRsnTIYRPAIrwM31XP4": {
+   "name": "Connected Studio Dallas",
+   "city": "Dallas",
+   "categories": {
+    "natural-light": [
+     {
+      "source": "website title",
+      "text": "North Dallas Natural Light Photo Studio, Dallas, TX | Production | Peerspace"
+     },
+     {
+      "source": "website description",
+      "text": "North Dallas Natural Light Photo Studio in Dallas"
+     },
+     {
+      "source": "website menu",
+      "text": "North Dallas Natural Light Photo Studio"
      }
     ]
    }
@@ -10980,6 +11229,18 @@
     ]
    }
   },
+  "ChIJHSGBOBeZToYRGUfYbLKw_3c": {
+   "name": "Natural Light Studio Dallas",
+   "city": "Dallas",
+   "categories": {
+    "natural-light": [
+     {
+      "source": "business name",
+      "text": "Natural Light Studio Dallas"
+     }
+    ]
+   }
+  },
   "ChIJDRD2Ru2ZToYReCEJTsi4lkc": {
    "name": "Ninety Seven Pictures",
    "city": "Dallas",
@@ -11710,10 +11971,32 @@
     ]
    }
   },
+  "ChIJhWW5k5WYToYRbanq6gpxseY": {
+   "name": "The Lumen Room Dallas : White & Lifestyle",
+   "city": "Dallas",
+   "categories": {
+    "natural-light": [
+     {
+      "source": "website description",
+      "text": "Bright natural light photography studios and unique small event venues. Rentable by the hour."
+     }
+    ]
+   }
+  },
   "ChIJGeDgIBMjTIYR_6lTl3iubtE": {
    "name": "The Photo Space",
    "city": "Dallas",
    "categories": {
+    "natural-light": [
+     {
+      "source": "website title",
+      "text": "The Photo Space / Natural Light Photography Studio"
+     },
+     {
+      "source": "website description",
+      "text": "The Photo Space / Natural Light Photography Studio"
+     }
+    ],
     "rental": [
      {
       "source": "website description",
@@ -11807,6 +12090,12 @@
      {
       "source": "website description",
       "text": "The Space on South Side | Photography Studio Rental | Dallas, TX"
+     }
+    ],
+    "natural-light": [
+     {
+      "source": "website description",
+      "text": "The Space on South Side is a natural light photography studio in Dallas, TX rentable by the hour. We have a modern lifestyle studio downstairs and a boudoir studio upstairs."
      }
     ]
    }
@@ -12402,6 +12691,18 @@
      {
       "source": "listing categories",
       "text": "Google category: Video Production Service"
+     }
+    ]
+   }
+  },
+  "ChIJE8ufWALLTYYR5uI35PcJzeM": {
+   "name": "The Lumen Room Denton : White & Lifestyle",
+   "city": "Denton",
+   "categories": {
+    "natural-light": [
+     {
+      "source": "website description",
+      "text": "Bright natural light photography studios and unique small event venues. Rentable by the hour."
      }
     ]
    }
@@ -13112,6 +13413,12 @@
       "text": "Google category: Film Production Company"
      }
     ],
+    "prop-rental": [
+     {
+      "source": "business name",
+      "text": "INTELIA FILMS, Camera, Grip, Lighting and Studio Rental"
+     }
+    ],
     "rental": [
      {
       "source": "business name",
@@ -13290,6 +13597,12 @@
      {
       "source": "website text",
       "text": "Book headshots, commercial photography, architecture coverage, drone production, or cinematography for your website, campaign, proposal, or press needs."
+     }
+    ],
+    "natural-light": [
+     {
+      "source": "website text",
+      "text": "Clients can book a studio session or a natural-light portrait session in El Paso, with the space ready for individual headshots, team photography, and larger productions."
      }
     ],
     "quinceanera": [
@@ -13953,6 +14266,10 @@
      {
       "source": "website description",
       "text": "…udios ☰ The Studio Rates Podcast Gallery (469) 546-5798 Book Dallas Photography Studio Rental Photography Studio Rental in Dallas 970 Square Feet, 15 Foot Ceilings, Lighting Grid Included, $95 Per Hou…"
+     },
+     {
+      "source": "website menu",
+      "text": "Photo Studio Photography Studio Rental"
      }
     ]
    }
@@ -15372,6 +15689,22 @@
       "text": "Christmas Mini Sessions – Fort Worth",
       "page": "/holiday-minis/"
      }
+    ],
+    "natural-light": [
+     {
+      "source": "website title",
+      "text": "natural light studio | Sharon Cleveland",
+      "page": "/natural-light-studio-minis/"
+     },
+     {
+      "source": "website description",
+      "text": "natural light studio",
+      "page": "/natural-light-studio-minis/"
+     },
+     {
+      "source": "website menu",
+      "text": "natural light studio"
+     }
     ]
    }
   },
@@ -15430,6 +15763,13 @@
      {
       "source": "website text",
       "text": "SMU STUDENTS Photos for SMU Grads and Greeks, to capture the joy, the mems and the friendships that make this place special!"
+     }
+    ],
+    "natural-light": [
+     {
+      "source": "website text",
+      "text": "05 Receive discounts on future audition headshots GET STARTED How It Works STEP 1 Choose between NATURAL LIGHT and STUDIO LIGHT for your session.",
+      "page": "/tryout-headshots"
      }
     ],
     "classes": [
@@ -15523,6 +15863,42 @@
       "source": "website text",
       "text": "…HOTOGRAPHY & CINEMATOGRAPHY view cart ( 0 ) Buy Image view cart ( 0 ) EXPLORE MY PORTFOLIO A Visual Journey of Emotions & Beauty Editorial Headshots Family Lifestyle B&W Graduation BOOK A SESSION NOW!",
       "page": "/galleries"
+     }
+    ]
+   }
+  },
+  "ChIJo5GcDflxToYRA2lqtK09MKE": {
+   "name": "The Lightbox Natural Light Studio and Event Space",
+   "city": "Fort Worth",
+   "categories": {
+    "natural-light": [
+     {
+      "source": "business name",
+      "text": "The Lightbox Natural Light Studio and Event Space"
+     }
+    ]
+   }
+  },
+  "ChIJmUjAb69xToYRzivGUuR4uNU": {
+   "name": "The Lumen Room Fort Worth : College Ave",
+   "city": "Fort Worth",
+   "categories": {
+    "natural-light": [
+     {
+      "source": "website description",
+      "text": "Bright natural light photography studios and unique small event venues. Rentable by the hour."
+     }
+    ]
+   }
+  },
+  "ChIJxfI9CjBxToYRu3W0bpmhue8": {
+   "name": "The Lumen Room Fort Worth : Lifestyle",
+   "city": "Fort Worth",
+   "categories": {
+    "natural-light": [
+     {
+      "source": "website description",
+      "text": "Bright natural light photography studios and unique small event venues. Rentable by the hour."
      }
     ]
    }
@@ -16862,6 +17238,16 @@
    "name": "The Photo Space",
    "city": "Garland",
    "categories": {
+    "natural-light": [
+     {
+      "source": "website title",
+      "text": "The Photo Space / Natural Light Photography Studio"
+     },
+     {
+      "source": "website description",
+      "text": "The Photo Space / Natural Light Photography Studio"
+     }
+    ],
     "rental": [
      {
       "source": "website description",
@@ -17091,6 +17477,18 @@
     ]
    }
   },
+  "ChIJ39kNKYs7PC0RSwPOeQfGqks": {
+   "name": "Twenty Seven Studio",
+   "city": "Georgetown",
+   "categories": {
+    "natural-light": [
+     {
+      "source": "website description",
+      "text": "…nage your photoshoots, events, and gatherings at Twenty Seven Studio, a beautiful 827 sq ft natural light space. View amenities, check availability, and reserve your preferred date and time instantly."
+     }
+    ]
+   }
+  },
   "ChIJQ3SS9bzpm4gR-YFJGrm2mjY": {
    "name": "Marcus Photog, Photographer",
    "city": "Glenn Heights",
@@ -17203,6 +17601,18 @@
    "name": "The Workplace",
    "city": "Granbury",
    "categories": {
+    "rental": [
+     {
+      "source": "website title",
+      "text": "Podcast Studio Rental Granbury TX | Record Your Podcast | The Workplace",
+      "page": "/podcast-studio-granbury-tx/"
+     },
+     {
+      "source": "website description",
+      "text": "Podcast Studio Rental Granbury TX | Record Your Podcast | The Workplace",
+      "page": "/podcast-studio-granbury-tx/"
+     }
+    ],
     "commercial": [
      {
       "source": "website description",
@@ -17805,6 +18215,18 @@
      {
       "source": "listing categories",
       "text": "Google category: Video Production Service"
+     }
+    ]
+   }
+  },
+  "ChIJvxSN4Kw7P4YRfnpm_xXL7AU": {
+   "name": "The Glasshouse Lifestyle",
+   "city": "Hankamer",
+   "categories": {
+    "natural-light": [
+     {
+      "source": "website description",
+      "text": "The Glasshouse is a natural-light photography venue designed for creators. Nestled in an all-glass structure, every corner was built to let your vision shine."
      }
     ]
    }
@@ -18538,6 +18960,19 @@
     ]
    }
   },
+  "ChIJYb-Smti_QIYRfDj1uksO5jM": {
+   "name": "35MM Studio",
+   "city": "Houston",
+   "categories": {
+    "natural-light": [
+     {
+      "source": "website description",
+      "text": "1,600 square feet of open floor plan in EaDo, Houston. Self-operate photography and content studio with natural light, 14 ft ceilings, and drive-in access. Book by the hour, 24/7.",
+      "page": "/studio"
+     }
+    ]
+   }
+  },
   "ChIJhwLr4dfLQIYRVWabSb7fN3Y": {
    "name": "4 The One Studio",
    "city": "Houston",
@@ -18699,6 +19134,23 @@
      {
       "source": "website heading",
       "text": "Christmas Photo Studio Rental Houston | Holiday Sets",
+      "page": "/christmas-photography-rental-studio-houston/"
+     }
+    ],
+    "natural-light": [
+     {
+      "source": "website title",
+      "text": "Natural Light Photography Rental Studio with Retro Diner and House Setting in North Houston",
+      "page": "/avs-1-natural-light-studio/"
+     },
+     {
+      "source": "website description",
+      "text": "Natural Light Photography Studio Near Spring, The Woodlands & Bush Intercontinental Airport AVS1 is a beautifully designed natural light photography studio featuring two unique shooting environments: …",
+      "page": "/avs-1-natural-light-studio/"
+     },
+     {
+      "source": "website text",
+      "text": "Located inside AVS 1 – Natural Light Studio, this Christmas setup is available as part of the room rental, alongside the room’s other photography environments.",
       "page": "/christmas-photography-rental-studio-houston/"
      }
     ]
@@ -19259,6 +19711,18 @@
      {
       "source": "listing categories",
       "text": "Google category: Video Production Service"
+     }
+    ]
+   }
+  },
+  "ChIJd4RY20C_QIYR9wKkBo0TM3E": {
+   "name": "Blank Space Studio",
+   "city": "Houston",
+   "categories": {
+    "natural-light": [
+     {
+      "source": "website description",
+      "text": "Naturally lit photography studio in Houston, Texas. Easy access, hourly bookings, and seasonal sets. Perfect for photographers and creatives."
      }
     ]
    }
@@ -20050,6 +20514,18 @@
     ]
    }
   },
+  "ChIJo9LU9_rTQIYReUyfWzmizu0": {
+   "name": "Dream Epicenter",
+   "city": "Houston",
+   "categories": {
+    "rental": [
+     {
+      "source": "website description",
+      "text": "…preneurs, artists, and founders turn ideas into income. Access coworking space, studio rentals, events, and a powerful digital platform built for the modern creative economy. Join in Houston or from a…"
+     }
+    ]
+   }
+  },
   "ChIJFzvnU8SUQIYR82qYWyS_DbU": {
    "name": "Dreamlite Productions Studio",
    "city": "Houston",
@@ -20339,6 +20815,22 @@
     ]
    }
   },
+  "ChIJ14aLi0LHQIYRBAxgoIrudbc": {
+   "name": "Garage 713 Studio",
+   "city": "Houston",
+   "categories": {
+    "rental": [
+     {
+      "source": "website title",
+      "text": "Garage 713 Studio | Affordable Studio Rentals Daily | 5708 N Shepherd Dr Ste C-5B Houston, Texas 77091"
+     },
+     {
+      "source": "website description",
+      "text": "Find out who’s popping up at Garage 713 Studio’s next weekly dance class and Affordable Studio Rentals Daily!"
+     }
+    ]
+   }
+  },
   "ChIJpduoHVbEQIYRyV7Ms9IQ47M": {
    "name": "Genesis Photographers",
    "city": "Houston",
@@ -20532,6 +21024,13 @@
       "text": "Newborn and Baby Portraits",
       "page": "/houston-newborn-photographer"
      }
+    ],
+    "natural-light": [
+     {
+      "source": "website text",
+      "text": "The studio is all-white, filled with beautiful natural light, and is the perfect place to welcome your new baby and create lovely memories with your family.",
+      "page": "/about"
+     }
     ]
    }
   },
@@ -20609,6 +21108,13 @@
      {
       "source": "listing categories",
       "text": "Google category: Video Production Service"
+     }
+    ],
+    "rental": [
+     {
+      "source": "website title",
+      "text": "Studio Rental – Grade A Media Productions",
+      "page": "/studio-rental/"
      }
     ]
    }
@@ -21976,6 +22482,18 @@
       "source": "website description",
       "text": "Made Kulture — Photography Studio Rental in Houston"
      }
+    ],
+    "prop-rental": [
+     {
+      "source": "website title",
+      "text": "Studio One — Photography Set Rental in Houston | Made Kulture — Houston Studio Rental",
+      "page": "/sets/studio-one"
+     },
+     {
+      "source": "website description",
+      "text": "Studio One — Photography Set Rental in Houston | Made Kulture — Houston Studio Rental",
+      "page": "/sets/studio-one"
+     }
     ]
    }
   },
@@ -22522,6 +23040,13 @@
      {
       "source": "website text",
       "text": "…o all sets & backdrops Natural Light & all lighting equipments Free On Site Parking Private Dressing Room & Restroom Inquire Now Maternity Session ($250/hr) This season of life is powerful, beautiful,",
+      "page": "/pricing/"
+     }
+    ],
+    "natural-light": [
+     {
+      "source": "website text",
+      "text": "What's included: 1 Photographer Access to all sets & backdrops Natural Light & all lighting equipments Free On Site Parking Private Dressing Room & Restroom Inquire Now Maternity Session ($250/hr) Thi…",
       "page": "/pricing/"
      }
     ],
@@ -23471,6 +23996,12 @@
    "name": "Solstice Studio",
    "city": "Houston",
    "categories": {
+    "natural-light": [
+     {
+      "source": "website description",
+      "text": "Solstice Studio in Houston offers a bright, versatile space perfect for photography, creative sessions, and gatherings. Book now for natural light photography experiences."
+     }
+    ],
     "commercial": [
      {
       "source": "website text",
@@ -24245,6 +24776,31 @@
     ]
    }
   },
+  "ChIJ6S1eFx6_QIYRiZDzl5qAN9s": {
+   "name": "The House Of Miracles",
+   "city": "Houston",
+   "categories": {
+    "rental": [
+     {
+      "source": "website description",
+      "text": "Contact Coordinating Miracles in Houston for event planning, venue, and studio rentals. Reach out today to start your next project or event with us.",
+      "page": "/contact"
+     }
+    ]
+   }
+  },
+  "ChIJuYbXQpW_QIYR_o3nx-0DQ4M": {
+   "name": "The Lumen Room",
+   "city": "Houston",
+   "categories": {
+    "natural-light": [
+     {
+      "source": "website description",
+      "text": "Bright natural light photography studios and unique small event venues. Rentable by the hour."
+     }
+    ]
+   }
+  },
   "ChIJ6V3Lz8K_QIYRPVqsjuNe7hc": {
    "name": "The Nellie Rose",
    "city": "Houston",
@@ -24496,6 +25052,12 @@
      {
       "source": "website text",
       "text": "…ed for the Way You Create From family and newborn photography to branding sessions, headshots, milestone portraits and seasonal minis, The Studio was designed to make beautiful photos feel effortless."
+     }
+    ],
+    "natural-light": [
+     {
+      "source": "website description",
+      "text": "…e Studio by Lifestyle & Lenses is a boutique photography studio in West Houston featuring beautiful natural light, clean white walls, curated furnishings and seasonal sets for family, newborn, brandin…"
      }
     ],
     "newborn": [
@@ -25570,6 +26132,13 @@
      {
       "source": "website description",
       "text": "Discover The Cloud Studio, a professional space equipped with curated sets and high-quality gear for content creation, photography, and videography. Book your session today."
+     }
+    ],
+    "prop-rental": [
+     {
+      "source": "website description",
+      "text": "The Cloud Studio in Hutto, Texas offers a versatile, professional space with curated sets, lighting, and props for photographers and content creators to bring their vision to life.",
+      "page": "/about"
      }
     ]
    }
@@ -27874,6 +28443,17 @@
       "text": "Maternity"
      }
     ],
+    "natural-light": [
+     {
+      "source": "website description",
+      "text": "Brittany Dawson is a newborn, family, maternity and wedding photographer based in La Grange, Texas specializing in classic, natural light photography."
+     },
+     {
+      "source": "website text",
+      "text": "newborns, maternity, families, baby, headshots, children all welcome On the square in La Grange lives a 100 year old building that houses my natural light studio.",
+      "page": "/newborn"
+     }
+    ],
     "portraits": [
      {
       "source": "website description",
@@ -27907,6 +28487,16 @@
    "name": "The Studio Space",
    "city": "La Grange",
    "categories": {
+    "natural-light": [
+     {
+      "source": "website title",
+      "text": "The Studio Space | Natural-Light Photo Studio in La Grange, TX — Taylored Ink Co."
+     },
+     {
+      "source": "website description",
+      "text": "A self-serve, natural-light photo studio for rent in La Grange, Texas. Hourly, half-day and full-day rentals plus memberships for photographers."
+     }
+    ],
     "rental": [
      {
       "source": "website description",
@@ -28587,6 +29177,18 @@
      {
       "source": "business name",
       "text": "Portrait Design by Esmeralda"
+     }
+    ]
+   }
+  },
+  "ChIJz9Z-mAItW4YRN8mrQWJWzXs": {
+   "name": "The Lumen Room North Austin",
+   "city": "Leander",
+   "categories": {
+    "natural-light": [
+     {
+      "source": "website description",
+      "text": "Bright natural light photography studios and unique small event venues. Rentable by the hour."
      }
     ]
    }
@@ -29915,6 +30517,18 @@
     ]
    }
   },
+  "ChIJa1s2XtNt_oYRtAnHWjflgEM": {
+   "name": "Refined Studio",
+   "city": "Lubbock",
+   "categories": {
+    "natural-light": [
+     {
+      "source": "website description",
+      "text": "Refined Studio is a natural light photography studio and small event venue located in downtown Lubbock, Texas. This 1,000 SQF+ industrial building offers an open floor plan with a modern white-washed …"
+     }
+    ]
+   }
+  },
   "ChIJb7PnbLU9OIYR_t4URmsKwXM": {
    "name": "J.Cole Photography",
    "city": "Lufkin",
@@ -30624,6 +31238,12 @@
      {
       "source": "website description",
       "text": "BLK IVRY STUDIO - Premier Natural Light Photo Rental Studio in Mansfield, Texas"
+     }
+    ],
+    "natural-light": [
+     {
+      "source": "website description",
+      "text": "…dynamic and inclusive studio environment for creatives in Mansfield, Texas. Our natural light studio offers flexible bookings and exclusive memberships to enhance your creative journey and help you br…"
      }
     ]
    }
@@ -31629,6 +32249,13 @@
       "source": "website text",
       "text": "As a member of multiple photography and newborn photography associations, I am continuously growing my knowledge base and skills to provide the best portraits of your baby."
      }
+    ],
+    "natural-light": [
+     {
+      "source": "website text",
+      "text": "The Signature Session A luxury portrait experience perfect for maternity, newborn, family, or boudoir in our natural light studio or on location in Mckinney.",
+      "page": "/families"
+     }
     ]
    }
   },
@@ -32329,6 +32956,16 @@
    "name": "The Photo Space",
    "city": "Mesquite",
    "categories": {
+    "natural-light": [
+     {
+      "source": "website title",
+      "text": "The Photo Space / Natural Light Photography Studio"
+     },
+     {
+      "source": "website description",
+      "text": "The Photo Space / Natural Light Photography Studio"
+     }
+    ],
     "rental": [
      {
       "source": "website description",
@@ -32990,6 +33627,12 @@
       "text": "Maternity"
      }
     ],
+    "natural-light": [
+     {
+      "source": "website description",
+      "text": "More than a natural light photography studio! Hosting micro events, weddings, elopements, baby showers, and themed shoots for Mother's Day & Christmas. Book now for headshots, family portraits, matern…"
+     }
+    ],
     "rental": [
      {
       "source": "website description",
@@ -33109,6 +33752,18 @@
       "source": "website text",
       "text": "Newborn Photographer top of page Heart & Lens Family, Senior, and Event Photographer in Montgomery, TX Babies don't keep!!",
       "page": "/newborn-fresh-48"
+     }
+    ]
+   }
+  },
+  "ChIJP4DCbxDZRoYR5UGPkXiyQ9A": {
+   "name": "Lago Farm",
+   "city": "Montgomery",
+   "categories": {
+    "natural-light": [
+     {
+      "source": "website description",
+      "text": "Naturally lit photography studio in Houston, Texas. Easy access, hourly bookings, and seasonal sets. Perfect for photographers and creatives."
      }
     ]
    }
@@ -33283,6 +33938,22 @@
      {
       "source": "listing categories",
       "text": "Google category: Film Production Company"
+     }
+    ]
+   }
+  },
+  "ChIJU2OOs8EhR4YRfM3zNftuLUw": {
+   "name": "The Light Room Studio LLC",
+   "city": "Montgomery",
+   "categories": {
+    "natural-light": [
+     {
+      "source": "website title",
+      "text": "The Light Room | Natural Light Studio in Montgomery TX - Shots with Molly Carr | Texas Maternity Boudoir & Wedding Photographer"
+     },
+     {
+      "source": "website description",
+      "text": "Located in the heart of Historic Downtown Montgomery Texas, The Light Room is a natural light studio designed with intention and simplicity. Bathed in soft, ever-changing daylight, it offers a quiet, …"
      }
     ]
    }
@@ -33657,6 +34328,19 @@
       "source": "website text",
       "text": "Book Now $450 Grad-Senior Up to 1 hour with photographer.",
       "page": "/services/"
+     }
+    ]
+   }
+  },
+  "ChIJAyiUR769XIYRanN4cMtqN2c": {
+   "name": "Loft Creative",
+   "city": "New Braunfels",
+   "categories": {
+    "natural-light": [
+     {
+      "source": "website description",
+      "text": "A natural light photography studio in downtown New Braunfels, Texas, perfect for timeless portrait sessions for families, children, senior sessions and personal brand photography",
+      "page": "/the-loft-studio"
      }
     ]
    }
@@ -34636,6 +35320,12 @@
    "name": "Aviary Studio",
    "city": "Pflugerville",
    "categories": {
+    "natural-light": [
+     {
+      "source": "website description",
+      "text": "Welcome to Aviary Studio! Our daylight studio offers beautiful natural light and is a clean and organized space for all of your production needs. The 1,400 sq. ft. space consists of a downstairs st…"
+     }
+    ],
     "events": [
      {
       "source": "website description",
@@ -34781,6 +35471,13 @@
       "source": "website heading",
       "text": "Headshots. Branding.",
       "page": "/headshots"
+     }
+    ],
+    "natural-light": [
+     {
+      "source": "website description",
+      "text": "Natural light lifestyle family photographer in Austin, TX. Focused on connected, real, natural images of babies and family.",
+      "page": "/family"
      }
     ],
     "commercial": [
@@ -35697,6 +36394,18 @@
     ]
    }
   },
+  "ChIJU0Cq-hkZTIYROaxhhwADU3A": {
+   "name": "The Lumen Room Plano",
+   "city": "Plano",
+   "categories": {
+    "natural-light": [
+     {
+      "source": "website description",
+      "text": "Bright natural light photography studios and unique small event venues. Rentable by the hour."
+     }
+    ]
+   }
+  },
   "ChIJuSzFiEI9TIYRuyxNKzbcSgY": {
    "name": "Tone Films | Plano Photo & Video Studio",
    "city": "Plano",
@@ -35811,6 +36520,10 @@
    "categories": {
     "rental": [
      {
+      "source": "website title",
+      "text": "Grateful 8 Studios | Podcast & Production Studio Rental"
+     },
+     {
       "source": "website description",
       "text": "At Grateful 8 Studios, our podcast studio rental comes pre-lit and fully equipped. Our 2,000 sq. ft. production studio rental features a white cyc wall that’s perfect for video creation and photograph…"
      }
@@ -35892,6 +36605,19 @@
     ]
    }
   },
+  "ChIJfX5e7YMfTIYRauSjBqa9tT8": {
+   "name": "Sol and Sage Studios",
+   "city": "Richardson",
+   "categories": {
+    "rental": [
+     {
+      "source": "website description",
+      "text": "Artist Uprising™ Studio's page to rent the studio space for $85/hour. Monday's are 50% off on all bookings.",
+      "page": "/book-studio-space"
+     }
+    ]
+   }
+  },
   "ChIJZWvGTS8fTIYRc3GxUfLbRc8": {
    "name": "Someday Photo Studio",
    "city": "Richardson",
@@ -35904,6 +36630,18 @@
      {
       "source": "website description",
       "text": "Someday Photo Studio is a warm, vintage-inspired photo studio in Richardson, TX. Book studio rentals by the hour, join workshops, and sit for portraits — by appointment."
+     }
+    ]
+   }
+  },
+  "ChIJASdHLzIfTIYR09biYfgNdr0": {
+   "name": "The Glossary",
+   "city": "Richardson",
+   "categories": {
+    "natural-light": [
+     {
+      "source": "website description",
+      "text": "Rent The Glossary, a natural light photography studio and intimate event space in Richardson, TX near Dallas. Designed for photographers, creators, brands, meetings, pop-ups and celebrations."
      }
     ]
    }
@@ -36264,6 +37002,10 @@
      {
       "source": "website description",
       "text": "The Solarium Studios is photography rental studio and event venue for wedding, birthday, graduation, in Richmond. Serving Sugar Land , Houston, Katy area."
+     },
+     {
+      "source": "website menu",
+      "text": "BOOK CHRISTMAS STUDIO RENTAL"
      }
     ],
     "christmas": [
@@ -36573,6 +37315,12 @@
    "name": "Jennifer Duke Photography",
    "city": "Richwood",
    "categories": {
+    "natural-light": [
+     {
+      "source": "website description",
+      "text": "Custom natural light and studio photography - newborns, children, & families. Jennifer Duke Photography is located in Brazoria County, Texas."
+     }
+    ],
     "newborn": [
      {
       "source": "website description",
@@ -37027,6 +37775,12 @@
      {
       "source": "website title",
       "text": "The Studio Rockwall | All-White Photo & Content Studio Rental"
+     }
+    ],
+    "natural-light": [
+     {
+      "source": "website description",
+      "text": "Elevate your photography and content at The Studio Rockwall. Rent our all-white natural light studio in Rockwall, TX, designed for photographers and creators."
      }
     ]
    }
@@ -37818,6 +38572,13 @@
       "text": "Meet Lily Hayes | Dallas Portrait Photographer",
       "page": "/about-lily-hayes/"
      }
+    ],
+    "natural-light": [
+     {
+      "source": "website text",
+      "text": "I offer a refined studio experience for maternity and newborn portraits, along with natural light outdoor sessions for maternity and family photography throughout the Dallas area.",
+      "page": "/about-lily-hayes/"
+     }
     ]
    }
   },
@@ -38168,6 +38929,13 @@
       "source": "website heading",
       "text": "Graduation Portraits By Satin & Sage Photography"
      }
+    ],
+    "natural-light": [
+     {
+      "source": "website description",
+      "text": "Candid and creative children’s photography in San Angelo, Texas. Satin & Sage captures personality and playfulness with timeless, natural-light portraits.",
+      "page": "/children"
+     }
     ]
    }
   },
@@ -38193,6 +38961,12 @@
    "name": "Studio Haven",
    "city": "San Angelo",
    "categories": {
+    "natural-light": [
+     {
+      "source": "website text",
+      "text": "Haven Studios 0 Skip to Content Haven Studios Open Menu Close Menu Haven Studios Open Menu Close Menu Haven natural light studios in san angelo, tx Christmas is at Studio Haven!"
+     }
+    ],
     "newborn": [
      {
       "source": "website title",
@@ -38211,6 +38985,12 @@
    "name": "Studio Haven - The Cactus Haus",
    "city": "San Angelo",
    "categories": {
+    "natural-light": [
+     {
+      "source": "website text",
+      "text": "Haven Studios 0 Skip to Content Haven Studios Open Menu Close Menu Haven Studios Open Menu Close Menu Haven natural light studios in san angelo, tx Christmas is at Studio Haven!"
+     }
+    ],
     "newborn": [
      {
       "source": "website title",
@@ -38474,6 +39254,12 @@
      {
       "source": "website text",
       "text": "Our hourly studio rental features north-facing natural light, a movable cyclorama, seamless backdrops, curated props, and included equipment for portraits, branding, content creation, and creative pro…"
+     }
+    ],
+    "natural-light": [
+     {
+      "source": "website description",
+      "text": "Rent a natural light photography studio in San Antonio with north-facing windows, a movable cyclorama, seamless backdrops, curtains, props, and included equipment. Hourly rentals and memberships avail…"
      }
     ]
    }
@@ -38959,6 +39745,19 @@
     ]
    }
   },
+  "ChIJISRbu1j1XIYR2H-sO-a9SZI": {
+   "name": "Eleven Hundred Collective Studio",
+   "city": "San Antonio",
+   "categories": {
+    "natural-light": [
+     {
+      "source": "website description",
+      "text": "eleven hundred collective - san antonio's best natural light studio",
+      "page": "/eleven-hundred-collective"
+     }
+    ]
+   }
+  },
   "ChIJpTkAwli39KkRR_hQR7CdJ7o": {
    "name": "Eva Magaña Photography",
    "city": "San Antonio",
@@ -39426,6 +40225,12 @@
       "page": "/senior-photography"
      }
     ],
+    "natural-light": [
+     {
+      "source": "website text",
+      "text": "HEADSHOTS/ BRANDING Creating the look everyone wants is produced in-studio with beautiful natural light."
+     }
+    ],
     "christmas": [
      {
       "source": "website heading",
@@ -39588,6 +40393,18 @@
       "source": "website heading",
       "text": "Boudoir Portraits",
       "page": "/portrait-photographer"
+     }
+    ]
+   }
+  },
+  "ChIJnWdF2Y5fXIYR6OScywa5bPU": {
+   "name": "Lumen Room San Antonio",
+   "city": "San Antonio",
+   "categories": {
+    "natural-light": [
+     {
+      "source": "website description",
+      "text": "Bright natural light photography studios and unique small event venues. Rentable by the hour."
      }
     ]
    }
@@ -40399,6 +41216,18 @@
     ]
    }
   },
+  "ChIJe4W9hTJfXIYR7R0LCx666j8": {
+   "name": "The Parish",
+   "city": "San Antonio",
+   "categories": {
+    "rental": [
+     {
+      "source": "website description",
+      "text": "The Parish is home to a dozen creative studios and offices. Rent a studio monthly or by the hour. Call (210) 300-4000!"
+     }
+    ]
+   }
+  },
   "ChIJu6l7shxfXIYRZy4sM-euU1o": {
    "name": "Tone Films | San Antonio Video Production Company",
    "city": "San Antonio",
@@ -40795,6 +41624,13 @@
      {
       "source": "website text",
       "text": "*Special Note: as of Jan 31st, 2024, we only accept Wedding bookings if we shoot your engagement session.",
+      "page": "/sessions"
+     }
+    ],
+    "natural-light": [
+     {
+      "source": "website text",
+      "text": "I shoot both natural light and studio light headshots for my clients.",
       "page": "/sessions"
      }
     ],
@@ -41414,6 +42250,21 @@
       "text": "EVENTS"
      }
     ],
+    "prop-rental": [
+     {
+      "source": "website description",
+      "text": "…ETING MEMBERSHIP EVENTS BOOK NOW Seasonal · Nov 1 – Jan 3 Christmasat Divine. Four Christmas sets, styled and ready. Book a Christmas mini with Miss Divine, or rent the sets and run minis for your […]",
+      "page": "/christmas-minis/"
+     },
+     {
+      "source": "website menu",
+      "text": "rent the sets →"
+     },
+     {
+      "source": "website text",
+      "text": "Book a Christmas mini with Divine, or rent the sets and run minis for your own clients."
+     }
+    ],
     "portraits": [
      {
       "source": "website text",
@@ -41659,6 +42510,18 @@
      {
       "source": "website text",
       "text": "As the leading Houston boudoir photographer, Kelley (owner) and her team specialize in fine-art boudoir portraits that empower and elevate every woman."
+     }
+    ]
+   }
+  },
+  "ChIJr1n4KQA3R4YR6tFOFiu9KWU": {
+   "name": "Lumen Room: The Woodlands",
+   "city": "Spring",
+   "categories": {
+    "natural-light": [
+     {
+      "source": "website description",
+      "text": "Bright natural light photography studios and unique small event venues. Rentable by the hour."
      }
     ]
    }
@@ -42097,6 +42960,12 @@
      {
       "source": "website menu",
       "text": "Families"
+     }
+    ],
+    "natural-light": [
+     {
+      "source": "website description",
+      "text": "Kikis Corner Photography specializes Natural Light and Studio in Senior Portrait, Family, Child and Newborn Photography in Midland, TX and surrounding Permian Basin, Texas areas including but not limi…"
      }
     ],
     "newborn": [
@@ -43660,6 +44529,12 @@
    "name": "Modern Space Photography Studio",
    "city": "Tyler",
    "categories": {
+    "natural-light": [
+     {
+      "source": "website text",
+      "text": "…Menu Close Menu MODERN SPACE PHOTO 0 0 Rent Studio Now MODERN SPACE PHOTO 0 0 Rent Studio Now Open Menu Close Menu MODERN SPACE Natural Light PHOTOGRAPHY STUDIO, EVENT SPACE, AND MORE RIGHT HERE IN TY"
+     }
+    ],
     "rental": [
      {
       "source": "website title",
@@ -44696,6 +45571,18 @@
      {
       "source": "listing categories",
       "text": "Google category: Photography School"
+     }
+    ]
+   }
+  },
+  "ChIJeUi-4eQFToYR4CsGSuoYeNs": {
+   "name": "The Lumen Room Willow Park",
+   "city": "Willow Park",
+   "categories": {
+    "natural-light": [
+     {
+      "source": "website description",
+      "text": "Bright natural light photography studios and unique small event venues. Rentable by the hour."
      }
     ]
    }

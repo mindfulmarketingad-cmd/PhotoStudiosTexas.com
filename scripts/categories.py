@@ -26,6 +26,8 @@ CATEGORIES = [
     ("maternity", "maternity-photo-studios", "Maternity", "Maternity Photo Studios in Texas", "maternity photo studios"),
     ("christmas", "christmas-photo-studios", "Christmas", "Christmas Photo Studios in Texas", "christmas photo studios"),
     ("graduation", "graduation-photo-studios", "Graduation", "Graduation Photo Studios in Texas", "graduation photo studios"),
+    ("natural-light", "natural-light-photo-studios", "Natural light", "Natural Light Photo Studios in Texas", "natural light photo studios"),
+    ("prop-rental", "photo-prop-rentals", "Photo prop rental", "Photo Prop Rentals in Texas", "photo prop rentals"),
     ("newborn", "newborn-photo-studios", "Newborn & baby", "Newborn Photo Studios in Texas", "newborn photo studios"),
     ("seniors", "senior-photo-studios", "Seniors", "Senior Photo Studios in Texas", "senior photo studios"),
     ("quinceanera", "quinceanera-photo-studios", "Quinceañera", "Quinceañera Photo Studios in Texas", "quinceañera photo studios"),
@@ -43,7 +45,7 @@ CATEGORIES = [
     ("classes", "photography-classes", "Classes & workshops", "Photography Classes in Texas", "photography classes"),
     ("models", "model-portfolio-studios", "Model portfolios", "Model Portfolio Studios in Texas", "model portfolio studios"),
 ]
-NAMED_CITY_IDS = ("portraits", "family", "headshots", "weddings", "prom", "maternity", "christmas", "graduation")
+NAMED_CITY_IDS = ("portraits", "family", "headshots", "weddings", "prom", "maternity", "christmas", "graduation", "natural-light", "prop-rental")
 
 CAT_BY_ID = {c[0]: c for c in CATEGORIES}
 CAT_IDS = [c[0] for c in CATEGORIES]
@@ -166,6 +168,32 @@ SHORT = {
     "models": re.compile(
         r"\bmodel\s+portfolios?\b|\bmodeling\s+(?:photo|photos|portfolio|headshots?|photography)"
         r"|\bcomp\s+cards?\b|^\s*(?:model\s+portfolios?|modeling)\s*$", re.I),
+    "natural-light": re.compile(
+        r"natural[- ]lights?\s+(?:outdoor\s+|on[- ]location\s+)?(?:photo\s+)?(?:studios?|photography|photographers?|sessions?|portraits?|minis?|space|room|lifestyle)"
+        r"|(?:all[- ]white,?\s+)?natural[- ]lights?\s+(?:and\s+studio\s+)?(?:photography|photographers?|studios?)"
+        r"|\b(?:daylight|sunlit|sun[- ]lit|naturally[- ]lit)\s+(?:photo\s+)?(?:studios?|space|room|floor|photography)"
+        r"|\bnorth[- ]facing\s+windows?"
+        r"|\bwindow[- ]lights?\s+(?:studios?|portraits?|photography|sessions?)"
+        r"|\bspecializ(?:e|es|ed|ing)\s+in\s+(?:[a-z,&/ ]{0,40})?natural[- ]lights?"
+        r"|\b(?:studios?|space|room)\s+(?:with |featuring |filled with |that (?:has|have|features) )?(?:beautiful |soft |ample |abundant |bright |gorgeous )?natural[- ]lights?(?:ing)?"
+        r"|\b(?:feature[sd]?|featuring|filled with|ample|abundant|bright)\s+(?:beautiful )?(?:natural[- ]lights?|natural lighting)"
+        r"|\bnatural[- ]lights?\s+(?:portrait|lifestyle)\s+photographers?"
+        r"|\bproviding\s+natural[- ]lights?"
+        r"|\bnatural[- ]lights?\s+and\s+studios?"
+        r"|\bnatural[- ]lights?\s+enters"
+        r"|\bnatural[- ]lights?\s*(?:&|and)\s+(?:all\s+)?lighting"
+        r"|^\s*natural[- ]lights?\s*$",
+        re.I),
+    "prop-rental": re.compile(
+        r"\bprop[- ]rentals?\b|\bbackdrop[- ]rentals?\b"
+        r"|\b(?:photo(?:graphy)?\s+)?(?:studio\s+)?equipment\s+rentals?\b"
+        r"|\b(?:camera|grip|lighting)\s+(?:and\s+(?:studio\s+)?)?rentals?\b"
+        r"|\bprop\s+library\b|\bbackdrop\s+library\b"
+        r"|\bset[- ]rentals?\b|\brent the sets\b|\bphotography\s+set\s+rentals?\b"
+        r"|\brent(?:al|als|ing)?\s+(?:of\s+|our\s+|the\s+|a\s+)?(?:photo\s+|photography\s+)?(?:props?|backdrops?|sets?)\b"
+        r"|\b(?:props?|photo(?:graphy)?\s+equipment)\s+(?:for\s+)?(?:rent|rentals?|renters?|photographers?|content creators?)"
+        r"|\bbackdrops?\s+(?:for\s+)?(?:rent|rentals?|renters?)",
+        re.I),
 }
 
 
@@ -195,6 +223,8 @@ BODY = {
     "restoration": SHORT["restoration"],
     "classes": SHORT["classes"],
     "models": SHORT["models"],
+    "natural-light": SHORT["natural-light"],
+    "prop-rental": SHORT["prop-rental"],
 }
 BODY_CTX = {
     "portraits": re.compile(r"photograph|photos?\b|session|studio|specializ|offer|capture|shoot|book|packages?|sittings?", re.I),
@@ -221,6 +251,8 @@ BODY_CTX = {
     "restoration": re.compile(r"restor|repair|photo|scan|digit", re.I),
     "classes": re.compile(r"class|workshop|course|lesson|school|mentor|teach|learn", re.I),
     "models": re.compile(r"model|portfolio|comp card|headshot|photo", re.I),
+    "natural-light": re.compile(r"photo|portrait|session|shoot|studio|space|room|light|window|photography|photographer", re.I),
+    "prop-rental": re.compile(r"rent|rental|prop|backdrop|set|equipment|library|camera|grip|lighting", re.I),
 }
 
 # Exclusions applied to any matched text.
@@ -274,6 +306,35 @@ EXCLUDE = {
     "restoration": re.compile(r"restor(?:e|ing|ation)\s+(?:the|my|our)\s+(?:faith|trust|confidence|emotion|relationship)", re.I),
     "classes": re.compile(r"took a (?:class|workshop)|attended (?:a |the )?(?:class|workshop)|photography school graduate", re.I),
     "models": re.compile(r"role models?|model (?:home|home|airplane|train|car)\b|model released", re.I),
+    "natural-light": re.compile(
+        r"natural[- ]look|naturally[- ]looking"
+        r"|sunlit\s+(?:veranda|aisle|ceremony|reception|garden|afternoon|morning|day|charm)"
+        r"|embraced natural light"
+        r"|depend on natural light"
+        r"|must have (?:good )?natural light"
+        r"|emanating from the sun"
+        r"|mimic the natural light"
+        r"|drawn to natural light"
+        r"|capturing natural light"
+        r"|capture natural light"
+        r"|using natural light and"
+        r"|golden natural light"
+        r"|natural light charm"
+        r"|perfect for natural light portraits",
+        re.I),
+    "prop-rental": re.compile(
+        r"(?:stunning|perfect|beautiful|ideal|scenic|serene)\s+backdrop"
+        r"|backdrop for (?:your |the )?(?:wedding|portraits?|photos?|photographers?|creatives?|event)"
+        r"|pose your (?:baby|child|subject).{0,40}props"
+        r"|(?:two|our|different)\s+props"
+        r"|short[- ]term rental|rental properties"
+        r"|styled with .{0,30}props"
+        r"|using (?:our |the |different )?props"
+        r"|props and outfits provided"
+        r"|choose your favorite"
+        r"|fake snow"
+        r"|perfect backdrop for (?:your |the )?(?:wedding|portraits?|photos?)",
+        re.I),
 }
 
 
@@ -320,6 +381,15 @@ def _short_hit(cat: str, text: str) -> str | None:
 def _body_hit(cat: str, text: str) -> str | None:
     if not text or EXCLUDE[cat].search(text):
         return None
+    if cat in {"natural-light", "prop-rental"}:
+        # The phrase itself is the offering (a "natural light studio" sentence need not also
+        # say "we offer"). Still drop testimonials and review blurbs.
+        if re.search(r"testimonial|reviews?\b|thank you|thanks|worked with|hired|recommend|"
+                     r"\bmy (?:husband|wife|daughter|son|mom|dad|sister|brother|friend|fianc)", text, re.I):
+            return None
+        if not BODY[cat].search(text) or not BODY_CTX[cat].search(text):
+            return None
+        return BODY[cat].search(text).group(0)
     if NOT_OFFER.search(text) or not OFFER.search(text):
         return None
     words = {w.lower() for w in SERVICE_WORDS.findall(text)}
@@ -451,7 +521,7 @@ def generate_category_evidence(studio: dict, enrich: dict | None, evidence: dict
 
     if rental_like(studio, enrich, evidence):
         for cat in list(found):
-            if cat == "rental":
+            if cat in {"rental", "natural-light", "prop-rental"}:
                 continue
             kept = [i for i in found[cat] if i["source"] in {"listing categories", "business name"}]
             if kept:
@@ -461,6 +531,8 @@ def generate_category_evidence(studio: dict, enrich: dict | None, evidence: dict
     # A venue, planner, boutique or clinic is not a photographer: keep only explicit photo-service evidence.
     if not photographer_like(studio):
         for cat in list(found):
+            if cat in {"natural-light", "prop-rental", "rental"}:
+                continue
             kept = [i for i in found[cat]
                     if i["source"] == "listing categories"
                     or (re.search(r"photo|portrait|session|shoot|cinemato|videograph|film", i["text"], re.I)

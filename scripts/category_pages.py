@@ -61,6 +61,17 @@ INTRO = {
         "Every studio below has evidence it offers graduation photography: graduation, grads, or cap and gown appears "
         "on its own website or listing. Senior portraits count only when they are tied to graduation. Schools and gown shops are not included."
     ),
+    "natural-light": (
+        "Natural light photo studios shoot in daylight, window light, or a sunlit studio rather than relying only on strobes. "
+        "Every studio below has evidence it is a natural light studio or offers natural light photography: the phrase appears "
+        "in its name, its listing, or on its own website. A “natural look,” a testimonial, or a one-off mention of outdoor sunlight does not count. "
+        "Rental studios that clearly advertise natural light are included."
+    ),
+    "prop-rental": (
+        "These businesses rent photo props, backdrops, themed sets, or photography equipment. "
+        "Every studio below has evidence it offers those items for rent — a prop or backdrop rental, a set rental, or a prop library for renters. "
+        "A studio that only uses props in its own sessions is not listed here."
+    ),
     "newborn": (
         "Newborn and baby photographers photograph infants in the first days and months, including posed newborn sessions and cake smashes. "
         "Every studio below has evidence it offers newborn or baby photography on its listing or its own website."
