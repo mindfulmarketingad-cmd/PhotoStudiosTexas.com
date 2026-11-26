@@ -215,6 +215,7 @@ p { margin: 0 0 0.8rem; }
   background: rgba(17, 17, 17, 0.28);
   font-weight: 700;
   font-size: 0.95rem;
+  text-decoration: none;
 }
 
 .hero-chip:hover,
@@ -470,6 +471,20 @@ input:focus, select:focus, textarea:focus {
 .cta .btn:hover { background: #fff; border-color: #fff; color: var(--black); }
 .btn-orange { background: var(--orange); color: var(--black); border-color: var(--orange); }
 .btn-orange:hover { background: var(--black); color: #fff; border-color: var(--black); }
+
+.btn.btn-ghost,
+.home-hero .btn-ghost {
+  background: transparent;
+  color: #fff;
+  border-color: #fff;
+}
+.btn.btn-ghost:hover,
+.home-hero .btn-ghost:hover {
+  background: #fff;
+  color: var(--black);
+  border-color: #fff;
+}
+
 
 .stat-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.75rem; margin: 1rem 0 1.4rem; }
 .stat { border-top: 4px solid var(--orange); background: var(--sand); padding: 0.9rem; }
