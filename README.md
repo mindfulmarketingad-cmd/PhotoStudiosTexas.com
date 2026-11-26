@@ -28,6 +28,8 @@ Houston 284, Dallas 152, Austin 123, San Antonio 93, Fort Worth 64, El Paso 45, 
 | `/tx/<city>/` | City hub: every studio, nearby cities, editing CTA |
 | `/tx/<city>/<studio>/` | Studio details, other studios in the city, nearby cities |
 | `/cities/` | A–Z city index |
+| `/categories/` | Statewide category hub (only categories with at least one qualifying studio) |
+| `/categories/<slug>/` | Statewide category page: `portrait-studios`, `family-photo-studios`, `headshot-studios`, `wedding-photo-studios`, `prom-photo-studios`, `maternity-photo-studios`. Same cards, filter chips, ratings, schema as city hubs, plus a city filter |
 | `/services/` | Service hub listing photo editing and photo enhancement |
 | `/services/photo-editing/` | Professional Photo Editing & Retouching, $49.99, with a before-and-after gallery |
 | `/services/photo-enhancement/` | Photo Enhancement & Upscaling, $49.99 per photo |
@@ -125,6 +127,10 @@ assets/site.js            search, city jump, order button, mailto form
 assets/directory.css      studio card chips, filter bar, studio page sections
 assets/directory.js       open-now status, hours highlight, city filter bar
 assets/city-images/       generated 1200x630 featured image per city
+assets/category-images/   generated 1200x630 image per category page and the hub
+data/website-evidence.json    homepage plus up to 10 service subpages per studio (headings, menu links, offering sentences)
+data/category-evidence.json   GENERATED: which studios qualify for each category and the evidence text
+data/category-overrides.json  manual exclusions from spot-checking, with reasons
 data/website-enrichment.json  public homepage info per studio (title, description, socials)
 assets/brand/             logo, favicons, manifest, social image
 scripts/clean_data.py
@@ -132,6 +138,11 @@ scripts/enrich_websites.py reads each studio's own homepage (aiohttp, bs4; local
 scripts/studio_info.py     hours parsing, specialties, features, summaries
 scripts/directory_pages.py studio, city hub, and specialty pages
 scripts/render_city_images.py  Pillow city images (local only)
+scripts/enrich_categories.py   crawls homepages and service subpages for category evidence (aiohttp, bs4; local only)
+scripts/categories.py          strict, word-bounded rules for the six categories
+scripts/generate_category_evidence.py  applies the rules and overrides, writes data/category-evidence.json
+scripts/category_pages.py      /categories/ pages and category links on city, studio, home, sitemap, llms.txt
+scripts/render_category_images.py  Pillow category images (local only)
 scripts/build.py
 scripts/check_links.py
 scripts/render_brand.py
@@ -145,6 +156,16 @@ vercel.json               build command and dist output
 - The export has no review text, only the rating, count, per-star counts, and a few review topics. Pages link to Google for the actual reviews.
 - Specialty pages (`/tx/<city>/<specialty>/`) exist only where 3 or more studios in a city share the specialty and the specialty is not every studio in the city.
 - Refresh website info with `python3 scripts/enrich_websites.py` (use `--refresh` to refetch all), then `python3 scripts/clean_data.py`, `python3 scripts/render_city_images.py` if cities changed, and `python3 scripts/build.py`.
+
+## Statewide category pages
+
+Six categories (portraits, family, headshots, weddings, prom, maternity) get a statewide page **only if at least one studio truly offers the service**. No page and no link is created for an empty category, and `check_links.py` fails if one appears.
+
+- A studio qualifies only with evidence: its Google listing category (Portrait studio, Wedding photographer), its business name, its listing description, its booking page, or its own website (title, meta description, headings, menu links, service pages, and sentences that describe an offering). A generic "photographer" does not count.
+- Rules are word-bounded and exclude look-alikes: `family-owned`, wedding venues, planners and boutiques, maternity clothing and pregnancy centers, testimonials, restoration, workshops for photographers, painted portraits, bridal boudoir, space-rental and self-service studios, event venues, makeup artists.
+- The evidence for every studio and category is stored in `data/category-evidence.json` (source type, matched text, page). The build reads only that file, so builds are deterministic. The card chips and city specialty pages for these six categories use the same evidence.
+- Manual spot-check exclusions live in `data/category-overrides.json` with reasons.
+- Refresh: `python3 scripts/enrich_categories.py` (add `--refresh` to refetch), then `python3 scripts/generate_category_evidence.py`, then `python3 scripts/build.py` and `python3 scripts/check_links.py`.
 
 `dist/` is gitignored. Vercel creates it on deploy.
 

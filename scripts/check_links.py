@@ -317,6 +317,69 @@ def main() -> int:
     for need in ("/blog/", "/tools/", "/about/", "/services/"):
         if f'href="{need}"' not in home.split("</header>")[0]:
             errors.append(f"header nav is missing {need}")
+    # Statewide category hubs: exist only for categories with evidence, link everywhere, list exactly the evidenced studios.
+    sys.path.insert(0, str(ROOT / "scripts"))
+    import categories as cat_rules  # noqa: E402
+
+    ev_path = ROOT / "data" / "category-evidence.json"
+    ev = json.loads(ev_path.read_text(encoding="utf-8")) if ev_path.is_file() else {"studios": {}}
+    by_pid = {s["place_id"]: s for s in data["studios"]}
+    cat_pages = 0
+    llms_text = (DIST / "llms.txt").read_text(encoding="utf-8") if (DIST / "llms.txt").is_file() else ""
+    for cid, slug, _label, _h1, _noun in cat_rules.CATEGORIES:
+        path = f"/categories/{slug}/"
+        members = {pid for pid, v in ev["studios"].items() if cid in v["categories"]}
+        if not members:
+            if path in pages or any(path in page["text"] for page in pages.values()):
+                errors.append(f"{path} has no qualifying studios but a page or link exists")
+            continue
+        cat_pages += 1
+        if path not in pages:
+            errors.append(f"missing category page {path}")
+            continue
+        text = pages[path]["text"]
+        listed = set(re.findall(r'<a class="studio-card" href="([^"]+)"', text))
+        expected = {by_pid[pid]["url_path"] for pid in members if pid in by_pid}
+        if listed != expected:
+            errors.append(f"{path} lists {len(listed)} studios, evidence says {len(expected)}")
+        for need in ('id="filter-bar"', 'class="featured"', '"@type":"CollectionPage"', '"@type":"ItemList"', '"@type":"BreadcrumbList"', 'id="f-city"'):
+            if need not in text:
+                errors.append(f"{path} is missing {need}")
+        if f"/images/category/{slug}.png" not in text or not (DIST / "images" / "category" / f"{slug}.png").is_file():
+            errors.append(f"{path} image missing")
+        for source, label in (("/", "home"), ("/tx/", "Texas hub"), ("/categories/", "categories hub"), ("/sitemap/", "HTML sitemap")):
+            if path not in pages.get(source, {}).get("text", ""):
+                errors.append(f"{label} does not link to {path}")
+        if path not in llms_text:
+            errors.append(f"llms.txt is missing {path}")
+        for pid in members:
+            studio = by_pid.get(pid)
+            if not studio:
+                continue
+            studio_html = pages.get(studio["url_path"], {}).get("text", "")
+            if f'href="{path}"' not in studio_html:
+                errors.append(f"{studio['url_path']} does not link to {path}")
+                break
+        for pid in list(members)[:400]:
+            city_html = pages.get(f"/tx/{by_pid[pid]['city_slug']}/", {}).get("text", "")
+            if f'href="{path}"' not in city_html:
+                errors.append(f"/tx/{by_pid[pid]['city_slug']}/ does not link to {path}")
+                break
+    if cat_pages:
+        if "/categories/" not in pages:
+            errors.append("missing /categories/ hub")
+        if 'href="/categories/"' not in home.split("</header>")[0]:
+            errors.append("header nav is missing /categories/")
+    elif "/categories/" in pages:
+        errors.append("/categories/ exists but no category has qualifying studios")
+    # A studio must not be on a category page without evidence (links to a category it does not qualify for).
+    for studio in data["studios"]:
+        mine = ev["studios"].get(studio["place_id"], {}).get("categories", {})
+        text = pages[studio["url_path"]]["text"]
+        for cid, slug, *_rest in cat_rules.CATEGORIES:
+            if cid not in mine and f'href="/categories/{slug}/"' in text:
+                errors.append(f"{studio['url_path']} links to /categories/{slug}/ without evidence")
+                break
     if "Disallow: /assets/" in robots:
         errors.append("robots.txt blocks /assets/ (CSS/JS needed for rendering)")
     llms = (DIST / "llms.txt").read_text(encoding="utf-8") if (DIST / "llms.txt").is_file() else ""

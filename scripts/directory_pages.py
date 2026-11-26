@@ -26,7 +26,7 @@ TZ_LABEL = {
 }
 SOCIAL_LABEL = {"instagram": "Instagram", "facebook": "Facebook", "tiktok": "TikTok",
                 "youtube": "YouTube", "pinterest": "Pinterest", "x": "X", "linkedin": "LinkedIn"}
-SOURCE_LABEL = {"listing categories": "its Google listing categories", "business name": "its name",
+SOURCE_LABEL = {"manual review": "a manual review", "listing categories": "its Google listing categories", "business name": "its name",
                 "listing description": "its listing description", "customer review topics": "topics customers mention in reviews",
                 "booking page": "its booking page link", "website": "its website"}
 
@@ -79,11 +79,14 @@ class DirectoryMixin:
         if getattr(self, "_prepared", False):
             return
         enrich = json.loads(ENRICH_PATH.read_text(encoding="utf-8")) if ENRICH_PATH.is_file() else {}
+        cat_path = ROOT / "data" / "category-evidence.json"
+        cat_ev = json.loads(cat_path.read_text(encoding="utf-8")).get("studios", {}) if cat_path.is_file() else {}
+        self.cat_ev: dict[str, dict] = {pid: v["categories"] for pid, v in cat_ev.items()}
         self.info: dict[str, dict] = {}
         for studio in self.studios:
             site = si.clean_site_info(enrich.get(studio["place_id"]))
             week = si.parse_week(studio.get("hours"))
-            specs = si.detect_specialties(studio, site)
+            specs = si.detect_specialties(studio, site, self.cat_ev.get(studio["place_id"], {}))
             feats = si.detect_features(studio)
             self.info[studio["place_id"]] = {
                 "site": site, "week": week, "specs": specs, "feats": feats,
@@ -158,7 +161,7 @@ class DirectoryMixin:
         return f'<div class="tags">{"".join(parts)}</div>'
 
     # ------------------------------------------------------------ cards
-    def studio_card(self, studio: dict, show_city: bool = True, index: int = 0) -> str:
+    def studio_card(self, studio: dict, show_city: bool = True, index: int = 0, why: str = "") -> str:
         self.prepare_directory()
         info = self.info[studio["place_id"]]
         city_line = f'<p class="muted card-city">{esc(studio["city"])}, TX</p>' if show_city else ""
@@ -181,11 +184,14 @@ class DirectoryMixin:
             "data-has-hours": "1" if info["hours_attr"] else "0",
             "data-index": str(index),
         }
+        if show_city:
+            attrs["data-city"] = studio["city_slug"]
         if info["hours_attr"]:
             attrs["data-hours"] = info["hours_attr"]
             attrs["data-tz"] = studio.get("time_zone") or "America/Chicago"
         attr_html = " ".join(f'{key}="{esc(value)}"' for key, value in attrs.items())
         photo = self.photo_block_v2(studio)
+        why_line = f'<p class="muted card-why">Evidence: {esc(why)}</p>' if why else ""
         return f"""<a class="studio-card" href="{esc(studio["url_path"])}" {attr_html}>
   {photo}
   <div class="card-body">
@@ -194,6 +200,7 @@ class DirectoryMixin:
     {review_line}
     {city_line}
     {category}
+    {why_line}
     {self.chips_html(studio)}
     <p class="open-status" hidden></p>
   </div>
@@ -292,6 +299,7 @@ class DirectoryMixin:
 </div>
 <div class="wrap">{self.city_blog_callout(city)}</div>
 {self.specialty_links(city)and '<div class="wrap">' + self.specialty_links(city) + '</div>'}
+{self.city_category_links(city)and '<div class="wrap">' + self.city_category_links(city) + '</div>'}
 <section class="section" id="studios"><div class="wrap">
   <h2 class="visually-hidden">All {esc(city.name)} photo studios</h2>
   {self.filter_bar(city)}
@@ -351,7 +359,7 @@ class DirectoryMixin:
     <h1>{esc(plural)} in {esc(city.name)}, TX</h1>
     <hr class="rule">
     <p class="lede">{comma(len(members))} of {comma(city.count)} {esc(city.name)} photo studios list {esc(label.lower())} in their details.{top}</p>
-    <p class="muted">Matched from each listing's Google categories, name, and website. <a href="{city.path}">See all {comma(city.count)} {esc(city.name)} studios</a>.</p>
+    <p class="muted">Matched from each listing's Google categories, name, and website. <a href="{city.path}">See all {comma(city.count)} {esc(city.name)} studios</a>.{self.statewide_link(spec_id)}</p>
   </div>
   <figure class="featured"><img src="{esc(image["src"])}" alt="{esc(image["alt"])}" width="1200" height="630" fetchpriority="high" decoding="async"></figure>
 </div>
@@ -430,6 +438,7 @@ class DirectoryMixin:
             parts.append(f'<h3>From the studio\'s website</h3><blockquote class="site-quote">{esc(website_desc[:320].rstrip())}{"…" if len(website_desc) > 320 else ""}</blockquote>')
         if studio.get("description"):
             parts.append(f'<p>{esc(studio["description"])}</p>')
+        parts.append(self.studio_category_links(studio))
         return f'<section class="section-block" id="services"><h2>Services &amp; specialties</h2>{"".join(parts)}</section>'
 
     def amenities_section(self, studio: dict) -> str:

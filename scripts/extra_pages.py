@@ -591,6 +591,7 @@ class ExtrasMixin:
                   f"Ranking: score = (reviews x rating + {PRIOR_REVIEWS} x {self._state_mean():.2f}) / (reviews + {PRIOR_REVIEWS}); open, reviewed studios only."]
         for city in self.blog_cities:
             lines.append(f"- [{self.blog_title(city)}]({self.abs_url(self.blog_path(city))})")
+        lines += self.category_llms_lines()
         lines += ["", "## Largest city directories"]
         for city in self.by_count[:20]:
             lines.append(f"- [Photo studios in {city.name}, TX]({self.abs_url(city.path)}): {city.count} studios")

@@ -16,6 +16,7 @@ import shutil
 from collections import Counter, defaultdict
 from pathlib import Path
 
+from category_pages import CategoryMixin
 from directory_pages import DirectoryMixin
 from extra_pages import TOOLS, ExtrasMixin
 from trust_pages import LEGAL_LINKS, TrustMixin
@@ -232,7 +233,7 @@ class City:
         return len(self.studios)
 
 
-class Site(DirectoryMixin, ExtrasMixin, TrustMixin):
+class Site(DirectoryMixin, CategoryMixin, ExtrasMixin, TrustMixin):
     def __init__(self):
         payload = load_json(DATA_PATH)
         self.config = load_json(CONFIG_PATH)
@@ -369,6 +370,7 @@ class Site(DirectoryMixin, ExtrasMixin, TrustMixin):
         items = [
             ("home", "/", "Home"),
             ("cities", "/cities/", "Cities"),
+            *(("categories", "/categories/", "Categories"),) * bool(self.categories_exist()),
             ("blog", "/blog/", "Blog"),
             ("tools", "/tools/", "Free Tools"),
             ("service", "/services/", "Services"),
@@ -392,6 +394,7 @@ class Site(DirectoryMixin, ExtrasMixin, TrustMixin):
             ("/", "Home"),
             ("/tx/", "Texas"),
             ("/cities/", "All cities"),
+            *(("/categories/", "Categories"),) * bool(self.categories_exist()),
             ("/blog/", "Blog"),
             ("/tools/", "Free photo tools"),
             ("/services/", "Services"),
@@ -656,6 +659,7 @@ class Site(DirectoryMixin, ExtrasMixin, TrustMixin):
   <div class="section-head"><h2>Best photo studios by city</h2><a href="/blog/">All city guides</a></div>
   <div class="chips">{blog_chips}</div>
 </div></section>
+{self.category_home_section()}
 <section class="section" id="cities"><div class="wrap">
   <div class="section-head"><h2>Cities</h2><a href="/cities/">Alphabetical index</a></div>
   <div class="city-grid">{cities}</div>
@@ -709,6 +713,7 @@ class Site(DirectoryMixin, ExtrasMixin, TrustMixin):
   </div>
   <p class="muted">{comma(with_phone)} listings include a phone number and {comma(with_site)} include a website. {comma(temporary)} are marked temporarily closed in the source data and stay in the directory.</p>
 </div>
+{self.category_home_section("Texas photo studios by category")}
 <section class="section"><div class="wrap">
   <div class="section-head"><h2>All cities by number of studios</h2><a href="/cities/">View A–Z</a></div>
   <div class="city-grid">{cities}</div>
@@ -1022,6 +1027,7 @@ class Site(DirectoryMixin, ExtrasMixin, TrustMixin):
             ("/cities/", "Cities"),
             ("/services/", "Services"),
         ]
+        static[3:3] = self.category_sitemap_entries()
         static.extend(
             (f"/services/{service['slug']}/", service["name"])
             for service in self.services
@@ -1081,6 +1087,7 @@ class Site(DirectoryMixin, ExtrasMixin, TrustMixin):
       <h2>More from the site</h2>
       <ul class="plain-list">
         <li><a href="/blog/">Best photo studios by city</a></li>
+        {'<li><a href="/categories/">Photo studio categories</a></li>' if self.categories_exist() else ""}
         <li><a href="/tools/">Free photo tools</a></li>
         <li><a href="/services/">Photo editing &amp; enhancement</a></li>
         <li><a href="/about/">About &amp; contact</a></li>
@@ -1161,6 +1168,7 @@ class Site(DirectoryMixin, ExtrasMixin, TrustMixin):
             (DIST / "images" / "city").mkdir(parents=True, exist_ok=True)
             for image_file in sorted(city_images.glob("*.png")):
                 shutil.copyfile(image_file, DIST / "images" / "city" / image_file.name)
+        self.copy_category_images()
         shutil.copyfile(BRAND / "logo-light.svg", assets / "logo-light.svg")
         shutil.copyfile(BRAND / "logo-dark.svg", assets / "logo-dark.svg")
         for name in ROOT_ASSETS:
@@ -1178,6 +1186,7 @@ class Site(DirectoryMixin, ExtrasMixin, TrustMixin):
         self.build_services()
         self.build_about()
         self.build_studios()
+        self.build_categories()
         self.build_blog()
         self.build_tools()
         self.build_legal()

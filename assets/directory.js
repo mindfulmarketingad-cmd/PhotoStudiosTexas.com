@@ -112,6 +112,7 @@
   var fOpen = document.getElementById("f-open");
   var fHours = document.getElementById("f-hours");
   var fSite = document.getElementById("f-site");
+  var fCity = document.getElementById("f-city");
   var count = document.getElementById("f-count");
   var none = document.getElementById("no-results");
   var chips = Array.prototype.slice.call(bar.querySelectorAll(".fchip"));
@@ -130,6 +131,7 @@
     cards.forEach(function (card) {
       var ok = true;
       if (query && card.getAttribute("data-name").indexOf(query) === -1) { ok = false; }
+      if (ok && fCity && fCity.value && card.getAttribute("data-city") !== fCity.value) { ok = false; }
       if (ok && min && Number(card.getAttribute("data-rating")) < min) { ok = false; }
       if (ok && fHours.checked && card.getAttribute("data-has-hours") !== "1") { ok = false; }
       if (ok && fSite.checked && card.getAttribute("data-site") !== "1") { ok = false; }
@@ -145,6 +147,11 @@
     });
     var mode = sort.value;
     var ordered = cards.slice().sort(function (a, b) {
+      if (mode === "city") {
+        var ca = a.getAttribute("data-city") || "", cb = b.getAttribute("data-city") || "";
+        if (ca !== cb) { return ca < cb ? -1 : 1; }
+        return Number(a.getAttribute("data-index")) - Number(b.getAttribute("data-index"));
+      }
       if (mode === "name") { return a.getAttribute("data-name") < b.getAttribute("data-name") ? -1 : 1; }
       if (mode === "reviews") {
         return Number(b.getAttribute("data-reviews")) - Number(a.getAttribute("data-reviews"))
@@ -162,6 +169,7 @@
   function reset() {
     q.value = ""; minRating.value = "0"; sort.value = "rating";
     fOpen.checked = false; fHours.checked = false; fSite.checked = false;
+    if (fCity) { fCity.value = ""; }
     chips.forEach(function (c) { c.setAttribute("aria-pressed", "false"); });
     apply();
   }
@@ -172,7 +180,8 @@
       apply();
     });
   });
-  [q, minRating, sort, fOpen, fHours, fSite].forEach(function (el) {
+  [q, minRating, sort, fOpen, fHours, fSite, fCity].forEach(function (el) {
+    if (!el) { return; }
     el.addEventListener("input", apply);
     el.addEventListener("change", apply);
   });
@@ -185,5 +194,6 @@
   (params.get("tag") || "").split(",").forEach(function (tag) {
     chips.forEach(function (c) { if (c.getAttribute("data-tag") === tag) { c.setAttribute("aria-pressed", "true"); } });
   });
+  if (fCity && params.get("city")) { fCity.value = params.get("city"); if (fCity.value !== params.get("city")) { fCity.value = ""; } }
   apply();
 })();

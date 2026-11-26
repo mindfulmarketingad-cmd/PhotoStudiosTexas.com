@@ -38,7 +38,7 @@
 .tag-more { border-style: dashed; color: var(--muted); }
 a.tag-link:hover { background: var(--orange); color: var(--black); }
 
-.card-city, .card-cat { margin: 0.1rem 0; font-size: 0.9rem; }
+.card-city, .card-cat, .card-why { margin: 0.1rem 0; font-size: 0.9rem; }
 .open-status { margin: 0.5rem 0 0; font-size: 0.82rem; font-weight: 600; }
 .open-status.is-open { color: #1a6b2e; }
 .open-status.is-closed { color: var(--muted); }

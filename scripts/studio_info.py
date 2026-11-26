@@ -183,6 +183,8 @@ SPECIALTIES = [
      set(), r"newborn|\bbab(y|ies)\b|cake smash|\binfants?\b|milestone"),
     ("maternity", "Maternity", "maternity", "Maternity photographers",
      set(), r"maternity|pregnancy (photo|session|portrait|shoot)"),
+    ("prom", "Prom", "prom", "Prom photographers",
+     set(), r"$^"),
     ("family", "Family", "family", "Family photographers",
      set(), r"\bfamil(y|ies)\b(?![- ](owned|run|operated|business|friendly))"),
     ("seniors", "Senior & graduation", "senior-photos", "Senior and graduation photographers",
@@ -250,8 +252,22 @@ def clean_site_info(info: dict | None) -> dict:
     return info
 
 
-def detect_specialties(studio: dict, site: dict) -> dict[str, list[str]]:
-    """specialty id -> ordered unique list of evidence sources."""
+# Specialties that are also statewide category pages. Their evidence comes only from
+# data/category-evidence.json (see scripts/categories.py): strict, word-bounded, per-source.
+STRICT_IDS = ("portraits", "family", "headshots", "weddings", "prom", "maternity")
+STRICT_SOURCE = {
+    "listing categories": "listing categories", "business name": "business name",
+    "listing description": "listing description", "booking page": "booking page",
+    "manual review": "manual review",
+}
+
+
+def detect_specialties(studio: dict, site: dict, strict: dict | None = None) -> dict[str, list[str]]:
+    """specialty id -> ordered unique list of evidence sources.
+
+    strict: this studio's entry from data/category-evidence.json ({category id: [{"source", "text"}]}).
+    When given (even empty), it alone decides the statewide-category specialties.
+    """
     found: dict[str, list[str]] = {}
 
     def add(spec_id: str, source: str) -> None:
@@ -261,6 +277,8 @@ def detect_specialties(studio: dict, site: dict) -> dict[str, list[str]]:
 
     subtypes = {item.lower() for item in studio.get("subtypes") or []}
     for spec_id, _label, _slug, _plural, wanted, _rx in SPECIALTIES:
+        if strict is not None and spec_id in STRICT_IDS:
+            continue
         if wanted & subtypes:
             add(spec_id, "listing categories")
     texts = [
@@ -274,10 +292,16 @@ def detect_specialties(studio: dict, site: dict) -> dict[str, list[str]]:
         if not text:
             continue
         for spec_id, rx in _SPEC_RE.items():
+            if strict is not None and spec_id in STRICT_IDS:
+                continue
             if rx.search(text):
                 add(spec_id, source)
+    if strict is not None:
+        for spec_id in STRICT_IDS:
+            for item in strict.get(spec_id) or []:
+                add(spec_id, STRICT_SOURCE.get(item["source"], "website"))
     # "Pregnancy care center" style non-photo listings must not read as maternity photography.
-    if "maternity" in found and found["maternity"] == ["business name"] and re.search(r"pregnancy (care|resource|help|center)", studio.get("name") or "", re.I):
+    if strict is None and "maternity" in found and found["maternity"] == ["business name"] and re.search(r"pregnancy (care|resource|help|center)", studio.get("name") or "", re.I):
         del found["maternity"]
     order = {item[0]: index for index, item in enumerate(SPECIALTIES)}
     return dict(sorted(found.items(), key=lambda kv: (0 if "listing categories" in kv[1] else 1, -len(kv[1]), order[kv[0]])))

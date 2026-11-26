@@ -1,0 +1,1198 @@
+{
+ "_about": "Manual exclusions found while spot-checking data/category-evidence.json. Keys are place_ids; _name is for humans. Applied by scripts/generate_category_evidence.py.",
+ "ChIJEbRENsgJToYRJ9j0GXryWBI": {
+  "_name": "Chunky Monkey Photography (Azle)",
+  "prom": {
+   "action": "exclude",
+   "reason": "'Senior Prom' appears only as a gallery/location label; no prom service stated"
+  }
+ },
+ "ChIJMzDuXxLUQIYRfegjq16u9Mo": {
+  "_name": "Karen McConaughey Photography (Cypress)",
+  "portraits": {
+   "action": "exclude",
+   "reason": "Matches were a client testimonial and a generic senior-photos sentence, not an offering"
+  },
+  "weddings": {
+   "action": "exclude",
+   "reason": "Matches were a client testimonial and a generic senior-photos sentence, not an offering"
+  }
+ },
+ "ChIJ9wrfBYeNToYR_p-vkTo_ado": {
+  "_name": "The Social Chica (Cedar Hill)",
+  "portraits": {
+   "action": "exclude",
+   "reason": "Makeup/hair artist, not a photographer"
+  }
+ },
+ "ChIJb-ulf_ZNW4YRC46gmAnBXp0": {
+  "_name": "Authentic Exposure Studio (Austin)",
+  "portraits": {
+   "action": "exclude",
+   "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
+  }
+ },
+ "ChIJ1adD9tuZToYR5ptUKqH3tyU": {
+  "_name": "BURIED DREAMS (Dallas)",
+  "portraits": {
+   "action": "exclude",
+   "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
+  },
+  "family": {
+   "action": "exclude",
+   "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
+  },
+  "headshots": {
+   "action": "exclude",
+   "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
+  },
+  "weddings": {
+   "action": "exclude",
+   "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
+  },
+  "prom": {
+   "action": "exclude",
+   "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
+  },
+  "maternity": {
+   "action": "exclude",
+   "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
+  }
+ },
+ "ChIJvziPHvBb54YRUgeTgUwy4UI": {
+  "_name": "The Stu (El Paso)",
+  "portraits": {
+   "action": "exclude",
+   "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
+  }
+ },
+ "ChIJ9ZL2YiQBlQsRIiJzkwKREnw": {
+  "_name": "The KAAF Studios (McKinney)",
+  "portraits": {
+   "action": "exclude",
+   "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
+  },
+  "family": {
+   "action": "exclude",
+   "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
+  },
+  "headshots": {
+   "action": "exclude",
+   "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
+  },
+  "weddings": {
+   "action": "exclude",
+   "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
+  },
+  "prom": {
+   "action": "exclude",
+   "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
+  },
+  "maternity": {
+   "action": "exclude",
+   "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
+  }
+ },
+ "ChIJDf-mzqfZ-4YRXG9UC6tBI8M": {
+  "_name": "The Downtown Studio Midland (Midland)",
+  "portraits": {
+   "action": "exclude",
+   "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
+  },
+  "family": {
+   "action": "exclude",
+   "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
+  },
+  "headshots": {
+   "action": "exclude",
+   "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
+  },
+  "weddings": {
+   "action": "exclude",
+   "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
+  },
+  "prom": {
+   "action": "exclude",
+   "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
+  },
+  "maternity": {
+   "action": "exclude",
+   "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
+  }
+ },
+ "ChIJzxM8ROM_NoYRFEWkglfLko4": {
+  "_name": "A&L Studios (Longview)",
+  "portraits": {
+   "action": "exclude",
+   "reason": "Portrait match was about renting its sets to photographers"
+  }
+ },
+ "ChIJtyMKKaU9QYYRt5TNKxB1Mzs": {
+  "_name": "Havenly Farm (Fulshear)",
+  "portraits": {
+   "action": "exclude",
+   "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
+  },
+  "family": {
+   "action": "exclude",
+   "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
+  },
+  "headshots": {
+   "action": "exclude",
+   "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
+  },
+  "weddings": {
+   "action": "exclude",
+   "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
+  },
+  "prom": {
+   "action": "exclude",
+   "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
+  },
+  "maternity": {
+   "action": "exclude",
+   "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
+  }
+ },
+ "ChIJhblTkaEzTIYRtdFlUWN5ntk": {
+  "_name": "The 06 Studio (Hickory Creek)",
+  "portraits": {
+   "action": "exclude",
+   "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
+  },
+  "family": {
+   "action": "exclude",
+   "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
+  },
+  "headshots": {
+   "action": "exclude",
+   "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
+  },
+  "weddings": {
+   "action": "exclude",
+   "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
+  },
+  "prom": {
+   "action": "exclude",
+   "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
+  },
+  "maternity": {
+   "action": "exclude",
+   "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
+  }
+ },
+ "ChIJcfhawzuDT4YRrOhl5M9loNc": {
+  "_name": "Sunroom Studio (Waco)",
+  "portraits": {
+   "action": "exclude",
+   "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
+  },
+  "family": {
+   "action": "exclude",
+   "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
+  },
+  "headshots": {
+   "action": "exclude",
+   "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
+  },
+  "weddings": {
+   "action": "exclude",
+   "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
+  },
+  "prom": {
+   "action": "exclude",
+   "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
+  },
+  "maternity": {
+   "action": "exclude",
+   "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
+  }
+ },
+ "ChIJq4PlLj5NW4YRqmwffU30dqA": {
+  "_name": "Sola Photo Studio (Austin)",
+  "family": {
+   "action": "exclude",
+   "reason": "Self-service studio, not a family photographer"
+  }
+ },
+ "ChIJl_6Ahh7HQIYRx6wE4y2Kuro": {
+  "_name": "Solstice Studio (Houston)",
+  "portraits": {
+   "action": "exclude",
+   "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
+  },
+  "family": {
+   "action": "exclude",
+   "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
+  },
+  "headshots": {
+   "action": "exclude",
+   "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
+  },
+  "weddings": {
+   "action": "exclude",
+   "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
+  },
+  "prom": {
+   "action": "exclude",
+   "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
+  },
+  "maternity": {
+   "action": "exclude",
+   "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
+  }
+ },
+ "ChIJj3UiexzDQIYRavWBGQ5V3mA": {
+  "_name": "Oris Studios (Houston)",
+  "weddings": {
+   "action": "exclude",
+   "reason": "Only a video portfolio entry; no wedding photography offered"
+  }
+ },
+ "ChIJV-SPuEFLRYYRCgMVIV29rFo": {
+  "_name": "Image Factory (Killeen)",
+  "portraits": {
+   "action": "exclude",
+   "reason": "Matched text is a third-party style summary, not the studio's own description"
+  },
+  "family": {
+   "action": "exclude",
+   "reason": "Matched text is a third-party style summary, not the studio's own description"
+  },
+  "headshots": {
+   "action": "exclude",
+   "reason": "Matched text is a third-party style summary, not the studio's own description"
+  },
+  "weddings": {
+   "action": "exclude",
+   "reason": "Matched text is a third-party style summary, not the studio's own description"
+  },
+  "prom": {
+   "action": "exclude",
+   "reason": "Matched text is a third-party style summary, not the studio's own description"
+  },
+  "maternity": {
+   "action": "exclude",
+   "reason": "Matched text is a third-party style summary, not the studio's own description"
+  }
+ },
+ "ChIJyToJfCGHToYRfHHEyoTMVjI": {
+  "_name": "Uraenia LLC (Grand Prairie)",
+  "family": {
+   "action": "exclude",
+   "reason": "Matched text is a third-party style summary ('reported by visitors')"
+  },
+  "maternity": {
+   "action": "exclude",
+   "reason": "Matched text is a third-party style summary ('reported by visitors')"
+  }
+ },
+ "ChIJU-DHD-ZpToYRILB7a__qx4k": {
+  "_name": "Ruby Bellows Tintype (Fort Worth)",
+  "portraits": {
+   "action": "exclude",
+   "reason": "Matched sentence is a general remark about digital portraiture"
+  }
+ },
+ "ChIJ4f8S_nVzToYRlJvLMBRA6GY": {
+  "_name": "Square 8 Studio (Fort Worth)",
+  "weddings": {
+   "action": "exclude",
+   "reason": "Sentence says those markets are oversaturated; studio does dance audition headshots"
+  },
+  "family": {
+   "action": "exclude",
+   "reason": "Sentence says those markets are oversaturated; studio does dance audition headshots"
+  }
+ },
+ "ChIJNeZX7I0dTIYR1JOIn7I6gXc": {
+  "_name": "Chelle Cates Photography (Garland)",
+  "weddings": {
+   "action": "exclude",
+   "reason": "Match came from a photographer-directory form field"
+  }
+ },
+ "ChIJlX0rztHXRIYR1fyu1LUj6OE": {
+  "_name": "Studio Lumière (Georgetown)",
+  "weddings": {
+   "action": "exclude",
+   "reason": "Match was about a workshop for wedding photographers"
+  }
+ },
+ "ChIJox1E4hnaBEgR7cW4o2ySU4g": {
+  "_name": "Lama's Littles Photography - Newborn Photography (Allen)",
+  "maternity": {
+   "action": "exclude",
+   "reason": "Maternity is referred to another photographer"
+  }
+ },
+ "ChIJdznQ3VKCT4YRvbGQmBUdMLw": {
+  "_name": "WacoWork (Waco)",
+  "portraits": {
+   "action": "exclude",
+   "reason": "Coworking space; match was a blog post about a visiting photographer"
+  },
+  "family": {
+   "action": "exclude",
+   "reason": "Coworking space; match was a blog post about a visiting photographer"
+  },
+  "headshots": {
+   "action": "exclude",
+   "reason": "Coworking space; match was a blog post about a visiting photographer"
+  },
+  "weddings": {
+   "action": "exclude",
+   "reason": "Coworking space; match was a blog post about a visiting photographer"
+  },
+  "prom": {
+   "action": "exclude",
+   "reason": "Coworking space; match was a blog post about a visiting photographer"
+  },
+  "maternity": {
+   "action": "exclude",
+   "reason": "Coworking space; match was a blog post about a visiting photographer"
+  }
+ },
+ "ChIJnbkbgiC1RIYRf_ED4yrt5l4": {
+  "_name": "Holland Photo Imaging (Austin)",
+  "family": {
+   "action": "exclude",
+   "reason": "Photo lab text about preserving family photos"
+  }
+ },
+ "ChIJx-jbGv7DQIYRN-VVwlw-6Vc": {
+  "_name": "Belly to Baby Studios Maternity and Newborn Portrait Studio Houston (Houston)",
+  "weddings": {
+   "action": "exclude",
+   "reason": "Studio no longer focuses on weddings"
+  }
+ },
+ "ChIJExYSIjydQIYR-HhUJ5ffPRA": {
+  "_name": "Brandi Michelle Photo/Boudoir (Houston)",
+  "weddings": {
+   "action": "exclude",
+   "reason": "Past experience only"
+  }
+ },
+ "ChIJLxauAzK_QIYRC0LETNsRVRc": {
+  "_name": "Andrew Strother Photography (Houston)",
+  "weddings": {
+   "action": "exclude",
+   "reason": "States he does not do weddings on weekends; headshot specialist"
+  }
+ },
+ "ChIJuTmBgb84NoYRrFuoHlecy30": {
+  "_name": "The Zoe Martin (McKinney)",
+  "weddings": {
+   "action": "exclude",
+   "reason": "Match was a FAQ about reunions or weddings for life-story films"
+  }
+ },
+ "ChIJYfusuOWdQIYRV7lqB6TzdbQ": {
+  "_name": "Adore Boudoir (Webster)",
+  "weddings": {
+   "action": "exclude",
+   "reason": "Bridal boudoir is not wedding photography"
+  }
+ },
+ "ChIJedtsaIizRIYR-m_K3cdImGo": {
+  "_name": "Boudoir by Mesh (Austin)",
+  "weddings": {
+   "action": "exclude",
+   "reason": "Bridal boudoir is not wedding photography"
+  }
+ },
+ "ChIJp9oUvQrBQIYRTkz5iFdKx6s": {
+  "_name": "Fairytale After Dark Boudoir (Houston)",
+  "weddings": {
+   "action": "exclude",
+   "reason": "Bridal boudoir is not wedding photography"
+  }
+ },
+ "ChIJ251wTn2zSYYRtp3jmanOJ4w": {
+  "_name": "Phoenix Boudoir (Galveston)",
+  "weddings": {
+   "action": "exclude",
+   "reason": "Bridal boudoir is not wedding photography"
+  }
+ },
+ "ChIJ6Tdy9rotTIYRT5e2xNV-NtM": {
+  "_name": "Sandra Lynch Studios (Lewisville)",
+  "weddings": {
+   "action": "exclude",
+   "reason": "Bridal boudoir is not wedding photography"
+  }
+ },
+ "ChIJJy37LQzGcSERsA48uDYHrXc": {
+  "_name": "Jessica Roop Beauty & Boudoir (Austin)",
+  "weddings": {
+   "action": "exclude",
+   "reason": "Bridal beauty (makeup) and boudoir, not wedding photography"
+  }
+ },
+ "ChIJVXBppYwhQYYRsV9_CNWCowQ": {
+  "_name": "Swartz Portraits (Spring)",
+  "weddings": {
+   "action": "exclude",
+   "reason": "Matches were an empty gallery filter and a sentence saying it is not a wedding generalist"
+  },
+  "family": {
+   "action": "exclude",
+   "reason": "Matches were an empty gallery filter and a sentence saying it is not a wedding generalist"
+  },
+  "headshots": {
+   "action": "exclude",
+   "reason": "Matches were an empty gallery filter and a sentence saying it is not a wedding generalist"
+  }
+ },
+ "ChIJhwo3deCZQoYRpDAJ1_O02dg": {
+  "_name": "Monica McMahon Photography (Goliad)",
+  "portraits": {
+   "action": "exclude",
+   "reason": "Painted portraits and print-on-demand products, not photography portraits"
+  },
+  "weddings": {
+   "action": "exclude",
+   "reason": "Painted portraits and print-on-demand products, not photography portraits"
+  }
+ },
+ "ChIJY3qcJZGZToYRlweevhsOog0": {
+  "_name": "Creators Dont Die (Dallas)",
+  "portraits": {
+   "action": "exclude",
+   "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
+  },
+  "family": {
+   "action": "exclude",
+   "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
+  },
+  "headshots": {
+   "action": "exclude",
+   "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
+  },
+  "weddings": {
+   "action": "exclude",
+   "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
+  },
+  "prom": {
+   "action": "exclude",
+   "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
+  },
+  "maternity": {
+   "action": "exclude",
+   "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
+  }
+ },
+ "ChIJ6V3Lz8K_QIYRPVqsjuNe7hc": {
+  "_name": "The Nellie Rose (Houston)",
+  "weddings": {
+   "action": "exclude",
+   "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
+  }
+ },
+ "ChIJq6oG0y913IARN48lV9foL8A": {
+  "_name": "FLYBY Photography (New Braunfels)",
+  "weddings": {
+   "action": "exclude",
+   "reason": "Drone aerial company, not a wedding photographer"
+  }
+ },
+ "ChIJxSluNzzLRIYRvxtFnPsvsCI": {
+  "_name": "St. John Studios (Austin)",
+  "portraits": {
+   "action": "exclude",
+   "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
+  },
+  "family": {
+   "action": "exclude",
+   "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
+  },
+  "headshots": {
+   "action": "exclude",
+   "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
+  },
+  "weddings": {
+   "action": "exclude",
+   "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
+  },
+  "prom": {
+   "action": "exclude",
+   "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
+  },
+  "maternity": {
+   "action": "exclude",
+   "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
+  }
+ },
+ "ChIJMeYrUSjFRIYRm5ePVr5-qZ8": {
+  "_name": "The Spot Studio (Austin)",
+  "portraits": {
+   "action": "exclude",
+   "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
+  },
+  "family": {
+   "action": "exclude",
+   "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
+  },
+  "headshots": {
+   "action": "exclude",
+   "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
+  },
+  "weddings": {
+   "action": "exclude",
+   "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
+  },
+  "prom": {
+   "action": "exclude",
+   "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
+  },
+  "maternity": {
+   "action": "exclude",
+   "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
+  }
+ },
+ "ChIJ96y_qM3LRIYR6YHOh0OdnYE": {
+  "_name": "Waveform Austin - Photography Studio Rental and Music/Band Rehearsal Studios (Austin)",
+  "portraits": {
+   "action": "exclude",
+   "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
+  },
+  "family": {
+   "action": "exclude",
+   "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
+  },
+  "headshots": {
+   "action": "exclude",
+   "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
+  },
+  "weddings": {
+   "action": "exclude",
+   "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
+  },
+  "prom": {
+   "action": "exclude",
+   "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
+  },
+  "maternity": {
+   "action": "exclude",
+   "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
+  }
+ },
+ "ChIJUcpAS3pBTIYRGbt5Tdvz1Jg": {
+  "_name": "Blok Photo Studio (Celina)",
+  "portraits": {
+   "action": "exclude",
+   "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
+  },
+  "family": {
+   "action": "exclude",
+   "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
+  },
+  "headshots": {
+   "action": "exclude",
+   "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
+  },
+  "weddings": {
+   "action": "exclude",
+   "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
+  },
+  "prom": {
+   "action": "exclude",
+   "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
+  },
+  "maternity": {
+   "action": "exclude",
+   "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
+  }
+ },
+ "ChIJHyZwv8aZToYRxBGIJjQJ6fc": {
+  "_name": "Studio Retro: Dallas (Dallas)",
+  "portraits": {
+   "action": "exclude",
+   "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
+  },
+  "family": {
+   "action": "exclude",
+   "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
+  },
+  "headshots": {
+   "action": "exclude",
+   "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
+  },
+  "weddings": {
+   "action": "exclude",
+   "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
+  },
+  "prom": {
+   "action": "exclude",
+   "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
+  },
+  "maternity": {
+   "action": "exclude",
+   "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
+  }
+ },
+ "ChIJm3S2vXdxToYR1kZ5R7qRERQ": {
+  "_name": "BLANC cowork + studio (Fort Worth)",
+  "portraits": {
+   "action": "exclude",
+   "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
+  },
+  "family": {
+   "action": "exclude",
+   "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
+  },
+  "headshots": {
+   "action": "exclude",
+   "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
+  },
+  "weddings": {
+   "action": "exclude",
+   "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
+  },
+  "prom": {
+   "action": "exclude",
+   "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
+  },
+  "maternity": {
+   "action": "exclude",
+   "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
+  }
+ },
+ "ChIJIZz9RZXfUYYR2qgyvkfpfBU": {
+  "_name": "The Workplace (Granbury)",
+  "portraits": {
+   "action": "exclude",
+   "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
+  },
+  "family": {
+   "action": "exclude",
+   "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
+  },
+  "headshots": {
+   "action": "exclude",
+   "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
+  },
+  "weddings": {
+   "action": "exclude",
+   "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
+  },
+  "prom": {
+   "action": "exclude",
+   "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
+  },
+  "maternity": {
+   "action": "exclude",
+   "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
+  }
+ },
+ "ChIJvxSN4Kw7P4YRfnpm_xXL7AU": {
+  "_name": "The Glasshouse Lifestyle (Hankamer)",
+  "portraits": {
+   "action": "exclude",
+   "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
+  },
+  "family": {
+   "action": "exclude",
+   "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
+  },
+  "headshots": {
+   "action": "exclude",
+   "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
+  },
+  "weddings": {
+   "action": "exclude",
+   "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
+  },
+  "prom": {
+   "action": "exclude",
+   "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
+  },
+  "maternity": {
+   "action": "exclude",
+   "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
+  }
+ },
+ "ChIJV9HCokzbQIYR-D76mFI6IZ0": {
+  "_name": "Houston Flower Wall Co. (Houston)",
+  "portraits": {
+   "action": "exclude",
+   "reason": "Flower-wall rental company, not a photographer"
+  },
+  "family": {
+   "action": "exclude",
+   "reason": "Flower-wall rental company, not a photographer"
+  },
+  "headshots": {
+   "action": "exclude",
+   "reason": "Flower-wall rental company, not a photographer"
+  },
+  "weddings": {
+   "action": "exclude",
+   "reason": "Flower-wall rental company, not a photographer"
+  },
+  "prom": {
+   "action": "exclude",
+   "reason": "Flower-wall rental company, not a photographer"
+  },
+  "maternity": {
+   "action": "exclude",
+   "reason": "Flower-wall rental company, not a photographer"
+  }
+ },
+ "ChIJfzoVZ6fAQIYR_CxuM7l--To": {
+  "_name": "Ronin Art House (Houston)",
+  "portraits": {
+   "action": "exclude",
+   "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
+  },
+  "family": {
+   "action": "exclude",
+   "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
+  },
+  "headshots": {
+   "action": "exclude",
+   "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
+  },
+  "weddings": {
+   "action": "exclude",
+   "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
+  },
+  "prom": {
+   "action": "exclude",
+   "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
+  },
+  "maternity": {
+   "action": "exclude",
+   "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
+  }
+ },
+ "ChIJ6S1eFx6_QIYRiZDzl5qAN9s": {
+  "_name": "The House Of Miracles (Houston)",
+  "portraits": {
+   "action": "exclude",
+   "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
+  },
+  "family": {
+   "action": "exclude",
+   "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
+  },
+  "headshots": {
+   "action": "exclude",
+   "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
+  },
+  "weddings": {
+   "action": "exclude",
+   "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
+  },
+  "prom": {
+   "action": "exclude",
+   "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
+  },
+  "maternity": {
+   "action": "exclude",
+   "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
+  }
+ },
+ "ChIJrSM8Uvi1OIYRwk5Nw3vtuAw": {
+  "_name": "Sandy Patch Ranch (Liberty)",
+  "portraits": {
+   "action": "exclude",
+   "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
+  },
+  "family": {
+   "action": "exclude",
+   "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
+  },
+  "headshots": {
+   "action": "exclude",
+   "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
+  },
+  "weddings": {
+   "action": "exclude",
+   "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
+  },
+  "prom": {
+   "action": "exclude",
+   "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
+  },
+  "maternity": {
+   "action": "exclude",
+   "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
+  }
+ },
+ "ChIJS9s_uu7ZS4YRxYLDArfgq28": {
+  "_name": "The 1916 (Lone Oak)",
+  "portraits": {
+   "action": "exclude",
+   "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
+  },
+  "family": {
+   "action": "exclude",
+   "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
+  },
+  "headshots": {
+   "action": "exclude",
+   "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
+  },
+  "weddings": {
+   "action": "exclude",
+   "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
+  },
+  "prom": {
+   "action": "exclude",
+   "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
+  },
+  "maternity": {
+   "action": "exclude",
+   "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
+  }
+ },
+ "ChIJKfyUAniJT4YRPrglSnQZAho": {
+  "_name": "Blumen haus waco (Lorena)",
+  "portraits": {
+   "action": "exclude",
+   "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
+  },
+  "family": {
+   "action": "exclude",
+   "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
+  },
+  "headshots": {
+   "action": "exclude",
+   "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
+  },
+  "weddings": {
+   "action": "exclude",
+   "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
+  },
+  "prom": {
+   "action": "exclude",
+   "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
+  },
+  "maternity": {
+   "action": "exclude",
+   "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
+  }
+ },
+ "ChIJJ7rAMYslR4YR-QHjR5_2fv8": {
+  "_name": "The Creators Lounge Photo Studio (Montgomery)",
+  "portraits": {
+   "action": "exclude",
+   "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
+  },
+  "family": {
+   "action": "exclude",
+   "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
+  },
+  "headshots": {
+   "action": "exclude",
+   "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
+  },
+  "weddings": {
+   "action": "exclude",
+   "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
+  },
+  "prom": {
+   "action": "exclude",
+   "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
+  },
+  "maternity": {
+   "action": "exclude",
+   "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
+  }
+ },
+ "ChIJB6v06fTtT4YRuGUwtvWD0L4": {
+  "_name": "Hidden Haven Greenhouse (Valley Mills)",
+  "portraits": {
+   "action": "exclude",
+   "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
+  },
+  "family": {
+   "action": "exclude",
+   "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
+  },
+  "headshots": {
+   "action": "exclude",
+   "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
+  },
+  "weddings": {
+   "action": "exclude",
+   "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
+  },
+  "prom": {
+   "action": "exclude",
+   "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
+  },
+  "maternity": {
+   "action": "exclude",
+   "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
+  }
+ },
+ "ChIJh5GY5-r9UYYRivCc4hwdGgQ": {
+  "_name": "Up The Vine Studio (Weatherford)",
+  "portraits": {
+   "action": "exclude",
+   "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
+  },
+  "family": {
+   "action": "exclude",
+   "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
+  },
+  "headshots": {
+   "action": "exclude",
+   "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
+  },
+  "weddings": {
+   "action": "exclude",
+   "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
+  },
+  "prom": {
+   "action": "exclude",
+   "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
+  },
+  "maternity": {
+   "action": "exclude",
+   "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
+  }
+ },
+ "ChIJ4ReulFF3ZYYR7zo0GJxe24c": {
+  "_name": "Villa Romero (Weslaco)",
+  "portraits": {
+   "action": "exclude",
+   "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
+  },
+  "family": {
+   "action": "exclude",
+   "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
+  },
+  "headshots": {
+   "action": "exclude",
+   "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
+  },
+  "weddings": {
+   "action": "exclude",
+   "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
+  },
+  "prom": {
+   "action": "exclude",
+   "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
+  },
+  "maternity": {
+   "action": "exclude",
+   "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
+  }
+ },
+ "ChIJI0Fkdj2JXIYR7tQHr1AyuJU": {
+  "_name": "Aperture Xpace (San Antonio)",
+  "portraits": {
+   "action": "exclude",
+   "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
+  },
+  "family": {
+   "action": "exclude",
+   "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
+  },
+  "headshots": {
+   "action": "exclude",
+   "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
+  },
+  "weddings": {
+   "action": "exclude",
+   "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
+  },
+  "prom": {
+   "action": "exclude",
+   "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
+  },
+  "maternity": {
+   "action": "exclude",
+   "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
+  }
+ },
+ "ChIJVaD_O5bLRIYRft4UncqxdL0": {
+  "_name": "Keopix - Texas (Round Rock)",
+  "portraits": {
+   "action": "exclude",
+   "reason": "Photo-booth rental company"
+  }
+ },
+ "ChIJefsIFpnBQIYRelefrkHZ5Zg": {
+  "_name": "Studio Pod (Houston)",
+  "weddings": {
+   "action": "exclude",
+   "reason": "Automatic headshot booths; weddings only appears as an event-rental heading"
+  }
+ },
+ "ChIJbVw-Yia_QIYRQIF27RBg2u4": {
+  "_name": "Studio Pod - Automatic Headshot Studio - One Allen Center (Houston)",
+  "weddings": {
+   "action": "exclude",
+   "reason": "Automatic headshot booths; weddings only appears as an event-rental heading"
+  }
+ },
+ "ChIJvyVEK9_FQIYRb6eSyR85uwY": {
+  "_name": "Studio Pod - Automatic Headshot Studio - One Memorial City Plaza (Houston)",
+  "weddings": {
+   "action": "exclude",
+   "reason": "Automatic headshot booths; weddings only appears as an event-rental heading"
+  }
+ },
+ "ChIJIzMOf7O_QIYRS_cztCROYgY": {
+  "_name": "Studio Pod - Automatic Headshot Studio - Sesh Coworking (Houston)",
+  "weddings": {
+   "action": "exclude",
+   "reason": "Automatic headshot booths; weddings only appears as an event-rental heading"
+  }
+ },
+ "ChIJx7C_fEZJ_4YRV6KJY_wEXUg": {
+  "_name": "Cabrera Studio Photography LLC (Snyder)",
+  "portraits": {
+   "action": "exclude",
+   "reason": "Makeup/hair artist, not a photographer"
+  },
+  "family": {
+   "action": "exclude",
+   "reason": "Makeup/hair artist, not a photographer"
+  },
+  "headshots": {
+   "action": "exclude",
+   "reason": "Makeup/hair artist, not a photographer"
+  },
+  "weddings": {
+   "action": "exclude",
+   "reason": "Makeup/hair artist, not a photographer"
+  },
+  "prom": {
+   "action": "exclude",
+   "reason": "Makeup/hair artist, not a photographer"
+  },
+  "maternity": {
+   "action": "exclude",
+   "reason": "Makeup/hair artist, not a photographer"
+  }
+ },
+ "ChIJEWNU-p7qQIYR_KmFm5sTMo0": {
+  "_name": "Moka Beaute Atelier | Makeup & Photography (Houston)",
+  "portraits": {
+   "action": "exclude",
+   "reason": "Makeup/hair artist, not a photographer"
+  },
+  "family": {
+   "action": "exclude",
+   "reason": "Makeup/hair artist, not a photographer"
+  },
+  "headshots": {
+   "action": "exclude",
+   "reason": "Makeup/hair artist, not a photographer"
+  },
+  "weddings": {
+   "action": "exclude",
+   "reason": "Makeup/hair artist, not a photographer"
+  },
+  "prom": {
+   "action": "exclude",
+   "reason": "Makeup/hair artist, not a photographer"
+  },
+  "maternity": {
+   "action": "exclude",
+   "reason": "Makeup/hair artist, not a photographer"
+  }
+ },
+ "ChIJq-RIaBJSW4YRXmIw3HHVDAA": {
+  "_name": "Heidi Knight Fine Art (Wimberley)",
+  "portraits": {
+   "action": "exclude",
+   "reason": "Commissioned painted portraits (fine art), not photography"
+  },
+  "family": {
+   "action": "exclude",
+   "reason": "Commissioned painted portraits (fine art), not photography"
+  },
+  "headshots": {
+   "action": "exclude",
+   "reason": "Commissioned painted portraits (fine art), not photography"
+  },
+  "weddings": {
+   "action": "exclude",
+   "reason": "Commissioned painted portraits (fine art), not photography"
+  },
+  "prom": {
+   "action": "exclude",
+   "reason": "Commissioned painted portraits (fine art), not photography"
+  },
+  "maternity": {
+   "action": "exclude",
+   "reason": "Commissioned painted portraits (fine art), not photography"
+  }
+ },
+ "ChIJde62hDS3QIYR8EVt2UxaVQs": {
+  "_name": "Orbit Studios (Houston)",
+  "weddings": {
+   "action": "exclude",
+   "reason": "Offers wedding videos only, not wedding photography"
+  }
+ },
+ "ChIJ4as0kZDBQIYRi7Yk3vxMlUM": {
+  "_name": "TFTI - Interactive Photos & Self-Portrait Studio (Houston)",
+  "portraits": {
+   "action": "exclude",
+   "reason": "Self-service self-portrait studio"
+  }
+ },
+ "ChIJuR7rGRzXTYYRh7zrwtnw_aw": {
+  "_name": "3D/4d/HD Ultrasound 4 Baby Mansfield/Dallas/Fort Worth Ultrasound & New Born Photography (Mansfield)",
+  "weddings": {
+   "action": "exclude",
+   "reason": "Match was a bridal-shower gift-card line"
+  }
+ },
+ "ChIJr1vJqILjQIYRyuloKDuDOfw": {
+  "_name": "Carlino's Photography (Richmond)",
+  "portraits": {
+   "action": "exclude",
+   "reason": "Website describes a Florida (Amelia Island) studio, not this Texas listing"
+  },
+  "family": {
+   "action": "exclude",
+   "reason": "Website describes a Florida (Amelia Island) studio, not this Texas listing"
+  },
+  "headshots": {
+   "action": "exclude",
+   "reason": "Website describes a Florida (Amelia Island) studio, not this Texas listing"
+  },
+  "weddings": {
+   "action": "exclude",
+   "reason": "Website describes a Florida (Amelia Island) studio, not this Texas listing"
+  },
+  "prom": {
+   "action": "exclude",
+   "reason": "Website describes a Florida (Amelia Island) studio, not this Texas listing"
+  },
+  "maternity": {
+   "action": "exclude",
+   "reason": "Website describes a Florida (Amelia Island) studio, not this Texas listing"
+  }
+ },
+ "ChIJbzFF2sAcpGoRN2ZnPPMo7hc": {
+  "_name": "JG Photos & Ink (Bryan)",
+  "weddings": {
+   "action": "exclude",
+   "reason": "Match was calligraphy for weddings, not photography"
+  }
+ },
+ "ChIJh3lidECKToYRw6bcGSiqwHc": {
+  "_name": "Albertex Photography (Mansfield)",
+  "weddings": {
+   "action": "exclude",
+   "reason": "Match was a photo-booth rental page title"
+  }
+ },
+ "ChIJg4YfSm5BToYRH6jWJ6CFp5U": {
+  "_name": "Simply Baby, LLC. Dallas/Ft. Worth (Joshua)",
+  "weddings": {
+   "action": "exclude",
+   "reason": "Match was a blog-style heading; newborn photographer"
+  }
+ }
+}
