@@ -28,6 +28,7 @@ CATEGORIES = [
     ("graduation", "graduation-photo-studios", "Graduation", "Graduation Photo Studios in Texas", "graduation photo studios"),
     ("natural-light", "natural-light-photo-studios", "Natural light", "Natural Light Photo Studios in Texas", "natural light photo studios"),
     ("prop-rental", "photo-prop-rentals", "Photo prop rental", "Photo Prop Rentals in Texas", "photo prop rentals"),
+    ("couples", "couples-photo-studios", "Couples", "Couples Photo Studios in Texas", "couples photo studios"),
     ("newborn", "newborn-photo-studios", "Newborn & baby", "Newborn Photo Studios in Texas", "newborn photo studios"),
     ("seniors", "senior-photo-studios", "Seniors", "Senior Photo Studios in Texas", "senior photo studios"),
     ("quinceanera", "quinceanera-photo-studios", "Quinceañera", "Quinceañera Photo Studios in Texas", "quinceañera photo studios"),
@@ -45,7 +46,7 @@ CATEGORIES = [
     ("classes", "photography-classes", "Classes & workshops", "Photography Classes in Texas", "photography classes"),
     ("models", "model-portfolio-studios", "Model portfolios", "Model Portfolio Studios in Texas", "model portfolio studios"),
 ]
-NAMED_CITY_IDS = ("portraits", "family", "headshots", "weddings", "prom", "maternity", "christmas", "graduation", "natural-light", "prop-rental")
+NAMED_CITY_IDS = ("portraits", "family", "headshots", "weddings", "prom", "maternity", "christmas", "graduation", "natural-light", "prop-rental", "couples")
 
 CAT_BY_ID = {c[0]: c for c in CATEGORIES}
 CAT_IDS = [c[0] for c in CATEGORIES]
@@ -194,6 +195,16 @@ SHORT = {
         r"|\b(?:props?|photo(?:graphy)?\s+equipment)\s+(?:for\s+)?(?:rent|rentals?|renters?|photographers?|content creators?)"
         r"|\bbackdrops?\s+(?:for\s+)?(?:rent|rentals?|renters?)",
         re.I),
+    "couples": re.compile(
+        r"\bcouples?\s*(?:&|and)?\s*(?:photo\w*|portrait\w*|session\w*|picture\w*|shoot\w*|mini[- ]?session\w*|photographer\w*|engagements?|anniversary|proposals?)"
+        r"|(?:photo\w*|portrait\w*|session\w*|picture\w*|shoot\w*|photographer\w*)\s+(?:of|for|with)\s+(?:your\s+|the\s+|a\s+|our\s+)?couples?\b"
+        r"|\bengagements?\s+(?:photo\w*|portrait\w*|session\w*|picture\w*|shoot\w*|photographer\w*|minis?|galleries|gallery)"
+        r"|\banniversary\s+(?:photo\w*|portrait\w*|session\w*|picture\w*|shoot\w*|photographer\w*|minis?)"
+        r"|\bproposals?\s+(?:photo\w*|portrait\w*|session\w*|picture\w*|shoot\w*|photographer\w*|coverage)"
+        r"|^\s*(?:couples?|engagements?|couples?\s*(?:&|and)\s*engagements?)\s*$"
+        r"|\bcouples?\s*(?:,|&|and|\||/)\s*(?:engagements?|families|weddings?|portraits?|maternity|seniors?|newborns?)"
+        r"|\b(?:engagements?|families|weddings?|portraits?|maternity|seniors?|newborns?)\s*(?:,|&|and|\||/)\s*(?:and\s+)?couples?\b",
+        re.I),
 }
 
 
@@ -225,6 +236,7 @@ BODY = {
     "models": SHORT["models"],
     "natural-light": SHORT["natural-light"],
     "prop-rental": SHORT["prop-rental"],
+    "couples": SHORT["couples"],
 }
 BODY_CTX = {
     "portraits": re.compile(r"photograph|photos?\b|session|studio|specializ|offer|capture|shoot|book|packages?|sittings?", re.I),
@@ -253,6 +265,7 @@ BODY_CTX = {
     "models": re.compile(r"model|portfolio|comp card|headshot|photo", re.I),
     "natural-light": re.compile(r"photo|portrait|session|shoot|studio|space|room|light|window|photography|photographer", re.I),
     "prop-rental": re.compile(r"rent|rental|prop|backdrop|set|equipment|library|camera|grip|lighting", re.I),
+    "couples": re.compile(r"photo|portrait|session|shoot|picture|studio|photography|photographer|engagement|anniversary|proposal|couple", re.I),
 }
 
 # Exclusions applied to any matched text.
@@ -334,6 +347,24 @@ EXCLUDE = {
         r"|choose your favorite"
         r"|fake snow"
         r"|perfect backdrop for (?:your |the )?(?:wedding|portraits?|photos?)",
+        re.I),
+    "couples": re.compile(
+        r"\ba couple of\b"
+        r"|couples?'?\s+massage"
+        r"|\bwe(?:'re| are) a couple\b"
+        r"|husband[- ](?:and|&)\s*wife\s+(?:team|duo|photographers?|pair|business)"
+        r"|(?:my|our)\s+(?:husband|wife)\s+and\s+I"
+        r"|as a (?:married )?couple we"
+        r"|couple who photograph"
+        r"|we photograph as a couple"
+        r"|couples can (?:capture|pose|enjoy|use)"
+        r"|couples and (?:their|your) guests"
+        r"|the happy couple"
+        r"|wedding couples"
+        r"|studio'?s?\s+anniversary"
+        r"|our\s+(?:\d+(?:st|nd|rd|th)\s+)?anniversary"
+        r"|anniversary\s+(?:sale|discount|party|dinner|celebration(?!\s+session))"
+        r"|business proposal",
         re.I),
 }
 

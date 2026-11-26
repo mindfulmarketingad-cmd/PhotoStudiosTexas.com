@@ -184,6 +184,10 @@
   "graduation": {
    "action": "exclude",
    "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
+  },
+  "couples": {
+   "action": "exclude",
+   "reason": "A farm venue advertising itself as a setting for proposals and engagement photos, not a photography studio offering those sessions."
   }
  },
  "ChIJhblTkaEzTIYRtdFlUWN5ntk": {
@@ -219,6 +223,10 @@
   "graduation": {
    "action": "exclude",
    "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
+  },
+  "couples": {
+   "action": "exclude",
+   "reason": "Describes studio space offered to individuals, couples, and families, not a couples photography service."
   }
  },
  "ChIJcfhawzuDT4YRrOhl5M9loNc": {
@@ -265,6 +273,10 @@
   "christmas": {
    "action": "exclude",
    "reason": "Self-service studio; Christmas Minis is a set clients can use, not a photography offering by the studio"
+  },
+  "couples": {
+   "action": "exclude",
+   "reason": "Self-portrait studio; couples is a suggested session length/use case, not a photographer offering couples sessions."
   }
  },
  "ChIJl_6Ahh7HQIYRx6wE4y2Kuro": {
@@ -727,6 +739,10 @@
   "natural-light": {
    "action": "exclude",
    "reason": "The natural-light evidence is for its Downtown Phoenix studios, not the Celina, Texas listing."
+  },
+  "couples": {
+   "action": "exclude",
+   "reason": "The engagement-shoot mention is for its Phoenix rental studio, not a Texas couples photography service."
   }
  },
  "ChIJHyZwv8aZToYRxBGIJjQJ6fc": {
@@ -1147,6 +1163,10 @@
   "graduation": {
    "action": "exclude",
    "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
+  },
+  "couples": {
+   "action": "exclude",
+   "reason": "Photo venue rented by the hour for couples and engagements; it does not offer couples photography."
   }
  },
  "ChIJh5GY5-r9UYYRivCc4hwdGgQ": {
@@ -1542,6 +1562,10 @@
   "maternity": {
    "action": "exclude",
    "reason": "Hourly set rental / backdrop studio; they rent the space, they do not photograph the sessions"
+  },
+  "couples": {
+   "action": "exclude",
+   "reason": "Hourly set rental; Christmas backdrops are described as suitable for couples, not a couples photography offering."
   }
  },
  "ChIJ43lN2wRrRYYR4oHsYS0ACU4": {
@@ -1598,6 +1622,10 @@
   "natural-light": {
    "action": "exclude",
    "reason": "A Snappr marketplace bio of one photographer, not the business describing a natural light studio or service."
+  },
+  "couples": {
+   "action": "exclude",
+   "reason": "On-demand marketplace page for booking an engagement photographer, not a studio describing its own couples sessions."
   }
  },
  "ChIJzyaroDu_QIYRArR-3ZHLJC8": {
@@ -1605,6 +1633,13 @@
   "natural-light": {
    "action": "exclude",
    "reason": "A case study about on-location natural-light portraits across 26 offices worldwide, not a natural light studio offering."
+  }
+ },
+ "ChIJQSIsvKO1RIYRwCY7jay_tp4": {
+  "_name": "Reflect Portrait Studio (Austin)",
+  "couples": {
+   "action": "exclude",
+   "reason": "Self-capture studio with no photographer; 'couples portraits' is listed as a use of the room, not a couples photography service."
   }
  }
 }

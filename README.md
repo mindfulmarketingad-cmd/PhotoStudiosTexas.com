@@ -29,7 +29,7 @@ Houston 284, Dallas 152, Austin 123, San Antonio 93, Fort Worth 64, El Paso 45, 
 | `/tx/<city>/<studio>/` | Studio details, other studios in the city, nearby cities |
 | `/cities/` | A–Z city index |
 | `/categories/` | Statewide category hub (only categories with at least one qualifying studio) |
-| `/categories/<slug>/` | Statewide category page: `portrait-studios`, `family-photo-studios`, `headshot-studios`, `wedding-photo-studios`, `prom-photo-studios`, `maternity-photo-studios`, `christmas-photo-studios`, `graduation-photo-studios`, `natural-light-photo-studios`, `photo-prop-rentals`. Same cards, filter chips, ratings, schema as city hubs, plus a city filter |
+| `/categories/<slug>/` | Statewide category page: `portrait-studios`, `family-photo-studios`, `headshot-studios`, `wedding-photo-studios`, `prom-photo-studios`, `maternity-photo-studios`, `christmas-photo-studios`, `graduation-photo-studios`, `natural-light-photo-studios`, `photo-prop-rentals`, `couples-photo-studios`. Same cards, filter chips, ratings, schema as city hubs, plus a city filter |
 | `/services/` | Service hub listing photo editing and photo enhancement |
 | `/services/photo-editing/` | Professional Photo Editing & Retouching, $49.99, with a before-and-after gallery |
 | `/services/photo-enhancement/` | Photo Enhancement & Upscaling, $49.99 per photo |
@@ -159,13 +159,13 @@ vercel.json               build command and dist output
 
 ## Statewide category pages
 
-Every specialty the directory uses (the named categories (including natural light and photo prop rental) plus newborn, seniors, quinceañera, boudoir, commercial, real estate, events, pets, passport, studio rental, video, drone, photo booths, restoration, classes, and model portfolios) gets a statewide page **only if at least one studio truly offers the service**. No page and no link is created for an empty category, and `check_links.py` fails if one appears.
+Every specialty the directory uses (the named categories (including natural light, photo prop rental, and couples) plus newborn, seniors, quinceañera, boudoir, commercial, real estate, events, pets, passport, studio rental, video, drone, photo booths, restoration, classes, and model portfolios) gets a statewide page **only if at least one studio truly offers the service**. No page and no link is created for an empty category, and `check_links.py` fails if one appears.
 
 - A studio qualifies only with evidence: its Google listing category (Portrait studio, Wedding photographer), its business name, its listing description, its booking page, or its own website (title, meta description, headings, menu links, service pages, and sentences that describe an offering). A generic "photographer" does not count.
 - Rules are word-bounded and exclude look-alikes: `family-owned`, wedding venues, planners and boutiques, maternity clothing and pregnancy centers, testimonials, restoration, workshops for photographers, painted portraits, bridal boudoir, space-rental and self-service studios, event venues, makeup artists.
 - The evidence for every studio and category is stored in `data/category-evidence.json` (source type, matched text, page). The build reads only that file, so builds are deterministic. The card chips and city specialty pages for these six categories use the same evidence.
 - Manual spot-check exclusions live in `data/category-overrides.json` with reasons.
-- The named categories (portraits, family, headshots, weddings, prom, maternity, Christmas, graduation, natural light, and photo prop rental) also get a city-level page whenever a city has at least one qualifying studio, at the same URL as any existing city specialty page (for example `/tx/austin/headshots/` or `/tx/austin/natural-light/`).
+- The named categories (portraits, family, headshots, weddings, prom, maternity, Christmas, graduation, natural light, photo prop rental, and couples) also get a city-level page whenever a city has at least one qualifying studio, at the same URL as any existing city specialty page (for example `/tx/austin/headshots/` or `/tx/austin/couples/`).
 - Refresh: `python3 scripts/enrich_categories.py` (add `--refresh` to refetch), then `python3 scripts/generate_category_evidence.py`, then `python3 scripts/build.py` and `python3 scripts/check_links.py`.
 
 `dist/` is gitignored. Vercel creates it on deploy.

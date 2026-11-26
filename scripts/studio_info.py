@@ -193,6 +193,8 @@ SPECIALTIES = [
      set(), r"$^"),
     ("prop-rental", "Photo prop rental", "photo-prop-rentals", "Photo prop rentals",
      set(), r"$^"),
+    ("couples", "Couples", "couples", "Couples photo studios",
+     set(), r"$^"),
     ("family", "Family", "family", "Family photographers",
      set(), r"\bfamil(y|ies)\b(?![- ](owned|run|operated|business|friendly))"),
     ("seniors", "Senior & graduation", "senior-photos", "Senior and graduation photographers",
@@ -262,7 +264,7 @@ def clean_site_info(info: dict | None) -> dict:
 
 # Specialties that are also statewide category pages. Their evidence comes only from
 # data/category-evidence.json (see scripts/categories.py): strict, word-bounded, per-source.
-STRICT_IDS = ("portraits", "family", "headshots", "weddings", "prom", "maternity", "christmas", "graduation", "natural-light", "prop-rental", "newborn", "seniors", "quinceanera", "boudoir", "commercial", "real-estate", "events", "pets", "passport", "rental", "video", "drone", "photo-booth", "restoration", "classes", "models")
+STRICT_IDS = ("portraits", "family", "headshots", "weddings", "prom", "maternity", "christmas", "graduation", "natural-light", "prop-rental", "couples", "newborn", "seniors", "quinceanera", "boudoir", "commercial", "real-estate", "events", "pets", "passport", "rental", "video", "drone", "photo-booth", "restoration", "classes", "models")
 STRICT_SOURCE = {
     "listing categories": "listing categories", "business name": "business name",
     "listing description": "listing description", "booking page": "booking page",

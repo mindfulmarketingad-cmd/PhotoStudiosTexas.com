@@ -11,6 +11,7 @@
   "graduation": 108,
   "natural-light": 65,
   "prop-rental": 9,
+  "couples": 100,
   "newborn": 197,
   "seniors": 156,
   "quinceanera": 54,
@@ -139,6 +140,23 @@
       "text": "… than most people realize and choosing the right wedding photographer is vital for success and comfort on your special day. Here are some tips to help you choose the right photographer for your event.",
       "page": "/wedding-photographer"
      }
+    ],
+    "couples": [
+     {
+      "source": "website title",
+      "text": "Engagement Photography | Abilene TX | Britni Brown Photography",
+      "page": "/engagement-photography"
+     },
+     {
+      "source": "website description",
+      "text": "…n friendly relationship with a wedding photographer is vital for success and an engagement photography shoot is a great way to establish that you can easily communicate your needs before your actual w…",
+      "page": "/engagement-photography"
+     },
+     {
+      "source": "website heading",
+      "text": "Your Engagement Photography Shoot is a Great Time to Get To Know Your Wedding Photographer Well",
+      "page": "/engagement-photography"
+     }
     ]
    }
   },
@@ -216,6 +234,13 @@
      {
       "source": "website text",
       "text": "* Select option Wedding Elopement Engagements Bridals Proposal Branding Session Maternity Senior Family Date of service needed: * If you are inquiring for a shoot other than a wedding or elopement wit…"
+     }
+    ],
+    "couples": [
+     {
+      "source": "website text",
+      "text": "Engagements &Bridals $350-600 These are stand alone sessions for couples who have not booked us for their wedding.",
+      "page": "/pricing/"
      }
     ],
     "seniors": [
@@ -2045,6 +2070,12 @@
       "page": "/maternity-boudoir-austin.html"
      }
     ],
+    "couples": [
+     {
+      "source": "website menu",
+      "text": "Couples"
+     }
+    ],
     "headshots": [
      {
       "source": "website text",
@@ -2368,6 +2399,13 @@
       "text": "Do you photograph Senior grads?",
       "page": "/portrait-session-investment"
      },
+     {
+      "source": "website text",
+      "text": "reserve your session Like many photographers, I capture the beauty of families, couples, and seniors for graduations.",
+      "page": "/about"
+     }
+    ],
+    "couples": [
      {
       "source": "website text",
       "text": "reserve your session Like many photographers, I capture the beauty of families, couples, and seniors for graduations.",
@@ -2756,6 +2794,17 @@
      {
       "source": "website title",
       "text": "Wedding Photographer Austin Texas - John David Weddings"
+     }
+    ],
+    "couples": [
+     {
+      "source": "website description",
+      "text": "Austin wedding photography FAQ: pricing ($2,500-$9,000+), when to book, JD's candid editorial style, venues, engagement sessions, turnaround and elopements.",
+      "page": "/austin-wedding-photographer-faq"
+     },
+     {
+      "source": "website text",
+      "text": "This page highlights various aspects of wedding photography, including intimate details, lively dance scenes, and heartfelt couple portraits."
      }
     ]
    }
@@ -5941,6 +5990,13 @@
       "text": "Boerne Headshot and Personal Branding Photograper Paula VM top of page Based in downtown Boerne, Paula VM creates professional headshots and personal branding photography for entrepreneurs, executives…",
       "page": "/headshotsandbranding"
      }
+    ],
+    "couples": [
+     {
+      "source": "website text",
+      "text": "Whether you're seeking senior portraits, couples photography, family photography, fine art portraits, professional headshots, branding images, or boutique weddings, we would love to collaborate with y…",
+      "page": "/about"
+     }
     ]
    }
   },
@@ -6058,6 +6114,22 @@
      {
       "source": "website menu",
       "text": "Boudoir"
+     }
+    ],
+    "couples": [
+     {
+      "source": "website title",
+      "text": "Couples & Proposals - Merril Stanfield Photography",
+      "page": "/couplesandproposal/"
+     },
+     {
+      "source": "website description",
+      "text": "Couples & Proposals - Merril Stanfield Photography",
+      "page": "/couplesandproposal/"
+     },
+     {
+      "source": "website menu",
+      "text": "Couples & Proposal"
      }
     ],
     "events": [
@@ -6255,6 +6327,13 @@
      {
       "source": "website text",
       "text": "detail photos ceremony family photos Add to cart The Cardinal - Premium $999.00 3 to 4 hours onsite photography premium package captures the essentials and more!",
+      "page": "/weddings"
+     }
+    ],
+    "couples": [
+     {
+      "source": "website text",
+      "text": "Ask about our $399 engagement sessions, discounts are available with certain wedding packages.",
       "page": "/weddings"
      }
     ]
@@ -6874,6 +6953,12 @@
       "text": "Portrait, Family Portraits, Engagement Photography, Wedding Photography, Event Photography, Photography Studio, Carrollton Texas, DFW Photography, Dallas Photography"
      }
     ],
+    "couples": [
+     {
+      "source": "website description",
+      "text": "Portrait, Family Portraits, Engagement Photography, Wedding Photography, Event Photography, Photography Studio, Carrollton Texas, DFW Photography, Dallas Photography"
+     }
+    ],
     "events": [
      {
       "source": "website description",
@@ -7139,6 +7224,12 @@
      {
       "source": "website menu",
       "text": "Commercial Headshots"
+     }
+    ],
+    "couples": [
+     {
+      "source": "website menu",
+      "text": "Engagement"
      }
     ],
     "newborn": [
@@ -7416,6 +7507,16 @@
      {
       "source": "website menu",
       "text": "MATERNITY PHOTOGRAPHY"
+     },
+     {
+      "source": "website text",
+      "text": "Whether it’s an engagement shoot, wedding and bridal photography, or a newborn or maternity shoot, make your moment one to remember forever with Natalie Roberson Photography."
+     }
+    ],
+    "couples": [
+     {
+      "source": "website menu",
+      "text": "ENGAGEMENT PHOTOGRAPHY"
      },
      {
       "source": "website text",
@@ -7987,6 +8088,13 @@
      {
       "source": "website description",
       "text": "…ography, but also loves to do family portraits, headshots, event phtography and pet photography! Come to her in home studio or she can come to you. You will love her energy almost as much as you love …",
+      "page": "/portfolio"
+     }
+    ],
+    "couples": [
+     {
+      "source": "website text",
+      "text": "BlackRosePhotography top of page Log In HOME / PORTFOLIO Our Photography Portfolio Boudoir Family Events Dudeoir Branding and Culinary Awkward Couples Portraits bottom of page",
       "page": "/portfolio"
      }
     ]
@@ -8898,6 +9006,18 @@
       "page": "/portfolio/"
      }
     ],
+    "couples": [
+     {
+      "source": "website description",
+      "text": "…ver maternity, family, children, cake smash, birthday, quinceañera, graduation, wedding, couples, fine art and professional headshot photography. From elegant studio portraits to beach vacation and fa…",
+      "page": "/portfolio/"
+     },
+     {
+      "source": "website heading",
+      "text": "Weddings and Couples",
+      "page": "/portfolio/"
+     }
+    ],
     "newborn": [
      {
       "source": "website description",
@@ -9679,6 +9799,13 @@
       "page": "/photography"
      }
     ],
+    "couples": [
+     {
+      "source": "website text",
+      "text": "…Based in Dallas–Fort Worth Available for travel Creative Portrait Session Creative direction and editorial imagery fashion & Editorial Togetherness Couples & Engagements A little about me behind every",
+      "page": "/photography"
+     }
+    ],
     "video": [
      {
       "source": "website description",
@@ -10286,6 +10413,23 @@
       "page": "/f26949638"
      }
     ],
+    "couples": [
+     {
+      "source": "website title",
+      "text": "Dream Photography DFW, Weddings & Portrait Photographer Dallas, Texas | Couples, Wedding Proposals & Engagement",
+      "page": "/f577447156"
+     },
+     {
+      "source": "website description",
+      "text": "Couples, Wedding Proposals & Engagement",
+      "page": "/f577447156"
+     },
+     {
+      "source": "website heading",
+      "text": "Home » All Photographs » Client Galleries » Couples, Wedding Proposals & Engagement",
+      "page": "/f577447156"
+     }
+    ],
     "quinceanera": [
      {
       "source": "website text",
@@ -10454,6 +10598,18 @@
       "text": "High School Senior and College Graduate photographs taken all over DFW , Salt Lake City, Seattle and in our Dallas studio documented by Earth Mama Photography.",
       "page": "/dallas-favorite-senior-graduate-highschool-photographer"
      }
+    ],
+    "couples": [
+     {
+      "source": "website title",
+      "text": "Couple & Engagement Photographer | Earth Mama Photography",
+      "page": "/romantic-couple-engagement-photos-dallas-tx"
+     },
+     {
+      "source": "website description",
+      "text": "Romantic and connected couple and engagement photographs with sessions both outdoors on location and in our Dallas studio documented by Earth Mama Photography.",
+      "page": "/romantic-couple-engagement-photos-dallas-tx"
+     }
     ]
    }
   },
@@ -10568,6 +10724,23 @@
      {
       "source": "website heading",
       "text": "Family Portrait Photography · Dallas"
+     }
+    ],
+    "couples": [
+     {
+      "source": "website title",
+      "text": "Couples Portrait Photography - Gittings Photography",
+      "page": "/couples-portraits/"
+     },
+     {
+      "source": "website description",
+      "text": "Capture your love with custom couples portrait photography. Schedule your session in Dallas or Fort Worth today.",
+      "page": "/couples-portraits/"
+     },
+     {
+      "source": "website heading",
+      "text": "Couples Portrait Photography",
+      "page": "/couples-portraits/"
      }
     ],
     "headshots": [
@@ -10729,6 +10902,21 @@
      {
       "source": "website menu",
       "text": "Dallas-Fort Worth wedding cinematography"
+     }
+    ],
+    "couples": [
+     {
+      "source": "website title",
+      "text": "Dallas-Fort Worth Engagement Photographer-DFW Engagement Photography-Engagement pictures -Dallas Wedding Photographers Fort Worth | IGOR Wedding Photography",
+      "page": "/dallas-fort-worth-engagement-photography-gallery"
+     },
+     {
+      "source": "website description",
+      "text": "…g moments in story telling style. Hire the top Dallas wedding photographers and engagement photographers in DFW. Creative and artistic wedding photography, fine art bridal portraits and fun engagement…"
+     },
+     {
+      "source": "website text",
+      "text": "…y in Dallas Fort Worth TX Fort Worth Wedding photographer Igor is an expert in creative, emotional and artistic wedding photography in Dallas, telling your love story from the engagement session , bri"
      }
     ]
    }
@@ -11116,6 +11304,12 @@
       "source": "website description",
       "text": "Matool Weddings offers wedding photography and videography in Dallas, Fort Worth, Austin, Houston, San Antonio, Waco, and across Texas. Our Dallas-based team captures candid moments, creates gently gu…"
      }
+    ],
+    "couples": [
+     {
+      "source": "website text",
+      "text": "ENGAGEMENTS Celebrate your unique love story with romantic and candid engagement photography WEDDINGS Capture all the love, laughter, and cherished moments on your wedding day, preserving them for a l…"
+     }
     ]
    }
   },
@@ -11496,6 +11690,23 @@
      {
       "source": "website heading",
       "text": "Boudoir and Intimate Portraits"
+     }
+    ],
+    "couples": [
+     {
+      "source": "website title",
+      "text": "Couples Portrait Photographer in Dallas | Rich Cirminello",
+      "page": "/couples/"
+     },
+     {
+      "source": "website description",
+      "text": "Dallas couples photographer creating editorial-style portraits that celebrate your connection with timeless, beautifully crafted photography.",
+      "page": "/couples/"
+     },
+     {
+      "source": "website heading",
+      "text": "Editorial Couples Portraits",
+      "page": "/couples/"
      }
     ]
    }
@@ -12338,6 +12549,17 @@
       "page": "/new-page/"
      }
     ],
+    "couples": [
+     {
+      "source": "website heading",
+      "text": "Couples Portraits",
+      "page": "/couples/"
+     },
+     {
+      "source": "website menu",
+      "text": "Couples"
+     }
+    ],
     "quinceanera": [
      {
       "source": "website menu",
@@ -12523,6 +12745,23 @@
      {
       "source": "website heading",
       "text": "Houston Maternity, Newborn, Cake Smash & Family Photographer"
+     }
+    ],
+    "couples": [
+     {
+      "source": "website title",
+      "text": "Houston Couples Photography Services — Jehzel Vigoa Photography LLC",
+      "page": "/couples-engagements"
+     },
+     {
+      "source": "website description",
+      "text": "… photographer based in Deer Park, Texas, specializing in maternity, newborn, cake smash and family photography. The studio also offers children's, couples, engagement, senior and birthday photography.",
+      "page": "/investment"
+     },
+     {
+      "source": "website text",
+      "text": "…ervices — Jehzel Vigoa Photography LLC Back Adult Birthdays Cake Smash Children Couples & Engagements Family Graduates Maternity Newborn Back About Jehzel Adult Studio Setups Cake Smash Prep Guide Chi…",
+      "page": "/children"
      }
     ],
     "seniors": [
@@ -12893,6 +13132,13 @@
       "page": "/headshots-branding"
      }
     ],
+    "couples": [
+     {
+      "source": "website description",
+      "text": "Wedding and engagement photography in Devine, TX, San Antonio and South Texas, capturing authentic moments with bold, timeless imagery you'll treasure.",
+      "page": "/weddings"
+     }
+    ],
     "maternity": [
      {
       "source": "website text",
@@ -12979,6 +13225,13 @@
      {
       "source": "website text",
       "text": "I’m the owner and photographer behind J Ellen Photography , a portrait studio based in Dickinson, Texas , specializing in maternity, newborn, milestone, family, and senior photography ."
+     }
+    ],
+    "couples": [
+     {
+      "source": "website description",
+      "text": "Couples",
+      "page": "/couples.html"
      }
     ]
    }
@@ -14035,6 +14288,17 @@
       "text": "Families"
      }
     ],
+    "couples": [
+     {
+      "source": "website description",
+      "text": "Treadwell Photography offers Engagement Portrait services to capture your story from the start. Serving the El Paso, TX & Las Cruces, NM areas.",
+      "page": "/engagement"
+     },
+     {
+      "source": "website menu",
+      "text": "engagement"
+     }
+    ],
     "quinceanera": [
      {
       "source": "website menu",
@@ -15035,6 +15299,23 @@
       "text": "Couples and Families",
       "page": "/couples-and-families"
      }
+    ],
+    "couples": [
+     {
+      "source": "website title",
+      "text": "Couples and Families | Dynamite Dames",
+      "page": "/couples-and-families"
+     },
+     {
+      "source": "website description",
+      "text": "Couples and Families | Dynamite Dames",
+      "page": "/couples-and-families"
+     },
+     {
+      "source": "website heading",
+      "text": "Couples and Families",
+      "page": "/couples-and-families"
+     }
     ]
    }
   },
@@ -15147,6 +15428,21 @@
      {
       "source": "website menu",
       "text": "Dallas-Fort Worth wedding cinematography"
+     }
+    ],
+    "couples": [
+     {
+      "source": "website title",
+      "text": "Dallas-Fort Worth Engagement Photographer-DFW Engagement Photography-Engagement pictures -Dallas Wedding Photographers Fort Worth | IGOR Wedding Photography",
+      "page": "/dallas-fort-worth-engagement-photography-gallery"
+     },
+     {
+      "source": "website description",
+      "text": "…g moments in story telling style. Hire the top Dallas wedding photographers and engagement photographers in DFW. Creative and artistic wedding photography, fine art bridal portraits and fun engagement…"
+     },
+     {
+      "source": "website text",
+      "text": "…y in Dallas Fort Worth TX Fort Worth Wedding photographer Igor is an expert in creative, emotional and artistic wedding photography in Dallas, telling your love story from the engagement session , bri"
      }
     ]
    }
@@ -15831,6 +16127,13 @@
       "source": "website menu",
       "text": "families + seniors"
      }
+    ],
+    "couples": [
+     {
+      "source": "website text",
+      "text": "…sign travel families + seniors headshots + performance home Authentic, story-driven wedding photography for couples who care about the people, the moments, and the memories that make their day unique.",
+      "page": "/engagements-wedding"
+     }
     ]
    }
   },
@@ -16379,6 +16682,18 @@
       "text": "Step inside the graduation gallery and celebrate a milestone beautifully captured.",
       "page": "/graduation-pictures-1-1"
      }
+    ],
+    "couples": [
+     {
+      "source": "website heading",
+      "text": "Elegant Engagement Portraits",
+      "page": "/new-page-2-1-1"
+     },
+     {
+      "source": "website text",
+      "text": "… to Content Get in Touch Open Menu Close Menu Get in Touch Open Menu Close Menu Engagement Photography From stolen glances to joyful laughter, we capture the moments that tell the story of your love, …",
+      "page": "/new-page-2-1-1"
+     }
     ]
    }
   },
@@ -16619,6 +16934,16 @@
       "text": "Whether it’s an engagement shoot, wedding and bridal photography, or a newborn or maternity shoot, make your moment one to remember forever with Natalie Roberson Photography."
      }
     ],
+    "couples": [
+     {
+      "source": "website menu",
+      "text": "ENGAGEMENT PHOTOGRAPHY"
+     },
+     {
+      "source": "website text",
+      "text": "Whether it’s an engagement shoot, wedding and bridal photography, or a newborn or maternity shoot, make your moment one to remember forever with Natalie Roberson Photography."
+     }
+    ],
     "newborn": [
      {
       "source": "website title",
@@ -16752,6 +17077,13 @@
      {
       "source": "website description",
       "text": "Dallas and DFW wedding photography and cinematic films by TinTin Wynn. Explore timeless, true-to-life imagery, relaxed portraits, and authentic celebrations."
+     }
+    ],
+    "couples": [
+     {
+      "source": "website text",
+      "text": "Engagement Session More info starting from $595 Your wedding day will move faster than you expect.",
+      "page": "/experience"
      }
     ],
     "family": [
@@ -16987,6 +17319,23 @@
       "text": "Christmas"
      }
     ],
+    "couples": [
+     {
+      "source": "website title",
+      "text": "Houston Couples photographer — MJ Photography - Newborn, Maternity, Family, & Headshot Photographer",
+      "page": "/couples-houstonkaty"
+     },
+     {
+      "source": "website description",
+      "text": "MJ's Photography is a Katy Houston couples photographer. MJ specializes in end portraits in Katy, Fulshear, West U, River Oaks, and the Houston area. Newly engaged? Been married for decades? Either wa…",
+      "page": "/couples-houstonkaty"
+     },
+     {
+      "source": "website text",
+      "text": "Houston Couples photographer — MJ Photography - Newborn, Maternity, Family, & Headshot Photographer Skip to Content Open Menu Close Menu ( 0 ) Cart ( 0 ) ( 0 ) Cart ( 0 ) Open Menu Close Menu katy’s b…",
+      "page": "/couples-houstonkaty"
+     }
+    ],
     "seniors": [
      {
       "source": "website title",
@@ -17053,6 +17402,12 @@
       "source": "website title",
       "text": "Boudoir Photographer in Houston & Galveston TX | Phoenix Boudoir"
      },
+     {
+      "source": "website description",
+      "text": "Houston's premier boudoir photographer on Galveston's Historic Strand. Women's, bridal & couples sessions. 4.9 stars, 100+ reviews. Book today."
+     }
+    ],
+    "couples": [
      {
       "source": "website description",
       "text": "Houston's premier boudoir photographer on Galveston's Historic Strand. Women's, bridal & couples sessions. 4.9 stars, 100+ reviews. Book today."
@@ -17426,6 +17781,18 @@
      {
       "source": "website heading",
       "text": "Senior Portraits"
+     }
+    ],
+    "couples": [
+     {
+      "source": "website title",
+      "text": "Engagement Photos — Ron Parks Photography",
+      "page": "/engagementphotos/"
+     },
+     {
+      "source": "website description",
+      "text": "Engagement Photos — Ron Parks Photography",
+      "page": "/engagementphotos/"
      }
     ]
    }
@@ -17943,6 +18310,17 @@
      {
       "source": "website description",
       "text": "Flash Brush Photo&Video in Irving TX offers wedding photography, wedding videography, event photography, candid photography, engagement photography, portrait photography, party photography, cinematic …"
+     }
+    ],
+    "couples": [
+     {
+      "source": "website description",
+      "text": "…edding photography, wedding videography, event photography, candid photography, engagement photography, portrait photography, party photography, cinematic videography, professional photographers, even…"
+     },
+     {
+      "source": "website text",
+      "text": "FlashBrush Productions helps couples and families preserve those memories through professional wedding photography and videography in Irving, TX.",
+      "page": "/about-us"
      }
     ],
     "events": [
@@ -18539,6 +18917,12 @@
       "page": "/graduation/"
      }
     ],
+    "couples": [
+     {
+      "source": "website menu",
+      "text": "engagement"
+     }
+    ],
     "quinceanera": [
      {
       "source": "website menu",
@@ -18751,6 +19135,23 @@
       "source": "website heading",
       "text": "Senior Portraits",
       "page": "/high-school-senior-photographer/"
+     }
+    ],
+    "couples": [
+     {
+      "source": "website title",
+      "text": "Bridal & Engagement Sessions - Brandi B Photography - Fine Portraiture",
+      "page": "/gallery/couples-bridal/"
+     },
+     {
+      "source": "website description",
+      "text": "Brandi B. Photo specializes in fun & relaxed maternity / Pregnancy Portraits for couples in a studio or outdoors. Newborn combo package available.",
+      "page": "/maternity/"
+     },
+     {
+      "source": "website heading",
+      "text": "Bridal & Engagement Sessions",
+      "page": "/gallery/couples-bridal/"
      }
     ],
     "commercial": [
@@ -19467,6 +19868,23 @@
       "page": "/wedding-photographers-houston-tx"
      }
     ],
+    "couples": [
+     {
+      "source": "website title",
+      "text": "Best Engagement Photographers Houston at Atlas Photo Studio",
+      "page": "/engagement"
+     },
+     {
+      "source": "website description",
+      "text": "Explore the artistry of our engagement photographers and videographers in Houston at Atlas Photo Studio. From candid moments to timeless portraits, we specialize in capturing the essence of your love …",
+      "page": "/engagement"
+     },
+     {
+      "source": "website text",
+      "text": "Best Engagement Photographers Houston at Atlas Photo Studio top of page Best Houston Wedding photographer Enchanting Moments Unveiled: Engagement Photography and Videography in Houston bottom of page",
+      "page": "/engagement"
+     }
+    ],
     "portraits": [
      {
       "source": "website description",
@@ -19608,6 +20026,13 @@
       "source": "website heading",
       "text": "Elevate Your Professional Image: Premium Headshots, Personal Branding & Dating Portraits in Houston",
       "page": "/headshots-houston"
+     }
+    ],
+    "couples": [
+     {
+      "source": "website text",
+      "text": "Versatile Holiday & New Year Backdrop: Perfectly styled for modern family portraits, glamorous couples photography, and sophisticated end-of-year milestone sessions.",
+      "page": "/christmas-mini-sessions-houston"
      }
     ]
    }
@@ -20448,6 +20873,20 @@
      {
       "source": "website menu",
       "text": "Happy Couples & Families"
+     }
+    ],
+    "couples": [
+     {
+      "source": "website heading",
+      "text": "Happy Couples & Families"
+     },
+     {
+      "source": "website menu",
+      "text": "Happy Couples & Families"
+     },
+     {
+      "source": "website text",
+      "text": "…ectful, organized, and focused on the moments families want preserved: ceremony details, elders, couple portraits, reception entrances, speeches, dancing, and the relationships around the wedding day."
      }
     ],
     "events": [
@@ -21430,6 +21869,23 @@
       "text": "…agery Studio, we create family portraits, Mommy & Me portraits, baby photography, senior portraits, professional headshots, and branding photography for clients who want a guided, polished experience."
      }
     ],
+    "couples": [
+     {
+      "source": "website title",
+      "text": "couples photography fine art portraits Houston imagery",
+      "page": "/investment"
+     },
+     {
+      "source": "website description",
+      "text": "couples photography fine art portraits Houston imagery",
+      "page": "/investment"
+     },
+     {
+      "source": "website heading",
+      "text": "couples photography fine art portraits Houston imagery",
+      "page": "/investment"
+     }
+    ],
     "boudoir": [
      {
       "source": "website text",
@@ -21762,6 +22218,22 @@
      {
       "source": "website text",
       "text": "…hy Houston artistic professional portrait photography & headshot studio for executives, senior portrait, college graduation, family groups, bridal, engagement, business headshots, personal photography"
+     }
+    ],
+    "couples": [
+     {
+      "source": "website heading",
+      "text": "Cinematic Bridal & Engagement Portraits",
+      "page": "/about/"
+     },
+     {
+      "source": "website menu",
+      "text": "Bridal-Engagement Portraits"
+     },
+     {
+      "source": "website text",
+      "text": "…inematic Headshot & Portrait Photography Houston Cinematic Headshot & Portrait Photography Houston TX Cinematic Bridal & Engagement Portraits My personal motto is “Photographing You To Look Your Best!",
+      "page": "/about/"
      }
     ],
     "video": [
@@ -22175,6 +22647,22 @@
      {
       "source": "website menu",
       "text": "Seniors & Family"
+     }
+    ],
+    "couples": [
+     {
+      "source": "website title",
+      "text": "Houston latest weddings and engagement photos",
+      "page": "/latest-houston-weddings/"
+     },
+     {
+      "source": "website description",
+      "text": "Recent weddings and engagement portraits photos by Khanh Nguyen Photography, a Houston Wedding Photographer",
+      "page": "/latest-houston-weddings/"
+     },
+     {
+      "source": "website menu",
+      "text": "Engagements"
      }
     ],
     "christmas": [
@@ -23418,6 +23906,18 @@
       "text": "Families and Portraits",
       "page": "/portfolios"
      }
+    ],
+    "couples": [
+     {
+      "source": "website title",
+      "text": "Houston Engagement Photographer - Proposal Pictures Texas",
+      "page": "/portfolio/engagements"
+     },
+     {
+      "source": "website description",
+      "text": "Portfolio of wedding photography, Indian Wedding photography, engagement photography and family portrait photography",
+      "page": "/portfolios"
+     }
     ]
    }
   },
@@ -23489,6 +23989,13 @@
      {
       "source": "website text",
       "text": "…tography - Houston's Premier Portrait, Headshot & Branding, Couples, Family and Senior Photography Studio top of page +1 713 907-1875 drafte@rafte.com rafte photography EXPERIENCE SOMETHING DIFFERENT."
+     }
+    ],
+    "couples": [
+     {
+      "source": "website description",
+      "text": "…ography, including headshots, corporate & personal branding photography, senior portraits, and couples & family photo artwork, Dena Rafte Photography will capture the characteristics and unique traits…",
+      "page": "/services"
      }
     ],
     "graduation": [
@@ -24104,6 +24611,13 @@
       "page": "/weddings"
      }
     ],
+    "couples": [
+     {
+      "source": "website description",
+      "text": "Wedding Photographer Engagement Portraits Family Photos",
+      "page": "/weddings"
+     }
+    ],
     "events": [
      {
       "source": "website description",
@@ -24678,6 +25192,17 @@
       "page": "/graduation.html"
      }
     ],
+    "couples": [
+     {
+      "source": "website description",
+      "text": "Engagement",
+      "page": "/engagement.html"
+     },
+     {
+      "source": "website menu",
+      "text": "Engagement"
+     }
+    ],
     "quinceanera": [
      {
       "source": "website menu",
@@ -24975,6 +25500,16 @@
      {
       "source": "website text",
       "text": "… plus tax Claim a time Trusted by 01 Photography Branding portraits, headshots, seniors, families, maternity, couples, corporate, product, real estate and actor portfolios — shot in studio or on locat…"
+     }
+    ],
+    "couples": [
+     {
+      "source": "website menu",
+      "text": "Portraits & Seniors Milestones, families, maternity, couples from $249"
+     },
+     {
+      "source": "website text",
+      "text": "…ime Trusted by 01 Photography Branding portraits, headshots, seniors, families, maternity, couples, corporate, product, real estate and actor portfolios — shot in studio or on location across Houston."
      }
     ],
     "commercial": [
@@ -25313,6 +25848,13 @@
       "text": "…Offered: - Background swap/ color changes - Braces removal - File renaming - Retouching (hair smoothing, skin airbrushing, blemish removal, etc.) - Premium passport photos On-Location Headshots/ Envir",
       "page": "/headshot-prices"
      }
+    ],
+    "couples": [
+     {
+      "source": "website text",
+      "text": "Stunning Canvas Gallery Wraps - - Private galleries for sharing & ordering prints or gift items - - Bridal & Engagement Sessions",
+      "page": "/wedding-prices"
+     }
     ]
    }
   },
@@ -25451,6 +25993,22 @@
      {
       "source": "website heading",
       "text": "Shirley Acres Wedding Videography"
+     }
+    ],
+    "couples": [
+     {
+      "source": "website title",
+      "text": "Two Hearts Photography and Films » Houston Photographers specializing in Families, Weddings, Seniors and Children » Houston Engagement Photography",
+      "page": "/gallery/houston-engagement-photography/"
+     },
+     {
+      "source": "website description",
+      "text": "Houston Engagement Photography",
+      "page": "/gallery/houston-engagement-photography/"
+     },
+     {
+      "source": "website menu",
+      "text": "Houston Engagement Photos"
      }
     ],
     "headshots": [
@@ -25857,6 +26415,13 @@
       "text": "…p to Content Open Menu Close Menu Open Menu Close Menu Boutique Houston Photographers Get to know us Peek Photo Group is a portrait studio specializing in empowering individuals, couples and families.",
       "page": "/about-us"
      }
+    ],
+    "couples": [
+     {
+      "source": "website text",
+      "text": "…p to Content Open Menu Close Menu Open Menu Close Menu Boutique Houston Photographers Get to know us Peek Photo Group is a portrait studio specializing in empowering individuals, couples and families.",
+      "page": "/about-us"
+     }
     ]
    }
   },
@@ -25993,6 +26558,22 @@
       "source": "website heading",
       "text": "Planning a Wedding Too? We’ve Got You Covered",
       "page": "/engagement-photography/"
+     }
+    ],
+    "couples": [
+     {
+      "source": "website title",
+      "text": "Houston Engagement Photographer | Visibly Illustrated",
+      "page": "/engagement-photography/"
+     },
+     {
+      "source": "website description",
+      "text": "Looking for a Houston engagement photographer? Visibly Illustrated captures natural, romantic engagement photos that feel fun, relaxed, and true to your story.",
+      "page": "/engagement-photography/"
+     },
+     {
+      "source": "website menu",
+      "text": "Couples & Families Portrait Photography View Portfolio"
      }
     ],
     "newborn": [
@@ -26781,6 +27362,18 @@
       "page": "/services/weddings"
      }
     ],
+    "couples": [
+     {
+      "source": "website heading",
+      "text": "Families, couples & pets",
+      "page": "/christmas-mini-sessions"
+     },
+     {
+      "source": "website text",
+      "text": "We proudly serve couples searching for a dependable Katy, TX wedding photographer who want a personalized photography experience from engagement sessions through final gallery delivery.",
+      "page": "/services/weddings"
+     }
+    ],
     "events": [
      {
       "source": "website title",
@@ -27096,6 +27689,18 @@
       "page": "/senior-portraits"
      }
     ],
+    "couples": [
+     {
+      "source": "website title",
+      "text": "Engagement/Couples | Capture Your Love Today — Kevin Runge Photography",
+      "page": "/engagementcouples"
+     },
+     {
+      "source": "website description",
+      "text": "Professional couples photography capturing engagement and love moments both in-studio and outdoors in Katy, TX. Book your session today.",
+      "page": "/engagementcouples"
+     }
+    ],
     "newborn": [
      {
       "source": "website heading",
@@ -27357,6 +27962,12 @@
       "source": "website description",
       "text": "…nning Master Photographer, CPP (PPA). Professional Photography & Artistic Vision: Beautiful Portraits. Professional Headshots. Personal Branding. Wedding Anniversary Pictures. Commercial Photographer."
      }
+    ],
+    "couples": [
+     {
+      "source": "website description",
+      "text": "…nning Master Photographer, CPP (PPA). Professional Photography & Artistic Vision: Beautiful Portraits. Professional Headshots. Personal Branding. Wedding Anniversary Pictures. Commercial Photographer."
+     }
     ]
    }
   },
@@ -27473,6 +28084,13 @@
      {
       "source": "website text",
       "text": "Book Now Couples Celebrate your love with us and capture the most romantic moments in your life: engagement, wedding, St.",
+      "page": "/photography"
+     }
+    ],
+    "couples": [
+     {
+      "source": "website description",
+      "text": "…st has a wide range of available photography genre: wedding photography, portrait photography, couples photography, family photography, headshot photography, kids photography, and product photography.",
       "page": "/photography"
      }
     ],
@@ -27882,6 +28500,22 @@
      {
       "source": "website heading",
       "text": "Graduation & Senior Portraits"
+     }
+    ],
+    "couples": [
+     {
+      "source": "website title",
+      "text": "Engagement Photographer in Killeen, TX | My Canvas Portraits",
+      "page": "/couples-engagement-photographer-killeen-tx"
+     },
+     {
+      "source": "website description",
+      "text": "Need engagement photos in Killeen, TX? Get guided posing, studio or outdoor options, clear pricing, and next-day digital delivery.",
+      "page": "/couples-engagement-photographer-killeen-tx"
+     },
+     {
+      "source": "website menu",
+      "text": "couples engagement photographer killeen tx"
      }
     ],
     "commercial": [
@@ -28755,6 +29389,12 @@
       "text": "Senior portraits"
      }
     ],
+    "couples": [
+     {
+      "source": "website menu",
+      "text": "Engagement Photography"
+     }
+    ],
     "headshots": [
      {
       "source": "website text",
@@ -29488,6 +30128,12 @@
       "text": "Seniors"
      }
     ],
+    "couples": [
+     {
+      "source": "website menu",
+      "text": "Engagements"
+     }
+    ],
     "boudoir": [
      {
       "source": "website menu",
@@ -29698,6 +30344,13 @@
      {
       "source": "website menu",
       "text": "R&R Water Product shots 2023"
+     }
+    ],
+    "couples": [
+     {
+      "source": "website text",
+      "text": "Lane Photography - Wedding Packages Welcome to my portfolio Wedding Packages Looking for An Engagement Shoot?",
+      "page": "/contact"
      }
     ]
    }
@@ -30104,6 +30757,22 @@
      {
       "source": "website heading",
       "text": "Portraits"
+     }
+    ],
+    "couples": [
+     {
+      "source": "website title",
+      "text": "Couples / Engagement — Lindsay Steele Photography",
+      "page": "/sessions/couples"
+     },
+     {
+      "source": "website description",
+      "text": "Couples / Engagement — Lindsay Steele Photography",
+      "page": "/sessions/couples"
+     },
+     {
+      "source": "website text",
+      "text": "Lindsay Steele Photography 0 Skip to Content Open Menu Close Menu Open Menu Close Menu Weddings Bridals Couples / Engagement Family Seniors Maternity Headshots / Branding Portraits Creative Travel"
      }
     ],
     "seniors": [
@@ -31480,6 +32149,17 @@
       "page": "/pages/portraits-on-film"
      }
     ],
+    "couples": [
+     {
+      "source": "website heading",
+      "text": "Analog Film Photographer - Couples, Engagement, Wedding, Quinceaneras, Graduations",
+      "page": "/pages/portraits-on-film"
+     },
+     {
+      "source": "website text",
+      "text": "Available for couples, engagement sessions, graduations — cap and gown — weddings, family portraits, and other occasions worth keeping on film."
+     }
+    ],
     "quinceanera": [
      {
       "source": "website title",
@@ -31604,6 +32284,17 @@
      {
       "source": "website menu",
       "text": "Maternity Portraits"
+     }
+    ],
+    "couples": [
+     {
+      "source": "website description",
+      "text": "Looking for inspiration for your engagement session, wedding photography, or wedding tips? This page offers plenty of wedding and engagement tips.",
+      "page": "/photography-articles"
+     },
+     {
+      "source": "website menu",
+      "text": "Engagements"
      }
     ],
     "video": [
@@ -32186,6 +32877,18 @@
       "source": "website text",
       "text": "For a Senior portraits as unique as they are, contact our studio to book your session!"
      }
+    ],
+    "couples": [
+     {
+      "source": "website title",
+      "text": "engagement photography — Azure Photography",
+      "page": "/engagements"
+     },
+     {
+      "source": "website description",
+      "text": "engagement photography — Azure Photography",
+      "page": "/engagements"
+     }
     ]
    }
   },
@@ -32589,6 +33292,21 @@
      {
       "source": "website heading",
       "text": "FAMILY & MILESTONES"
+     }
+    ],
+    "couples": [
+     {
+      "source": "website heading",
+      "text": "Portraits & Couples",
+      "page": "/portfolio/"
+     },
+     {
+      "source": "website menu",
+      "text": "Portraits & Couples"
+     },
+     {
+      "source": "website text",
+      "text": "OUR SERVICES PORTRAITS & HEADSHOTS GRADUATES & SENIORS ENGAGEMENTS & COUPLES PROMS & EVENTS BIRTHDAYS & CELEBRATIONS FAMILY & MILESTONES Hi!"
      }
     ],
     "graduation": [
@@ -33904,6 +34622,17 @@
       "text": "BOUDOIR"
      }
     ],
+    "couples": [
+     {
+      "source": "website menu",
+      "text": "engagement"
+     },
+     {
+      "source": "website text",
+      "text": "Real Weddings BOOK/GET A QUOTE ENGAGEMENT PORTRAITS BRIDAL PORTRAITS REAL WEDDING GALLERY LOAD MORE WEDDING PHOTOGRAPHY WEDDING DAY - On the big day I like to start taking photos of the getting ready …",
+      "page": "/wedding"
+     }
+    ],
     "newborn": [
      {
       "source": "website description",
@@ -34501,6 +35230,13 @@
       "text": "Maternity"
      }
     ],
+    "couples": [
+     {
+      "source": "website description",
+      "text": "Explore portrait sessions at Central Gallery in Nixon, TX, including families, couples, kids, seniors, headshots and branding photography.",
+      "page": "/portrait-sessions"
+     }
+    ],
     "commercial": [
      {
       "source": "website description",
@@ -34757,6 +35493,18 @@
       "text": "FAMILY NEWBORN BOYS GIRLS OUTDOOR PHOTOGRAPHY GLAM MATERNITY Quinceañera & Sweet 16 Contact Rock A Snap Baby Photography Studio 9608 Boulder Point Rd."
      }
     ],
+    "couples": [
+     {
+      "source": "website title",
+      "text": "Couples Photography ~ Rock A Snap Baby",
+      "page": "/couples/"
+     },
+     {
+      "source": "website description",
+      "text": "Couples Photography ~ Rock A Snap Baby",
+      "page": "/couples/"
+     }
+    ],
     "commercial": [
      {
       "source": "website heading",
@@ -34850,6 +35598,23 @@
      }
     ],
     "family": [
+     {
+      "source": "website title",
+      "text": "Marks Photography - Portraits, Couples, Families and Children",
+      "page": "/portrait.html"
+     },
+     {
+      "source": "website description",
+      "text": "Marks Photography - Portraits, Couples, Families and Children",
+      "page": "/portrait.html"
+     },
+     {
+      "source": "website heading",
+      "text": "Babies, children, engagement, bridal, couples, families, pets, reunions and friends. What do all these have in common? T",
+      "page": "/portrait.html"
+     }
+    ],
+    "couples": [
      {
       "source": "website title",
       "text": "Marks Photography - Portraits, Couples, Families and Children",
@@ -35741,6 +36506,13 @@
       "source": "website menu",
       "text": "Maternity / Newborn"
      }
+    ],
+    "couples": [
+     {
+      "source": "website heading",
+      "text": "WEDDING / ENGAGEMENT SESSIONS WITH",
+      "page": "/wedding-engagement"
+     }
     ]
    }
   },
@@ -36073,6 +36845,20 @@
       "text": "Portrait Photographer capturing Families, Couples, Seniors & Headshots to preserve your special memories & improve your branding in Plano, TX & beyond."
      }
     ],
+    "couples": [
+     {
+      "source": "website description",
+      "text": "Portrait Photographer capturing Families, Couples, Seniors & Headshots to preserve your special memories & improve your branding in Plano, TX & beyond."
+     },
+     {
+      "source": "website heading",
+      "text": "Families & Couples"
+     },
+     {
+      "source": "website menu",
+      "text": "Families & Couples VIEW GALLERY →"
+     }
+    ],
     "seniors": [
      {
       "source": "website title",
@@ -36207,6 +36993,21 @@
      {
       "source": "website menu",
       "text": "Weddings Wedding and Engagement Photography Small to Large Single Day"
+     }
+    ],
+    "couples": [
+     {
+      "source": "website description",
+      "text": "Wedding and Engagement Photography",
+      "page": "/dfw-wedding-photography"
+     },
+     {
+      "source": "website menu",
+      "text": "Weddings Wedding and Engagement Photography Small to Large Single Day"
+     },
+     {
+      "source": "website text",
+      "text": "Personal Parties Cultural and Religious Events Weddings Wedding and Engagement Photography Small to Large Single Day Ceremonies Multi-day Cultural Ceremonies Fashion Fashion Photography for Catalogs a…"
      }
     ],
     "headshots": [
@@ -37299,6 +38100,22 @@
       "text": "EVENTS"
      }
     ],
+    "couples": [
+     {
+      "source": "website description",
+      "text": "Portfolio gallery showcasing signature couple images taken by Houston couple photographer, Your Best Shot Photography.",
+      "page": "/couples-gallery"
+     },
+     {
+      "source": "website heading",
+      "text": "Bridal Or Engagement Photo Session",
+      "page": "/weddings"
+     },
+     {
+      "source": "website menu",
+      "text": "couples"
+     }
+    ],
     "seniors": [
      {
       "source": "website menu",
@@ -37401,6 +38218,12 @@
       "page": "/engagement/"
      }
     ],
+    "couples": [
+     {
+      "source": "website menu",
+      "text": "engagement"
+     }
+    ],
     "weddings": [
      {
       "source": "website menu",
@@ -37471,6 +38294,16 @@
       "source": "website heading",
       "text": "MATERNITY SESSION",
       "page": "/maternity-photography-in-roanoke-dallasfort-worth"
+     }
+    ],
+    "couples": [
+     {
+      "source": "website menu",
+      "text": "couples and engagements 2"
+     },
+     {
+      "source": "website text",
+      "text": "Elantra Photography is based in Roanoke, TX, and proudly serves families, couples, and businesses across Dallas–Fort Worth — including Southlake, Grapevine, and the surrounding area."
      }
     ],
     "graduation": [
@@ -37686,6 +38519,12 @@
      {
       "source": "website menu",
       "text": "Grads"
+     }
+    ],
+    "couples": [
+     {
+      "source": "website menu",
+      "text": "Engagements"
      }
     ]
    }
@@ -37931,6 +38770,16 @@
      {
       "source": "website menu",
       "text": "sessions wedding"
+     },
+     {
+      "source": "website text",
+      "text": "…sals and anniversaries to the simple joy of creating timeless memories together Discover this session → 10 EXPERIENCE Wedding portraits An intimate studio portrait session for the couple in wedding at"
+     }
+    ],
+    "couples": [
+     {
+      "source": "website menu",
+      "text": "Couple"
      },
      {
       "source": "website text",
@@ -38368,6 +39217,12 @@
       "text": "…ers professional fine portrait photography services including but not limited to: Portrait photography sessions Fine art and family portraits Session consultations and planning Image delivery and prin",
       "page": "/terms-of-service"
      }
+    ],
+    "couples": [
+     {
+      "source": "website description",
+      "text": "Rebecca Rose Fine Portraits. Luxury fine art heirloom portraiture with locations in Florida, Texas, and Connecticut. Creating timeless artwork for families, couples, children, and pets."
+     }
     ]
    }
   },
@@ -38434,6 +39289,13 @@
      }
     ],
     "family": [
+     {
+      "source": "website text",
+      "text": "& Book Now Portraits Professional studio portraits for individuals, couples, families, creatives, and anyone looking for something beyond a basic snapshot.",
+      "page": "/services/photography/"
+     }
+    ],
+    "couples": [
      {
       "source": "website text",
       "text": "& Book Now Portraits Professional studio portraits for individuals, couples, families, creatives, and anyone looking for something beyond a basic snapshot.",
@@ -38658,6 +39520,13 @@
       "page": "/services_page_2.html"
      }
     ],
+    "couples": [
+     {
+      "source": "website description",
+      "text": "Weddings engagements portraits proms group photos pet photos family reunions instant prints while you wait fairs photo processing and restoration enlargments oil on canvas prints t-shirts mugs plates …",
+      "page": "/services.html"
+     }
+    ],
     "pets": [
      {
       "source": "website description",
@@ -38797,6 +39666,16 @@
      {
       "source": "website text",
       "text": "… Angelo, Christoval, Mertzon, Miles, GrapeCreek, Eldorado, Wall, Texas Click/tap to view larger click below on the portfolio that interests you seniors family couples headshots contact me about me I s"
+     }
+    ],
+    "couples": [
+     {
+      "source": "website description",
+      "text": "…nd Senior Photographers Snyder Senior Pictures Snyder Senior Photographers San Angelo Family Photographers San Angelo Couples Photographers San Angelo Portrait Photographers 76901, 76902, 76903, 76904"
+     },
+     {
+      "source": "website menu",
+      "text": "couples"
      }
     ],
     "seniors": [
@@ -39111,6 +39990,22 @@
       "text": "Weddings"
      }
     ],
+    "couples": [
+     {
+      "source": "website title",
+      "text": "Engagements",
+      "page": "/engagements"
+     },
+     {
+      "source": "website description",
+      "text": "Engagements",
+      "page": "/engagements"
+     },
+     {
+      "source": "website menu",
+      "text": "Engagements"
+     }
+    ],
     "video": [
      {
       "source": "website menu",
@@ -39234,6 +40129,13 @@
      {
       "source": "website heading",
       "text": "Headshot Portraits"
+     }
+    ],
+    "couples": [
+     {
+      "source": "website text",
+      "text": "Each wedding collection includes a complimentary 60-minute engagement session.",
+      "page": "/wedding-photography"
      }
     ]
    }
@@ -39658,6 +40560,17 @@
       "text": "Maternity Portraits"
      }
     ],
+    "couples": [
+     {
+      "source": "website description",
+      "text": "Looking for inspiration for your engagement session, wedding photography, or wedding tips? This page offers plenty of wedding and engagement tips.",
+      "page": "/photography-articles"
+     },
+     {
+      "source": "website menu",
+      "text": "Engagements"
+     }
+    ],
     "real-estate": [
      {
       "source": "website title",
@@ -40047,6 +40960,22 @@
       "text": "Maternity Pictures"
      }
     ],
+    "couples": [
+     {
+      "source": "website title",
+      "text": "Engagement Photography, Bridal Portraits | San Antonio, Texas - Jessica Suarez Photography",
+      "page": "/engagement-bridal-portraits.html"
+     },
+     {
+      "source": "website description",
+      "text": "…ssional photographer who specializing in newborn portraits, family pictures, maternity photo shoots, engagement pictures and more! Take pictures in-home or on location with a local photographer in SA."
+     },
+     {
+      "source": "website heading",
+      "text": "Bridal Portraits and Engagement Photography",
+      "page": "/engagement-bridal-portraits.html"
+     }
+    ],
     "newborn": [
      {
       "source": "website title",
@@ -40161,6 +41090,22 @@
      {
       "source": "website menu",
       "text": "Portraits can and SHOULD be taken past wedding day"
+     }
+    ],
+    "couples": [
+     {
+      "source": "website title",
+      "text": "Dos Palomas Ranch Engagement Session | Boerne Wedding Photographer",
+      "page": "/dos-palomas-ranch-engagement-session-triny-chris/"
+     },
+     {
+      "source": "website description",
+      "text": "Explore the beauty of Dos Palomas Ranch in Boerne, TX on this adventurous couples photo session! Capturing memories one snap at a time amidst the stunning scenic views this wedding venue has to offer.…",
+      "page": "/dos-palomas-ranch-engagement-session-triny-chris/"
+     },
+     {
+      "source": "website menu",
+      "text": "Engagement"
      }
     ]
    }
@@ -40386,6 +41331,18 @@
      {
       "source": "website description",
       "text": "The premier portrait photographer for San Antonio, Boerne, and New Braunfels. Services include headshots, family portraits, maternity, and senior sessions in-studio or on location."
+     }
+    ],
+    "couples": [
+     {
+      "source": "website description",
+      "text": "San Antonio portrait photographer creating studio photos for maternity, families, couples, and women with a relaxed, guided experience.",
+      "page": "/portrait-photographer"
+     },
+     {
+      "source": "website heading",
+      "text": "Couples Portraits",
+      "page": "/portrait-photographer"
      }
     ],
     "boudoir": [
@@ -40748,6 +41705,13 @@
       "source": "website text",
       "text": "Gallery Services Service Information Event Photography Professional photo coverage for weddings, concerts, graduations, and every milestone Read More From 650 US dollars From $650 Book Now Family Phot…"
      }
+    ],
+    "couples": [
+     {
+      "source": "website description",
+      "text": "…n is perfect for capturing joyful moments in a short and sweet format—great for families, couples, kids, pets, or seasonal updates. Quick, fun, and hassle-free. 📍 Marbach Lane – clean, versatile outdo…",
+      "page": "/service-page/mini-session"
+     }
     ]
    }
   },
@@ -40784,6 +41748,12 @@
       "source": "website text",
       "text": "…ural, photojournalistic style, with optional headshot station setups available on-site Drone & Aerial Photography – Available for select events and properties with videography options included – a 107",
       "page": "/pricing-check-your-date/"
+     }
+    ],
+    "couples": [
+     {
+      "source": "website menu",
+      "text": "Engagements"
      }
     ],
     "portraits": [
@@ -41346,6 +42316,13 @@
       "source": "website menu",
       "text": "PROMS | GRADS"
      }
+    ],
+    "couples": [
+     {
+      "source": "website description",
+      "text": "Engagement",
+      "page": "/engagement/"
+     }
     ]
    }
   },
@@ -41647,6 +42624,13 @@
       "text": "…ude executive headshots, on-location employee portraits, exterior architecture photography, interior location photography, professional event coverage, cohesive campaign images, and product photograph",
       "page": "/sessions"
      }
+    ],
+    "couples": [
+     {
+      "source": "website text",
+      "text": "*Special Note: as of Jan 31st, 2024, we only accept Wedding bookings if we shoot your engagement session.",
+      "page": "/sessions"
+     }
     ]
    }
   },
@@ -41748,6 +42732,12 @@
       "text": "Seniors"
      }
     ],
+    "couples": [
+     {
+      "source": "website menu",
+      "text": "Families & Couples"
+     }
+    ],
     "christmas": [
      {
       "source": "website title",
@@ -41836,6 +42826,16 @@
       "text": "Specializing in Weddings, Family and Children Portraits, Newborns and High School Seniors Join us on Facebook for sneak peeks, specials and announcements!"
      }
     ],
+    "couples": [
+     {
+      "source": "website menu",
+      "text": "engagement photography"
+     },
+     {
+      "source": "website text",
+      "text": "We offer the following services: wedding photography , engagement photography , bridal photography , senior portrait photography , newborn photography, child photography and family photography ."
+     }
+    ],
     "portraits": [
      {
       "source": "website title",
@@ -41882,6 +42882,13 @@
       "source": "website description",
       "text": "Indoor studio photographer based in Snyder, TX. Studio photography in West Texas. Cake smash photography.",
       "page": "/indoorstudio"
+     }
+    ],
+    "couples": [
+     {
+      "source": "website text",
+      "text": "The bridal experience From engagement photos, rehearsal dinners, and especially the day of your wedding, makeup plays an important role in having your full bridal experience.",
+      "page": "/makeup-services"
      }
     ]
    }
@@ -42432,6 +43439,12 @@
       "text": "…ortraits, Graduation Photography, Children’s Photography, Birthday Portraits, Quinceanera Portraits, Prom Portraits, Sweet 16, Engagement Photos, Maternity Portraiture, Holiday Photos, Dance Portraits"
      }
     ],
+    "couples": [
+     {
+      "source": "website text",
+      "text": "…ortraits, Graduation Photography, Children’s Photography, Birthday Portraits, Quinceanera Portraits, Prom Portraits, Sweet 16, Engagement Photos, Maternity Portraiture, Holiday Photos, Dance Portraits"
+     }
+    ],
     "newborn": [
      {
       "source": "website heading",
@@ -42558,6 +43571,21 @@
      {
       "source": "website menu",
       "text": "Maternity"
+     }
+    ],
+    "couples": [
+     {
+      "source": "website description",
+      "text": "Newborn, maternity, family, couples photographer located in The Woodlands, Texas - Serving the great Houston, Galveston, College Station area."
+     },
+     {
+      "source": "website menu",
+      "text": "engagement"
+     },
+     {
+      "source": "website text",
+      "text": "Portraits Couples, Families, Maternity, Seniors $950 Milestones and Children Cakesmashes Starting at $375 Newborns Studio Newborn, Fresh 48s, Lifestyle Starting at $500 All sessions require a 30% non-…",
+      "page": "/investment/"
      }
     ],
     "newborn": [
@@ -42925,6 +43953,16 @@
       "source": "website heading",
       "text": "Can my partner or children be included in maternity portraits?"
      }
+    ],
+    "couples": [
+     {
+      "source": "website heading",
+      "text": "Can our dog join a family or couples portrait session?"
+     },
+     {
+      "source": "website text",
+      "text": "is your portrait photographer based in the Waterway district of Town Center in The Woodlands, TX, serving families, couples, students, professionals, models, and local brands."
+     }
     ]
    }
   },
@@ -43003,6 +44041,13 @@
      {
       "source": "website text",
       "text": "We specialize in newborn photography, maternity sessions, children, family, engagement, and senior portraiture, and provide unique, custom designed albums, canvas wall art, birth announcements, invita…",
+      "page": "/families-1"
+     }
+    ],
+    "couples": [
+     {
+      "source": "website text",
+      "text": "Whether it's an Engagement Session, Maternity Session, Dreamy Newborn Session, Children Session, Family Session, Tween Session, Senior Session, or a themed Mini Session, we would be so honored to be y…",
       "page": "/families-1"
      }
     ]
@@ -43821,6 +44866,23 @@
       "source": "website heading",
       "text": "Professional Headshots & Team Photography in The Woodlands",
       "page": "/headshots"
+     }
+    ],
+    "couples": [
+     {
+      "source": "website title",
+      "text": "Couples & Engagement Portraits — The Woodlands, TX | Plouvier Art",
+      "page": "/couples"
+     },
+     {
+      "source": "website description",
+      "text": "Romantic, editorial couples and engagement portraits in The Woodlands, Texas. A relaxed, guided session designed to feel like you, not a posed photoshoot.",
+      "page": "/couples"
+     },
+     {
+      "source": "website heading",
+      "text": "Couples & Engagement Portraits",
+      "page": "/couples"
      }
     ],
     "events": [
@@ -45464,6 +46526,17 @@
      {
       "source": "website menu",
       "text": "wedding"
+     }
+    ],
+    "couples": [
+     {
+      "source": "website menu",
+      "text": "Couples"
+     },
+     {
+      "source": "website text",
+      "text": "About - Rosey Tones Photography Home About Investment Portfolio Family Couples Portraits Contact About Me Get to Know Me a Little Better Hello Everyone, I am a Maribel Balderas, the face behind Rosey …",
+      "page": "/about/"
      }
     ]
    }

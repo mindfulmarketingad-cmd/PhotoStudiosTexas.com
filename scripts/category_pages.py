@@ -72,6 +72,11 @@ INTRO = {
         "Every studio below has evidence it offers those items for rent — a prop or backdrop rental, a set rental, or a prop library for renters. "
         "A studio that only uses props in its own sessions is not listed here."
     ),
+    "couples": (
+        "Couples photographers shoot engagement, anniversary, proposal, and couples portrait sessions. "
+        "Every studio below has evidence it offers couples, engagement, anniversary, or proposal photography on its listing or its own website. "
+        "A testimonial about “the happy couple,” the phrase “a couple of,” or a husband-and-wife team bio does not count."
+    ),
     "newborn": (
         "Newborn and baby photographers photograph infants in the first days and months, including posed newborn sessions and cake smashes. "
         "Every studio below has evidence it offers newborn or baby photography on its listing or its own website."
