@@ -1,0 +1,159 @@
+{
+  "source_file": "data/source/outscraper-photography-studio-tx.xlsx",
+  "source_rows": 2006,
+  "rows_by_state_code": {
+    "TX": 1946,
+    "NY": 18,
+    "NJ": 15,
+    "AR": 4,
+    "VA": 4,
+    "TN": 4,
+    "MI": 4,
+    "NM": 2,
+    "SC": 2,
+    "GA": 1,
+    "NC": 1,
+    "OH": 1,
+    "CT": 1,
+    "LA": 1,
+    "MN": 1,
+    "PA": 1
+  },
+  "dropped_non_texas": 60,
+  "dropped_non_texas_by_state": {
+    "NY": 18,
+    "NJ": 15,
+    "AR": 4,
+    "VA": 4,
+    "TN": 4,
+    "MI": 4,
+    "NM": 2,
+    "SC": 2,
+    "GA": 1,
+    "NC": 1,
+    "OH": 1,
+    "CT": 1,
+    "LA": 1,
+    "MN": 1,
+    "PA": 1
+  },
+  "dropped_permanently_closed_in_texas": 84,
+  "dropped_incomplete_texas_rows": 0,
+  "duplicates_removed": 2,
+  "duplicate_rows": [
+    {
+      "name": "Willow Haus",
+      "city": "Mineral Wells",
+      "address": "Texas, Mineral Wells, 4016 S IS Hwy 281, 美国邮政编码: 76067",
+      "dropped_place_id": "ChIJhyYPvOz0UYYR3ddr3jjv0FM",
+      "kept_place_id": "ChIJRRtdNDkUUoYR3fwGOVFZMEw",
+      "kept_address": "4016 S IS Hwy 281, Mineral Wells, TX 76067",
+      "dropped_reviews": null,
+      "kept_reviews": null
+    },
+    {
+      "name": "The Evergreen Studios",
+      "city": "Houston",
+      "address": "600 N Shepherd Dr Ste 100 Building 1, Houston, TX 77007",
+      "dropped_place_id": "ChIJYbJWEyE3R4YRwNDBVyckpFA",
+      "kept_place_id": "ChIJg19IJpOpVycRlKsh0BybkOA",
+      "kept_address": "600 N Shepherd Dr Ste 100 Building 1, Houston, TX 77007",
+      "dropped_reviews": 2,
+      "kept_reviews": 11
+    }
+  ],
+  "city_name_normalizations": {
+    "St Jo -> Saint Jo": 1,
+    "Mt Pleasant -> Mount Pleasant": 2
+  },
+  "kept_by_business_status": {
+    "OPERATIONAL": 1772,
+    "CLOSED_TEMPORARILY": 88
+  },
+  "studio_count": 1860,
+  "city_count": 324,
+  "cities_with_one_studio": 147,
+  "top_cities": [
+    [
+      "Houston",
+      284
+    ],
+    [
+      "Dallas",
+      152
+    ],
+    [
+      "Austin",
+      123
+    ],
+    [
+      "San Antonio",
+      93
+    ],
+    [
+      "Fort Worth",
+      64
+    ],
+    [
+      "El Paso",
+      45
+    ],
+    [
+      "McKinney",
+      29
+    ],
+    [
+      "Arlington",
+      26
+    ],
+    [
+      "Katy",
+      26
+    ],
+    [
+      "McAllen",
+      24
+    ],
+    [
+      "Spring",
+      24
+    ],
+    [
+      "Plano",
+      22
+    ],
+    [
+      "Lubbock",
+      17
+    ],
+    [
+      "Corpus Christi",
+      16
+    ],
+    [
+      "Grand Prairie",
+      15
+    ]
+  ],
+  "missing_fields": {
+    "phone": 361,
+    "website": 483,
+    "rating": 504,
+    "hours": 495,
+    "photo": 62,
+    "logo": 333,
+    "description": 1859,
+    "street": 13,
+    "maps_url": 0
+  },
+  "decisions": [
+    "Kept rows whose state_code is TX (or whose state name is Texas).",
+    "Dropped every other state. The export query 'Photography studio in TX' also returned same-name matches such as Dallas, GA and New York studios.",
+    "Dropped business_status CLOSED_PERMANENTLY. CLOSED_TEMPORARILY stays, and pages label it as temporarily closed.",
+    "Did not merge cities that have few listings into a neighbor. Every studio stays on the city named in the listing. Nearby-city links are generated at build time from listing coordinates.",
+    "City names are preserved except whitespace cleanup and a short alias list: Mt Pleasant -> Mount Pleasant, St Jo -> Saint Jo, plus Fort Worth / DeSoto / McKinney / McAllen variants for future exports.",
+    "Deduped listings that share a normalized name, city, and street address (exact normalized address, or the same street numbers with very similar address text). Chain locations with different addresses are kept. The kept row is the one with more reviews, then rating, then operational status, photo, phone, and website.",
+    "No descriptions, ratings, hours, phones, or photos were filled in when the export left them blank.",
+    "The category shown is the export's type field (Photography studio, Photographer, and so on). The subtypes list is kept separately. The export's category column was empty for almost every row."
+  ]
+}
