@@ -147,3 +147,9 @@ vercel.json               build command and dist output
 - Refresh website info with `python3 scripts/enrich_websites.py` (use `--refresh` to refetch all), then `python3 scripts/clean_data.py`, `python3 scripts/render_city_images.py` if cities changed, and `python3 scripts/build.py`.
 
 `dist/` is gitignored. Vercel creates it on deploy.
+
+## Forms, uploads and analytics
+
+- Order, contact and claim/removal forms post to `api/submit.js`, which emails the owner through Resend. Vercel env vars: `RESEND_API_KEY` (sending-only key), `FORM_TO_EMAIL`, `FORM_FROM_EMAIL` (must be on a Resend-verified domain).
+- Customer photos upload straight to Vercel Blob through `api/upload.js` (25 MB each, up to 12 files). Env var: `BLOB_READ_WRITE_TOKEN`. The browser uploader is bundled with `npm run bundle:upload` into `assets/blob-upload.js`.
+- Vercel Web Analytics is enabled for the project; the script is `/_vercel/insights/script.js`.
