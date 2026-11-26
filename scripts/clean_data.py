@@ -589,7 +589,7 @@ def main() -> None:
 
     payload = {
         "source": source.name,
-        "canonical_base": "https://www.photostudiostexas.com",
+        "canonical_base": "https://photostudiostexas.com",
         "studio_count": len(studios),
         "city_count": len({studio["city_slug"] for studio in studios}),
         "studios": studios,

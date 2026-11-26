@@ -1,6 +1,6 @@
 # PhotoStudiosTexas.com
 
-Static directory of photo studios in Texas, plus photo editing and photo enhancement services. Pages are plain HTML generated from a cleaned Outscraper export. [Vercel](https://vercel.com) builds the site with `python3 scripts/build.py` and serves `dist/`. The canonical base URL is `https://www.photostudiostexas.com` (attach the domain in Vercel when you are ready; no template change is required).
+Static directory of photo studios in Texas, plus photo editing and photo enhancement services. Pages are plain HTML generated from a cleaned Outscraper export. [Vercel](https://vercel.com) builds the site with `python3 scripts/build.py` and serves `dist/`. The canonical base URL is `https://photostudiostexas.com`.
 
 ## Page counts from this export
 

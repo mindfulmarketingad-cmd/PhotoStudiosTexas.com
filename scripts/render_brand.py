@@ -53,7 +53,7 @@ ORANGE = "#e85d04"
 WHITE = "#ffffff"
 
 SUBSET_TEXT = (
-    "PhotoStudiosTexas.com www.photostudiostexas.com "
+    "PhotoStudiosTexas.com photostudiostexas.com "
     "A directory of photo studios across Texas"
 )
 
@@ -189,7 +189,7 @@ def og_svg(font_data: bytes) -> str:
   {placed_logo}
   <text x="80" y="360" fill="{WHITE}" font-family="PhotoStudiosTexas, Inter, Helvetica, Arial, sans-serif" font-size="32" font-weight="600">Photo studios across Texas</text>
   <rect x="80" y="392" width="92" height="6" fill="{ORANGE}"/>
-  <text x="80" y="520" fill="{ORANGE}" font-family="PhotoStudiosTexas, Inter, Helvetica, Arial, sans-serif" font-size="22" font-weight="600">www.photostudiostexas.com</text>
+  <text x="80" y="520" fill="{ORANGE}" font-family="PhotoStudiosTexas, Inter, Helvetica, Arial, sans-serif" font-size="22" font-weight="600">photostudiostexas.com</text>
   <svg x="830" y="155" width="300" height="300" viewBox="0 0 64 64">
 {mark_elements(WHITE, BLACK)}
   </svg>

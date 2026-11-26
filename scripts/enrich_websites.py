@@ -27,7 +27,7 @@ from bs4 import BeautifulSoup
 ROOT = Path(__file__).resolve().parents[1]
 STUDIOS = ROOT / "data" / "studios.json"
 OUT = ROOT / "data" / "website-enrichment.json"
-UA = "Mozilla/5.0 (compatible; PhotoStudiosTexasBot/1.0; +https://www.photostudiostexas.com)"
+UA = "Mozilla/5.0 (compatible; PhotoStudiosTexasBot/1.0; +https://photostudiostexas.com)"
 SOCIAL = {
     "instagram": r"instagram\.com",
     "facebook": r"facebook\.com",
