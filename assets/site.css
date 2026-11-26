@@ -751,3 +751,4 @@ label { display: block; font-size: 0.9rem; font-weight: 700; margin: 0.7rem 0 0.
   .blog-item { grid-template-columns: 1fr; }
 }
 .near-bar[hidden] { display: none; }
+#near-precise[hidden] { display: none; }
