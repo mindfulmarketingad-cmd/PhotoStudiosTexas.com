@@ -18,6 +18,7 @@ from pathlib import Path
 
 from directory_pages import DirectoryMixin
 from extra_pages import TOOLS, ExtrasMixin
+from trust_pages import LEGAL_LINKS, TrustMixin
 
 ROOT = Path(__file__).resolve().parents[1]
 DIST = ROOT / "dist"
@@ -231,7 +232,7 @@ class City:
         return len(self.studios)
 
 
-class Site(DirectoryMixin, ExtrasMixin):
+class Site(DirectoryMixin, ExtrasMixin, TrustMixin):
     def __init__(self):
         payload = load_json(DATA_PATH)
         self.config = load_json(CONFIG_PATH)
@@ -253,6 +254,7 @@ class Site(DirectoryMixin, ExtrasMixin):
         self.featured = self._featured()
         self.primary_service = self.services[0]
         self.pages: list[tuple[str, str]] = []
+        self.year = 2026
 
     def _nearby(self, limit: int) -> dict[str, list[tuple[float, City]]]:
         found = {}
@@ -380,7 +382,7 @@ class Site(DirectoryMixin, ExtrasMixin):
   <div class="wrap header-inner">
     <a class="logo" href="/"><img src="/assets/logo-light.svg" alt="PhotoStudiosTexas" width="276" height="48"></a>
     <input class="nav-toggle" id="nav-toggle" type="checkbox">
-    <label class="nav-burger" for="nav-toggle" aria-label="Menu"><span></span></label>
+    <label class="nav-burger" for="nav-toggle" role="button"><b class="visually-hidden">Menu</b><span></span></label>
     <nav class="nav" aria-label="Primary">{''.join(links)}</nav>
   </div>
 </header>"""
@@ -429,7 +431,8 @@ class Site(DirectoryMixin, ExtrasMixin):
     </div>
   </div>
   <div class="wrap legal">
-    <p>Listing details come from public business listings and may be out of date. PhotoStudiosTexas.com is not the studio and is not affiliated with Google.</p>
+    <p class="legal-links">{self.legal_links_html()} · <a href="{self.claim_href()}">Claim or remove a listing</a></p>
+    <p>Listing details come from public Google Maps information and may be out of date. PhotoStudiosTexas.com is independent and is not affiliated with Google or the studios listed. &copy; {self.year} Photo Studios Texas.</p>
   </div>
 </footer>"""
 
@@ -541,6 +544,8 @@ class Site(DirectoryMixin, ExtrasMixin):
 {self.footer()}
 <script src="/assets/site-config.js"></script>
 <script src="/assets/site.js"></script>{extra_js}
+<script>window.va=window.va||function(){{(window.vaq=window.vaq||[]).push(arguments);}};</script>
+<script defer src="/_vercel/insights/script.js"></script>
 </body>
 </html>
 """
@@ -558,42 +563,6 @@ class Site(DirectoryMixin, ExtrasMixin):
             f'<a class="city-card" data-city="{esc(city.name)}" href="{city.path}">'
             f'<span>{esc(city.name)}</span><strong>{city.count} <span class="visually-hidden">{noun}</span></strong></a>'
         )
-
-    def order_form(self, service: dict | None, subject: str, submit_label: str) -> str:
-        endpoint = str(self.config.get("ORDER_FORM_ENDPOINT") or "").strip()
-        if endpoint.startswith("https://"):
-            action = endpoint
-            enctype = "application/x-www-form-urlencoded"
-        elif self.email:
-            action = f"mailto:{self.email}"
-            enctype = "text/plain"
-        else:
-            action = "#order"
-            enctype = "text/plain"
-        options = []
-        if service is None:
-            options.append('<option value="">General question</option>')
-        for item in self.services:
-            selected = " selected" if service and item["slug"] == service["slug"] else ""
-            options.append(
-                f'<option value="{esc(item["slug"])}"{selected}>{esc(item["name"])}</option>'
-            )
-        required = " required" if service is not None else ""
-        placeholder = "What should change in the photos?"
-        if service and service.get("formPlaceholder"):
-            placeholder = service["formPlaceholder"]
-        return f"""<form id="order-form" class="form-card" action="{esc(action)}" method="post" enctype="{enctype}" data-subject="{esc(subject)}">
-  <label for="order-service">Service</label>
-  <select id="order-service" name="service"{required}>{"".join(options)}</select>
-  <label for="order-name">Name</label>
-  <input id="order-name" name="name" type="text" autocomplete="name" required>
-  <label for="order-email">Email</label>
-  <input id="order-email" name="email" type="email" autocomplete="email" required>
-  <label for="order-instructions">Instructions</label>
-  <textarea id="order-instructions" name="instructions" required placeholder="{esc(placeholder)}"></textarea>
-  <p class="note">Image upload: this form does not receive files. Paste a share link to your images in the instructions. If your email app opens, attach the files there.</p>
-  <button class="btn" type="submit">{esc(submit_label)}</button>
-</form>"""
 
     def build_home(self) -> None:
         studio_count = len(self.studios)
@@ -864,13 +833,13 @@ class Site(DirectoryMixin, ExtrasMixin):
                 f'data-payment-key="{esc(key)}" '
                 f'target="_blank" rel="noopener noreferrer">{esc(service["orderButtonLabel"])}</a>'
             )
-            payment_note = "<p>You’ll complete payment on the secure checkout page.</p>"
+            payment_note = '<p>You’ll complete payment on the secure checkout page, then send your photos in the <a href="#order">order form</a>. See our <a href="/refund-policy/">refund policy</a>.</p>'
         elif price:
             button = (
                 f'<a class="btn btn-orange" id="order-now" href="#order" '
                 f'data-payment-key="{esc(key)}">{esc(service["orderButtonLabel"])}</a>'
             )
-            payment_note = "<p>Include a link to your photos in the order form below.</p>"
+            payment_note = '<p>Upload your photos in the <a href="#order">order form</a> below.</p>'
         else:
             button = '<a class="btn btn-orange" href="#order">Request this service</a>'
             payment_note = "<p>The price will appear here once it is set. Use the form below to request this service.</p>"
@@ -1062,6 +1031,7 @@ class Site(DirectoryMixin, ExtrasMixin):
         static.append(("/tools/", "Free photo tools"))
         static.extend((f"/tools/{tool['slug']}/", tool["name"]) for tool in TOOLS)
         static.append(("/about/", "About / Contact"))
+        static.extend(LEGAL_LINKS)
         static_html = "".join(f'<li><a href="{href}">{esc(label)}</a></li>' for href, label in static)
         groups = []
         for city in self.by_name:
@@ -1092,11 +1062,32 @@ class Site(DirectoryMixin, ExtrasMixin):
         ))
 
     def build_404(self) -> None:
-        body = """<div class="wrap page-head">
-  <h1>Page not found</h1>
+        city_links = "".join(
+            f'<li><a href="{city.path}">{esc(city.name)}</a> <span class="muted">({city.count})</span></li>'
+            for city in self.by_count[:8]
+        )
+        body = f"""<div class="wrap page-head not-found">
+  <p class="eyebrow">Error 404</p>
+  <h1>That page isn’t in the frame</h1>
   <hr class="rule">
-  <p>That page is not in the directory.</p>
-  <p><a class="btn" href="/">Back to Texas studios</a></p>
+  <p class="lede">The page you were looking for has moved or doesn’t exist. Try one of these instead.</p>
+  <p><a class="btn btn-orange" href="/">Back to Texas studios</a> <a class="btn" href="/cities/">Browse all cities</a></p>
+  <div class="split">
+    <div>
+      <h2>Popular cities</h2>
+      <ul class="plain-list">{city_links}</ul>
+    </div>
+    <div>
+      <h2>More from the site</h2>
+      <ul class="plain-list">
+        <li><a href="/blog/">Best photo studios by city</a></li>
+        <li><a href="/tools/">Free photo tools</a></li>
+        <li><a href="/services/">Photo editing &amp; enhancement</a></li>
+        <li><a href="/about/">About &amp; contact</a></li>
+        <li><a href="/sitemap/">HTML sitemap</a></li>
+      </ul>
+    </div>
+  </div>
 </div>"""
         document = self.layout(
             "Page not found | PhotoStudiosTexas.com",
@@ -1162,6 +1153,7 @@ class Site(DirectoryMixin, ExtrasMixin):
         (assets / "search-index.json").write_text(json.dumps(index, ensure_ascii=False), encoding="utf-8")
         shutil.copyfile(ROOT / "assets" / "site.css", assets / "site.css")
         shutil.copyfile(ROOT / "assets" / "site.js", assets / "site.js")
+        shutil.copyfile(ROOT / "assets" / "blob-upload.js", assets / "blob-upload.js")
         shutil.copyfile(ROOT / "assets" / "directory.css", assets / "directory.css")
         shutil.copyfile(ROOT / "assets" / "directory.js", assets / "directory.js")
         city_images = ROOT / "assets" / "city-images"
@@ -1188,6 +1180,8 @@ class Site(DirectoryMixin, ExtrasMixin):
         self.build_studios()
         self.build_blog()
         self.build_tools()
+        self.build_legal()
+        self.build_claim_pages()
         self.build_html_sitemap()
         self.build_404()
         self.build_feeds()

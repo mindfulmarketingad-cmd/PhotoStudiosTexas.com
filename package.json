@@ -1,0 +1,15 @@
+{
+  "name": "photostudiostexas",
+  "private": true,
+  "version": "1.0.0",
+  "description": "PhotoStudiosTexas.com static directory with form and upload functions",
+  "dependencies": {
+    "@vercel/blob": "^2.0.0"
+  },
+  "devDependencies": {
+    "esbuild": "^0.25.0"
+  },
+  "scripts": {
+    "bundle:upload": "esbuild assets/src/blob-upload.src.js --bundle --minify --format=iife --outfile=assets/blob-upload.js"
+  }
+}

@@ -594,7 +594,12 @@ class ExtrasMixin:
         lines += ["", "## Largest city directories"]
         for city in self.by_count[:20]:
             lines.append(f"- [Photo studios in {city.name}, TX]({self.abs_url(city.path)}): {city.count} studios")
-        lines += ["", "## Contact", f"- {self.email or 'See the About page'}", ""]
+        lines += ["", "## Policies",
+                  f"- [Privacy Policy]({self.abs_url('/privacy/')})",
+                  f"- [Terms of Service]({self.abs_url('/terms/')})",
+                  f"- [Refund Policy]({self.abs_url('/refund-policy/')})",
+                  f"- [Directory Disclaimer]({self.abs_url('/disclaimer/')}): listing data comes from public Google Maps information; not affiliated with Google or the studios",
+                  "", "## Contact", f"- {self.email or 'Use the contact form on the About page: ' + self.abs_url('/about/') + '#contact'}", ""]
         (self._dist() / "llms.txt").write_text("\n".join(lines), encoding="utf-8")
 
     def _dist(self) -> Path:

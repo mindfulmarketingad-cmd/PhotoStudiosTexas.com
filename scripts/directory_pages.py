@@ -674,7 +674,8 @@ class DirectoryMixin:
     <aside class="panel studio-aside">
       <h2>Details</h2>
       <dl class="facts">{self.facts_html(studio)}</dl>
-      <p class="note">Listing data comes from Google and the studio's website and may be out of date.</p>
+      <p class="note">Listing data comes from Google and the studio's website and may be out of date. <a href="/disclaimer/">About our data</a>.</p>
+      <p class="claim-links"><strong>Own or manage this studio?</strong><br><a href="{esc(self.claim_href(studio["name"], studio["url_path"]))}" rel="nofollow">Claim or update this listing</a><br><a href="{esc(self.claim_href(studio["name"], studio["url_path"], True))}" rel="nofollow">Request removal</a></p>
     </aside>
   </div>
   {self.related_html(studio, city, info)}

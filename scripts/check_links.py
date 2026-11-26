@@ -15,6 +15,7 @@ ROOT = Path(__file__).resolve().parents[1]
 DIST = ROOT / "dist"
 CONFIG = json.loads((ROOT / "config" / "site.json").read_text(encoding="utf-8"))
 BASE = CONFIG["canonicalBase"].rstrip("/")
+NOINDEX: set[str] = set()  # noindex pages (404, thanks, claim form): kept out of the sitemap and orphan check
 
 REQUIRED_SNIPPETS = [
     "/favicon.svg",
@@ -44,6 +45,7 @@ ROOT_FILES = [
     "assets/logo-dark.svg",
     "assets/site.css",
     "assets/site.js",
+    "assets/blob-upload.js",
     "assets/directory.css",
     "assets/directory.js",
     "assets/site-config.js",
@@ -131,12 +133,18 @@ def internal_target(href: str) -> str | None:
         path = parts.path or "/"
     else:
         path = href
-    path = unquote(urldefrag(path)[0])
+    path = unquote(urldefrag(path)[0]).split("?", 1)[0]
+    if path.startswith(("/_vercel/", "/api/")):
+        return None  # served by Vercel at runtime
     if not path.startswith("/"):
         return "RELATIVE"
     if path != "/" and not Path(path).suffix and not path.endswith("/"):
         path += "/"
     return path
+
+
+def sitemap_paths(locs: list[str]) -> set[str]:
+    return {loc[len(BASE):] or "/" for loc in locs}
 
 
 def main() -> int:
@@ -158,6 +166,8 @@ def main() -> int:
         parser.feed(text)
         path = page_path(file)
         pages[path] = {"file": file, "hrefs": parser.hrefs, "title": parser.title.strip(), "canonical": parser.canonical, "text": text}
+        if 'name="robots" content="noindex' in text:
+            NOINDEX.add(path)
         if path != "/404.html":
             titles.setdefault(parser.title.strip(), []).append(path)
         for snippet in REQUIRED_SNIPPETS:
@@ -204,7 +214,7 @@ def main() -> int:
             seen[target] = seen[current] + 1
             queue.append(target)
 
-    orphans = [path for path in pages if path not in seen and path != "/404.html"]
+    orphans = [path for path in pages if path not in seen and path not in NOINDEX]
     deep = [f"{path} depth {depth}" for path, depth in seen.items() if depth > 3]
     if orphans:
         errors.append(f"{len(orphans)} orphan pages, e.g. {orphans[:8]}")
@@ -213,7 +223,7 @@ def main() -> int:
 
     sitemap = (DIST / "sitemap.xml").read_text(encoding="utf-8")
     locs = re.findall(r"<loc>(.*?)</loc>", sitemap)
-    expected_locs = {BASE + path for path in pages if path != "/404.html"}
+    expected_locs = {BASE + path for path in pages if path not in NOINDEX}
     if set(locs) != expected_locs:
         missing = sorted(expected_locs - set(locs))[:8]
         extra = sorted(set(locs) - expected_locs)[:8]
@@ -358,7 +368,63 @@ def main() -> int:
             if other["slug"] != service["slug"] and f'href="/services/{other["slug"]}/"' not in body:
                 errors.append(f"{path} does not link to /services/{other['slug']}/ in the page body")
 
-    indexable = [path for path in pages if path != "/404.html"]
+    # Forms, legal pages, claim links, analytics, 404.
+    legal = ["/privacy/", "/terms/", "/refund-policy/", "/disclaimer/"]
+    for path in legal:
+        if path not in pages:
+            errors.append(f"missing legal page {path}")
+            continue
+        if path in NOINDEX:
+            errors.append(f"{path} should be indexable")
+        if path not in sitemap_paths(locs):
+            errors.append(f"{path} is not in sitemap.xml")
+        if "fiverr" in pages[path]["text"].lower():
+            errors.append(f"{path} mentions Fiverr")
+    for path, page in pages.items():
+        text = page["text"]
+        if path != "/404.html" and "/_vercel/insights/script.js" not in text:
+            errors.append(f"{path} is missing the analytics script")
+        if path != "/404.html" and not all(f'href="{p}"' in text for p in legal):
+            errors.append(f"{path} footer is missing a legal link")
+    for path in ("/claim-listing/", "/thanks/"):
+        if path not in pages:
+            errors.append(f"missing {path}")
+    if "/claim-listing/" in pages and 'action="/api/submit"' not in pages["/claim-listing/"]["text"]:
+        errors.append("/claim-listing/ form does not post to /api/submit")
+    for service in services:
+        path = f"/services/{service['slug']}/"
+        text = pages.get(path, {}).get("text", "")
+        if 'action="/api/submit"' not in text or 'type="file"' not in text:
+            errors.append(f"{path} order form does not post to /api/submit with a file upload")
+        for need in ("/refund-policy/", "/terms/", "/privacy/"):
+            if need not in text.split("</header>", 1)[-1].split("<footer", 1)[0]:
+                errors.append(f"{path} body does not link to {need}")
+        if "mailto:" in text:
+            errors.append(f"{path} still uses mailto:")
+    if 'action="/api/submit"' not in pages.get("/about/", {}).get("text", ""):
+        errors.append("/about/ contact form does not post to /api/submit")
+    for studio in data["studios"]:
+        text = pages[studio["url_path"]]["text"]
+        if "/claim-listing/?studio=" not in text or "type=removal" not in text:
+            errors.append(f"{studio['url_path']} is missing the claim/removal links")
+            break
+    for name in ("api/submit.js", "api/upload.js"):
+        if not (ROOT / name).is_file():
+            errors.append(f"missing {name}")
+    nf = pages.get("/404.html", {}).get("text", "")
+    if "/cities/" not in nf or "/blog/" not in nf or "/services/" not in nf:
+        errors.append("404.html is missing helpful links")
+    for path, page in pages.items():
+        if "<img" in page["text"]:
+            for tag in re.findall(r"<img\b[^>]*>", page["text"]):
+                if "width=" not in tag or "height=" not in tag:
+                    errors.append(f"{path} has an <img> without width/height: {tag[:90]}")
+                    break
+            else:
+                continue
+            break
+
+    indexable = [path for path in pages if path not in NOINDEX]
     print(
         f"Checked {len(html_files)} HTML files, {len(indexable)} indexable, "
         f"{city_pages} cities, {len(data['studios'])} studios, {blog_posts} blog posts, max depth {max(seen.values())}"

@@ -1,11 +1,11 @@
 {
-  "_comment": "Payment links live here. Set STRIPE_PAYMENT_LINK for photo editing and STRIPE_PAYMENT_LINK_ENHANCE for photo enhancement to the full Stripe Payment Link URL (https://buy.stripe.com/...). Leave a key as an empty string until that link exists. Rebuild with python3 scripts/build.py after changing this file. ORDER_FORM_ENDPOINT is optional; when empty, the order form opens a mailto to CONTACT_EMAIL. Do not put secret keys here. A Payment Link URL is public.",
+  "_comment": "Payment links live here. Set STRIPE_PAYMENT_LINK for photo editing and STRIPE_PAYMENT_LINK_ENHANCE for photo enhancement to the full Stripe Payment Link URL (https://buy.stripe.com/...). Leave a key as an empty string until that link exists. Rebuild with python3 scripts/build.py after changing this file. Forms post to /api/submit (Vercel function, emails via Resend to FORM_TO_EMAIL set in Vercel env); ORDER_FORM_ENDPOINT is unused. CONTACT_EMAIL is shown publicly if set; leave empty until a real mailbox exists on the domain. Do not put secret keys here. A Payment Link URL is public.",
   "canonicalBase": "https://www.photostudiostexas.com",
   "siteName": "PhotoStudiosTexas.com",
   "STRIPE_PAYMENT_LINK": "https://buy.stripe.com/6oUdRa6Ya58I4AmeK2frW0H",
   "STRIPE_PAYMENT_LINK_ENHANCE": "",
   "ORDER_FORM_ENDPOINT": "",
-  "CONTACT_EMAIL": "hello@photostudiostexas.com",
+  "CONTACT_EMAIL": "",
   "featuredCount": 12,
   "featuredMinReviews": 15,
   "featuredPerCityCap": 2,

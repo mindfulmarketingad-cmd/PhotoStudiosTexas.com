@@ -136,3 +136,7 @@ a.tag-link:hover { background: var(--orange); color: var(--black); }
 
 .review-summary + .tags, .review-summary ~ p .btn { margin-top: 0.4rem; }
 #reviews > p:not(.note) { margin-top: 1rem; }
+
+/* Long city pages: skip rendering off-screen cards until they scroll into view. */
+.studio-card { content-visibility: auto; contain-intrinsic-size: auto 300px; }
+.studio-card[hidden] { display: none; }
