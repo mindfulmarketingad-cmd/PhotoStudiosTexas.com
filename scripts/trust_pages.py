@@ -65,7 +65,7 @@ class TrustMixin:
         terms = ""
         if service is not None:
             terms = '<p class="note">By sending an order you agree to the <a href="/terms/">Terms</a>, <a href="/refund-policy/">Refund Policy</a> and <a href="/privacy/">Privacy Policy</a>.</p>'
-        return f"""<form id="order-form" class="form-card" action="/api/submit" method="post" data-pst-form data-subject="{esc(subject)}" data-has-files="{'1' if service is not None else '0'}">
+        return f"""<form id="order-form" class="form-card" action="/api/submit/" method="post" data-pst-form data-subject="{esc(subject)}" data-has-files="{'1' if service is not None else '0'}">
   <input type="hidden" name="kind" value="{kind}">
   <input type="hidden" name="page" value="">
   <label for="order-service">Service</label>
@@ -211,7 +211,7 @@ class TrustMixin:
   <hr class="rule">
   <p class="lede">Own or manage a photo studio in this directory? Tell us what to fix, or ask us to take the listing down. We reply by email, usually within 2 business days.</p>
   <div class="split">
-    <form id="claim-form" class="form-card" action="/api/submit" method="post" data-pst-form data-has-files="0" data-subject="Listing request">
+    <form id="claim-form" class="form-card" action="/api/submit/" method="post" data-pst-form data-has-files="0" data-subject="Listing request">
       <input type="hidden" name="kind" value="claim">
       <input type="hidden" name="page" value="">
       <label for="claim-request">What do you need?</label>

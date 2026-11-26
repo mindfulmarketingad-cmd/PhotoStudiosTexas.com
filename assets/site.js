@@ -112,7 +112,7 @@
               var safe = file.name.replace(/[^A-Za-z0-9._-]+/g, "_").slice(-100) || "photo.jpg";
               return window.PSTUpload.upload("orders/" + safe, file, {
                 access: "public",
-                handleUploadUrl: "/api/upload",
+                handleUploadUrl: "/api/upload/",
                 contentType: fileType(file),
                 multipart: file.size > 8 * 1024 * 1024
               }).then(function (blob) {
@@ -126,7 +126,7 @@
       chain.then(function () {
         say("Sending…", "info");
         payload.files = uploaded;
-        return fetch("/api/submit", {
+        return fetch("/api/submit/", {
           method: "POST",
           headers: { "Content-Type": "application/json", "Accept": "application/json" },
           body: JSON.stringify(payload)

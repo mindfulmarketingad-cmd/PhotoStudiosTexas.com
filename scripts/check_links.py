@@ -389,20 +389,20 @@ def main() -> int:
     for path in ("/claim-listing/", "/thanks/"):
         if path not in pages:
             errors.append(f"missing {path}")
-    if "/claim-listing/" in pages and 'action="/api/submit"' not in pages["/claim-listing/"]["text"]:
-        errors.append("/claim-listing/ form does not post to /api/submit")
+    if "/claim-listing/" in pages and 'action="/api/submit/"' not in pages["/claim-listing/"]["text"]:
+        errors.append("/claim-listing/ form does not post to /api/submit/")
     for service in services:
         path = f"/services/{service['slug']}/"
         text = pages.get(path, {}).get("text", "")
-        if 'action="/api/submit"' not in text or 'type="file"' not in text:
+        if 'action="/api/submit/"' not in text or 'type="file"' not in text:
             errors.append(f"{path} order form does not post to /api/submit with a file upload")
         for need in ("/refund-policy/", "/terms/", "/privacy/"):
             if need not in text.split("</header>", 1)[-1].split("<footer", 1)[0]:
                 errors.append(f"{path} body does not link to {need}")
         if "mailto:" in text:
             errors.append(f"{path} still uses mailto:")
-    if 'action="/api/submit"' not in pages.get("/about/", {}).get("text", ""):
-        errors.append("/about/ contact form does not post to /api/submit")
+    if 'action="/api/submit/"' not in pages.get("/about/", {}).get("text", ""):
+        errors.append("/about/ contact form does not post to /api/submit/")
     for studio in data["studios"]:
         text = pages[studio["url_path"]]["text"]
         if "/claim-listing/?studio=" not in text or "type=removal" not in text:
