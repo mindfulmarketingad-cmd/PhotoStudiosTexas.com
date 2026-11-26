@@ -23,6 +23,25 @@ CONFIG_PATH = ROOT / "config" / "site.json"
 SERVICES_PATH = ROOT / "config" / "services.json"
 BRAND = ROOT / "assets" / "brand"
 
+EXAMPLES_DIR = ROOT / "assets" / "examples"
+EXAMPLE_URL = "/images/retouching"
+
+
+def example_picture(item: dict, *, loading: str = "lazy") -> str:
+    name = item["file"]
+    webp = f"{EXAMPLE_URL}/{name}.webp"
+    jpg = f"{EXAMPLE_URL}/{name}.jpg"
+    return (
+        f'<picture>'
+        f'<source type="image/webp" srcset="{esc(webp)}">'
+        f'<img src="{esc(jpg)}" alt="{esc(item["alt"])}" '
+        f'width="{int(item["width"])}" height="{int(item["height"])}" '
+        f'loading="{esc(loading)}" decoding="async">'
+        f'</picture>'
+    )
+
+
+
 DAY_ORDER = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
 ROOT_ASSETS = [
     "favicon.svg",
@@ -392,11 +411,24 @@ class Site:
 
     def cta(self) -> str:
         service = self.primary_service
+        teaser = ""
+        examples = service.get("beforeAfter") or []
+        if examples:
+            item = examples[0]
+            teaser = f"""
+    <a class="cta-teaser" href="/services/{esc(service["slug"])}/#before-after">
+      {example_picture(item)}
+      <span class="cta-teaser-label">See before &amp; after</span>
+    </a>"""
         return f"""<aside class="cta">
-  <p class="eyebrow">Photo editing</p>
-  <h2>{esc(service["name"])}</h2>
-  <p>{esc(service["priceDisplay"])} {esc(service["priceNote"])} · {esc(service["delivery"])} · {esc(service["revisions"])}</p>
-  <a class="btn" href="/services/{esc(service["slug"])}/">Order photo editing</a>
+  <div class="cta-inner">
+    <div class="cta-copy">
+      <p class="eyebrow">Photo editing</p>
+      <h2>{esc(service["name"])}</h2>
+      <p>{esc(service["priceDisplay"])} {esc(service["priceNote"])} · {esc(service["delivery"])} · {esc(service["revisions"])}</p>
+      <a class="btn" href="/services/{esc(service["slug"])}/">Order photo editing</a>
+    </div>{teaser}
+  </div>
 </aside>"""
 
     def nearby_html(self, city: City) -> str:
@@ -845,6 +877,28 @@ class Site:
             for studio in city.studios:
                 self.build_studio(studio, city, self.studio_title(studio, name_counts, name_zip_counts))
 
+    def service_gallery(self, service: dict) -> str:
+        examples = service.get("beforeAfter") or []
+        if not examples:
+            return ""
+        cards = []
+        for item in examples:
+            href = f"{EXAMPLE_URL}/{item['file']}.webp"
+            cards.append(
+                "<figure class=\"ba-card\">"
+                f'<a href="{esc(href)}" data-lightbox data-caption="{esc(item["caption"])}">'
+                f"{example_picture(item)}"
+                "</a>"
+                f'<figcaption>{esc(item["caption"])}</figcaption>'
+                "</figure>"
+            )
+        return f"""<section class="section ba-gallery" id="before-after">
+  <h2>Before &amp; After</h2>
+  <p>Examples of the retouching work. Each image already shows the original and the finished edit. Click any example to enlarge it.</p>
+  <div class="ba-grid">{"".join(cards)}</div>
+</section>
+"""
+
     def service_body(self, service: dict) -> str:
         includes = "".join(f"<div><strong>{esc(item)}</strong></div>" for item in service["packageIncludes"])
         covered = "".join(f"<li>{esc(item)}</li>" for item in service["covered"])
@@ -886,6 +940,7 @@ class Site:
     {payment_note}
   </aside>
 </div>
+{self.service_gallery(service)}
 <section class="section" id="order">
   <h2>Order</h2>
   {self.order_form(service, f'{service["name"]} order', "Send order")}
@@ -1080,6 +1135,12 @@ class Site:
         shutil.copyfile(BRAND / "logo-dark.svg", assets / "logo-dark.svg")
         for name in ROOT_ASSETS:
             shutil.copyfile(BRAND / name, DIST / name)
+        if EXAMPLES_DIR.is_dir():
+            dest = DIST / "images" / "retouching"
+            dest.mkdir(parents=True, exist_ok=True)
+            for example in sorted(EXAMPLES_DIR.iterdir()):
+                if example.suffix.lower() in {".webp", ".jpg", ".jpeg", ".png"}:
+                    shutil.copyfile(example, dest / example.name)
 
     def build(self) -> None:
         if DIST.exists():

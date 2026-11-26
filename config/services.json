@@ -26,6 +26,29 @@
       "Landscape enhancement",
       "Composites"
     ],
-    "paymentLinkKey": "STRIPE_PAYMENT_LINK"
+    "paymentLinkKey": "STRIPE_PAYMENT_LINK",
+    "beforeAfter": [
+      {
+        "file": "color-hdr-enhancement",
+        "width": 1060,
+        "height": 647,
+        "caption": "Color & HDR enhancement",
+        "alt": "Before and after of a Kuala Lumpur night skyline. The original darker photo is inset at the bottom left and labeled Before. The large retouched image, labeled After, is brighter with richer color and more HDR detail in the buildings, lights, and water."
+      },
+      {
+        "file": "skin-retouching-background-swap",
+        "width": 1067,
+        "height": 719,
+        "caption": "Skin retouching & background swap",
+        "alt": "Side-by-side before and after portrait. The Before photo on the left shows the original skin and background. The After photo on the right shows smoother skin retouching and a replaced, cleaner background."
+      },
+      {
+        "file": "object-person-removal",
+        "width": 1078,
+        "height": 666,
+        "caption": "Object/person removal",
+        "alt": "Side-by-side before and after of a group photo. The Before photo on the left includes a person in the frame. The After photo on the right has that person removed and the background filled in."
+      }
+    ]
   }
 ]

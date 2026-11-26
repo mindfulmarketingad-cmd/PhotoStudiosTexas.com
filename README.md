@@ -29,7 +29,7 @@ Houston 284, Dallas 152, Austin 123, San Antonio 93, Fort Worth 64, El Paso 45, 
 | `/tx/<city>/<studio>/` | Studio details, other studios in the city, nearby cities |
 | `/cities/` | A–Z city index |
 | `/services/` | Service list (add more here later) |
-| `/services/photo-editing/` | Professional Photo Editing & Retouching, $39.88 |
+| `/services/photo-editing/` | Professional Photo Editing & Retouching, $39.88, with a before-and-after gallery |
 | `/about/` | About and contact |
 | `/sitemap/` | HTML sitemap |
 | `/sitemap.xml` | XML sitemap |

@@ -33,6 +33,78 @@
     });
   }
 
+
+  function initLightbox() {
+    var box = document.createElement("div");
+    box.className = "lightbox";
+    box.hidden = true;
+    box.setAttribute("role", "dialog");
+    box.setAttribute("aria-modal", "true");
+    box.setAttribute("aria-label", "Enlarged before and after example");
+    box.innerHTML = '<div class="lightbox-dialog">'
+      + '<button type="button" class="lightbox-close" aria-label="Close">&times;</button>'
+      + '<img alt="">'
+      + '<p class="lightbox-caption"></p>'
+      + '</div>';
+    document.body.appendChild(box);
+    var img = box.querySelector("img");
+    var captionEl = box.querySelector(".lightbox-caption");
+    var closeBtn = box.querySelector(".lightbox-close");
+    var lastFocus = null;
+
+    function close() {
+      if (box.hidden) {
+        return;
+      }
+      box.hidden = true;
+      document.body.classList.remove("lightbox-open");
+      img.removeAttribute("src");
+      if (lastFocus && typeof lastFocus.focus === "function") {
+        lastFocus.focus();
+      }
+    }
+
+    function open(href, alt, captionText) {
+      lastFocus = document.activeElement;
+      img.src = href;
+      img.alt = alt || "";
+      captionEl.textContent = captionText || "";
+      box.hidden = false;
+      document.body.classList.add("lightbox-open");
+      closeBtn.focus();
+    }
+
+    document.addEventListener("click", function (event) {
+      var link = event.target.closest("a[data-lightbox]");
+      if (!link) {
+        return;
+      }
+      event.preventDefault();
+      var thumb = link.querySelector("img");
+      open(
+        link.getAttribute("href"),
+        thumb ? thumb.getAttribute("alt") : "",
+        link.getAttribute("data-caption") || ""
+      );
+    });
+
+    box.addEventListener("click", function (event) {
+      if (event.target === box || event.target === closeBtn) {
+        close();
+      }
+    });
+
+    document.addEventListener("keydown", function (event) {
+      if (event.key === "Escape") {
+        close();
+      }
+    });
+  }
+
+  if (document.querySelector("a[data-lightbox]")) {
+    initLightbox();
+  }
+
   var searchInput = document.getElementById("studio-search");
   var cityJump = document.getElementById("city-jump");
   var results = document.getElementById("search-results");
