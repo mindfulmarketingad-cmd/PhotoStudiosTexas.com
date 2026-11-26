@@ -13,6 +13,7 @@ import re
 from collections import Counter, defaultdict
 from pathlib import Path
 
+import categories as cat
 import studio_info as si
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -106,7 +107,12 @@ class DirectoryMixin:
             pages = {}
             for spec_id, members in by_spec.items():
                 spec_slug = si.SPEC_BY_ID[spec_id][2]
-                if MIN_SPECIALTY_PAGE <= len(members) < city.count and spec_slug not in slugs:
+                if spec_slug in slugs:
+                    continue
+                if spec_id in cat.NAMED_CITY_IDS:
+                    if members:
+                        pages[spec_id] = members
+                elif MIN_SPECIALTY_PAGE <= len(members) < city.count:
                     pages[spec_id] = members
             self.spec_pages[city.slug] = pages
         self._prepared = True
@@ -262,8 +268,9 @@ class DirectoryMixin:
         items = []
         for spec_id, members in sorted(pages.items(), key=lambda kv: (-len(kv[1]), kv[0])):
             _id, label, slug, plural, *_ = si.SPEC_BY_ID[spec_id]
+            chip = cat.CAT_BY_ID[spec_id][3].replace(" in Texas", "") if spec_id in cat.NAMED_CITY_IDS else plural
             items.append(
-                f'<a class="chip" href="{city.path}{slug}/">{esc(plural)} <span class="muted">{len(members)}</span></a>')
+                f'<a class="chip" href="{city.path}{slug}/">{esc(chip)} <span class="muted">{len(members)}</span></a>')
         return f"""<section class="section" id="by-specialty">
   <h2>{esc(city.name)} photo studios by specialty</h2>
   <div class="chips">{"".join(items)}</div>
@@ -332,12 +339,18 @@ class DirectoryMixin:
 
     def build_specialty(self, city, spec_id: str, members: list[dict]) -> None:
         _id, label, slug, plural, *_ = si.SPEC_BY_ID[spec_id]
+        if spec_id in cat.NAMED_CITY_IDS:
+            heading = cat.CAT_BY_ID[spec_id][3].replace(" in Texas", "") + f" in {city.name}, TX"
+            crumb_label = cat.CAT_BY_ID[spec_id][3].replace(" in Texas", "")
+        else:
+            heading = f"{plural} in {city.name}, TX"
+            crumb_label = plural
         path = f"{city.path}{slug}/"
         members = sorted(members, key=lambda s: (s.get("rating") is None, -(s.get("rating") or 0),
                                                  -(s.get("review_count") or 0), s["name"].lower()))
         cards = "".join(self.studio_card(s, show_city=False, index=i) for i, s in enumerate(members))
         image = self.city_image(city)
-        crumbs = [("Home", "/"), ("Texas", "/tx/"), (city.name, city.path), (plural, None)]
+        crumbs = [("Home", "/"), ("Texas", "/tx/"), (city.name, city.path), (crumb_label, None)]
         sibling = [
             f'<a class="chip" href="{city.path}{si.SPEC_BY_ID[o][2]}/">{esc(si.SPEC_BY_ID[o][3])} <span class="muted">{len(m)}</span></a>'
             for o, m in sorted(self.spec_pages[city.slug].items(), key=lambda kv: (-len(kv[1]), kv[0])) if o != spec_id]
@@ -356,7 +369,7 @@ class DirectoryMixin:
   <div class="head-copy">
     {self.crumbs(crumbs)}
     <p class="eyebrow"><a href="{city.path}">{esc(city.name)}</a></p>
-    <h1>{esc(plural)} in {esc(city.name)}, TX</h1>
+    <h1>{esc(heading)}</h1>
     <hr class="rule">
     <p class="lede">{comma(len(members))} of {comma(city.count)} {esc(city.name)} photo studios list {esc(label.lower())} in their details.{top}</p>
     <p class="muted">Matched from each listing's Google categories, name, and website. <a href="{city.path}">See all {comma(city.count)} {esc(city.name)} studios</a>.{self.statewide_link(spec_id)}</p>
@@ -367,11 +380,11 @@ class DirectoryMixin:
 <div class="wrap">{sibling_html}{near_html}<p><a href="{city.path}">All photo studios in {esc(city.name)}</a></p>{self.cta()}</div>"""
         item_list = {
             "@context": "https://schema.org", "@type": "ItemList",
-            "name": f"{plural} in {city.name}, Texas", "numberOfItems": len(members),
+            "name": heading if spec_id in cat.NAMED_CITY_IDS else f"{plural} in {city.name}, Texas", "numberOfItems": len(members),
             "itemListElement": [{"@type": "ListItem", "position": i, "name": s["name"], "url": self.abs_url(s["url_path"])}
                                 for i, s in enumerate(members, start=1)],
         }
-        title = f"{plural} in {city.name}, TX | PhotoStudiosTexas"
+        title = f"{heading} | PhotoStudiosTexas"
         description = f"{comma(len(members))} {city.name}, Texas photo studios that list {label.lower()}, with ratings, hours, and contact details."
         self.write_page(path, self.layout(title, description, path, body, "",
                                           [self.breadcrumb_schema(crumbs, path), item_list], image=image, directory=True))

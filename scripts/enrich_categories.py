@@ -35,10 +35,10 @@ MAX_SUBPAGES = 10
 SKIP_HOSTS = ("facebook.com", "instagram.com", "linktr.ee", "google.com", "goo.gl", "yelp.com", "fiverr.com")
 SERVICE_PAGE = re.compile(
     r"services?|pricing|prices|packages?|investment|sessions?|offerings?|what[- ]we|photography|portfolio|gallery|galleries|"
-    r"seniors?|kids|children|newborn|events?|couples|engagement|graduat|homecoming|formal|mini|about|specialt|experience|studio",
+    r"seniors?|kids|children|newborn|events?|couples|engagement|graduat|homecoming|formal|mini|about|specialt|experience|studio|christmas|holiday|santa|grads?",
     re.I,
 )
-KEYWORD = re.compile(r"portrait|head\s?-?shots?|wedding|bridal|maternity|pregnan|\bproms?\b|\bfamil(y|ies)\b", re.I)
+KEYWORD = re.compile(r"portrait|head\s?-?shots?|wedding|bridal|maternity|pregnan|\bproms?\b|\bfamil(y|ies)\b|christmas|\bsanta\b|holiday|\bgraduation\b|\bgrads?\b|cap[\s-]*(?:and|&)?[\s-]*gown|newborn|boudoir|quincea|senior|pets?|drone|aerial|passport|videograph|photobooth|photo[- ]?booth|restoration|workshop", re.I)
 
 
 def clean(text, limit):

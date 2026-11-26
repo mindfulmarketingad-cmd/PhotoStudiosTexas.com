@@ -16,6 +16,8 @@ import shutil
 from collections import Counter, defaultdict
 from pathlib import Path
 
+import categories as cat
+import studio_info as si
 from category_pages import CategoryMixin
 from directory_pages import DirectoryMixin
 from extra_pages import TOOLS, ExtrasMixin
@@ -1040,14 +1042,20 @@ class Site(DirectoryMixin, CategoryMixin, ExtrasMixin, TrustMixin):
         static.extend(LEGAL_LINKS)
         static_html = "".join(f'<li><a href="{href}">{esc(label)}</a></li>' for href, label in static)
         groups = []
+        self.prepare_directory()
         for city in self.by_name:
             studios = sorted(city.studios, key=lambda studio: studio["name"].lower())
+            cat_links = "".join(
+                f'<li><a href="{city.path}{si.SPEC_BY_ID[sid][2]}/">'
+                f'{esc(cat.CAT_BY_ID[sid][3].replace(" in Texas", "") if sid in getattr(cat, "NAMED_CITY_IDS", ()) else si.SPEC_BY_ID[sid][3])} in {esc(city.name)}</a></li>'
+                for sid, _m in sorted((self.spec_pages.get(city.slug) or {}).items(), key=lambda kv: si.SPEC_BY_ID[kv[0]][1])
+            )
             links = "".join(
                 f'<li><a href="{esc(studio["url_path"])}">{esc(studio["name"])}</a></li>'
                 for studio in studios
             )
             groups.append(
-                f'<section class="letter-group"><h2><a href="{city.path}">{esc(city.name)}</a></h2><ul>{links}</ul></section>'
+                f'<section class="letter-group"><h2><a href="{city.path}">{esc(city.name)}</a></h2><ul>{cat_links}{links}</ul></section>'
             )
         crumbs = [("Home", "/"), ("HTML sitemap", None)]
         body = f"""<div class="wrap page-head">

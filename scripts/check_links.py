@@ -352,6 +352,40 @@ def main() -> int:
                 errors.append(f"{label} does not link to {path}")
         if path not in llms_text:
             errors.append(f"llms.txt is missing {path}")
+        # City-level pages for the eight named categories, whenever a city has at least one qualifying studio.
+        if cid in cat_rules.NAMED_CITY_IDS:
+            spec_slug = __import__("studio_info").SPEC_BY_ID[cid][2]
+            by_city = {}
+            for pid in members:
+                studio = by_pid.get(pid)
+                if not studio:
+                    continue
+                by_city.setdefault(studio["city_slug"], set()).add(studio["url_path"])
+            for city_slug, expected in by_city.items():
+                city_path = f"/tx/{city_slug}/"
+                city_cat_path = f"{city_path}{spec_slug}/"
+                # A studio slug may occupy this path; then no city category page is created.
+                if city_cat_path in {by_pid[pid]["url_path"] for pid in members if pid in by_pid}:
+                    continue
+                if any(s["city_slug"] == city_slug and s["slug"] == spec_slug for s in data["studios"]):
+                    continue
+                if city_cat_path not in pages:
+                    errors.append(f"missing city category page {city_cat_path}")
+                    continue
+                text_c = pages[city_cat_path]["text"]
+                listed = set(re.findall(r'<a class="studio-card" href="([^"]+)"', text_c))
+                if listed != expected:
+                    errors.append(f"{city_cat_path} lists {len(listed)} studios, evidence says {len(expected)}")
+                if f'href="{city_path}"' not in text_c:
+                    errors.append(f"{city_cat_path} does not link to its city hub")
+                if f'href="{path}"' not in text_c:
+                    errors.append(f"{city_cat_path} does not link to {path}")
+                city_html = pages.get(city_path, {}).get("text", "")
+                if f'href="{city_cat_path}"' not in city_html:
+                    errors.append(f"{city_path} does not link to {city_cat_path}")
+                if f'href="{city_cat_path}"' not in text:
+                    errors.append(f"{path} does not link to {city_cat_path}")
+
         for pid in members:
             studio = by_pid.get(pid)
             if not studio:

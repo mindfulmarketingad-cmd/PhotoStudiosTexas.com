@@ -51,6 +51,80 @@ INTRO = {
         "Every studio below has evidence it offers maternity or pregnancy photography: its name, its Google listing, "
         "or its own website says so. Maternity clothing stores and pregnancy centers are not included."
     ),
+    "christmas": (
+        "Christmas photographers offer holiday mini sessions, Santa portraits, and seasonal family photos. "
+        "Every studio below has evidence it offers Christmas or holiday photo sessions: the service is named on its "
+        "own website or listing. A holiday closure notice, a Christmas gallery label, or the word “holiday” alone does not count."
+    ),
+    "graduation": (
+        "Graduation photographers shoot cap-and-gown, college, and senior graduation sessions. "
+        "Every studio below has evidence it offers graduation photography: graduation, grads, or cap and gown appears "
+        "on its own website or listing. Senior portraits count only when they are tied to graduation. Schools and gown shops are not included."
+    ),
+    "newborn": (
+        "Newborn and baby photographers photograph infants in the first days and months, including posed newborn sessions and cake smashes. "
+        "Every studio below has evidence it offers newborn or baby photography on its listing or its own website."
+    ),
+    "seniors": (
+        "Senior photographers shoot high school senior portraits and class-of sessions. "
+        "Every studio below has evidence it offers senior photography. Senior living communities and senior-citizen discounts do not count."
+    ),
+    "quinceanera": (
+        "Quinceañera photographers cover the traditional celebration, portraits, and event. "
+        "Every studio below has evidence it photographs quinceañeras. Venues, dress shops, and planners are not included."
+    ),
+    "boudoir": (
+        "Boudoir photographers make intimate, usually in-studio portraits. "
+        "Every studio below has evidence it offers boudoir photography on its listing or its own website."
+    ),
+    "commercial": (
+        "Commercial and product photographers shoot brands, products, and business imagery. "
+        "Every studio below has evidence it offers commercial or product photography. A generic photographer listing does not count."
+    ),
+    "real-estate": (
+        "Real estate photographers photograph homes, listings, and architecture for agents and owners. "
+        "Every studio below has evidence it offers real estate or architectural photography. Real estate agencies that do not photograph are not included."
+    ),
+    "events": (
+        "Event photographers cover parties, corporate gatherings, and celebrations. "
+        "Every studio below has evidence it offers event photography. Event venues and planners are not included."
+    ),
+    "pets": (
+        "Pet photographers make portraits of dogs, cats, and other animals, in the studio or on location. "
+        "Every studio below has evidence it offers pet photography. Pet stores and veterinarians are not included."
+    ),
+    "passport": (
+        "Passport and ID photo studios make official passport, visa, and identification photographs. "
+        "Every studio below has evidence it offers passport or ID photos."
+    ),
+    "rental": (
+        "These are studios you can rent by the hour or session, including self-service and backdrop spaces. "
+        "Every studio below has evidence it rents studio space. A studio that only photographs clients is not listed here just because it has a room."
+    ),
+    "video": (
+        "Video production studios offer videography, films, or commercial video alongside or instead of still photography. "
+        "Every studio below has evidence it offers video production or videography."
+    ),
+    "drone": (
+        "Aerial and drone photographers capture stills and video from the air. "
+        "Every studio below has evidence it offers drone or aerial photography."
+    ),
+    "photo-booth": (
+        "Photo booth providers bring a booth, 360 booth, or similar setup to events. "
+        "Every studio below has evidence it offers a photo booth."
+    ),
+    "restoration": (
+        "Photo restoration studios repair, retouch, or digitize damaged or old photographs. "
+        "Every studio below has evidence it offers photo restoration. A metaphor about “restoring memories” does not count."
+    ),
+    "classes": (
+        "These studios teach photography classes, workshops, or courses. "
+        "Every studio below has evidence it offers classes or workshops for photographers or the public."
+    ),
+    "models": (
+        "Model portfolio photographers create comp cards and modeling portfolios. "
+        "Every studio below has evidence it offers model portfolio photography."
+    ),
 }
 SOURCE_GROUP = {
     "listing categories": "Google category", "business name": "name", "listing description": "listing description",
@@ -320,32 +394,20 @@ class CategoryMixin:
         path = "/categories/"
         image = self.category_image("categories")
         crumbs = [("Home", "/"), ("Categories", None)]
-        cards = []
+        tiles = []
         for c in self.categories:
-            tops = [s for s in c["members"] if s.get("rating") is not None and s.get("review_count")][:3]
-            top_html = ""
-            if tops:
-                top_html = "<ul class=\"plain-list\">" + "".join(
-                    f'<li><a href="{esc(s["url_path"])}">{esc(s["name"])}</a> <span class="muted">{esc(s["city"])} · ★ {float(s["rating"]):.1f}</span></li>'
-                    for s in tops) + "</ul>"
-            cards.append(
-                f'<div class="studio-card service-card"><div class="card-body"><p class="eyebrow">Category</p>'
-                f'<h3><a href="{c["path"]}">{esc(c["h1"])}</a></h3>'
-                f'<p>{comma(len(c["members"]))} studios in {comma(len(c["per_city"]))} cities.</p>{top_html}'
-                f'<a class="btn btn-orange" href="{c["path"]}">Browse {esc(c["noun"])}</a></div></div>')
-        total = len({s["place_id"] for c in self.categories for s in c["members"]})
-        body = f"""<div class="wrap page-head head-split">
-  <div class="head-copy">
-    {self.crumbs(crumbs)}
-    <p class="eyebrow">Browse by service</p>
-    <h1>Photo Studio Categories in Texas</h1>
-    <hr class="rule">
-    <p class="lede">{comma(total)} Texas photo studios have clear evidence they offer at least one of these services: {esc(", ".join(c["label"].lower() for c in self.categories))}.</p>
-    <p class="muted">Each category page lists a studio only when its Google listing, name, or own website says it offers the service. No guessing.</p>
-  </div>
-  <figure class="featured"><img src="{esc(image["src"])}" alt="{esc(image["alt"])}" width="1200" height="630" fetchpriority="high" decoding="async"></figure>
+            img = self.category_image(c["slug"])
+            tiles.append(
+                f'<a class="category-tile" href="{c["path"]}">'
+                f'<img src="{esc(img["src"])}" alt="{esc(c["h1"])}" width="1200" height="630" loading="lazy" decoding="async">'
+                f'<h2>{esc(c["h1"])}</h2></a>')
+        body = f"""<div class="wrap page-head">
+  {self.crumbs(crumbs)}
+  <p class="eyebrow">Browse by service</p>
+  <h1>Photo Studio Categories in Texas</h1>
+  <hr class="rule">
 </div>
-<section class="section"><div class="wrap"><div class="card-grid">{"".join(cards)}</div></div></section>
+<section class="section"><div class="wrap"><div class="category-tile-grid">{"".join(tiles)}</div></div></section>
 <div class="wrap"><section class="section"><h2>More ways to browse</h2><div class="chips"><a class="chip" href="/cities/">All cities</a><a class="chip" href="/tx/">Texas hub</a><a class="chip" href="/blog/">City guides</a></div></section>{self.cta()}</div>"""
         item_list = {
             "@context": "https://schema.org", "@type": "ItemList",

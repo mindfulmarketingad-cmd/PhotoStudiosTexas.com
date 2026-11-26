@@ -57,6 +57,14 @@
   "maternity": {
    "action": "exclude",
    "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
+  },
+  "christmas": {
+   "action": "exclude",
+   "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
+  },
+  "graduation": {
+   "action": "exclude",
+   "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
   }
  },
  "ChIJvziPHvBb54YRUgeTgUwy4UI": {
@@ -91,6 +99,14 @@
   "maternity": {
    "action": "exclude",
    "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
+  },
+  "christmas": {
+   "action": "exclude",
+   "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
+  },
+  "graduation": {
+   "action": "exclude",
+   "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
   }
  },
  "ChIJDf-mzqfZ-4YRXG9UC6tBI8M": {
@@ -116,6 +132,14 @@
    "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
   },
   "maternity": {
+   "action": "exclude",
+   "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
+  },
+  "christmas": {
+   "action": "exclude",
+   "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
+  },
+  "graduation": {
    "action": "exclude",
    "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
   }
@@ -152,6 +176,14 @@
   "maternity": {
    "action": "exclude",
    "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
+  },
+  "christmas": {
+   "action": "exclude",
+   "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
+  },
+  "graduation": {
+   "action": "exclude",
+   "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
   }
  },
  "ChIJhblTkaEzTIYRtdFlUWN5ntk": {
@@ -177,6 +209,14 @@
    "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
   },
   "maternity": {
+   "action": "exclude",
+   "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
+  },
+  "christmas": {
+   "action": "exclude",
+   "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
+  },
+  "graduation": {
    "action": "exclude",
    "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
   }
@@ -206,6 +246,14 @@
   "maternity": {
    "action": "exclude",
    "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
+  },
+  "christmas": {
+   "action": "exclude",
+   "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
+  },
+  "graduation": {
+   "action": "exclude",
+   "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
   }
  },
  "ChIJq4PlLj5NW4YRqmwffU30dqA": {
@@ -213,6 +261,10 @@
   "family": {
    "action": "exclude",
    "reason": "Self-service studio, not a family photographer"
+  },
+  "christmas": {
+   "action": "exclude",
+   "reason": "Self-service studio; Christmas Minis is a set clients can use, not a photography offering by the studio"
   }
  },
  "ChIJl_6Ahh7HQIYRx6wE4y2Kuro": {
@@ -240,6 +292,14 @@
   "maternity": {
    "action": "exclude",
    "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
+  },
+  "christmas": {
+   "action": "exclude",
+   "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
+  },
+  "graduation": {
+   "action": "exclude",
+   "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
   }
  },
  "ChIJj3UiexzDQIYRavWBGQ5V3mA": {
@@ -247,6 +307,10 @@
   "weddings": {
    "action": "exclude",
    "reason": "Only a video portfolio entry; no wedding photography offered"
+  },
+  "graduation": {
+   "action": "exclude",
+   "reason": "Match was a 'congrats to all graduates' greeting, not a graduation photography offering"
   }
  },
  "ChIJV-SPuEFLRYYRCgMVIV29rFo": {
@@ -272,6 +336,14 @@
    "reason": "Matched text is a third-party style summary, not the studio's own description"
   },
   "maternity": {
+   "action": "exclude",
+   "reason": "Matched text is a third-party style summary, not the studio's own description"
+  },
+  "christmas": {
+   "action": "exclude",
+   "reason": "Matched text is a third-party style summary, not the studio's own description"
+  },
+  "graduation": {
    "action": "exclude",
    "reason": "Matched text is a third-party style summary, not the studio's own description"
   }
@@ -349,6 +421,14 @@
    "reason": "Coworking space; match was a blog post about a visiting photographer"
   },
   "maternity": {
+   "action": "exclude",
+   "reason": "Coworking space; match was a blog post about a visiting photographer"
+  },
+  "christmas": {
+   "action": "exclude",
+   "reason": "Coworking space; match was a blog post about a visiting photographer"
+  },
+  "graduation": {
    "action": "exclude",
    "reason": "Coworking space; match was a blog post about a visiting photographer"
   }
@@ -481,6 +561,14 @@
   "maternity": {
    "action": "exclude",
    "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
+  },
+  "christmas": {
+   "action": "exclude",
+   "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
+  },
+  "graduation": {
+   "action": "exclude",
+   "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
   }
  },
  "ChIJ6V3Lz8K_QIYRPVqsjuNe7hc": {
@@ -522,6 +610,14 @@
   "maternity": {
    "action": "exclude",
    "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
+  },
+  "christmas": {
+   "action": "exclude",
+   "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
+  },
+  "graduation": {
+   "action": "exclude",
+   "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
   }
  },
  "ChIJMeYrUSjFRIYRm5ePVr5-qZ8": {
@@ -547,6 +643,14 @@
    "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
   },
   "maternity": {
+   "action": "exclude",
+   "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
+  },
+  "christmas": {
+   "action": "exclude",
+   "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
+  },
+  "graduation": {
    "action": "exclude",
    "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
   }
@@ -576,6 +680,14 @@
   "maternity": {
    "action": "exclude",
    "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
+  },
+  "christmas": {
+   "action": "exclude",
+   "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
+  },
+  "graduation": {
+   "action": "exclude",
+   "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
   }
  },
  "ChIJUcpAS3pBTIYRGbt5Tdvz1Jg": {
@@ -601,6 +713,14 @@
    "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
   },
   "maternity": {
+   "action": "exclude",
+   "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
+  },
+  "christmas": {
+   "action": "exclude",
+   "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
+  },
+  "graduation": {
    "action": "exclude",
    "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
   }
@@ -630,6 +750,14 @@
   "maternity": {
    "action": "exclude",
    "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
+  },
+  "christmas": {
+   "action": "exclude",
+   "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
+  },
+  "graduation": {
+   "action": "exclude",
+   "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
   }
  },
  "ChIJm3S2vXdxToYR1kZ5R7qRERQ": {
@@ -655,6 +783,14 @@
    "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
   },
   "maternity": {
+   "action": "exclude",
+   "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
+  },
+  "christmas": {
+   "action": "exclude",
+   "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
+  },
+  "graduation": {
    "action": "exclude",
    "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
   }
@@ -684,6 +820,14 @@
   "maternity": {
    "action": "exclude",
    "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
+  },
+  "christmas": {
+   "action": "exclude",
+   "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
+  },
+  "graduation": {
+   "action": "exclude",
+   "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
   }
  },
  "ChIJvxSN4Kw7P4YRfnpm_xXL7AU": {
@@ -709,6 +853,14 @@
    "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
   },
   "maternity": {
+   "action": "exclude",
+   "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
+  },
+  "christmas": {
+   "action": "exclude",
+   "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
+  },
+  "graduation": {
    "action": "exclude",
    "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
   }
@@ -738,6 +890,14 @@
   "maternity": {
    "action": "exclude",
    "reason": "Flower-wall rental company, not a photographer"
+  },
+  "christmas": {
+   "action": "exclude",
+   "reason": "Flower-wall rental company, not a photographer"
+  },
+  "graduation": {
+   "action": "exclude",
+   "reason": "Flower-wall rental company, not a photographer"
   }
  },
  "ChIJfzoVZ6fAQIYR_CxuM7l--To": {
@@ -763,6 +923,14 @@
    "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
   },
   "maternity": {
+   "action": "exclude",
+   "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
+  },
+  "christmas": {
+   "action": "exclude",
+   "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
+  },
+  "graduation": {
    "action": "exclude",
    "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
   }
@@ -792,6 +960,14 @@
   "maternity": {
    "action": "exclude",
    "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
+  },
+  "christmas": {
+   "action": "exclude",
+   "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
+  },
+  "graduation": {
+   "action": "exclude",
+   "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
   }
  },
  "ChIJrSM8Uvi1OIYRwk5Nw3vtuAw": {
@@ -817,6 +993,14 @@
    "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
   },
   "maternity": {
+   "action": "exclude",
+   "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
+  },
+  "christmas": {
+   "action": "exclude",
+   "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
+  },
+  "graduation": {
    "action": "exclude",
    "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
   }
@@ -846,6 +1030,14 @@
   "maternity": {
    "action": "exclude",
    "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
+  },
+  "christmas": {
+   "action": "exclude",
+   "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
+  },
+  "graduation": {
+   "action": "exclude",
+   "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
   }
  },
  "ChIJKfyUAniJT4YRPrglSnQZAho": {
@@ -871,6 +1063,14 @@
    "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
   },
   "maternity": {
+   "action": "exclude",
+   "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
+  },
+  "christmas": {
+   "action": "exclude",
+   "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
+  },
+  "graduation": {
    "action": "exclude",
    "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
   }
@@ -900,6 +1100,14 @@
   "maternity": {
    "action": "exclude",
    "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
+  },
+  "christmas": {
+   "action": "exclude",
+   "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
+  },
+  "graduation": {
+   "action": "exclude",
+   "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
   }
  },
  "ChIJB6v06fTtT4YRuGUwtvWD0L4": {
@@ -925,6 +1133,14 @@
    "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
   },
   "maternity": {
+   "action": "exclude",
+   "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
+  },
+  "christmas": {
+   "action": "exclude",
+   "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
+  },
+  "graduation": {
    "action": "exclude",
    "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
   }
@@ -954,6 +1170,14 @@
   "maternity": {
    "action": "exclude",
    "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
+  },
+  "christmas": {
+   "action": "exclude",
+   "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
+  },
+  "graduation": {
+   "action": "exclude",
+   "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
   }
  },
  "ChIJ4ReulFF3ZYYR7zo0GJxe24c": {
@@ -981,6 +1205,14 @@
   "maternity": {
    "action": "exclude",
    "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
+  },
+  "christmas": {
+   "action": "exclude",
+   "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
+  },
+  "graduation": {
+   "action": "exclude",
+   "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
   }
  },
  "ChIJI0Fkdj2JXIYR7tQHr1AyuJU": {
@@ -1006,6 +1238,14 @@
    "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
   },
   "maternity": {
+   "action": "exclude",
+   "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
+  },
+  "christmas": {
+   "action": "exclude",
+   "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
+  },
+  "graduation": {
    "action": "exclude",
    "reason": "Rents space/equipment or is an event venue; no evidence it provides the photography itself"
   }
@@ -1070,6 +1310,14 @@
   "maternity": {
    "action": "exclude",
    "reason": "Makeup/hair artist, not a photographer"
+  },
+  "christmas": {
+   "action": "exclude",
+   "reason": "Makeup/hair artist, not a photographer"
+  },
+  "graduation": {
+   "action": "exclude",
+   "reason": "Makeup/hair artist, not a photographer"
   }
  },
  "ChIJEWNU-p7qQIYR_KmFm5sTMo0": {
@@ -1097,6 +1345,14 @@
   "maternity": {
    "action": "exclude",
    "reason": "Makeup/hair artist, not a photographer"
+  },
+  "christmas": {
+   "action": "exclude",
+   "reason": "Makeup/hair artist, not a photographer"
+  },
+  "graduation": {
+   "action": "exclude",
+   "reason": "Makeup/hair artist, not a photographer"
   }
  },
  "ChIJq-RIaBJSW4YRXmIw3HHVDAA": {
@@ -1122,6 +1378,14 @@
    "reason": "Commissioned painted portraits (fine art), not photography"
   },
   "maternity": {
+   "action": "exclude",
+   "reason": "Commissioned painted portraits (fine art), not photography"
+  },
+  "christmas": {
+   "action": "exclude",
+   "reason": "Commissioned painted portraits (fine art), not photography"
+  },
+  "graduation": {
    "action": "exclude",
    "reason": "Commissioned painted portraits (fine art), not photography"
   }
@@ -1172,6 +1436,14 @@
   "maternity": {
    "action": "exclude",
    "reason": "Website describes a Florida (Amelia Island) studio, not this Texas listing"
+  },
+  "christmas": {
+   "action": "exclude",
+   "reason": "Website describes a Florida (Amelia Island) studio, not this Texas listing"
+  },
+  "graduation": {
+   "action": "exclude",
+   "reason": "Website describes a Florida (Amelia Island) studio, not this Texas listing"
   }
  },
  "ChIJbzFF2sAcpGoRN2ZnPPMo7hc": {
@@ -1186,6 +1458,10 @@
   "weddings": {
    "action": "exclude",
    "reason": "Match was a photo-booth rental page title"
+  },
+  "graduation": {
+   "action": "exclude",
+   "reason": "Match was a photo-booth rental page for graduation parties, not graduation photography"
   }
  },
  "ChIJg4YfSm5BToYRH6jWJ6CFp5U": {
@@ -1193,6 +1469,124 @@
   "weddings": {
    "action": "exclude",
    "reason": "Match was a blog-style heading; newborn photographer"
+  }
+ },
+ "ChIJO7Xm78I7QYYRITJpU0GJw_8": {
+  "_name": "Buller Photography (Pattison)",
+  "graduation": {
+   "action": "exclude",
+   "reason": "The line is a senior-portrait slogan ('beyond the cap and gown'), not a graduation offering"
+  }
+ },
+ "ChIJq7v3oK3BQIYRFSIRUqSUS1k": {
+  "_name": "Uptown Houston Portraits (Houston)",
+  "graduation": {
+   "action": "exclude",
+   "reason": "The mention is advice about photo uses ('a graduation gallery'), not a graduation photography offering"
+  }
+ },
+ "ChIJywYfgrqaQIYRLAygonOJ-Z0": {
+  "_name": "Katie O'Neill Portrait Design (Friendswood)",
+  "graduation": {
+   "action": "exclude",
+   "reason": "The mention is her biography ('After graduation, I work as a photographer'), not a graduation photography offering"
+  }
+ },
+ "ChIJ0Ut4nqLZ-4YRvlIN7JEAwgU": {
+  "_name": "Lane and Mistie Photography (Midland)",
+  "graduation": {
+   "action": "exclude",
+   "reason": "The mention is a client testimonial about graduation photos, not the studio describing the service"
+  },
+  "christmas": {
+   "action": "exclude",
+   "reason": "The mention is a client testimonial about holiday sessions, not the studio describing the service"
+  }
+ },
+ "ChIJgVnZuiQdQYYRD3cZcoaA_Rc": {
+  "_name": "Solarium Studios (Richmond)",
+  "graduation": {
+   "action": "exclude",
+   "reason": "The mention is that the space can be rented for a graduation event, not that they photograph graduations"
+  }
+ },
+ "ChIJJbXHIlc3W4YRyy3AaxuLx98": {
+  "_name": "Suzanne Covert Headshot Photography (Austin)",
+  "christmas": {
+   "action": "exclude",
+   "reason": "The match is corporate holiday-party event coverage, not Christmas or holiday portrait sessions"
+  },
+  "graduation": {
+   "action": "exclude",
+   "reason": "'New Grads & Career Changers' is a headshot audience, not a graduation photography offering"
+  }
+ },
+ "ChIJzT9tf4m5QIYRUdXeXXAQVnE": {
+  "_name": "The Pink Play House (Houston)",
+  "christmas": {
+   "action": "exclude",
+   "reason": "Hourly set rental / backdrop studio; they rent the space, they do not photograph the sessions"
+  },
+  "portraits": {
+   "action": "exclude",
+   "reason": "Hourly set rental / backdrop studio; they rent the space, they do not photograph the sessions"
+  },
+  "family": {
+   "action": "exclude",
+   "reason": "Hourly set rental / backdrop studio; they rent the space, they do not photograph the sessions"
+  },
+  "maternity": {
+   "action": "exclude",
+   "reason": "Hourly set rental / backdrop studio; they rent the space, they do not photograph the sessions"
+  }
+ },
+ "ChIJ43lN2wRrRYYR4oHsYS0ACU4": {
+  "_name": "Temple Star Studios (Temple)",
+  "christmas": {
+   "action": "exclude",
+   "reason": "Rentable studio space; Christmas minis appear as a bookable set, not a photography offering by the studio"
+  }
+ },
+ "ChIJOSYb0LhVP4YRdCMYorjnYH4": {
+  "_name": "Graceland Farm Outdoor Studio (Dayton)",
+  "christmas": {
+   "action": "exclude",
+   "reason": "Photo venue / location inspo, not a Christmas photography offering by the farm"
+  }
+ },
+ "ChIJUWHGAoklTIYRTJAD-uHi5yg": {
+  "_name": "ROCK A SNAP BABY PHOTO STUDIO (Oak Point)",
+  "graduation": {
+   "action": "exclude",
+   "reason": "The heading 'Graduation' is on a first-year baby milestone page, not academic graduation photography"
+  }
+ },
+ "ChIJB_NWgT_KQIYRUKKa42Dy8DI": {
+  "_name": "Houston Imagery Studio LLC (Houston)",
+  "graduation": {
+   "action": "exclude",
+   "reason": "The only match is 'custom graduation cards' as a product, not graduation photography sessions"
+  }
+ },
+ "ChIJF3SUVFo3TIYRb0fsGPkr08A": {
+  "_name": "Shakar Photography (Lewisville)",
+  "graduation": {
+   "action": "exclude",
+   "reason": "The mention is onsite printing for graduation events, not graduation photography"
+  }
+ },
+ "ChIJD8YkN019ToYRFImpMWgR7Sc": {
+  "_name": "Astonished Innovations (Dalworthington Gardens)",
+  "graduation": {
+   "action": "exclude",
+   "reason": "A single event-gallery heading ('Bella Model School Graduation'), not an offered graduation photography service"
+  }
+ },
+ "ChIJNQYoybgZTIYR7Y6ltPFVa88": {
+  "_name": "David Downs Photography (Plano)",
+  "weddings": {
+   "action": "exclude",
+   "reason": "The mention is praise for another wedding photographer, not an offering by this studio"
   }
  }
 }
