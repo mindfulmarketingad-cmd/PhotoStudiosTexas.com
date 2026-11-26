@@ -49,6 +49,72 @@
         "caption": "Object/person removal",
         "alt": "Side-by-side before and after of a group photo. The Before photo on the left includes a person in the frame. The After photo on the right has that person removed and the background filled in."
       }
+    ],
+    "ctaButtonLabel": "Order photo editing",
+    "formPlaceholder": "What should change in the photos?"
+  },
+  {
+    "slug": "photo-enhancement",
+    "name": "Photo Enhancement & Upscaling",
+    "navLabel": "Photo Enhancement",
+    "priceDisplay": "$40",
+    "priceNote": "per photo",
+    "orderButtonLabel": "Order Now - $40",
+    "ctaButtonLabel": "Enhance a photo",
+    "delivery": "3-day delivery",
+    "revisions": "1 revision",
+    "summary": "Sharpen, enhance, and upscale one low-quality photo into a print-ready file. 3-day delivery and one revision, for $40 per photo.",
+    "packageIncludes": [
+      "Enhance, sharpen, and upscale one photo",
+      "3-day delivery",
+      "1 revision, with a print-ready file"
+    ],
+    "covered": [
+      "Low-resolution photos that need a larger, cleaner file",
+      "Old family photographs",
+      "Snapshots that came out a little soft or blurry",
+      "Light scratches, cracks, or fading on a print",
+      "Photos you want enlarged for a print or frame",
+      "Logos, posters, and objects that need a bigger file",
+      "Black-and-white photos that could use color, when enough detail is still visible"
+    ],
+    "paymentLinkKey": "STRIPE_PAYMENT_LINK_ENHANCE",
+    "formPlaceholder": "Paste a share link to your original photo and tell us how you would like it enhanced.",
+    "howItWorks": [
+      {
+        "title": "Send the original.",
+        "text": "Place your order and include a share link to the highest-quality version of the photo you have. Skip copies that have already been cropped, filtered, or compressed."
+      },
+      {
+        "title": "We work the whole image.",
+        "text": "The file is sharpened, cleaned up, and enlarged as one picture \u2014 subject and background together \u2014 so the result still looks like the same photograph."
+      },
+      {
+        "title": "Get a digital file back.",
+        "text": "Your print-ready file is delivered digitally in 3 days. One revision is included if you want a small adjustment."
+      }
+    ],
+    "faq": [
+      {
+        "q": "What file types can I send?",
+        "a": "Common formats such as JPEG, PNG, TIFF, and PDF all work. Send the original file rather than a version that has already been resized or retouched."
+      },
+      {
+        "q": "How many photos are included?",
+        "a": "This package covers one photo. If you have a larger set, mention that in the order form and we can follow up."
+      },
+      {
+        "q": "Can every blurry or damaged photo be saved?",
+        "a": "This price covers light to moderate work. If a face or important detail is too small or too blurred to see, it may not be possible to recover it accurately. If you are unsure, describe the photo in the form before you pay."
+      },
+      {
+        "q": "How do I receive the finished file?",
+        "a": "The finished photo is delivered digitally as a print-ready file. We do not ship a physical print."
+      },
+      {
+        "q": "How long does it take?",
+        "a": "Typical turnaround is 3 days, and the package includes one revision."
+      }
     ]
   }
 ]

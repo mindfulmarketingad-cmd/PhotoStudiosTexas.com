@@ -456,6 +456,23 @@ input:focus, select:focus, textarea:focus {
 .cta h2 { margin-bottom: 0.35rem; }
 .cta p { margin-bottom: 0.8rem; }
 
+.cta-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin: 0 0 0.85rem;
+}
+
+.cta-all { margin-bottom: 0; font-weight: 700; }
+
+.steps { padding-left: 1.2rem; margin: 0 0 0.5rem; }
+.steps li { margin: 0.55rem 0; }
+
+.faq { margin: 0; }
+.faq dt { font-weight: 700; margin: 1rem 0 0.35rem; }
+.faq dd { margin: 0; }
+
+
 .btn {
   display: inline-flex;
   align-items: center;
@@ -699,3 +716,7 @@ label { display: block; font-size: 0.9rem; font-weight: 700; margin: 0.7rem 0 0.
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
 }
+
+.service-card .price { font-size: 2.6rem; }
+.price span { white-space: nowrap; }
+.service-card .btn { margin-top: 0.4rem; }

@@ -6,6 +6,7 @@ from __future__ import annotations
 import json
 import re
 import sys
+from html import unescape
 from html.parser import HTMLParser
 from pathlib import Path
 from urllib.parse import unquote, urldefrag, urlsplit
@@ -207,16 +208,32 @@ def main() -> int:
     if f"Sitemap: {BASE}/sitemap.xml" not in robots:
         errors.append("robots.txt is missing the sitemap URL")
 
-    service = pages.get("/services/photo-editing/", {})
-    service_text = service.get("text", "")
-    if "Order Now - $39.88" not in service_text:
-        errors.append("photo editing page is missing the Order Now button label")
-    if "$39.88" not in service_text:
-        errors.append("photo editing page is missing the price")
+    services = json.loads((ROOT / "config" / "services.json").read_text(encoding="utf-8"))
+    hub = pages.get("/services/", {}).get("text", "")
+    if not hub:
+        errors.append("missing services hub /services/")
+    for service in services:
+        path = f"/services/{service['slug']}/"
+        if path not in pages:
+            errors.append(f"missing service page {path}")
+            continue
+        service_text = pages[path]["text"]
+        price = str(service.get("priceDisplay") or "").strip()
+        if price.startswith("$"):
+            if price not in service_text:
+                errors.append(f"{path} is missing the price")
+            label = service.get("orderButtonLabel") or ""
+            if label and label not in service_text:
+                errors.append(f"{path} is missing the Order Now button label")
+        if path not in hub or service["name"] not in unescape(hub):
+            errors.append(f"services hub is missing {service['name']}")
+        if "fiverr" in json.dumps(service).lower():
+            errors.append(f"service {service['slug']} config mentions Fiverr")
 
     runtime = (DIST / "assets" / "site-config.js").read_text(encoding="utf-8")
-    if "STRIPE_PAYMENT_LINK" not in runtime or "STRIPE_PAYMENT_LINK" not in CONFIG:
-        errors.append("STRIPE_PAYMENT_LINK is not exposed from config/site.json")
+    for key in ("STRIPE_PAYMENT_LINK", "STRIPE_PAYMENT_LINK_ENHANCE"):
+        if key not in runtime or key not in CONFIG:
+            errors.append(f"{key} is not exposed from config/site.json")
 
     data = json.loads((ROOT / "data" / "studios.json").read_text(encoding="utf-8"))
     home = pages["/"]["text"]
@@ -244,7 +261,12 @@ def main() -> int:
                 errors.append(f"{city_path} does not link to {studio['url_path']}")
                 break
             studio_html = pages[studio["url_path"]]["text"]
-            if city_path not in studio_html or "/services/photo-editing/" not in studio_html:
+            if (
+                city_path not in studio_html
+                or "/services/" not in studio_html
+                or "/services/photo-editing/" not in studio_html
+                or "/services/photo-enhancement/" not in studio_html
+            ):
                 errors.append(f"{studio['url_path']} is missing a city or service link")
                 break
 

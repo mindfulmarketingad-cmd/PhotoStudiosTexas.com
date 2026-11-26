@@ -2,11 +2,14 @@
   var config = window.SITE_CONFIG || {};
 
   var orderButton = document.getElementById("order-now");
-  var paymentLink = (config.STRIPE_PAYMENT_LINK || "").trim();
-  if (orderButton && /^https:\/\//.test(paymentLink)) {
-    orderButton.href = paymentLink;
-    orderButton.target = "_blank";
-    orderButton.rel = "noopener noreferrer";
+  if (orderButton) {
+    var paymentKey = orderButton.getAttribute("data-payment-key") || "STRIPE_PAYMENT_LINK";
+    var paymentLink = (config[paymentKey] || "").trim();
+    if (/^https:\/\//.test(paymentLink)) {
+      orderButton.href = paymentLink;
+      orderButton.target = "_blank";
+      orderButton.rel = "noopener noreferrer";
+    }
   }
 
   var form = document.getElementById("order-form");

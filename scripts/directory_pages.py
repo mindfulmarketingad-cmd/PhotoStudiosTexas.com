@@ -563,7 +563,7 @@ class DirectoryMixin:
             near_cards = (f'<h3>Studios near {esc(studio["name"])}</h3><div class="card-grid card-grid-small">'
                           + "".join(self.studio_card(s, show_city=False, index=idx[s["place_id"]]) for s in near) + "</div>")
         links = (f'<p class="related-links"><a href="{city.path}">All photo studios in {esc(city.name)}</a> · '
-                 f'<a href="/services/">Photo editing services</a> · <a href="/tx/">All Texas cities</a></p>')
+                 f'<a href="/services/">Photo editing &amp; enhancement services</a> · <a href="/tx/">All Texas cities</a></p>')
         return f'<section class="section-block" id="related"><h2>Related studios</h2><div class="related-grid">{"".join(blocks)}</div>{near_cards}{links}</section>'
 
     def local_business(self, studio: dict) -> dict:

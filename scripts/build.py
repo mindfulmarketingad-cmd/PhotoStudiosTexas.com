@@ -312,6 +312,31 @@ class Site(DirectoryMixin):
             return raw
         return ""
 
+    def service_price(self, service: dict) -> str:
+        price = str(service.get("priceDisplay") or "").strip()
+        if not price or price.upper().startswith("TODO"):
+            return ""
+        return price
+
+    def _about_services(self) -> str:
+        parts = []
+        for service in self.services:
+            href = f'/services/{esc(service["slug"])}/'
+            price = self.service_price(service)
+            if price:
+                parts.append(
+                    f'<a href="{href}">{esc(service["name"])}</a> is {esc(price)} '
+                    f'{esc(service["priceNote"])}, with {esc(service["delivery"]).lower()} '
+                    f'and {esc(service["revisions"]).lower()}'
+                )
+            else:
+                parts.append(f'<a href="{href}">{esc(service["name"])}</a>')
+        if not parts:
+            return "see the services page for details."
+        if len(parts) == 1:
+            return parts[0] + "."
+        return "; ".join(parts[:-1]) + "; and " + parts[-1] + "."
+
     def head_links(self, image: dict | None = None) -> str:
         if image:
             og_url = image.get("abs") or image.get("src")
@@ -341,7 +366,7 @@ class Site(DirectoryMixin):
         items = [
             ("home", "/", "Home"),
             ("cities", "/cities/", "Cities"),
-            ("service", f"/services/{self.primary_service['slug']}/", self.primary_service["navLabel"]),
+            ("service", "/services/", "Services"),
             ("about", "/about/", "About / Contact"),
         ]
         links = []
@@ -380,7 +405,7 @@ class Site(DirectoryMixin):
   <div class="wrap footer-grid">
     <div>
       <a class="footer-logo" href="/"><img src="/assets/logo-dark.svg" alt="PhotoStudiosTexas" width="276" height="48"></a>
-      <p>A directory of photo studios in Texas, plus photo editing when you need the pictures finished.</p>
+      <p>A directory of photo studios in Texas, plus photo editing and photo enhancement when you need the pictures finished.</p>
     </div>
     <div>
       <h2>Explore</h2>
@@ -422,23 +447,43 @@ class Site(DirectoryMixin):
         return {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": elements}
 
     def cta(self) -> str:
-        service = self.primary_service
+        sentences = []
+        buttons = []
+        for service in self.services:
+            price = self.service_price(service)
+            href = f'/services/{esc(service["slug"])}/'
+            if price:
+                sentences.append(
+                    f'<a href="{href}">{esc(service["name"])}</a> is {esc(price)} '
+                    f'{esc(service["priceNote"])}, with {esc(service["delivery"]).lower()} '
+                    f'and {esc(service["revisions"]).lower()}.'
+                )
+            else:
+                sentences.append(
+                    f'<a href="{href}">{esc(service["name"])}</a> includes '
+                    f'{esc(service["delivery"]).lower()} and {esc(service["revisions"]).lower()}.'
+                )
+            label = service.get("ctaButtonLabel") or service.get("navLabel") or service["name"]
+            buttons.append(f'<a class="btn" href="{href}">{esc(label)}</a>')
         teaser = ""
-        examples = service.get("beforeAfter") or []
-        if examples:
-            item = examples[0]
-            teaser = f"""
+        for service in self.services:
+            examples = service.get("beforeAfter") or []
+            if examples:
+                item = examples[0]
+                teaser = f"""
     <a class="cta-teaser" href="/services/{esc(service["slug"])}/#before-after">
       {example_picture(item)}
       <span class="cta-teaser-label">See before &amp; after</span>
     </a>"""
+                break
         return f"""<aside class="cta">
   <div class="cta-inner">
     <div class="cta-copy">
-      <p class="eyebrow">Photo editing</p>
-      <h2>{esc(service["name"])}</h2>
-      <p>{esc(service["priceDisplay"])} {esc(service["priceNote"])} · {esc(service["delivery"])} · {esc(service["revisions"])}</p>
-      <a class="btn" href="/services/{esc(service["slug"])}/">Order photo editing</a>
+      <p class="eyebrow">Services</p>
+      <h2>Editing and enhancement when the shoot is done</h2>
+      <p>{" ".join(sentences)}</p>
+      <div class="cta-actions">{"".join(buttons)}</div>
+      <p class="cta-all"><a href="/services/">See all services</a></p>
     </div>{teaser}
   </div>
 </aside>"""
@@ -517,17 +562,27 @@ class Site(DirectoryMixin):
         else:
             action = "#order"
             enctype = "text/plain"
-        hidden = ""
-        if service:
-            hidden = f'<input type="hidden" name="service" value="{esc(service["slug"])}">'
+        options = []
+        if service is None:
+            options.append('<option value="">General question</option>')
+        for item in self.services:
+            selected = " selected" if service and item["slug"] == service["slug"] else ""
+            options.append(
+                f'<option value="{esc(item["slug"])}"{selected}>{esc(item["name"])}</option>'
+            )
+        required = " required" if service is not None else ""
+        placeholder = "What should change in the photos?"
+        if service and service.get("formPlaceholder"):
+            placeholder = service["formPlaceholder"]
         return f"""<form id="order-form" class="form-card" action="{esc(action)}" method="post" enctype="{enctype}" data-subject="{esc(subject)}">
-  {hidden}
+  <label for="order-service">Service</label>
+  <select id="order-service" name="service"{required}>{"".join(options)}</select>
   <label for="order-name">Name</label>
   <input id="order-name" name="name" type="text" autocomplete="name" required>
   <label for="order-email">Email</label>
   <input id="order-email" name="email" type="email" autocomplete="email" required>
   <label for="order-instructions">Instructions</label>
-  <textarea id="order-instructions" name="instructions" required placeholder="What should change in the photos?"></textarea>
+  <textarea id="order-instructions" name="instructions" required placeholder="{esc(placeholder)}"></textarea>
   <p class="note">Image upload: this form does not receive files. Paste a share link to your images in the instructions. If your email app opens, attach the files there.</p>
   <button class="btn" type="submit">{esc(submit_label)}</button>
 </form>"""
@@ -535,7 +590,6 @@ class Site(DirectoryMixin):
     def build_home(self) -> None:
         studio_count = len(self.studios)
         city_count = len(self.cities)
-        service = self.primary_service
         preferred = ["Houston", "Dallas", "Austin", "San Antonio", "Fort Worth"]
         by_name = {city.name: city for city in self.cities}
         chip_cities = [by_name[name] for name in preferred if name in by_name]
@@ -587,7 +641,7 @@ class Site(DirectoryMixin):
     <script type="application/json" id="city-paths">{json.dumps(city_paths, ensure_ascii=False, separators=(",", ":"))}</script>
     <div class="hero-actions">
       <a class="btn btn-orange" href="#cities">Browse Cities</a>
-      <a class="btn btn-ghost" href="/services/{esc(service["slug"])}/">Photo Editing - {esc(service["priceDisplay"])}</a>
+      <a class="btn btn-ghost" href="/services/">Photo services</a>
     </div>
     <p class="hero-chip-label">Popular cities</p>
     <div class="hero-chips">{chips}</div>
@@ -621,9 +675,22 @@ class Site(DirectoryMixin):
             "description": f"Directory of {studio_count} photo studios in {city_count} Texas cities.",
         }
         title = "Photo Studios in Texas | PhotoStudiosTexas.com"
+        priced = []
+        for service in self.services:
+            if not self.service_price(service):
+                continue
+            label = (service.get("shortLabel") or service.get("navLabel") or service["name"]).lower()
+            label = label.replace(" service", "")
+            priced.append(f'{label} ({service["priceDisplay"]})')
+        offer = ""
+        if priced:
+            if len(priced) == 1:
+                offer = f", and order {priced[0]}"
+            else:
+                offer = ", and order " + " or ".join(priced)
         description = (
             f"Browse {comma(studio_count)} photo studios across {comma(city_count)} Texas cities. "
-            "Compare ratings, hours, and contact details, and order professional photo editing for $39.88."
+            f"Compare ratings, hours, and contact details{offer}."
         )
         self.write_page("/", self.layout(title, description, "/", body, "home", [schema], extra_head=extra_head))
 
@@ -727,19 +794,64 @@ class Site(DirectoryMixin):
 </section>
 """
 
+    def service_steps(self, service: dict) -> str:
+        steps = service.get("howItWorks") or []
+        if not steps:
+            return ""
+        items = []
+        for step in steps:
+            if isinstance(step, dict):
+                items.append(
+                    f'<li><strong>{esc(step["title"])}</strong> {esc(step["text"])}</li>'
+                )
+            else:
+                items.append(f"<li>{esc(step)}</li>")
+        return f"""<section class="section" id="how-it-works">
+  <h2>How it works</h2>
+  <ol class="steps">{"".join(items)}</ol>
+</section>
+"""
+
+    def service_faq(self, service: dict) -> str:
+        faqs = service.get("faq") or []
+        if not faqs:
+            return ""
+        items = "".join(
+            f"<dt>{esc(item['q'])}</dt><dd>{esc(item['a'])}</dd>"
+            for item in faqs
+        )
+        return f"""<section class="section" id="faq">
+  <h2>Frequently asked questions</h2>
+  <dl class="faq">{items}</dl>
+</section>
+"""
+
     def service_body(self, service: dict) -> str:
         includes = "".join(f"<div><strong>{esc(item)}</strong></div>" for item in service["packageIncludes"])
         covered = "".join(f"<li>{esc(item)}</li>" for item in service["covered"])
+        price = self.service_price(service)
         payment = self.payment_link(service)
-        if payment:
+        key = service.get("paymentLinkKey", "STRIPE_PAYMENT_LINK")
+        if price and payment:
             button = (
                 f'<a class="btn btn-orange" id="order-now" href="{esc(payment)}" '
+                f'data-payment-key="{esc(key)}" '
                 f'target="_blank" rel="noopener noreferrer">{esc(service["orderButtonLabel"])}</a>'
             )
             payment_note = "<p>You’ll complete payment on the secure checkout page.</p>"
+        elif price:
+            button = (
+                f'<a class="btn btn-orange" id="order-now" href="#order" '
+                f'data-payment-key="{esc(key)}">{esc(service["orderButtonLabel"])}</a>'
+            )
+            payment_note = "<p>Include a link to your photos in the order form below.</p>"
         else:
-            button = f'<a class="btn btn-orange" id="order-now" href="#order">{esc(service["orderButtonLabel"])}</a>'
-            payment_note = "<p>Include a link to your photos in the order form.</p>"
+            button = '<a class="btn btn-orange" href="#order">Request this service</a>'
+            payment_note = "<p>The price will appear here once it is set. Use the form below to request this service.</p>"
+        price_html = (
+            f'<p class="price">{esc(price)} <span>{esc(service["priceNote"])}</span></p>'
+            if price else ""
+        )
         others = [
             other for other in self.services
             if other["slug"] != service["slug"]
@@ -750,7 +862,7 @@ class Site(DirectoryMixin):
                 f'<li><a href="/services/{esc(other["slug"])}/">{esc(other["name"])}</a></li>'
                 for other in others
             )
-            other_html = f"<h2>Other services</h2><ul>{links}</ul>"
+            other_html = f'<h2>Other services</h2><ul class="plain-list">{links}</ul>'
         return f"""<div class="split">
   <div>
     <p class="lede">{esc(service["summary"])}</p>
@@ -761,14 +873,16 @@ class Site(DirectoryMixin):
     {other_html}
   </div>
   <aside class="panel">
-    <p class="price">{esc(service["priceDisplay"])} <span>{esc(service["priceNote"])}</span></p>
+    {price_html}
     <p>{esc(service["delivery"])} · {esc(service["revisions"])}</p>
-    <!-- STRIPE_PAYMENT_LINK is read from config/site.json. Leave it empty until the Stripe Payment Link exists. -->
+    <!-- Payment links are read from config/site.json by paymentLinkKey. Leave the key empty until the Stripe Payment Link exists. -->
     {button}
     {payment_note}
   </aside>
 </div>
 {self.service_gallery(service)}
+{self.service_steps(service)}
+{self.service_faq(service)}
 <section class="section" id="order">
   <h2>Order</h2>
   {self.order_form(service, f'{service["name"]} order', "Send order")}
@@ -778,10 +892,11 @@ class Site(DirectoryMixin):
         cards = []
         for service in self.services:
             cards.append(
-                f'<a class="studio-card" href="/services/{esc(service["slug"])}/"><div class="card-body">'
+                f'<a class="studio-card service-card" href="/services/{esc(service["slug"])}/"><div class="card-body">'
                 f'<p class="eyebrow">Service</p><h3>{esc(service["name"])}</h3>'
-                f'<p class="price">{esc(service["priceDisplay"])} <span>{esc(service["priceNote"])}</span></p>'
-                f'<p>{esc(service["summary"])}</p></div></a>'
+                + (f'<p class="price">{esc(self.service_price(service))} <span>{esc(service["priceNote"])}</span></p>' if self.service_price(service) else "")
+                + f'<p>{esc(service["delivery"])} · {esc(service["revisions"])}</p>'
+                f'<p>{esc(service["summary"])}</p><span class="btn btn-orange">View &amp; order</span></div></a>'
             )
         index_path = "/services/"
         crumbs = [("Home", "/"), ("Services", None)]
@@ -789,7 +904,7 @@ class Site(DirectoryMixin):
   {self.crumbs(crumbs)}
   <h1>Services</h1>
   <hr class="rule">
-  <p class="lede">Photo editing is the first service. More can be added beside it without changing the directory.</p>
+  <p class="lede">Professional photo editing and photo enhancement for studios and clients across Texas. Pick a service to see what’s included, how it works, and how to order.</p>
   <div class="card-grid">{"".join(cards)}</div>
 </div>"""
         self.write_page(index_path, self.layout(
@@ -810,7 +925,7 @@ class Site(DirectoryMixin):
   <hr class="rule">
   {self.service_body(service)}
 </div>"""
-            price = service["priceDisplay"].replace("$", "").replace(",", "").strip()
+            price = self.service_price(service).replace("$", "").replace(",", "").strip()
             offer = {
                 "@context": "https://schema.org",
                 "@type": "Service",
@@ -819,16 +934,18 @@ class Site(DirectoryMixin):
                 "url": self.abs_url(path),
                 "areaServed": "Texas",
                 "provider": {"@type": "Organization", "name": "PhotoStudiosTexas.com", "url": self.abs_url("/")},
-                "offers": {
+            }
+            if price:
+                offer["offers"] = {
                     "@type": "Offer",
                     "price": price,
                     "priceCurrency": "USD",
                     "description": f'{service["delivery"]}, {service["revisions"]}',
                     "url": self.abs_url(path),
-                },
-            }
+                }
+            title = service["name"] if not self.service_price(service) else f'{service["name"]} | {self.service_price(service)}'
             self.write_page(path, self.layout(
-                f'{service["name"]} | {service["priceDisplay"]}',
+                f"{title}",
                 service["summary"],
                 path,
                 page,
@@ -843,10 +960,10 @@ class Site(DirectoryMixin):
   {self.crumbs(crumbs)}
   <h1>About PhotoStudiosTexas.com</h1>
   <hr class="rule">
-  <p class="lede">PhotoStudiosTexas.com lists photography studios in Texas and offers professional photo editing.</p>
+  <p class="lede">PhotoStudiosTexas.com lists photography studios in Texas and offers professional photo editing and photo enhancement.</p>
   <p>Studios come from a public Google Maps export for the search “Photography studio in TX.” The build keeps Texas listings, drops permanently closed businesses, and removes duplicate records that share a name and address. Temporarily closed businesses stay, with a label on the page. Ratings, hours, phone numbers, websites, and photos are shown only when that export included them.</p>
   <p>City pages are the hubs. Every studio links up to its city, and each city links back to the Texas directory. Nothing here is an endorsement of a studio, and the site is not affiliated with Google or with the businesses listed.</p>
-  <p><a href="/services/{esc(self.primary_service["slug"])}/">Professional photo editing</a> is {esc(self.primary_service["priceDisplay"])} {esc(self.primary_service["priceNote"])}, with {esc(self.primary_service["delivery"]).lower()} and {esc(self.primary_service["revisions"]).lower()}.</p>
+  <p><a href="/services/">Two services</a> are on the site now: {self._about_services()}</p>
   <h2>Contact</h2>
   {self.order_form(None, "PhotoStudiosTexas contact", "Send message")}
 </div>"""
@@ -866,9 +983,12 @@ class Site(DirectoryMixin):
             ("/tx/", "Texas"),
             ("/cities/", "Cities"),
             ("/services/", "Services"),
-            (f"/services/{self.primary_service['slug']}/", self.primary_service["name"]),
-            ("/about/", "About / Contact"),
         ]
+        static.extend(
+            (f"/services/{service['slug']}/", service["name"])
+            for service in self.services
+        )
+        static.append(("/about/", "About / Contact"))
         static_html = "".join(f'<li><a href="{href}">{esc(label)}</a></li>' for href, label in static)
         groups = []
         for city in self.by_name:
@@ -947,6 +1067,7 @@ class Site(DirectoryMixin):
 
         config = {
             "STRIPE_PAYMENT_LINK": str(self.config.get("STRIPE_PAYMENT_LINK") or ""),
+            "STRIPE_PAYMENT_LINK_ENHANCE": str(self.config.get("STRIPE_PAYMENT_LINK_ENHANCE") or ""),
             "ORDER_FORM_ENDPOINT": str(self.config.get("ORDER_FORM_ENDPOINT") or ""),
             "CONTACT_EMAIL": self.email,
         }

@@ -1,6 +1,6 @@
 # PhotoStudiosTexas.com
 
-Static directory of photo studios in Texas, plus a photo editing service. Pages are plain HTML generated from a cleaned Outscraper export. [Vercel](https://vercel.com) builds the site with `python3 scripts/build.py` and serves `dist/`. The canonical base URL is `https://www.photostudiostexas.com` (attach the domain in Vercel when you are ready; no template change is required).
+Static directory of photo studios in Texas, plus photo editing and photo enhancement services. Pages are plain HTML generated from a cleaned Outscraper export. [Vercel](https://vercel.com) builds the site with `python3 scripts/build.py` and serves `dist/`. The canonical base URL is `https://www.photostudiostexas.com` (attach the domain in Vercel when you are ready; no template change is required).
 
 ## Page counts from this export
 
@@ -10,7 +10,7 @@ Static directory of photo studios in Texas, plus a photo editing service. Pages 
 | Studios published | 1,860 |
 | City hubs | 324 |
 | Cities with a single studio | 147 |
-| Indexable HTML pages | 2,191 |
+| Indexable HTML pages | 2,192 |
 | Temporarily closed (kept and labeled) | 88 |
 
 The link checker reaches every indexable page within 2 clicks of the home page.
@@ -28,8 +28,9 @@ Houston 284, Dallas 152, Austin 123, San Antonio 93, Fort Worth 64, El Paso 45, 
 | `/tx/<city>/` | City hub: every studio, nearby cities, editing CTA |
 | `/tx/<city>/<studio>/` | Studio details, other studios in the city, nearby cities |
 | `/cities/` | A–Z city index |
-| `/services/` | Service list (add more here later) |
+| `/services/` | Service hub listing photo editing and photo enhancement |
 | `/services/photo-editing/` | Professional Photo Editing & Retouching, $39.88, with a before-and-after gallery |
+| `/services/photo-enhancement/` | Photo Enhancement & Upscaling, $40 per photo |
 | `/about/` | About and contact |
 | `/sitemap/` | HTML sitemap |
 | `/sitemap.xml` | XML sitemap |
@@ -37,17 +38,18 @@ Houston 284, Dallas 152, Austin 123, San Antonio 93, Fort Worth 64, El Paso 45, 
 
 The homepage hero photograph is *Photographic studio* by [Alexander Dummer](https://unsplash.com/photos/aS4Duj2j7r4), published on Unsplash on 16 August 2016 and released under [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/). Source files and the credit live in `assets/hero/`.
 
-City hubs link to every studio in that city, to nearby cities (by the average coordinates of listings in each city), back to `/` and `/tx/`, and to the editing service. Studio pages use the breadcrumb Home → Texas → City → Studio, with `BreadcrumbList` schema. Studio pages include `LocalBusiness` schema. Titles, descriptions, and canonical tags are unique.
+City hubs link to every studio in that city, to nearby cities (by the average coordinates of listings in each city), back to `/` and `/tx/`, and to both services. Studio pages use the breadcrumb Home → Texas → City → Studio, with `BreadcrumbList` schema. Studio pages include `LocalBusiness` schema. Titles, descriptions, and canonical tags are unique.
 
 ## Set the payment link
 
 Edit **`config/site.json`**. This is the only place the payment URL is defined:
 
 ```json
-"STRIPE_PAYMENT_LINK": "https://buy.stripe.com/your-link"
+"STRIPE_PAYMENT_LINK": "https://buy.stripe.com/your-editing-link",
+"STRIPE_PAYMENT_LINK_ENHANCE": "https://buy.stripe.com/your-enhancement-link"
 ```
 
-Leave it as `""` until the Stripe Payment Link exists. A value that starts with `https://` becomes the **Order Now - $39.88** button. Anything else keeps the button on the order form.
+Leave a key as `""` until that Stripe Payment Link exists. A value that starts with `https://` becomes the Order Now button on that service page. Anything else keeps the button on the order form, which includes a service selector.
 
 Also in that file:
 
@@ -60,7 +62,7 @@ Rebuild after changing the file:
 python3 scripts/build.py
 ```
 
-That regenerates `dist/assets/site-config.js` from the same keys. To add another service later, append an object to `config/services.json` and rebuild. The nav item stays on photo editing; `/services/` lists every entry.
+That regenerates `dist/assets/site-config.js` from the same keys. To add another service later, append an object to `config/services.json` and rebuild. The main nav links to `/services/`, which lists every entry.
 
 ## Rebuild from a new Outscraper export
 
