@@ -29,8 +29,8 @@ Houston 284, Dallas 152, Austin 123, San Antonio 93, Fort Worth 64, El Paso 45, 
 | `/tx/<city>/<studio>/` | Studio details, other studios in the city, nearby cities |
 | `/cities/` | A–Z city index |
 | `/services/` | Service hub listing photo editing and photo enhancement |
-| `/services/photo-editing/` | Professional Photo Editing & Retouching, $39.88, with a before-and-after gallery |
-| `/services/photo-enhancement/` | Photo Enhancement & Upscaling, $40 per photo |
+| `/services/photo-editing/` | Professional Photo Editing & Retouching, $49.99, with a before-and-after gallery |
+| `/services/photo-enhancement/` | Photo Enhancement & Upscaling, $49.99 per photo |
 | `/blog/` | Blog hub: ranked city guides |
 | `/blog/best-photo-studios-in-<city>-tx/` | "The 10 Best Photo Studios in <City> Texas" for every city with 10+ studios (34 today). Ranking: `(reviews × rating + 10 × Texas mean) ÷ (reviews + 10)`, open and reviewed studios only. Article, ItemList, FAQPage schema |
 | `/tools/` | Free tools hub |
