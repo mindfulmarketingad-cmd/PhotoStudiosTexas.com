@@ -23,7 +23,7 @@ Houston 284, Dallas 152, Austin 123, San Antonio 93, Fort Worth 64, El Paso 45, 
 
 | Path | Page |
 | --- | --- |
-| `/` | Texas home: search, featured studios, every city |
+| `/` | Texas home: full-width studio hero, city search, featured studios, every city |
 | `/tx/` | Texas hub used in breadcrumbs |
 | `/tx/<city>/` | City hub: every studio, nearby cities, editing CTA |
 | `/tx/<city>/<studio>/` | Studio details, other studios in the city, nearby cities |
@@ -34,6 +34,8 @@ Houston 284, Dallas 152, Austin 123, San Antonio 93, Fort Worth 64, El Paso 45, 
 | `/sitemap/` | HTML sitemap |
 | `/sitemap.xml` | XML sitemap |
 | `/robots.txt` | Robots file |
+
+The homepage hero photograph is *Photographic studio* by [Alexander Dummer](https://unsplash.com/photos/aS4Duj2j7r4), published on Unsplash on 16 August 2016 and released under [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/). Source files and the credit live in `assets/hero/`.
 
 City hubs link to every studio in that city, to nearby cities (by the average coordinates of listings in each city), back to `/` and `/tx/`, and to the editing service. Studio pages use the breadcrumb Home → Texas → City → Studio, with `BreadcrumbList` schema. Studio pages include `LocalBusiness` schema. Titles, descriptions, and canonical tags are unique.
 

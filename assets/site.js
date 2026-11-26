@@ -105,11 +105,56 @@
     initLightbox();
   }
 
-  var searchInput = document.getElementById("studio-search");
-  var cityJump = document.getElementById("city-jump");
-  var results = document.getElementById("search-results");
-  var cityCards = document.querySelectorAll("[data-city]");
+  var cityForm = document.getElementById("hero-city-search");
+  var cityInput = document.getElementById("city-search");
+  var cityPathsEl = document.getElementById("city-paths");
+  var cityPaths = {};
+  if (cityPathsEl) {
+    try {
+      cityPaths = JSON.parse(cityPathsEl.textContent || "{}");
+    } catch (error) {
+      cityPaths = {};
+    }
+  }
 
+  function resolveCity(raw) {
+    var query = String(raw || "").trim().toLowerCase();
+    if (!query) {
+      return "";
+    }
+    if (cityPaths[query]) {
+      return cityPaths[query];
+    }
+    var matches = [];
+    Object.keys(cityPaths).forEach(function (name) {
+      if (name.indexOf(query) === 0) {
+        matches.push(cityPaths[name]);
+      }
+    });
+    return matches.length === 1 ? matches[0] : "";
+  }
+
+  function goToCity(raw) {
+    var path = resolveCity(raw);
+    if (path) {
+      window.location.href = path;
+      return true;
+    }
+    return false;
+  }
+
+  if (cityForm && cityInput) {
+    cityForm.addEventListener("submit", function (event) {
+      if (goToCity(cityInput.value)) {
+        event.preventDefault();
+      }
+    });
+    cityInput.addEventListener("change", function () {
+      goToCity(cityInput.value);
+    });
+  }
+
+  var cityJump = document.getElementById("city-jump");
   if (cityJump) {
     cityJump.addEventListener("change", function () {
       if (cityJump.value) {
@@ -117,6 +162,10 @@
       }
     });
   }
+
+  var searchInput = document.getElementById("studio-search");
+  var results = document.getElementById("search-results");
+  var cityCards = document.querySelectorAll("[data-city]");
 
   if (!searchInput || !results) {
     return;

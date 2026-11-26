@@ -25,6 +25,8 @@ BRAND = ROOT / "assets" / "brand"
 
 EXAMPLES_DIR = ROOT / "assets" / "examples"
 EXAMPLE_URL = "/images/retouching"
+HERO_DIR = ROOT / "assets" / "hero"
+HERO_URL = "/images/hero"
 
 
 def example_picture(item: dict, *, loading: str = "lazy") -> str:
@@ -445,7 +447,7 @@ class Site:
   <div class="chips">{"".join(chips)}</div>
 </section>"""
 
-    def layout(self, title: str, description: str, path: str, body: str, active: str, schemas: list, robots: str = "index,follow") -> str:
+    def layout(self, title: str, description: str, path: str, body: str, active: str, schemas: list, robots: str = "index,follow", extra_head: str = "") -> str:
         canonical = self.abs_url(path)
         description = meta_text(description)
         schema_html = "\n".join(json_script(item) for item in schemas)
@@ -465,7 +467,7 @@ class Site:
 <meta property="og:site_name" content="PhotoStudiosTexas.com">
 {self.head_links()}
 <link rel="stylesheet" href="/assets/site.css">
-{schema_html}
+{extra_head}{schema_html}
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -535,26 +537,70 @@ class Site:
     def build_home(self) -> None:
         studio_count = len(self.studios)
         city_count = len(self.cities)
-        options = ['<option value="">Jump to a city</option>']
-        options.extend(
-            f'<option value="{city.path}">{esc(city.name)} ({city.count})</option>'
+        service = self.primary_service
+        preferred = ["Houston", "Dallas", "Austin", "San Antonio", "Fort Worth"]
+        by_name = {city.name: city for city in self.cities}
+        chip_cities = [by_name[name] for name in preferred if name in by_name]
+        seen = {city.slug for city in chip_cities}
+        for city in self.by_count:
+            if len(chip_cities) >= 5:
+                break
+            if city.slug not in seen:
+                chip_cities.append(city)
+                seen.add(city.slug)
+        chips = "".join(
+            f'<a class="hero-chip" href="{city.path}">{esc(city.name)}</a>'
+            for city in chip_cities
+        )
+        datalist = "".join(
+            f'<option value="{esc(city.name)}"></option>'
             for city in self.by_name
         )
+        city_paths = {city.name.lower(): city.path for city in self.cities}
         featured = "".join(self.studio_card(studio) for studio in self.featured)
         cities = "".join(self.city_card(city) for city in self.by_count)
-        body = f"""<section class="hero"><div class="wrap">
-  <p class="eyebrow"><a href="/tx/">Texas directory</a></p>
-  <h1>Find a photo studio in Texas</h1>
-  <hr class="rule">
-  <p class="lede">{comma(studio_count)} photography studios across {comma(city_count)} cities. Search by studio or city, then open a city hub for every listing in that place.</p>
+        extra_head = (
+            f'<link rel="preload" as="image" href="{HERO_URL}/studio-desktop.webp" '
+            'type="image/webp" media="(min-width: 701px)" fetchpriority="high">\n'
+            f'<link rel="preload" as="image" href="{HERO_URL}/studio-mobile.webp" '
+            'type="image/webp" media="(max-width: 700px)" fetchpriority="high">\n'
+        )
+        body = f"""<!-- Hero photo: Alexander Dummer, "Photographic studio", Unsplash (https://unsplash.com/photos/aS4Duj2j7r4). Published 16 August 2016. License: CC0 1.0 Public Domain. -->
+<section class="home-hero">
+  <div class="home-hero-media" aria-hidden="true">
+    <picture>
+      <source media="(max-width: 700px)" type="image/webp" srcset="{HERO_URL}/studio-mobile.webp">
+      <source type="image/webp" srcset="{HERO_URL}/studio-desktop.webp">
+      <img src="{HERO_URL}/studio-desktop.jpg" alt="" width="1920" height="1080" fetchpriority="high" decoding="async">
+    </picture>
+  </div>
+  <div class="home-hero-overlay" aria-hidden="true"></div>
+  <div class="wrap home-hero-content">
+    <p class="eyebrow"><a href="/tx/">Texas directory</a></p>
+    <h1>Find the Best Photo Studios in Texas</h1>
+    <hr class="rule">
+    <p class="lede">{comma(studio_count)} photography studios across {comma(city_count)} cities. Search a city to open its hub, or browse every listing below.</p>
+    <form class="hero-city-search" id="hero-city-search" role="search" action="/cities/" method="get">
+      <label class="visually-hidden" for="city-search">Search a Texas city</label>
+      <input id="city-search" name="q" type="search" list="city-list" placeholder="Search a Texas city" autocomplete="off">
+      <datalist id="city-list">{datalist}</datalist>
+      <button class="btn btn-orange" type="submit">Go</button>
+    </form>
+    <script type="application/json" id="city-paths">{json.dumps(city_paths, ensure_ascii=False, separators=(",", ":"))}</script>
+    <div class="hero-actions">
+      <a class="btn btn-orange" href="#cities">Browse Cities</a>
+      <a class="btn btn-ghost" href="/services/{esc(service["slug"])}/">Photo Editing - {esc(service["priceDisplay"])}</a>
+    </div>
+    <p class="hero-chip-label">Popular cities</p>
+    <div class="hero-chips">{chips}</div>
+  </div>
+  <p class="home-hero-credit">Photo: <a href="https://unsplash.com/photos/aS4Duj2j7r4" rel="noopener noreferrer">Alexander Dummer / Unsplash</a> (CC0)</p>
+</section>
+<section class="section section-search"><div class="wrap">
   <div class="search-bar" role="search">
     <div>
       <label class="visually-hidden" for="studio-search">Search studios or cities</label>
       <input id="studio-search" type="search" placeholder="Search by studio or city" autocomplete="off">
-    </div>
-    <div>
-      <label class="visually-hidden" for="city-jump">Jump to a city</label>
-      <select id="city-jump">{"".join(options)}</select>
     </div>
   </div>
   <div id="search-results" class="search-results" aria-live="polite"></div>
@@ -564,7 +610,7 @@ class Site:
   <div class="section-head"><h2>Featured studios</h2><a href="/cities/">All cities</a></div>
   <div class="card-grid">{featured}</div>
 </div></section>
-<section class="section"><div class="wrap">
+<section class="section" id="cities"><div class="wrap">
   <div class="section-head"><h2>Cities</h2><a href="/cities/">Alphabetical index</a></div>
   <div class="city-grid">{cities}</div>
 </div></section>
@@ -581,7 +627,7 @@ class Site:
             f"Browse {comma(studio_count)} photo studios across {comma(city_count)} Texas cities. "
             "Compare ratings, hours, and contact details, and order professional photo editing for $39.88."
         )
-        self.write_page("/", self.layout(title, description, "/", body, "home", [schema]))
+        self.write_page("/", self.layout(title, description, "/", body, "home", [schema], extra_head=extra_head))
 
     def build_texas(self) -> None:
         path = "/tx/"
@@ -1107,7 +1153,16 @@ class Site:
         )
         (DIST / "robots.txt").write_text(robots, encoding="utf-8")
 
+    def copy_image_dir(self, src: Path, dest: Path) -> None:
+        if not src.is_dir():
+            return
+        dest.mkdir(parents=True, exist_ok=True)
+        for item in sorted(src.iterdir()):
+            if item.suffix.lower() in {".webp", ".jpg", ".jpeg", ".png"}:
+                shutil.copyfile(item, dest / item.name)
+
     def write_runtime_assets(self) -> None:
+
         config = {
             "STRIPE_PAYMENT_LINK": str(self.config.get("STRIPE_PAYMENT_LINK") or ""),
             "ORDER_FORM_ENDPOINT": str(self.config.get("ORDER_FORM_ENDPOINT") or ""),
@@ -1135,12 +1190,8 @@ class Site:
         shutil.copyfile(BRAND / "logo-dark.svg", assets / "logo-dark.svg")
         for name in ROOT_ASSETS:
             shutil.copyfile(BRAND / name, DIST / name)
-        if EXAMPLES_DIR.is_dir():
-            dest = DIST / "images" / "retouching"
-            dest.mkdir(parents=True, exist_ok=True)
-            for example in sorted(EXAMPLES_DIR.iterdir()):
-                if example.suffix.lower() in {".webp", ".jpg", ".jpeg", ".png"}:
-                    shutil.copyfile(example, dest / example.name)
+        self.copy_image_dir(EXAMPLES_DIR, DIST / "images" / "retouching")
+        self.copy_image_dir(HERO_DIR, DIST / "images" / "hero")
 
     def build(self) -> None:
         if DIST.exists():
