@@ -114,12 +114,28 @@ data/cleaning-report.json what was dropped and why
 data/source/              original xlsx
 assets/site.css
 assets/site.js            search, city jump, order button, mailto form
+assets/directory.css      studio card chips, filter bar, studio page sections
+assets/directory.js       open-now status, hours highlight, city filter bar
+assets/city-images/       generated 1200x630 featured image per city
+data/website-enrichment.json  public homepage info per studio (title, description, socials)
 assets/brand/             logo, favicons, manifest, social image
 scripts/clean_data.py
+scripts/enrich_websites.py reads each studio's own homepage (aiohttp, bs4; local only)
+scripts/studio_info.py     hours parsing, specialties, features, summaries
+scripts/directory_pages.py studio, city hub, and specialty pages
+scripts/render_city_images.py  Pillow city images (local only)
 scripts/build.py
 scripts/check_links.py
 scripts/render_brand.py
 vercel.json               build command and dist output
 ```
+
+## Listing data on each page
+
+- Hours, rating breakdown, amenities (Google "about" attributes), booking link, photos count, verified flag, neighborhood, and time zone come straight from the export.
+- Specialties are inferred from Google listing categories, the business name, topics customers mention, the booking link, and the studio's own homepage text. Pages label them "based on listing details". Nothing is added when no field supports it.
+- The export has no review text, only the rating, count, per-star counts, and a few review topics. Pages link to Google for the actual reviews.
+- Specialty pages (`/tx/<city>/<specialty>/`) exist only where 3 or more studios in a city share the specialty and the specialty is not every studio in the city.
+- Refresh website info with `python3 scripts/enrich_websites.py` (use `--refresh` to refetch all), then `python3 scripts/clean_data.py`, `python3 scripts/render_city_images.py` if cities changed, and `python3 scripts/build.py`.
 
 `dist/` is gitignored. Vercel creates it on deploy.

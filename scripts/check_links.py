@@ -22,10 +22,11 @@ REQUIRED_SNIPPETS = [
     "/icon-192.png",
     "/icon-512.png",
     "/site.webmanifest",
-    "/og-image.png",
     "/assets/logo-light.svg",
     "/assets/logo-dark.svg",
     'rel="canonical"',
+    'property="og:image"',
+    'name="twitter:image"',
 ]
 
 ROOT_FILES = [
@@ -42,6 +43,8 @@ ROOT_FILES = [
     "assets/logo-dark.svg",
     "assets/site.css",
     "assets/site.js",
+    "assets/directory.css",
+    "assets/directory.js",
     "assets/site-config.js",
     "assets/search-index.json",
 ]
@@ -244,6 +247,24 @@ def main() -> int:
             if city_path not in studio_html or "/services/photo-editing/" not in studio_html:
                 errors.append(f"{studio['url_path']} is missing a city or service link")
                 break
+
+    # Featured image, filter bar, schema image, and reviews/hours sections.
+    for studio in data["studios"]:
+        text = pages[studio["url_path"]]["text"]
+        if 'class="featured studio-featured"' not in text or 'fetchpriority="high"' not in text:
+            errors.append(f"{studio['url_path']} has no featured image")
+        if '"image":' not in text or 'name="twitter:image"' not in text:
+            errors.append(f"{studio['url_path']} is missing image metadata")
+        if 'id="reviews"' not in text or 'id="services"' not in text:
+            errors.append(f"{studio['url_path']} is missing the reviews or services section")
+        if studio.get("hours") and 'id="hours"' not in text:
+            errors.append(f"{studio['url_path']} has hours data but no hours section")
+    for slug in city_slugs:
+        text = pages[f"/tx/{slug}/"]["text"]
+        if 'class="featured"' not in text or 'id="filter-bar"' not in text:
+            errors.append(f"/tx/{slug}/ is missing the featured image or filter bar")
+        if f"/images/city/{slug}.png" not in text or not (DIST / "images" / "city" / f"{slug}.png").is_file():
+            errors.append(f"/tx/{slug}/ city image missing")
 
     indexable = [path for path in pages if path != "/404.html"]
     print(

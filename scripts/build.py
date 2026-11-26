@@ -16,6 +16,8 @@ import shutil
 from collections import Counter, defaultdict
 from pathlib import Path
 
+from directory_pages import DirectoryMixin
+
 ROOT = Path(__file__).resolve().parents[1]
 DIST = ROOT / "dist"
 DATA_PATH = ROOT / "data" / "studios.json"
@@ -228,7 +230,7 @@ class City:
         return len(self.studios)
 
 
-class Site:
+class Site(DirectoryMixin):
     def __init__(self):
         payload = load_json(DATA_PATH)
         self.config = load_json(CONFIG_PATH)
@@ -310,8 +312,15 @@ class Site:
             return raw
         return ""
 
-    def head_links(self) -> str:
-        image = self.abs_url("/og-image.png")
+    def head_links(self, image: dict | None = None) -> str:
+        if image:
+            og_url = image.get("abs") or image.get("src")
+            og_w, og_h = int(image.get("width", 1200)), int(image.get("height", 630))
+            og_alt = image.get("alt") or "PhotoStudiosTexas.com photo studios across Texas"
+        else:
+            og_url = self.abs_url("/og-image.png")
+            og_w, og_h = 1200, 630
+            og_alt = "PhotoStudiosTexas.com — photo studios across Texas"
         return f"""
 <link rel="icon" href="/favicon.ico" sizes="32x32">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
@@ -320,12 +329,13 @@ class Site:
 <link rel="icon" type="image/png" sizes="512x512" href="/icon-512.png">
 <link rel="manifest" href="/site.webmanifest">
 <meta name="theme-color" content="#111111">
-<meta property="og:image" content="{esc(image)}">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="PhotoStudiosTexas.com — photo studios across Texas">
+<meta property="og:image" content="{esc(og_url)}">
+<meta property="og:image:width" content="{og_w}">
+<meta property="og:image:height" content="{og_h}">
+<meta property="og:image:alt" content="{esc(og_alt)}">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="{esc(image)}">"""
+<meta name="twitter:image" content="{esc(og_url)}">
+<meta name="twitter:image:alt" content="{esc(og_alt)}">"""
 
     def header(self, active: str) -> str:
         items = [
@@ -447,10 +457,11 @@ class Site:
   <div class="chips">{"".join(chips)}</div>
 </section>"""
 
-    def layout(self, title: str, description: str, path: str, body: str, active: str, schemas: list, robots: str = "index,follow", extra_head: str = "") -> str:
+    def layout(self, title: str, description: str, path: str, body: str, active: str, schemas: list, robots: str = "index,follow", extra_head: str = "", image: dict | None = None, directory: bool = False) -> str:
         canonical = self.abs_url(path)
         description = meta_text(description)
         schema_html = "\n".join(json_script(item) for item in schemas)
+        extra_js = '\n<script src="/assets/directory.js" defer></script>' if directory else ""
         return f"""<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -465,8 +476,9 @@ class Site:
 <meta property="og:url" content="{esc(canonical)}">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="PhotoStudiosTexas.com">
-{self.head_links()}
+{self.head_links(image)}
 <link rel="stylesheet" href="/assets/site.css">
+<link rel="stylesheet" href="/assets/directory.css">
 {extra_head}{schema_html}
 </head>
 <body>
@@ -475,7 +487,7 @@ class Site:
 <main id="main">{body}</main>
 {self.footer()}
 <script src="/assets/site-config.js"></script>
-<script src="/assets/site.js"></script>
+<script src="/assets/site.js"></script>{extra_js}
 </body>
 </html>
 """
@@ -493,20 +505,6 @@ class Site:
             f'<a class="city-card" data-city="{esc(city.name)}" href="{city.path}">'
             f'<span>{esc(city.name)}</span><strong>{city.count} <span class="visually-hidden">{noun}</span></strong></a>'
         )
-
-    def studio_card(self, studio: dict, show_city: bool = True) -> str:
-        city_line = f'<p class="muted">{esc(studio["city"])}, TX</p>' if show_city else ""
-        category = f'<p class="muted">{esc(studio["category"])}</p>' if studio.get("category") else ""
-        return f"""<a class="studio-card" href="{esc(studio["url_path"])}">
-  {photo_block(studio, "")}
-  <div class="card-body">
-    {badge(studio)}
-    <h3>{esc(studio["name"])}</h3>
-    {rating_html(studio)}
-    {city_line}
-    {category}
-  </div>
-</a>"""
 
     def order_form(self, service: dict | None, subject: str, submit_label: str) -> str:
         endpoint = str(self.config.get("ORDER_FORM_ENDPOINT") or "").strip()
@@ -706,222 +704,6 @@ class Site:
             title, description, path, body, "cities",
             [self.breadcrumb_schema(crumbs, path)],
         ))
-
-    def studio_title(self, studio: dict, name_counts: Counter, name_zip_counts: Counter) -> str:
-        name = studio["name"]
-        city = studio["city"]
-        if name_zip_counts[(name, studio.get("postal_code"))] > 1:
-            return f"{name} | {studio['address'] or studio['slug']}"
-        if name_counts[name] > 1 and studio.get("postal_code"):
-            return f"{name} ({studio['postal_code']}) | {city}, TX Photo Studio"
-        return f"{name} | {city}, TX Photo Studio"
-
-    def build_city(self, city: City) -> None:
-        studios = sorted(city.studios, key=lambda studio: (
-            studio.get("rating") is None,
-            -(studio.get("rating") or 0),
-            -(studio.get("review_count") or 0),
-            studio["name"].lower(),
-            studio["place_id"],
-        ))
-        cards = "".join(self.studio_card(studio, show_city=False) for studio in studios)
-        crumbs = [("Home", "/"), ("Texas", "/tx/"), (city.name, None)]
-        noun = "photo studio" if city.count == 1 else "photo studios"
-        temporary = sum(1 for studio in studios if studio.get("business_status") == "CLOSED_TEMPORARILY")
-        closed_note = ""
-        if temporary:
-            closed_note = f" <span class=\"muted\">{temporary} marked temporarily closed.</span>"
-        body = f"""<div class="wrap page-head">
-  {self.crumbs(crumbs)}
-  <p class="eyebrow"><a href="/tx/">Texas</a></p>
-  <h1>Photo studios in {esc(city.name)}, Texas</h1>
-  <hr class="rule">
-  <p class="lede">{comma(city.count)} {noun} in {esc(city.name)}.{closed_note}</p>
-</div>
-<section class="section"><div class="wrap"><div class="card-grid">{cards}</div></div></section>
-<div class="wrap">{self.nearby_html(city)}{self.cta()}</div>"""
-        item_list = {
-            "@context": "https://schema.org",
-            "@type": "ItemList",
-            "name": f"Photo studios in {city.name}, Texas",
-            "numberOfItems": city.count,
-            "itemListElement": [
-                {
-                    "@type": "ListItem",
-                    "position": index,
-                    "name": studio["name"],
-                    "url": self.abs_url(studio["url_path"]),
-                }
-                for index, studio in enumerate(studios, start=1)
-            ],
-        }
-        title = f"Photo Studios in {city.name}, TX | PhotoStudiosTexas"
-        description = (
-            f"{comma(city.count)} photo studios in {city.name}, Texas, with ratings, addresses, "
-            "phone numbers, hours, and a page for each studio."
-        )
-        self.write_page(city.path, self.layout(
-            title, description, city.path, body, "",
-            [self.breadcrumb_schema(crumbs, city.path), item_list],
-        ))
-
-    def facts_html(self, studio: dict) -> str:
-        rows = []
-        if studio.get("address"):
-            rows.append(("Address", esc(studio["address"])))
-        if studio.get("phone"):
-            rows.append(("Phone", f'<a href="{esc(tel_href(studio["phone"]))}">{esc(studio["phone"])}</a>'))
-        website = http_url(studio.get("website"))
-        if website:
-            label = re.sub(r"^www\.", "", re.sub(r"^https?://", "", website).split("/")[0])
-            rows.append((
-                "Website",
-                f'<a href="{esc(website)}" rel="noopener noreferrer" target="_blank">{esc(label)}</a>',
-            ))
-        maps = http_url(studio.get("maps_url"))
-        if maps:
-            rows.append((
-                "Map",
-                f'<a href="{esc(maps)}" rel="noopener noreferrer" target="_blank">Google Maps</a>',
-            ))
-        if studio.get("located_in"):
-            rows.append(("Located in", esc(studio["located_in"])))
-        if studio.get("postal_code"):
-            rows.append(("ZIP", esc(studio["postal_code"])))
-        return "".join(f"<dt>{label}</dt><dd>{value}</dd>" for label, value in rows)
-
-    def hours_html(self, hours: dict | None) -> str:
-        if not hours:
-            return ""
-        rows = []
-        seen = set()
-        for day in DAY_ORDER + [day for day in hours if day not in DAY_ORDER]:
-            if day in seen or day not in hours:
-                continue
-            seen.add(day)
-            spans = ", ".join(str(span) for span in hours[day])
-            rows.append(f'<tr><th scope="row">{esc(day)}</th><td>{esc(spans)}</td></tr>')
-        return f'<table class="hours"><caption class="visually-hidden">Hours</caption><tbody>{"".join(rows)}</tbody></table>'
-
-    def local_business(self, studio: dict) -> dict:
-        data = {
-            "@context": "https://schema.org",
-            "@type": "LocalBusiness",
-            "name": studio["name"],
-            "url": self.abs_url(studio["url_path"]),
-            "address": {
-                "@type": "PostalAddress",
-                "addressLocality": studio["city"],
-                "addressRegion": "TX",
-                "addressCountry": "US",
-            },
-            "geo": {
-                "@type": "GeoCoordinates",
-                "latitude": studio["latitude"],
-                "longitude": studio["longitude"],
-            },
-        }
-        street = studio.get("street") or studio.get("address")
-        if street:
-            data["address"]["streetAddress"] = street
-        if studio.get("postal_code"):
-            data["address"]["postalCode"] = studio["postal_code"]
-        if studio.get("phone"):
-            data["telephone"] = studio["phone"]
-        website = http_url(studio.get("website"))
-        if website:
-            data["sameAs"] = website
-        photo = http_url(studio.get("photo"))
-        if photo:
-            data["image"] = photo
-        maps = http_url(studio.get("maps_url"))
-        if maps:
-            data["hasMap"] = maps
-        if studio.get("description"):
-            data["description"] = studio["description"]
-        elif studio.get("category"):
-            data["description"] = f'{studio["category"]} in {studio["city"]}, Texas.'
-        if studio.get("rating") is not None and studio.get("review_count"):
-            data["aggregateRating"] = {
-                "@type": "AggregateRating",
-                "ratingValue": studio["rating"],
-                "reviewCount": studio["review_count"],
-                "bestRating": 5,
-                "worstRating": 1,
-            }
-        hours = opening_hours(studio.get("hours"))
-        if hours:
-            data["openingHoursSpecification"] = hours
-        return data
-
-    def build_studio(self, studio: dict, city: City, title: str) -> None:
-        others = [
-            other for other in city.studios
-            if other["place_id"] != studio["place_id"]
-        ]
-        others.sort(key=lambda item: (item["name"].lower(), item["place_id"]))
-        other_links = "".join(
-            f'<li><a href="{esc(other["url_path"])}">{esc(other["name"])}</a></li>'
-            for other in others
-        )
-        other_section = ""
-        if other_links:
-            other_section = f'<section class="section"><h2>Other studios in {esc(city.name)}</h2><ul class="link-cols">{other_links}</ul></section>'
-        subtypes = [item for item in studio.get("subtypes") or [] if item.lower() != (studio.get("category") or "").lower()]
-        subtype_html = ""
-        if subtypes:
-            subtype_html = f'<p class="muted">Also listed as {esc(", ".join(subtypes))}.</p>'
-        description = ""
-        if studio.get("description"):
-            description = f'<p>{esc(studio["description"])}</p>'
-        category = studio.get("category") or "Photo studio"
-        crumbs = [("Home", "/"), ("Texas", "/tx/"), (city.name, city.path), (studio["name"], None)]
-        body = f"""<div class="wrap page-head">
-  {self.crumbs(crumbs)}
-  <div class="studio-layout">
-    <div>
-      {photo_block(studio, "studio-hero")}
-      {badge(studio)}
-      <h1>{esc(studio["name"])}</h1>
-      <hr class="rule">
-      <p class="lede">{esc(category)} in {esc(city.name)}, Texas.</p>
-      {rating_html(studio)}
-      {description}
-      {subtype_html}
-    </div>
-    <aside class="panel">
-      <h2>Details</h2>
-      <dl class="facts">{self.facts_html(studio)}</dl>
-      {self.hours_html(studio.get("hours"))}
-    </aside>
-  </div>
-  {self.cta()}
-  {other_section}
-  {self.nearby_html(city)}
-  <p><a href="{city.path}">All photo studios in {esc(city.name)}</a></p>
-</div>"""
-        bits = [f"{studio['name']} is a {category.lower()} in {city.name}, Texas."]
-        if studio.get("rating") is not None and studio.get("review_count"):
-            bits.append(f"Rated {float(studio['rating']):.1f} from {int(studio['review_count'])} reviews.")
-        if studio.get("address"):
-            bits.append(studio["address"] + ".")
-        description_text = " ".join(bits)
-        self.write_page(studio["url_path"], self.layout(
-            title,
-            description_text,
-            studio["url_path"],
-            body,
-            "",
-            [self.breadcrumb_schema(crumbs, studio["url_path"]), self.local_business(studio)],
-        ))
-
-    def build_studios(self) -> None:
-        for city in self.by_name:
-            name_counts = Counter(studio["name"] for studio in city.studios)
-            name_zip_counts = Counter((studio["name"], studio.get("postal_code")) for studio in city.studios)
-            self.build_city(city)
-            for studio in city.studios:
-                self.build_studio(studio, city, self.studio_title(studio, name_counts, name_zip_counts))
 
     def service_gallery(self, service: dict) -> str:
         examples = service.get("beforeAfter") or []
@@ -1186,6 +968,13 @@ class Site:
         (assets / "search-index.json").write_text(json.dumps(index, ensure_ascii=False), encoding="utf-8")
         shutil.copyfile(ROOT / "assets" / "site.css", assets / "site.css")
         shutil.copyfile(ROOT / "assets" / "site.js", assets / "site.js")
+        shutil.copyfile(ROOT / "assets" / "directory.css", assets / "directory.css")
+        shutil.copyfile(ROOT / "assets" / "directory.js", assets / "directory.js")
+        city_images = ROOT / "assets" / "city-images"
+        if city_images.is_dir():
+            (DIST / "images" / "city").mkdir(parents=True, exist_ok=True)
+            for image_file in sorted(city_images.glob("*.png")):
+                shutil.copyfile(image_file, DIST / "images" / "city" / image_file.name)
         shutil.copyfile(BRAND / "logo-light.svg", assets / "logo-light.svg")
         shutil.copyfile(BRAND / "logo-dark.svg", assets / "logo-dark.svg")
         for name in ROOT_ASSETS:

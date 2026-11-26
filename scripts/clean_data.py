@@ -17,6 +17,7 @@ import sys
 import unicodedata
 from collections import Counter, defaultdict
 from pathlib import Path
+from urllib.parse import parse_qsl, urlencode, urlsplit, urlunsplit
 
 ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_XLSX = ROOT / "data" / "source" / "outscraper-photography-studio-tx.xlsx"
@@ -144,6 +145,103 @@ def slugify(text: str, fallback: str) -> str:
     if len(slug) > 80:
         slug = slug[:80].rstrip("-")
     return slug or fallback
+
+
+TRACKING_PARAMS = re.compile(r"^(utm_[a-z]+|rwg_token|fbclid|gclid|y_source|ved|usg|opi|cd|ei)$", re.I)
+
+
+def clean_url(value) -> str | None:
+    """Drop tracking parameters (including %3F-encoded ones Google adds)."""
+    text = as_text(value)
+    if not text:
+        return None
+    text = re.split(r"%3[Ff]", text, maxsplit=1)[0] if re.search(r"%3[Ff](utm_|rwg_token)", text, re.I) else text
+    parts = urlsplit(text)
+    if parts.scheme not in {"http", "https"} or not parts.netloc:
+        return text
+    query = [
+        (k, v) for k, v in parse_qsl(parts.query, keep_blank_values=True)
+        if not TRACKING_PARAMS.match(k) and not (k.lower() == "ref" and v.lower() in {"rwg_link", "gmb", "google"})
+    ]
+    path = parts.path
+    if path == "/" and not query:
+        path = "/"
+    return urlunsplit((parts.scheme, parts.netloc, path, urlencode(query), ""))
+
+
+def parse_json(value):
+    text = as_text(value)
+    if not text:
+        return None
+    try:
+        return json.loads(text)
+    except json.JSONDecodeError:
+        return None
+
+
+def parse_about(value) -> dict | None:
+    """Keep attributes Google marks true. Keeps language assistance text."""
+    data = parse_json(value)
+    if not isinstance(data, dict):
+        return None
+    out: dict[str, list[str]] = {}
+    for group, attrs in data.items():
+        if not isinstance(attrs, dict):
+            continue
+        items = []
+        for name, flag in attrs.items():
+            if flag is True:
+                items.append(str(name))
+            elif isinstance(flag, str) and flag.strip():
+                items.append(f"{name}: {flag.strip()}")
+        if items:
+            out[str(group)] = items
+    return out or None
+
+
+def parse_other_hours(value) -> list[dict] | None:
+    data = parse_json(value)
+    if not isinstance(data, list):
+        return None
+    out = []
+    for block in data:
+        if not isinstance(block, dict):
+            continue
+        for label, days in block.items():
+            if not isinstance(days, dict):
+                continue
+            cleaned = {
+                day: str(text).replace("\u202f", " ").strip()
+                for day, text in days.items()
+                if str(text).strip()
+            }
+            if cleaned:
+                out.append({"label": str(label), "hours": cleaned})
+    return out or None
+
+
+def parse_breakdown(value) -> dict | None:
+    data = parse_json(value)
+    if not isinstance(data, dict):
+        return None
+    try:
+        counts = {str(k): int(float(v)) for k, v in data.items() if str(k) in {"1", "2", "3", "4", "5"}}
+    except (TypeError, ValueError):
+        return None
+    return counts if len(counts) == 5 and sum(counts.values()) > 0 else None
+
+
+def parse_tags(value) -> list[str]:
+    text = as_text(value)
+    if not text:
+        return []
+    seen, out = set(), []
+    for part in text.split(","):
+        item = part.strip()
+        if item and item.lower() not in seen:
+            seen.add(item.lower())
+            out.append(item)
+    return out
 
 
 def parse_hours(value) -> dict | None:
@@ -342,7 +440,7 @@ def build_record(raw: dict) -> dict | None:
         "city_source": city_source,
         "postal_code": postal,
         "phone": as_text(raw.get("phone")),
-        "website": as_text(raw.get("website")),
+        "website": clean_url(raw.get("website")),
         "rating": as_float(raw.get("rating")),
         "review_count": as_int(raw.get("reviews")),
         "hours": parse_hours(raw.get("working_hours")),
@@ -356,6 +454,18 @@ def build_record(raw: dict) -> dict | None:
         "description": as_text(raw.get("description")),
         "business_status": status,
         "located_in": as_text(raw.get("located_in")),
+        "neighborhood": (None if (as_text(raw.get("county")) or "").lower() in {"none", "nan", "n/a"} else as_text(raw.get("county"))),
+        "time_zone": as_text(raw.get("time_zone")),
+        "plus_code": as_text(raw.get("plus_code")),
+        "verified": str(raw.get("verified")).strip().lower() == "true",
+        "photos_count": as_int(raw.get("photos_count")),
+        "street_view": as_text(raw.get("street_view")),
+        "reviews_link": as_text(raw.get("reviews_link")),
+        "rating_breakdown": parse_breakdown(raw.get("reviews_per_score")),
+        "review_topics": parse_tags(raw.get("reviews_tags")),
+        "booking_link": clean_url(raw.get("booking_appointment_link")) or clean_url(raw.get("order_links")),
+        "about": parse_about(raw.get("about")),
+        "other_hours": parse_other_hours(raw.get("other_hours")),
     }
     record["_core"] = address_core(record["address"], city, postal)
     record["_name_key"] = name_key(name) or name.lower()
@@ -424,6 +534,18 @@ def public_record(record: dict) -> dict:
         "description": record["description"],
         "business_status": record["business_status"],
         "located_in": record["located_in"],
+        "neighborhood": record["neighborhood"],
+        "time_zone": record["time_zone"],
+        "plus_code": record["plus_code"],
+        "verified": record["verified"],
+        "photos_count": record["photos_count"],
+        "street_view": record["street_view"],
+        "reviews_link": record["reviews_link"],
+        "rating_breakdown": record["rating_breakdown"],
+        "review_topics": record["review_topics"],
+        "booking_link": record["booking_link"],
+        "about": record["about"],
+        "other_hours": record["other_hours"],
     }
 
 
