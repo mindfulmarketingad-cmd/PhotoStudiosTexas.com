@@ -137,6 +137,8 @@ def hours_summary(week: dict) -> str:
     open_parts, closed_days = [], []
     for first, label, last in groups:
         span = DAY_SHORT[first] if first == last else f"{DAY_SHORT[first]}–{DAY_SHORT[last]}"
+        if (first, last) == ("Monday", "Sunday"):
+            span = "Every day"
         if label == "Closed":
             closed_days.append(span)
         else:
