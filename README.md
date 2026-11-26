@@ -159,13 +159,13 @@ vercel.json               build command and dist output
 
 ## Statewide category pages
 
-Every specialty the directory uses (the named categories (including natural light, photo prop rental, and couples) plus newborn, seniors, quinceañera, boudoir, commercial, real estate, events, pets, passport, studio rental, video, drone, photo booths, restoration, classes, and model portfolios) gets a statewide page **only if at least one studio truly offers the service**. No page and no link is created for an empty category, and `check_links.py` fails if one appears.
+Every specialty the directory uses (the named categories (including natural light, photo prop rental, couples, and pets) plus newborn, seniors, quinceañera, boudoir, commercial, real estate, events, passport, studio rental, video, drone, photo booths, restoration, classes, and model portfolios) gets a statewide page **only if at least one studio truly offers the service**. No page and no link is created for an empty category, and `check_links.py` fails if one appears.
 
 - A studio qualifies only with evidence: its Google listing category (Portrait studio, Wedding photographer), its business name, its listing description, its booking page, or its own website (title, meta description, headings, menu links, service pages, and sentences that describe an offering). A generic "photographer" does not count.
 - Rules are word-bounded and exclude look-alikes: `family-owned`, wedding venues, planners and boutiques, maternity clothing and pregnancy centers, testimonials, restoration, workshops for photographers, painted portraits, bridal boudoir, space-rental and self-service studios, event venues, makeup artists.
 - The evidence for every studio and category is stored in `data/category-evidence.json` (source type, matched text, page). The build reads only that file, so builds are deterministic. The card chips and city specialty pages for these six categories use the same evidence.
 - Manual spot-check exclusions live in `data/category-overrides.json` with reasons.
-- The named categories (portraits, family, headshots, weddings, prom, maternity, Christmas, graduation, natural light, photo prop rental, and couples) also get a city-level page whenever a city has at least one qualifying studio, at the same URL as any existing city specialty page (for example `/tx/austin/headshots/` or `/tx/austin/couples/`).
+- The named categories (portraits, family, headshots, weddings, prom, maternity, Christmas, graduation, natural light, photo prop rental, couples, and pets) also get a city-level page whenever a city has at least one qualifying studio, at the same URL as any existing city specialty page (for example `/tx/austin/headshots/` or `/tx/houston/pet-photography/`).
 - Refresh: `python3 scripts/enrich_categories.py` (add `--refresh` to refetch), then `python3 scripts/generate_category_evidence.py`, then `python3 scripts/build.py` and `python3 scripts/check_links.py`.
 
 `dist/` is gitignored. Vercel creates it on deploy.

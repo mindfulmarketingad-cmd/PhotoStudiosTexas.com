@@ -19,7 +19,7 @@
   "commercial": 290,
   "real-estate": 39,
   "events": 122,
-  "pets": 32,
+  "pets": 31,
   "passport": 10,
   "rental": 127,
   "video": 269,
@@ -32823,22 +32823,6 @@
      {
       "source": "website menu",
       "text": "Weddings"
-     }
-    ],
-    "pets": [
-     {
-      "source": "website title",
-      "text": "Pet photography — Azure Photography",
-      "page": "/maternity"
-     },
-     {
-      "source": "website description",
-      "text": "Pet photography — Azure Photography",
-      "page": "/maternity"
-     },
-     {
-      "source": "website menu",
-      "text": "Pet"
      }
     ],
     "maternity": [

@@ -36,7 +36,7 @@ CATEGORIES = [
     ("commercial", "commercial-photo-studios", "Commercial & product", "Commercial Photo Studios in Texas", "commercial photo studios"),
     ("real-estate", "real-estate-photo-studios", "Real estate", "Real Estate Photo Studios in Texas", "real estate photo studios"),
     ("events", "event-photo-studios", "Events", "Event Photo Studios in Texas", "event photo studios"),
-    ("pets", "pet-photo-studios", "Pets", "Pet Photo Studios in Texas", "pet photo studios"),
+    ("pets", "pet-photo-studios", "Pet", "Pet Photo Studios in Texas", "pet photo studios"),
     ("passport", "passport-photo-studios", "Passport & ID", "Passport Photo Studios in Texas", "passport photo studios"),
     ("rental", "photo-studios-for-rent", "Studio rental", "Photo Studios for Rent in Texas", "photo studios for rent"),
     ("video", "video-production-studios", "Video production", "Video Production Studios in Texas", "video production studios"),
@@ -46,7 +46,7 @@ CATEGORIES = [
     ("classes", "photography-classes", "Classes & workshops", "Photography Classes in Texas", "photography classes"),
     ("models", "model-portfolio-studios", "Model portfolios", "Model Portfolio Studios in Texas", "model portfolio studios"),
 ]
-NAMED_CITY_IDS = ("portraits", "family", "headshots", "weddings", "prom", "maternity", "christmas", "graduation", "natural-light", "prop-rental", "couples")
+NAMED_CITY_IDS = ("portraits", "family", "headshots", "weddings", "prom", "maternity", "christmas", "graduation", "natural-light", "prop-rental", "couples", "pets")
 
 CAT_BY_ID = {c[0]: c for c in CATEGORIES}
 CAT_IDS = [c[0] for c in CATEGORIES]
@@ -310,7 +310,11 @@ EXCLUDE = {
     "commercial": re.compile(r"commercial\s+(?:real\s+estate|property|lease|space|kitchen|driver|insurance)", re.I),
     "real-estate": re.compile(r"real\s+estate\s+(?:agent|agency|broker|office|listings? for sale|for sale)|realtor\.com", re.I),
     "events": re.compile(r"event\s+(?:venue|venues|space|hall|planner|planning|rental|center|centre)|party\s+(?:venue|rental|hall)", re.I),
-    "pets": re.compile(r"\b(?:vet(?:erinarian)?|pet\s+(?:store|shop|groom|boarding|sitter|food|adoption))\b", re.I),
+    "pets": re.compile(
+        r"\b(?:vet(?:erinarian)?|pet\s+(?:store|shop|groom|boarding|sitter|food|adoption))\b"
+        r"|pets?\s+welcome|pet[- ]friendly|pets?\s+allowed|service animals? welcome|dogs?\s+welcome"
+        r"|bring (?:your|the) (?:dog|pet|cat|puppy)",
+        re.I),
     "passport": re.compile(r"passport\s+(?:office|agency|services?|application|renewal)(?!\s+photo)", re.I),
     "rental": re.compile(r"$^"),
     "video": re.compile(r"\byoutube\b|watch the video|music videos? (?:and|&) ,|tiktok", re.I),

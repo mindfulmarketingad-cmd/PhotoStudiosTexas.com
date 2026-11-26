@@ -107,7 +107,8 @@ INTRO = {
     ),
     "pets": (
         "Pet photographers make portraits of dogs, cats, and other animals, in the studio or on location. "
-        "Every studio below has evidence it offers pet photography. Pet stores and veterinarians are not included."
+        "Every studio below has evidence it offers pet, dog, or cat photography sessions. "
+        "A “pets welcome” or pet-friendly studio, a pet store, or a groomer does not count."
     ),
     "passport": (
         "Passport and ID photo studios make official passport, visa, and identification photographs. "

@@ -208,7 +208,7 @@ SPECIALTIES = [
      set(), r"real estate|realtors?\b|\brealty\b|property photo|listing photo|architectur"),
     ("events", "Events", "events", "Event photographers",
      set(), r"events?[ -](photo|coverage|photograph)|(photograph\w*|photo\w*|video\w*) (of |for )?(your |all )?(events?|parties)|\bparty\b|\bparties\b|\bevents\b"),
-    ("pets", "Pets", "pet-photography", "Pet photographers",
+    ("pets", "Pet", "pet-photography", "Pet photographers",
      set(), r"\bpets?\b|\bdogs?\b|\bcanine|\bcats?\b|\banimals?\b"),
     ("passport", "Passport & ID photos", "passport-photos", "Passport and ID photo studios",
      {"passport photo processor"}, r"passport|visa photo|\bid photos?\b|immigration photo"),

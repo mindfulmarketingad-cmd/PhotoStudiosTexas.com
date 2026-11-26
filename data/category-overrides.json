@@ -1641,5 +1641,12 @@
    "action": "exclude",
    "reason": "Self-capture studio with no photographer; 'couples portraits' is listed as a use of the room, not a couples photography service."
   }
+ },
+ "ChIJwWI42m8TTIYRIHE70RwjPmg": {
+  "_name": "azure photography (McKinney)",
+  "pets": {
+   "action": "exclude",
+   "reason": "The only 'Pet photography' evidence is a maternity page title and a menu link that points at /maternity; the studio describes family, senior, and commercial photography, not pet sessions."
+  }
  }
 }
