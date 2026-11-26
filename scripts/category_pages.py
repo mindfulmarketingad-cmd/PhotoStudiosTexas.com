@@ -286,7 +286,6 @@ class CategoryMixin:
   <div class="filter-row filter-toggles">
     <label class="toggle"><input type="checkbox" id="f-open"> Open now</label>
     <label class="toggle"><input type="checkbox" id="f-hours"> Has listed hours</label>
-    <label class="toggle"><input type="checkbox" id="f-site"> Has website</label>
   </div>
   {chips_html}
   <div class="filter-foot"><span id="f-count" aria-live="polite"></span><button type="button" class="link-btn" id="f-reset">Reset filters</button></div>
@@ -386,7 +385,7 @@ class CategoryMixin:
         }
         title = f'{c["h1"]} | PhotoStudiosTexas'
         description = (f'{comma(n)} {c["noun"]} in {comma(cities)} Texas cities, each with real evidence it offers the service. '
-                       "Compare ratings, reviews, hours, and contact details.")
+                       "Compare ratings, reviews, and hours, then request a booking.")
         self.write_page(path, self.layout(title, description, path, body, "categories",
                                           [self.breadcrumb_schema(crumbs, path), page, item_list], image=image, directory=True))
 

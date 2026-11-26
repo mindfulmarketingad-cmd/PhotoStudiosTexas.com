@@ -21,6 +21,7 @@ import studio_info as si
 from category_pages import CategoryMixin
 from directory_pages import DirectoryMixin
 from extra_pages import TOOLS, ExtrasMixin
+from lead_form import LeadMixin
 from trust_pages import LEGAL_LINKS, TrustMixin
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -235,7 +236,7 @@ class City:
         return len(self.studios)
 
 
-class Site(DirectoryMixin, CategoryMixin, ExtrasMixin, TrustMixin):
+class Site(DirectoryMixin, CategoryMixin, ExtrasMixin, TrustMixin, LeadMixin):
     def __init__(self):
         payload = load_json(DATA_PATH)
         self.config = load_json(CONFIG_PATH)
@@ -328,15 +329,10 @@ class Site(DirectoryMixin, CategoryMixin, ExtrasMixin, TrustMixin):
         parts = []
         for service in self.services:
             href = f'/services/{esc(service["slug"])}/'
-            price = self.service_price(service)
-            if price:
-                parts.append(
-                    f'<a href="{href}">{esc(service["name"])}</a> is {esc(price)} '
-                    f'{esc(service["priceNote"])}, with {esc(service["delivery"]).lower()} '
-                    f'and {esc(service["revisions"]).lower()}'
-                )
-            else:
-                parts.append(f'<a href="{href}">{esc(service["name"])}</a>')
+            parts.append(
+                f'<a href="{href}">{esc(service["name"])}</a> '
+                f'({esc(service["delivery"]).lower()}, {esc(service["revisions"]).lower()})'
+            )
         if not parts:
             return "see the services page for details."
         if len(parts) == 1:
@@ -466,21 +462,13 @@ class Site(DirectoryMixin, CategoryMixin, ExtrasMixin, TrustMixin):
         sentences = []
         buttons = []
         for service in self.services:
-            price = self.service_price(service)
             href = f'/services/{esc(service["slug"])}/'
-            if price:
-                sentences.append(
-                    f'<a href="{href}">{esc(service["name"])}</a> is {esc(price)} '
-                    f'{esc(service["priceNote"])}, with {esc(service["delivery"]).lower()} '
-                    f'and {esc(service["revisions"]).lower()}.'
-                )
-            else:
-                sentences.append(
-                    f'<a href="{href}">{esc(service["name"])}</a> includes '
-                    f'{esc(service["delivery"]).lower()} and {esc(service["revisions"]).lower()}.'
-                )
-            label = service.get("ctaButtonLabel") or service.get("navLabel") or service["name"]
-            buttons.append(f'<a class="btn" href="{href}">{esc(label)}</a>')
+            sentences.append(
+                f'<a href="{href}">{esc(service["name"])}</a> includes '
+                f'{esc(service["delivery"]).lower()} and {esc(service["revisions"]).lower()}.'
+            )
+            label = service.get("navLabel") or service["name"]
+            buttons.append(f'<a class="btn" href="{href}" aria-label="Learn more about {esc(label)}">Learn More: {esc(label)}</a>')
         teaser = ""
         for service in self.services:
             examples = service.get("beforeAfter") or []
@@ -548,7 +536,8 @@ class Site(DirectoryMixin, CategoryMixin, ExtrasMixin, TrustMixin):
 <main id="main">{body}</main>
 {self.footer()}
 <script src="/assets/site-config.js"></script>
-<script src="/assets/site.js"></script>{extra_js}
+<script src="/assets/site.js"></script>
+<script src="/assets/lead-form.js" defer></script>{extra_js}
 <script>window.va=window.va||function(){{(window.vaq=window.vaq||[]).push(arguments);}};</script>
 <script defer src="/_vercel/insights/script.js"></script>
 </body>
@@ -666,6 +655,7 @@ class Site(DirectoryMixin, CategoryMixin, ExtrasMixin, TrustMixin):
   <div class="section-head"><h2>Cities</h2><a href="/cities/">Alphabetical index</a></div>
   <div class="city-grid">{cities}</div>
 </div></section>
+{self.home_lead_section()}
 <div class="wrap">{self.cta()}</div>"""
         schema = {
             "@context": "https://schema.org",
@@ -675,22 +665,9 @@ class Site(DirectoryMixin, CategoryMixin, ExtrasMixin, TrustMixin):
             "description": f"Directory of {studio_count} photo studios in {city_count} Texas cities.",
         }
         title = "Photo Studios in Texas | PhotoStudiosTexas.com"
-        priced = []
-        for service in self.services:
-            if not self.service_price(service):
-                continue
-            label = (service.get("shortLabel") or service.get("navLabel") or service["name"]).lower()
-            label = label.replace(" service", "")
-            priced.append(f'{label} ({service["priceDisplay"]})')
-        offer = ""
-        if priced:
-            if len(priced) == 1:
-                offer = f", and order {priced[0]}"
-            else:
-                offer = ", and order " + " or ".join(priced)
         description = (
             f"Browse {comma(studio_count)} photo studios across {comma(city_count)} Texas cities. "
-            f"Compare ratings, hours, and contact details{offer}."
+            f"Compare ratings and hours, then book a studio with one quick form."
         )
         extra_head += '<script src="/assets/home-geo.js" defer></script>\n'
         self.write_page("/", self.layout(title, description, "/", body, "home", [schema], extra_head=extra_head, directory=True))
@@ -698,8 +675,6 @@ class Site(DirectoryMixin, CategoryMixin, ExtrasMixin, TrustMixin):
     def build_texas(self) -> None:
         path = "/tx/"
         cities = "".join(self.city_card(city) for city in self.by_count)
-        with_phone = sum(1 for studio in self.studios if studio.get("phone"))
-        with_site = sum(1 for studio in self.studios if http_url(studio.get("website")))
         temporary = sum(1 for studio in self.studios if studio.get("business_status") == "CLOSED_TEMPORARILY")
         crumbs = [("Home", "/"), ("Texas", None)]
         body = f"""<div class="wrap page-head">
@@ -713,7 +688,7 @@ class Site(DirectoryMixin, CategoryMixin, ExtrasMixin, TrustMixin):
     <div class="stat"><b>{comma(len(self.cities))}</b> cities</div>
     <div class="stat"><b>{comma(temporary)}</b> temporarily closed</div>
   </div>
-  <p class="muted">{comma(with_phone)} listings include a phone number and {comma(with_site)} include a website. {comma(temporary)} are marked temporarily closed in the source data and stay in the directory.</p>
+  <p class="muted">{comma(temporary)} listings are marked temporarily closed in the source data and stay in the directory.</p>
 </div>
 {self.category_home_section("Texas photo studios by category")}
 <section class="section"><div class="wrap">
@@ -900,9 +875,8 @@ class Site(DirectoryMixin, CategoryMixin, ExtrasMixin, TrustMixin):
             cards.append(
                 f'<a class="studio-card service-card" href="/services/{esc(service["slug"])}/"><div class="card-body">'
                 f'<p class="eyebrow">Service</p><h3>{esc(service["name"])}</h3>'
-                + (f'<p class="price">{esc(self.service_price(service))} <span>{esc(service["priceNote"])}</span></p>' if self.service_price(service) else "")
-                + f'<p>{esc(service["delivery"])} · {esc(service["revisions"])}</p>'
-                f'<p>{esc(service["summary"])}</p><span class="btn btn-orange">View &amp; order</span></div></a>'
+                f'<p>{esc(service["delivery"])} · {esc(service["revisions"])}</p>'
+                f'<p>{esc(service["summary"])}</p><span class="btn btn-orange">Learn More</span></div></a>'
             )
         index_path = "/services/"
         crumbs = [("Home", "/"), ("Services", None)]
@@ -916,7 +890,7 @@ class Site(DirectoryMixin, CategoryMixin, ExtrasMixin, TrustMixin):
 </div>"""
         self.write_page(index_path, self.layout(
             "Services | PhotoStudiosTexas.com",
-            "Photo editing, retouching, enhancement, and upscaling from PhotoStudiosTexas.com, with prices, turnaround, and what's included.",
+            "Photo editing, retouching, enhancement, and upscaling from PhotoStudiosTexas.com, with turnaround and what's included.",
             index_path,
             body,
             "service",
@@ -990,7 +964,7 @@ class Site(DirectoryMixin, CategoryMixin, ExtrasMixin, TrustMixin):
         <li><strong><a href="/services/">Photo services</a>.</strong> {self._about_services()}</li>
       </ul>
       <h2>Where the listings come from</h2>
-      <p>Studios come from a public Google Maps export for the search “Photography studio in TX.” The build keeps Texas listings, drops permanently closed businesses, and removes duplicate records that share a name and address. Temporarily closed businesses stay, with a label on the page. Ratings, hours, phone numbers, websites, and photos are shown only when the listing includes them. Specialties are matched from each listing's Google categories, name, and the studio's own website.</p>
+      <p>Studios come from a public Google Maps export for the search “Photography studio in TX.” The build keeps Texas listings, drops permanently closed businesses, and removes duplicate records that share a name and address. Temporarily closed businesses stay, with a label on the page. Ratings, hours, and photos are shown only when the listing includes them. Studio phone numbers, emails, and websites are not published; use the Book Now form instead. Specialties are matched from each listing's Google categories, name, and the studio's own website.</p>
       <h2>How we rank studios</h2>
       <p>Lists and guides never take payment for placement. Where we rank, we blend each studio's Google rating with the statewide average, weighted by its number of reviews, so a 5.0 from three reviews does not beat a 4.9 from three hundred. The formula is printed in every <a href="/blog/">city guide</a>.</p>
       <h2>Own a studio?</h2>
@@ -1168,6 +1142,7 @@ class Site(DirectoryMixin, CategoryMixin, ExtrasMixin, TrustMixin):
         (assets / "search-index.json").write_text(json.dumps(index, ensure_ascii=False), encoding="utf-8")
         shutil.copyfile(ROOT / "assets" / "site.css", assets / "site.css")
         shutil.copyfile(ROOT / "assets" / "site.js", assets / "site.js")
+        shutil.copyfile(ROOT / "assets" / "lead-form.js", assets / "lead-form.js")
         shutil.copyfile(ROOT / "assets" / "blob-upload.js", assets / "blob-upload.js")
         shutil.copyfile(ROOT / "assets" / "directory.css", assets / "directory.css")
         shutil.copyfile(ROOT / "assets" / "directory.js", assets / "directory.js")

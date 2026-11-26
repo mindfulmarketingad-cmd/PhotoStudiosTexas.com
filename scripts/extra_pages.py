@@ -208,18 +208,12 @@ class ExtrasMixin:
             facts.append(f"<dt>Hours</dt><dd>{esc(hours)}</dd>")
         if studio.get("address"):
             facts.append(f"<dt>Address</dt><dd>{esc(studio['address'])}</dd>")
-        if studio.get("phone"):
-            facts.append(f'<dt>Phone</dt><dd><a href="tel:{esc(studio["phone"].replace(" ", "").replace("-", ""))}">{esc(studio["phone"])}</a></dd>')
         breakdown = studio.get("rating_breakdown") or {}
         five = int(breakdown.get("5") or 0)
         if count and five:
             facts.append(f"<dt>5-star share</dt><dd>{round(100 * five / count)}% of {comma(count)} reviews</dd>")
-        site = http_url(studio.get("website"))
-        links = [f'<a class="btn btn-orange" href="{esc(studio["url_path"])}">View {esc(studio["name"])} details</a>']
-        if site:
-            links.append(f'<a class="btn" href="{esc(site)}" rel="nofollow noopener noreferrer" target="_blank">Website</a>')
-        if studio.get("reviews_link"):
-            links.append(f'<a class="btn" href="{esc(studio["reviews_link"])}" rel="nofollow noopener noreferrer" target="_blank">Google reviews</a>')
+        links = [f'<a class="btn btn-orange" href="{esc(studio["url_path"])}#book">Book Now</a>',
+                 f'<a class="btn" href="{esc(studio["url_path"])}">View {esc(studio["name"])} details</a>']
         return f"""<article class="blog-item" id="rank-{rank}">
   <a class="blog-item-photo" href="{esc(studio["url_path"])}"><img src="{esc(img_src)}" alt="{esc(alt)}" width="800" height="500" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="{onerr}"></a>
   <div class="blog-item-body">
@@ -278,7 +272,7 @@ class ExtrasMixin:
                         f"{si.join_list([s['name'] for s in weekend[:5]])} list Saturday or Sunday hours. Hours change, so confirm before you go."))
         if booking:
             faq.append((f"Can I book a {city.name} photo studio online?",
-                        f"{si.join_list([s['name'] for s in booking[:5]])} link to an online booking page from their Google listing."))
+                        f"{si.join_list([s['name'] for s in booking[:5]])} list online booking on their Google listing. Use the Book Now button on each studio page to send a request."))
         faq.append(("How did you rank these studios?",
                     f"Each studio's score blends its Google rating with the Texas average ({self._state_mean():.2f}), weighted by its number of reviews, so a 5.0 from three reviews does not beat a 4.9 from 300. Temporarily closed studios and studios with no reviews are left out."))
         faq_html = "".join(f"<dt>{esc(q)}</dt><dd>{esc(a)}</dd>" for q, a in faq)
@@ -564,7 +558,7 @@ class ExtrasMixin:
         lines = [
             "# PhotoStudiosTexas.com",
             "",
-            f"> Directory of {comma(len(self.studios))} photo studios across {comma(len(self.cities))} Texas cities, with ratings, review counts, hours, specialties, and contact details from public Google listings. Also offers paid photo editing and photo enhancement services, free in-browser photo tools, and ranked city guides.",
+            f"> Directory of {comma(len(self.studios))} photo studios across {comma(len(self.cities))} Texas cities, with ratings, review counts, hours, and specialties from public Google listings, with a Book Now form to reach any studio. Also offers paid photo editing and photo enhancement services, free in-browser photo tools, and ranked city guides.",
             "",
             "Listings are not paid placements. Ratings and hours come from public Google listings and studio websites and may be out of date. City pages (/tx/<city>/) are the hubs; each studio has its own page (/tx/<city>/<studio>/).",
             "",
@@ -581,9 +575,7 @@ class ExtrasMixin:
             "## Services",
         ]
         for service in self.services:
-            price = self.service_price(service)
-            note = f" — {price} {service.get('priceNote', '')}".rstrip() if price else ""
-            lines.append(f"- [{service['name']}]({self.abs_url('/services/' + service['slug'] + '/')}){note}: {service['summary']}")
+            lines.append(f"- [{service['name']}]({self.abs_url('/services/' + service['slug'] + '/')}): {service['summary']}")
         lines += ["", "## Free tools (run in the browser, nothing uploaded)"]
         for tool in TOOLS:
             lines.append(f"- [{tool['name']}]({self.abs_url('/tools/' + tool['slug'] + '/')}): {tool['blurb']}")

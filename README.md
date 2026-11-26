@@ -175,3 +175,7 @@ Every specialty the directory uses (the eight named categories plus newborn, sen
 - Order, contact and claim/removal forms post to `api/submit.js`, which emails the owner through Resend. Vercel env vars: `RESEND_API_KEY` (sending-only key), `FORM_TO_EMAIL`, `FORM_FROM_EMAIL` (must be on a Resend-verified domain).
 - Customer photos upload straight to Vercel Blob through `api/upload.js` (25 MB each, up to 12 files). Env var: `BLOB_READ_WRITE_TOKEN`. The browser uploader is bundled with `npm run bundle:upload` into `assets/blob-upload.js`.
 - Vercel Web Analytics is enabled for the project; the script is `/_vercel/insights/script.js`.
+
+## Book Now lead form
+
+Studio phone numbers, emails, websites, booking and social links are not published. Every studio page, the homepage and every listing card use a **Book Now** form that posts to `api/lead.js`. It inserts a row into the shared general `leads` table in Supabase (the same table lakelandconcretecontractors.org uses; this site's rows have `page_url = photostudiostexas.com`) and emails the owner through Resend. Vercel env: `LEADS_SUPABASE_SERVICE_ROLE_KEY` (service role key of that Supabase project, server only), optional `LEADS_SUPABASE_URL`. Never commit keys.

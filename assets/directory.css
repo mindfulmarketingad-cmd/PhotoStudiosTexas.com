@@ -170,3 +170,13 @@ a.tag-link:hover { background: var(--orange); color: var(--black); }
 }
 .category-tile:hover { border-color: var(--orange); }
 .category-tile:focus-visible { outline: 3px solid var(--black); outline-offset: 2px; }
+
+/* Book Now lead form + card button */
+.card-book { margin-top: 0.7rem; align-self: flex-start; cursor: pointer; }
+.lead-form .lead-row { display: grid; grid-template-columns: 1fr 1fr; gap: 0.9rem; }
+.lead-form .lead-field { min-width: 0; }
+.lead-form .lead-field:only-child { grid-column: 1 / -1; }
+.lead-form textarea { min-height: 6rem; }
+.lead-form .btn { margin-top: 0.8rem; }
+.lead-wrap .lead-block { max-width: 760px; margin: 0 auto; }
+@media (max-width: 640px) { .lead-form .lead-row { grid-template-columns: 1fr; } }

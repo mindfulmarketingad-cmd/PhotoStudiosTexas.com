@@ -65,7 +65,8 @@
       '<p class="rating"><span class="stars" style="--r:' + s[3].toFixed(2) + '" aria-hidden="true"></span> <b>' +
       s[3].toFixed(1) + '</b> <span class="muted">(' + s[4].toLocaleString("en-US") + " " + noun + ")</span></p>" +
       '<p class="muted card-city">' + esc(city) + ", TX · " + (d < 1 ? "under 1 mi" : Math.round(d) + " mi") + " away</p>" +
-      (tags ? '<div class="tags">' + tags + "</div>" : "") + "</div></a>";
+      (tags ? '<div class="tags">' + tags + "</div>" : "") +
+      '<span class="btn btn-orange card-book" data-book>Book Now</span></div></a>';
   }
 
   function render(data, lat, lon, source, labelOverride) {

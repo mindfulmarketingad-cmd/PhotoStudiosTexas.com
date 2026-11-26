@@ -521,6 +521,52 @@ def main() -> int:
                 continue
             break
 
+    # --- no studio contact information anywhere; Book Now lead form instead ---
+    allowed_hosts = {"photostudiostexas.com", "www.openstreetmap.org", "unsplash.com"}
+    contact_email = str(CONFIG.get("CONTACT_EMAIL") or "").strip().lower()
+    svc_prices = {str(x.get("priceDisplay") or "").strip() for x in services if str(x.get("priceDisplay") or "").startswith("$")}
+    for path, page in pages.items():
+        text = page["text"]
+        if re.search(r'href=["\']tel:', text, re.I):
+            errors.append(f"{path} still has a tel: link")
+        for addr in re.findall(r'href=["\']mailto:([^"\'?]+)', text, re.I):
+            if not contact_email or addr.strip().lower() != contact_email:
+                errors.append(f"{path} has a mailto: link that is not the site contact email: {addr}")
+        for host in set(re.findall(r'href=["\']https?://([^/"\'?#]+)', text, re.I)):
+            if host.lower() in allowed_hosts:
+                continue
+            if host.lower() == "buy.stripe.com" and path.startswith("/services/"):
+                continue
+            errors.append(f"{path} links to an external site: {host}")
+        for key in ('"telephone"', '"sameAs"', '"hasMap"', '"ReserveAction"'):
+            if key in text:
+                errors.append(f"{path} schema still has {key}")
+        cta_blocks = re.findall(r'<aside class="cta">.*?</aside>', text, re.S)
+        if any(price in block for block in cta_blocks for price in svc_prices):
+            errors.append(f"{path} shows a service price in the cross-promo box")
+        if not path.startswith("/services/photo-") and "Order Now" in text and not re.match(r"^/tx/[^/]+/[^/]+/$", path):
+            errors.append(f"{path} shows an Order Now button outside the service pages")
+    hub_text = pages.get("/services/", {}).get("text", "")
+    if any(price in hub_text for price in svc_prices):
+        errors.append("/services/ hub shows a service price; prices belong on the service pages only")
+    if "/services/" in pages and "$" in re.sub(r"<script.*?</script>", "", hub_text, flags=re.S).split("<main", 1)[-1].split("</main>", 1)[0]:
+        errors.append("/services/ hub body contains a $ amount")
+    for studio in data["studios"]:
+        text = pages[studio["url_path"]]["text"]
+        if 'action="/api/lead/"' not in text or 'id="book"' not in text or "Book Now" not in text:
+            errors.append(f"{studio['url_path']} is missing the Book Now lead form")
+            break
+    home_text = pages["/"]["text"]
+    if 'action="/api/lead/"' not in home_text or 'name="city"' not in home_text or 'name="service"' not in home_text:
+        errors.append("homepage is missing the Book Now lead form (city and service fields)")
+    for path, page in pages.items():
+        for card in re.findall(r'<a class="studio-card"[^>]*href="/tx/[^>]*>.*?</a>', page["text"], re.S):
+            if "data-book" not in card:
+                errors.append(f"{path} has a studio card without a Book Now button")
+                break
+    if not (ROOT / "api" / "lead.js").is_file():
+        errors.append("missing api/lead.js")
+
     indexable = [path for path in pages if path not in NOINDEX]
     print(
         f"Checked {len(html_files)} HTML files, {len(indexable)} indexable, "

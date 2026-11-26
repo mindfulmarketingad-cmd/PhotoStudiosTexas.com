@@ -111,7 +111,6 @@
   var sort = document.getElementById("f-sort");
   var fOpen = document.getElementById("f-open");
   var fHours = document.getElementById("f-hours");
-  var fSite = document.getElementById("f-site");
   var fCity = document.getElementById("f-city");
   var count = document.getElementById("f-count");
   var none = document.getElementById("no-results");
@@ -134,7 +133,6 @@
       if (ok && fCity && fCity.value && card.getAttribute("data-city") !== fCity.value) { ok = false; }
       if (ok && min && Number(card.getAttribute("data-rating")) < min) { ok = false; }
       if (ok && fHours.checked && card.getAttribute("data-has-hours") !== "1") { ok = false; }
-      if (ok && fSite.checked && card.getAttribute("data-site") !== "1") { ok = false; }
       if (ok && fOpen.checked && card.getAttribute("data-open") !== "1") { ok = false; }
       if (ok && tags.length) {
         var have = (card.getAttribute("data-tags") || "").split(" ");
@@ -168,7 +166,7 @@
 
   function reset() {
     q.value = ""; minRating.value = "0"; sort.value = "rating";
-    fOpen.checked = false; fHours.checked = false; fSite.checked = false;
+    fOpen.checked = false; fHours.checked = false;
     if (fCity) { fCity.value = ""; }
     chips.forEach(function (c) { c.setAttribute("aria-pressed", "false"); });
     apply();
@@ -180,7 +178,7 @@
       apply();
     });
   });
-  [q, minRating, sort, fOpen, fHours, fSite, fCity].forEach(function (el) {
+  [q, minRating, sort, fOpen, fHours, fCity].forEach(function (el) {
     if (!el) { return; }
     el.addEventListener("input", apply);
     el.addEventListener("change", apply);

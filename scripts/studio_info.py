@@ -399,7 +399,7 @@ def summary(studio: dict, specialties: dict[str, list[str]], week: dict, feature
         bits.append(f"Also listed as {join_list([lower_first(x) for x in others[:3]])}.")
     summary_hours = hours_summary(week) if week else ""
     if studio.get("business_status") == "CLOSED_TEMPORARILY":
-        bits.append("Google lists it as temporarily closed, so call before you visit.")
+        bits.append("Google lists it as temporarily closed, so check before you visit.")
     elif summary_hours and len(summary_hours) < 120:
         bits.append(f"Hours: {summary_hours}.")
     if "booking" in features:

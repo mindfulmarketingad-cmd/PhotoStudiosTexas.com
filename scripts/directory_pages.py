@@ -15,6 +15,7 @@ from pathlib import Path
 
 import categories as cat
 import studio_info as si
+from lead_form import CTA_LABEL, scrub_contact
 
 ROOT = Path(__file__).resolve().parents[1]
 ENRICH_PATH = ROOT / "data" / "website-enrichment.json"
@@ -186,7 +187,6 @@ class DirectoryMixin:
             "data-rating": f'{float(rating):.1f}' if rating is not None else "0",
             "data-reviews": str(int(count)),
             "data-tags": " ".join(self.tag_ids(studio)),
-            "data-site": "1" if http_url(studio.get("website")) else "0",
             "data-has-hours": "1" if info["hours_attr"] else "0",
             "data-index": str(index),
         }
@@ -209,6 +209,7 @@ class DirectoryMixin:
     {why_line}
     {self.chips_html(studio)}
     <p class="open-status" hidden></p>
+    {self.card_cta()}
   </div>
 </a>"""
 
@@ -255,7 +256,6 @@ class DirectoryMixin:
   <div class="filter-row filter-toggles">
     <label class="toggle"><input type="checkbox" id="f-open"> Open now</label>
     <label class="toggle"><input type="checkbox" id="f-hours"> Has listed hours</label>
-    <label class="toggle"><input type="checkbox" id="f-site"> Has website</label>
   </div>
   {chips_html}
   <div class="filter-foot"><span id="f-count" aria-live="polite"></span><button type="button" class="link-btn" id="f-reset">Reset filters</button></div>
@@ -446,11 +446,14 @@ class DirectoryMixin:
         if subtypes:
             chips = "".join(f'<span class="tag">{esc(s)}</span>' for s in subtypes)
             parts.append(f'<h3>Listed as</h3><div class="tags tags-lg">{chips}</div>')
-        website_desc = (info["site"] or {}).get("description")
+        website_desc = (info["site"] or {}).get("description") or ""
+        if scrub_contact(website_desc) != website_desc.strip():
+            website_desc = ""  # carries a phone, email or web address: leave it out entirely
         if website_desc:
             parts.append(f'<h3>From the studio\'s website</h3><blockquote class="site-quote">{esc(website_desc[:320].rstrip())}{"…" if len(website_desc) > 320 else ""}</blockquote>')
         if studio.get("description"):
-            parts.append(f'<p>{esc(studio["description"])}</p>')
+            if scrub_contact(studio["description"]) == studio["description"].strip():
+                parts.append(f'<p>{esc(studio["description"])}</p>')
         parts.append(self.studio_category_links(studio))
         return f'<section class="section-block" id="services"><h2>Services &amp; specialties</h2>{"".join(parts)}</section>'
 
@@ -465,11 +468,8 @@ class DirectoryMixin:
 
     def reviews_section(self, studio: dict) -> str:
         rating, count = studio.get("rating"), studio.get("review_count") or 0
-        link = http_url(studio.get("reviews_link")) or http_url(studio.get("maps_url"))
         if rating is None:
             body = '<p class="muted">This listing has no Google reviews yet.</p>'
-            if link:
-                body += f'<p><a class="btn btn-small" href="{esc(link)}" rel="noopener noreferrer" target="_blank">View on Google</a></p>'
             return f'<section class="section-block" id="reviews"><h2>Reviews</h2>{body}</section>'
         noun = "review" if count == 1 else "reviews"
         breakdown = studio.get("rating_breakdown")
@@ -488,12 +488,10 @@ class DirectoryMixin:
                       + "".join(f'<span class="tag">{esc(t)}</span>' for t in studio["review_topics"])
                       + '</div><p class="note">Topics Google surfaces from customer reviews.</p>')
         read = ""
-        if link:
-            read = f'<p><a class="btn btn-small" href="{esc(link)}" rel="noopener noreferrer" target="_blank">Read reviews on Google</a></p>'
         return f"""<section class="section-block" id="reviews"><h2>Reviews</h2>
 <div class="review-summary"><div class="review-score"><b>{float(rating):.1f}</b>{stars(rating)}<span class="muted">{comma(int(count))} Google {noun}</span></div>{bars}</div>
 {topics}{read}
-<p class="note">Rating and counts come from Google. Individual review text isn't copied here; read the full reviews on Google.</p></section>"""
+<p class="note">Rating and counts come from Google. Individual review text isn't copied here.</p></section>"""
 
     def map_section(self, studio: dict) -> str:
         lat, lon = studio["latitude"], studio["longitude"]
@@ -501,32 +499,15 @@ class DirectoryMixin:
         bbox = f"{lon - d:.5f}%2C{lat - d:.5f}%2C{lon + d:.5f}%2C{lat + d:.5f}"
         src = f"https://www.openstreetmap.org/export/embed.html?bbox={bbox}&amp;layer=mapnik&amp;marker={lat:.6f}%2C{lon:.6f}"
         big = f"https://www.openstreetmap.org/?mlat={lat:.6f}&amp;mlon={lon:.6f}#map=16/{lat:.5f}/{lon:.5f}"
-        directions = f"https://www.google.com/maps/dir/?api=1&amp;destination={lat:.6f},{lon:.6f}"
         addr = esc(studio.get("address") or "")
         return f"""<section class="section-block" id="map"><h2>Location</h2>
 <p>{addr}</p>
 <iframe class="map" title="Map of {esc(studio["name"])}" loading="lazy" referrerpolicy="no-referrer" src="{src}" width="600" height="320"></iframe>
-<p class="note"><a href="{big}" rel="noopener noreferrer" target="_blank">View larger map</a> · <a href="{directions}" rel="noopener noreferrer" target="_blank">Directions on Google Maps</a> · Map data © OpenStreetMap contributors</p></section>"""
+<p class="note"><a href="{big}" rel="noopener noreferrer" target="_blank">View larger map</a> · Map data © OpenStreetMap contributors</p></section>"""
 
     def actions_html(self, studio: dict) -> str:
-        info = self.info[studio["place_id"]]
-        buttons = []
-        book = http_url(studio.get("booking_link"))
-        if book:
-            buttons.append(f'<a class="btn btn-orange" href="{esc(book)}" rel="nofollow noopener noreferrer" target="_blank">Book online</a>')
-        site = http_url(studio.get("website"))
-        if site:
-            buttons.append(f'<a class="btn" href="{esc(site)}" rel="noopener noreferrer" target="_blank">Website</a>')
-        if studio.get("phone"):
-            buttons.append(f'<a class="btn btn-ghost" href="{esc(tel_href(studio["phone"]))}">Call {esc(studio["phone"])}</a>')
-        lat, lon = studio["latitude"], studio["longitude"]
-        buttons.append(f'<a class="btn btn-ghost" href="https://www.google.com/maps/dir/?api=1&amp;destination={lat:.6f},{lon:.6f}" rel="noopener noreferrer" target="_blank">Directions</a>')
-        social = (info["site"] or {}).get("social") or {}
-        soc = "".join(
-            f'<a href="{esc(url)}" rel="nofollow noopener noreferrer" target="_blank">{esc(SOCIAL_LABEL.get(k, k))}</a>'
-            for k, url in social.items() if http_url(url))
-        soc_html = f'<p class="social-links muted">Find them on: {soc}</p>' if soc else ""
-        return f'<div class="actions">{"".join(buttons)}</div>{soc_html}'
+        # No studio phone, website, booking or social links are published: Book Now is the only action.
+        return f'<div class="actions"><a class="btn btn-orange" href="#book">{CTA_LABEL}</a></div>'
 
     def facts_html(self, studio: dict) -> str:
         info = self.info[studio["place_id"]]
@@ -535,20 +516,6 @@ class DirectoryMixin:
             rows.append(("Address", esc(studio["address"])))
         if studio.get("neighborhood"):
             rows.append(("Area", esc(studio["neighborhood"])))
-        if studio.get("phone"):
-            rows.append(("Phone", f'<a href="{esc(tel_href(studio["phone"]))}">{esc(studio["phone"])}</a>'))
-        site = http_url(studio.get("website"))
-        if site:
-            rows.append(("Website", f'<a href="{esc(site)}" rel="noopener noreferrer" target="_blank">{esc(host_label(site))}</a>'))
-        book = http_url(studio.get("booking_link"))
-        if book and book != site:
-            rows.append(("Booking", f'<a href="{esc(book)}" rel="nofollow noopener noreferrer" target="_blank">{esc(host_label(book))}</a>'))
-        maps = http_url(studio.get("maps_url"))
-        if maps:
-            label = "Google Maps"
-            if studio.get("photos_count"):
-                label += f" ({comma(studio['photos_count'])} photos)"
-            rows.append(("Map", f'<a href="{esc(maps)}" rel="noopener noreferrer" target="_blank">{esc(label)}</a>'))
         if studio.get("located_in"):
             rows.append(("Located in", esc(studio["located_in"])))
         if studio.get("postal_code"):
@@ -611,18 +578,6 @@ class DirectoryMixin:
             data["address"]["streetAddress"] = street
         if studio.get("postal_code"):
             data["address"]["postalCode"] = studio["postal_code"]
-        if studio.get("phone"):
-            data["telephone"] = studio["phone"]
-        same = []
-        site = http_url(studio.get("website"))
-        if site:
-            same.append(site)
-        same += [u for u in ((info["site"] or {}).get("social") or {}).values() if http_url(u)]
-        if same:
-            data["sameAs"] = same
-        maps = http_url(studio.get("maps_url"))
-        if maps:
-            data["hasMap"] = maps
         if studio.get("rating") is not None and studio.get("review_count"):
             data["aggregateRating"] = {"@type": "AggregateRating", "ratingValue": studio["rating"],
                                         "reviewCount": studio["review_count"], "bestRating": 5, "worstRating": 1}
@@ -637,10 +592,6 @@ class DirectoryMixin:
         pay = about.get("Payments")
         if pay:
             data["paymentAccepted"] = ", ".join(pay)
-        book = http_url(studio.get("booking_link"))
-        if book:
-            data["potentialAction"] = {"@type": "ReserveAction", "target": {"@type": "EntryPoint", "urlTemplate": book},
-                                        "result": {"@type": "Reservation", "name": "Book an appointment"}}
         if info["specs"]:
             data["knowsAbout"] = [si.SPEC_BY_ID[k][1] for k in info["specs"]]
         return data
@@ -688,6 +639,7 @@ class DirectoryMixin:
       {self.actions_html(studio)}
       <p class="summary">{esc(info["summary"])}</p>
       {self.services_section(studio, city, info)}
+      {self.studio_lead_section(studio, city)}
       {self.hours_section(studio, info)}
       {self.amenities_section(studio)}
       {self.reviews_section(studio)}
