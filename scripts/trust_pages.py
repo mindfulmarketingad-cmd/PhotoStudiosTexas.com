@@ -83,14 +83,15 @@ class TrustMixin:
 </form>"""
 
     # ---------- pages ----------
-    def _legal_page(self, path: str, title: str, description: str, heading: str, inner: str, extra_crumb: str | None = None) -> None:
+    def _legal_page(self, path: str, title: str, description: str, heading: str, inner: str, extra_crumb: str | None = None, effective: str | None = None) -> None:
         crumbs = [("Home", "/"), (heading, None)]
         others = " · ".join(f'<a href="{h}">{l}</a>' for h, l in LEGAL_LINKS if h != path)
+        date = effective or EFFECTIVE
         body = f"""<div class="wrap page-head legal-page">
   {self.crumbs(crumbs)}
   <h1>{esc(heading)}</h1>
   <hr class="rule">
-  <p class="muted">{BIZ} · Effective {EFFECTIVE}</p>
+  <p class="muted">{BIZ} · Effective {date}</p>
   {inner}
   <hr class="rule">
   <p class="note">Also see: {others}. Questions? Use the <a href="/about/#contact">contact form</a>.</p>
@@ -116,7 +117,7 @@ class TrustMixin:
     <li><strong>Photos you upload.</strong> Files you attach to an order are uploaded to our secure file storage so we can edit them. We use them only to complete your order.</li>
     <li><strong>Payments.</strong> Payments are processed by Stripe on Stripe's checkout page. We never see or store your card number; Stripe gives us your name, email and order details.</li>
     <li><strong>Approximate location.</strong> To show studios near you on the homepage, our host reads an approximate city from your IP address for that page view. We do not store it. If you tap "use my precise location", your browser shares coordinates with the page only to sort studios on your device; they are not sent to us.</li>
-    <li><strong>Analytics.</strong> We use Vercel Web Analytics to count page views and referrers. It does not use cookies and does not track you across sites.</li>
+    <li><strong>Analytics.</strong> We use Vercel Web Analytics to count page views and referrers. It does not use cookies and does not track you across sites. We also use Google Analytics 4. Google sets cookies to measure visits and how the site is used. See <a href="https://policies.google.com/privacy">Google's Privacy Policy</a>. You can opt out of Google Analytics with the <a href="https://tools.google.com/dlpage/gaoptout">Google Analytics opt-out browser add-on</a>.</li>
   </ul>
   <h2>How we use it</h2>
   <p>To reply to you, deliver and support orders, process corrections to directory listings, keep the site secure, and understand which pages are useful. We do not sell your information or use it for advertising profiles.</p>
@@ -136,7 +137,7 @@ class TrustMixin:
   <p>You can ask to see, correct or delete the information we hold about you by using the <a href="/about/#contact">contact form</a>. Residents of some states have additional rights to access and delete personal information; we honor those requests. The site is not directed at children under 13.</p>
   <h2>Changes</h2>
   <p>If we change this policy we will update the date above.</p>
-""")
+""", effective="November 27, 2026")
 
         self._legal_page("/terms/", "Terms of Service | PhotoStudiosTexas.com",
             "Terms for using PhotoStudiosTexas.com, ordering photo editing or enhancement services, and the free photo tools.",
